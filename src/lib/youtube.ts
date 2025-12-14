@@ -1,7 +1,7 @@
 // YouTube Data API v3 integration
 // Get your API key from: https://console.cloud.google.com/apis/credentials
 
-const YOUTUBE_API_KEY = 'AIzaSyAQ9FFrRcD0Qha8LfuKuzmYhVwC-05yzAs'; // Your YouTube API key
+const YOUTUBE_API_KEY = import.meta.env.VITE_YOUTUBE_API_KEY || 'AIzaSyAQ9FFrRcD0Qha8LfuKuzmYhVwC-05yzAs'; // Your YouTube API key
 const CHANNEL_ID = 'UC1XsdvycCtX5ZgKrzoZkPvQ';
 
 export interface YouTubeVideo {
