@@ -1,6 +1,6 @@
-const skoolieSupportImage = "https://images.unsplash.com/photo-1631972241361-330c704b90f1?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxzY2hvb2wlMjBidXMlMjB3b3Jrc2hvcCUyMGdhcmFnZXxlbnwxfHx8fDE3NjUzMjgyNzd8MA&ixlib=rb-4.1.0&q=80&w=1080";
-const chuckCassadyImage = "https://images.unsplash.com/photo-1735480493176-21410fed5b49?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxzY2hvb2wlMjBidXMlMjBtZWNoYW5pYyUyMHdvcmtpbmd8ZW58MXx8fHwxNzY1MzI4Mjc3fDA&ixlib=rb-4.1.0&q=80&w=1080";
-const justinSmithImage = "https://images.unsplash.com/photo-1718114437738-e63dc962fcfd?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtYW4lMjB3b3JraW5nJTIwb24lMjBkaXklMjBjYW1wZXIlMjB2YW58ZW58MXx8fHwxNzY1MzI4Mjc3fDA&ixlib=rb-4.1.0&q=80&w=1080";
+import skoolieSupportImage from "@/assets/skoolie-support/hero.jpg";
+import chuckCassadyImage from "@/assets/skoolie-support/chuck.jpg";
+import justinSmithImage from "@/assets/skoolie-support/justin.jpg";
 
 export function SkoolieSupport() {
   return (
