@@ -216,7 +216,7 @@ export function SubmitBanner() {
 
   return (
     <section id="submit" className="bg-neutral-50 dark:bg-neutral-800 border-y border-neutral-200 dark:border-neutral-700">
-      <div className="max-w-7xl mx-auto px-6 py-20 md:py-32">
+      <div className="max-w-7xl mx-auto px-6 py-12 md:py-20">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <div>
             <div className="text-[rgb(89,89,89)] dark:text-neutral-400 text-sm mb-4 tracking-wide text-[20px] font-bold bg-[rgba(0,0,0,0)] text-center">

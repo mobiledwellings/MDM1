@@ -1,7 +1,7 @@
 export function About() {
   return (
     <section id="about" className="bg-white dark:bg-neutral-900 border-y border-neutral-200 dark:border-neutral-700">
-      <div className="max-w-4xl mx-auto px-6 py-20 md:py-32">
+      <div className="max-w-4xl mx-auto px-6 py-12 md:py-20">
         <div className="text-center mb-12">
           <h2 className="mb-6 dark:text-white normal-case text-[rgb(89,89,89)] text-[20px] font-bold text-center">About Mobile Dwellings</h2>
         </div>

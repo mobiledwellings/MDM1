@@ -5,7 +5,7 @@ import justinSmithImage from "@/assets/skoolie-support/justin.jpg";
 export function SkoolieSupport() {
   return (
     <section id="skoolie-support" className="bg-white dark:bg-neutral-900">
-      <div className="max-w-6xl mx-auto px-6 py-20 md:py-32">
+      <div className="max-w-6xl mx-auto px-6 py-12 md:py-20">
         {/* Header */}
         <div className="text-center mb-16">
           <h2 className="mb-6 dark:text-white text-[20px] text-[rgb(89,89,89)] font-bold">Skoolie Support</h2>
