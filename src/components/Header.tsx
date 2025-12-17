@@ -76,14 +76,14 @@ export function Header() {
                 >
                   Skoolie Support
                 </a>
-                <a 
-                  href="#about" 
-                  onClick={(e) => handleSmoothScroll(e, 'about')}
-                  className="text-neutral-600 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-white transition-colors" 
-                  style={{ fontFamily: "'Morl', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif", fontWeight: 700, textTransform: 'uppercase', fontSize: '1rem', textAlign: 'center', transform: 'translateX(-30%)' }}
-                >
-                  About Mobile Dwellings
-                </a>
+        <a 
+  href="#about" 
+  onClick={(e) => handleSmoothScroll(e, 'about')}
+  className="text-neutral-600 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-white transition-colors" 
+  style={{ fontFamily: "'Morl', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif", fontWeight: 700, textTransform: 'uppercase', fontSize: '1rem', textAlign: 'center' }}
+>
+  About Mobile Dwellings
+</a>
               </nav>
             </div>
             
