@@ -1,19 +1,241 @@
-import { HiExternalLink } from "react-icons/hi";
-import { HiLocationMarker } from "react-icons/hi";
+import { HiExternalLink, HiLocationMarker, HiChevronDown, HiChevronUp, HiUpload, HiX } from "react-icons/hi";
 import { ImageWithFallback } from "./figma/ImageWithFallback";
 import { useState } from "react";
 import { useRigs } from "../contexts/RigsContext";
 import { Link } from "react-router-dom";
+import { Input } from "./ui/input";
+import { Textarea } from "./ui/textarea";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "./ui/select";
+import { toast } from "sonner";
 
 export function RigsForSale() {
-  const { rigs } = useRigs();
+  const { rigs, addRig } = useRigs();
   const [filter, setFilter] = useState<string>("featured");
+  const [isFormOpen, setIsFormOpen] = useState(false);
+  
+  // Form states
+  const [galleryImages, setGalleryImages] = useState<File[]>([]);
+  const [galleryPreviews, setGalleryPreviews] = useState<string[]>([]);
+  const [rigType, setRigType] = useState<string>("");
+  const [draggedIndex, setDraggedIndex] = useState<number | null>(null);
+  const [isDragOver, setIsDragOver] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const filteredRigs = filter === "featured"
     ? rigs.filter(rig => rig.featured).sort((a, b) => (a.featuredOrder || 0) - (b.featuredOrder || 0))
     : filter === "all" 
     ? rigs 
     : rigs.filter(rig => rig.type.toLowerCase().includes(filter.toLowerCase()));
+
+  // Compress image before adding to gallery
+  const compressImage = (file: File): Promise<string> => {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        const img = new Image();
+        img.onload = () => {
+          const canvas = document.createElement('canvas');
+          let width = img.width;
+          let height = img.height;
+          
+          const maxSize = 1920;
+          if (width > height && width > maxSize) {
+            height = (height * maxSize) / width;
+            width = maxSize;
+          } else if (height > maxSize) {
+            width = (width * maxSize) / height;
+            height = maxSize;
+          }
+          
+          canvas.width = width;
+          canvas.height = height;
+          
+          const ctx = canvas.getContext('2d');
+          ctx?.drawImage(img, 0, 0, width, height);
+          
+          resolve(canvas.toDataURL('image/jpeg', 0.8));
+        };
+        img.onerror = reject;
+        img.src = e.target?.result as string;
+      };
+      reader.onerror = reject;
+      reader.readAsDataURL(file);
+    });
+  };
+
+  const handleGalleryImagesChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const files = Array.from(e.target.files || []);
+    if (galleryImages.length + files.length > 20) {
+      toast.error("Maximum 20 gallery images allowed");
+      return;
+    }
+
+    setGalleryImages([...galleryImages, ...files]);
+    
+    for (const file of files) {
+      try {
+        const compressed = await compressImage(file);
+        setGalleryPreviews(prev => [...prev, compressed]);
+      } catch (error) {
+        console.error('Error compressing image:', error);
+        toast.error('Failed to process image');
+      }
+    }
+  };
+
+  const handleFileDrop = async (e: React.DragEvent) => {
+    e.preventDefault();
+    setIsDragOver(false);
+    
+    const files = Array.from(e.dataTransfer.files).filter(file => file.type.startsWith('image/'));
+    
+    if (galleryImages.length + files.length > 20) {
+      toast.error("Maximum 20 gallery images allowed");
+      return;
+    }
+
+    setGalleryImages([...galleryImages, ...files]);
+    
+    for (const file of files) {
+      try {
+        const compressed = await compressImage(file);
+        setGalleryPreviews(prev => [...prev, compressed]);
+      } catch (error) {
+        console.error('Error compressing image:', error);
+        toast.error('Failed to process image');
+      }
+    }
+  };
+
+  const handleDragOverUpload = (e: React.DragEvent) => {
+    e.preventDefault();
+    setIsDragOver(true);
+  };
+
+  const handleDragLeaveUpload = (e: React.DragEvent) => {
+    e.preventDefault();
+    setIsDragOver(false);
+  };
+
+  const removeGalleryImage = (index: number) => {
+    setGalleryImages(galleryImages.filter((_, i) => i !== index));
+    setGalleryPreviews(galleryPreviews.filter((_, i) => i !== index));
+  };
+
+  const handleDragStart = (index: number) => {
+    setDraggedIndex(index);
+  };
+
+  const handleDragOver = (e: React.DragEvent, index: number) => {
+    e.preventDefault();
+    if (draggedIndex === null || draggedIndex === index) return;
+
+    const newPreviews = [...galleryPreviews];
+    const newImages = [...galleryImages];
+    
+    const [draggedPreview] = newPreviews.splice(draggedIndex, 1);
+    const [draggedImage] = newImages.splice(draggedIndex, 1);
+    
+    newPreviews.splice(index, 0, draggedPreview);
+    newImages.splice(index, 0, draggedImage);
+    
+    setGalleryPreviews(newPreviews);
+    setGalleryImages(newImages);
+    setDraggedIndex(index);
+  };
+
+  const handleDragEnd = () => {
+    setDraggedIndex(null);
+  };
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    
+    if (isSubmitting) {
+      return;
+    }
+    
+    setIsSubmitting(true);
+    const form = e.currentTarget;
+    
+    if (!rigType) {
+      toast.error('Please select a rig type');
+      setIsSubmitting(false);
+      return;
+    }
+    
+    const formData = new FormData(form);
+    const name = formData.get('name') as string;
+    const location = formData.get('location') as string;
+    const yearMakeModel = formData.get('yearMakeModel') as string;
+    const price = formData.get('price') as string;
+    const externalLink = formData.get('externalLink') as string;
+    const mileage = formData.get('mileage') as string;
+    const length = formData.get('length') as string;
+    const buildDescription = formData.get('buildDescription') as string;
+    const story = formData.get('story') as string;
+    const youtubeVideo = formData.get('youtubeVideo') as string;
+    const instagram = formData.get('instagram') as string;
+    
+    const rigTypeMap: { [key: string]: string } = {
+      'van': 'Van / Camper Van',
+      'bus': 'School Bus / Skoolie',
+      'rv': 'RV / Motorhome',
+      'truck': 'Truck Camper',
+      'trailer': 'Trailer / Travel Trailer',
+      'tiny': 'Tiny House',
+      'boat': 'Boat / Sailboat',
+      'overland': 'Overland Rig',
+      'other': 'Other'
+    };
+    
+    let youtubeId = '';
+    if (youtubeVideo) {
+      const youtubeMatch = youtubeVideo.match(/(?:youtube\.com\/watch\?v=|youtu\.be\/)([^&\s]+)/);
+      youtubeId = youtubeMatch ? youtubeMatch[1] : youtubeVideo;
+    }
+    
+    const newRig = {
+      title: yearMakeModel,
+      type: rigTypeMap[rigType] || rigType,
+      price: price.startsWith('$') ? price : `$${price}`,
+      location: location,
+      thumbnail: galleryPreviews[0] || "",
+      externalLink: externalLink,
+      galleryImages: galleryPreviews,
+      name: name,
+      mileage: mileage || undefined,
+      length: length || undefined,
+      buildDescription: buildDescription || undefined,
+      story: story || undefined,
+      youtubeVideo: youtubeId || undefined,
+      instagram: instagram || undefined,
+    };
+    
+    try {
+      toast.loading('Uploading images and creating listing...', { id: 'upload-toast' });
+      
+      await addRig(newRig);
+      
+      toast.dismiss('upload-toast');
+      toast.success("Listing submitted successfully!");
+      
+      form.reset();
+      setGalleryImages([]);
+      setGalleryPreviews([]);
+      setRigType("");
+      setIsFormOpen(false);
+      
+      setTimeout(() => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }, 500);
+    } catch (error) {
+      console.error('Error submitting listing:', error);
+      toast.error('Failed to submit listing. Please try again.');
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
 
   return (
     <section id="rigs" className="bg-neutral-50 dark:bg-neutral-800 border-y border-neutral-200 dark:border-neutral-700">
@@ -168,23 +390,254 @@ export function RigsForSale() {
           )}
         </div>
 
-        {filteredRigs.length > 0 && (
-          <div className="text-center mt-12">
-            <Link 
-              to="#sell-your-rig"
-              onClick={(e) => {
-                e.preventDefault();
-                const element = document.getElementById('sell-your-rig');
-                if (element) {
-                  element.scrollIntoView({ behavior: 'smooth' });
-                }
-              }}
-              className="inline-block text-white bg-neutral-900 dark:bg-neutral-700 px-8 py-3 rounded hover:bg-neutral-700 dark:hover:bg-neutral-600 transition-colors"
+        {/* List Your Rig Button and Form */}
+        <div className="mt-16">
+          <div className="flex justify-center mb-8">
+            <button
+              onClick={() => setIsFormOpen(!isFormOpen)}
+              className="px-8 py-3 bg-neutral-900 dark:bg-neutral-800 text-white hover:bg-neutral-700 dark:hover:bg-neutral-700 transition-colors rounded flex items-center gap-2"
             >
               List Your Rig For Sale
-            </Link>
+              {isFormOpen ? (
+                <HiChevronUp className="w-5 h-5" />
+              ) : (
+                <HiChevronDown className="w-5 h-5" />
+              )}
+            </button>
           </div>
-        )}
+
+          {/* Collapsible Form */}
+          <div 
+            className={`transition-all duration-500 ease-in-out overflow-hidden ${
+              isFormOpen ? 'max-h-[10000px] opacity-100' : 'max-h-0 opacity-0'
+            }`}
+          >
+            <div className="max-w-4xl mx-auto">
+              <div className="mb-8 text-center">
+                <p className="text-neutral-600 dark:text-neutral-400 leading-relaxed">
+                  List your Rig for sale here! We'll show the world what you've built while you handle the sale directly through your preferred marketplace.
+                </p>
+              </div>
+
+              <div className="bg-neutral-50 dark:bg-neutral-800 p-8 md:p-12 border border-neutral-200 dark:border-neutral-700 rounded-lg">
+                <form onSubmit={handleSubmit} className="space-y-8">
+                  {/* Basic Information */}
+                  <div>
+                    <h3 className="mb-6 text-neutral-900 dark:text-white text-center">Basic Information</h3>
+                    <div className="space-y-4">
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <Input 
+                          placeholder="Your Name" 
+                          required
+                          name="name"
+                        />
+                        <Input 
+                          placeholder="Location (City, State/Country)" 
+                          required
+                          name="location"
+                        />
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Rig Details */}
+                  <div className="border-t border-neutral-200 dark:border-neutral-700 pt-8">
+                    <h3 className="mb-6 text-neutral-900 dark:text-white text-center">Rig Details</h3>
+                    <div className="space-y-4">
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div>
+                          <Select required onValueChange={setRigType}>
+                            <SelectTrigger>
+                              <SelectValue placeholder="Rig Type" />
+                            </SelectTrigger>
+                            <SelectContent>
+                              <SelectItem value="van">Van / Camper Van</SelectItem>
+                              <SelectItem value="bus">School Bus / Skoolie</SelectItem>
+                              <SelectItem value="rv">RV / Motorhome</SelectItem>
+                              <SelectItem value="truck">Truck Camper</SelectItem>
+                              <SelectItem value="trailer">Trailer / Travel Trailer</SelectItem>
+                              <SelectItem value="tiny">Tiny House</SelectItem>
+                              <SelectItem value="boat">Boat / Sailboat</SelectItem>
+                              <SelectItem value="overland">Overland Rig</SelectItem>
+                              <SelectItem value="other">Other</SelectItem>
+                            </SelectContent>
+                          </Select>
+                        </div>
+                        <Input 
+                          placeholder="Year, Make, Model" 
+                          required
+                          name="yearMakeModel"
+                        />
+                      </div>
+
+                      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                        <Input 
+                          placeholder="Mileage" 
+                          type="text"
+                          name="mileage"
+                        />
+                        <Input 
+                          placeholder="Length (ft)" 
+                          type="text"
+                          name="length"
+                        />
+                        <Input 
+                          placeholder="Asking Price ($)" 
+                          required
+                          type="text"
+                          name="price"
+                        />
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Build Details */}
+                  <div className="border-t border-neutral-200 dark:border-neutral-700 pt-8">
+                    <h3 className="mb-6 text-neutral-900 dark:text-white text-center">Build Description</h3>
+                    <div className="space-y-4">
+                      <Textarea 
+                        placeholder="Please copy and paste your build description here. Buyers love it when you describe your rig in incredible detail! Literally list everything about it. You got this!" 
+                        rows={10}
+                        required
+                        name="buildDescription" 
+                        className="text-center"
+                      />
+                    </div>
+                  </div>
+
+                  {/* Story & Links */}
+                  <div className="border-t border-neutral-200 dark:border-neutral-700 pt-8">
+                    <h3 className="mb-6 text-neutral-900 dark:text-white text-center">Your Story</h3>
+                    <div className="space-y-4">
+                      <Textarea 
+                        placeholder="Tell your story if you'd like. Did you build it yourself? Did you travel? Why are you selling?" 
+                        rows={5}
+                        name="story" 
+                        className="text-center"
+                      />
+
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <Input 
+                          placeholder="Video Walkthrough URL (optional)" 
+                          type="url"
+                          name="youtubeVideo" 
+                          className="text-center"
+                        />
+                        <Input 
+                          placeholder="Instagram URL (optional)" 
+                          type="url"
+                          name="instagram" 
+                          className="text-center"
+                        />
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* External Listing Link */}
+                  <div className="border-t border-neutral-200 dark:border-neutral-700 pt-8">
+                    <h3 className="mb-6 text-neutral-900 dark:text-white text-center">Link to Your External Listing</h3>
+                    <div className="space-y-4">
+                      <p className="text-sm text-neutral-600 dark:text-neutral-400 mb-4 text-center">
+                        We showcase your listing, but you handle the sale. Provide a link to your Facebook Marketplace, Craigslist, Gumtree, or other listing where buyers can message you directly.
+                      </p>
+                      <Input 
+                        placeholder="External Listing URL" 
+                        type="url"
+                        required
+                        name="externalLink" 
+                        className="text-center"
+                      />
+                    </div>
+                  </div>
+
+                  {/* Gallery Images */}
+                  <div className="border-t border-neutral-200 dark:border-neutral-700 pt-8">
+                    <h3 className="mb-6 text-neutral-900 dark:text-white text-center">Photos (10-20 images)</h3>
+                    <div className="space-y-4">
+                      <p className="text-sm text-neutral-600 dark:text-neutral-400 mb-4 text-center">
+                        Upload photos of your rig. The <strong>first image will be your cover photo</strong>. Drag and drop to reorder.
+                      </p>
+                      
+                      <label className="block">
+                        <div 
+                          className={`border-2 border-dashed border-neutral-300 dark:border-neutral-700 rounded-lg p-8 text-center cursor-pointer hover:border-neutral-400 transition-colors ${isDragOver ? 'border-blue-500' : ''}`}
+                          onDrop={handleFileDrop}
+                          onDragOver={handleDragOverUpload}
+                          onDragLeave={handleDragLeaveUpload}
+                        >
+                          <input
+                            type="file"
+                            accept="image/*"
+                            multiple
+                            onChange={handleGalleryImagesChange}
+                            className="hidden"
+                          />
+                          <HiUpload className="w-10 h-10 mx-auto mb-3 text-neutral-400 dark:text-neutral-500" />
+                          <p className="text-neutral-600 dark:text-neutral-400">Click to upload photos</p>
+                          <p className="text-sm text-neutral-500 mt-2">
+                            {galleryImages.length} / 20 images uploaded
+                          </p>
+                        </div>
+                      </label>
+
+                      {galleryPreviews.length > 0 && (
+                        <>
+                          <p className="text-sm text-neutral-600 dark:text-neutral-400 mt-4">
+                            Drag to reorder • First image is your cover photo
+                          </p>
+                          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-4">
+                            {galleryPreviews.map((preview, index) => (
+                              <div 
+                                key={index} 
+                                className={`relative group cursor-move ${draggedIndex === index ? 'opacity-50' : ''}`}
+                                draggable 
+                                onDragStart={() => handleDragStart(index)} 
+                                onDragOver={(e) => handleDragOver(e, index)} 
+                                onDragEnd={handleDragEnd}
+                              >
+                                <img 
+                                  src={preview} 
+                                  alt={`Gallery ${index + 1}`} 
+                                  className="w-full h-32 object-cover rounded-lg"
+                                />
+                                {index === 0 && (
+                                  <div className="absolute top-2 left-2 bg-neutral-900 dark:bg-neutral-700 text-white px-2 py-1 text-xs rounded">
+                                    Cover Photo
+                                  </div>
+                                )}
+                                <button
+                                  type="button"
+                                  onClick={() => removeGalleryImage(index)}
+                                  className="absolute top-1 right-1 bg-red-500 text-white p-1.5 rounded-full opacity-0 group-hover:opacity-100 transition-opacity hover:bg-red-600 z-10"
+                                >
+                                  <HiX className="w-3 h-3" />
+                                </button>
+                              </div>
+                            ))}
+                          </div>
+                        </>
+                      )}
+                    </div>
+                  </div>
+
+                  {/* Submit Button */}
+                  <div className="border-t border-neutral-200 dark:border-neutral-700 pt-8">
+                    <button 
+                      type="submit"
+                      className="w-full px-8 py-4 bg-neutral-900 text-white hover:bg-neutral-700 transition-colors rounded"
+                      disabled={isSubmitting}
+                    >
+                      {isSubmitting ? 'Submitting...' : 'Submit Listing for Review'}
+                    </button>
+                    <p className="text-sm text-neutral-500 text-center mt-4">
+                      We'll review your listing and publish it ASAP!
+                    </p>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
   );
