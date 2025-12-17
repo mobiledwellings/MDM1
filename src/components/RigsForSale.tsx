@@ -406,12 +406,8 @@ export function RigsForSale() {
             </button>
           </div>
 
-          {/* Collapsible Form */}
-          <div 
-            className={`transition-all duration-500 ease-in-out overflow-hidden ${
-              isFormOpen ? 'max-h-[10000px] opacity-100' : 'max-h-0 opacity-0'
-            }`}
-          >
+          {/* Collapsible Form - Only renders when open */}
+          {isFormOpen && (
             <div className="max-w-4xl mx-auto">
               <div className="mb-8 text-center">
                 <p className="text-neutral-600 dark:text-neutral-400 leading-relaxed">
@@ -419,7 +415,7 @@ export function RigsForSale() {
                 </p>
               </div>
 
-              <div className="bg-neutral-50 dark:bg-neutral-800 p-8 md:p-12 border border-neutral-200 dark:border-neutral-700 rounded-lg">
+              <div className="bg-white dark:bg-neutral-900 p-8 md:p-12 border border-neutral-200 dark:border-neutral-700 rounded-lg">
                 <form onSubmit={handleSubmit} className="space-y-8">
                   {/* Basic Information */}
                   <div>
@@ -636,7 +632,7 @@ export function RigsForSale() {
                 </form>
               </div>
             </div>
-          </div>
+          )}
         </div>
       </div>
     </section>
