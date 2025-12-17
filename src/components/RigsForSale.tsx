@@ -239,7 +239,7 @@ export function RigsForSale() {
 
   return (
     <section id="rigs" className="bg-neutral-50 dark:bg-neutral-800 border-y border-neutral-200 dark:border-neutral-700">
-      <div className="max-w-7xl mx-auto px-6 py-20 md:py-32">
+  <div className="max-w-7xl mx-auto px-6 py-12 md:py-20">
         <div className="mb-12">
           <h2 className="text-center mb-8 dark:text-white text-[20px] font-bold text-[rgb(89,89,89)]">The Mobile Dwellings Marketplace</h2>
           <p className="text-center text-neutral-600 dark:text-neutral-400 max-w-2xl mx-auto mb-12">
