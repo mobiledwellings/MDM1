@@ -35,15 +35,20 @@ export function Header() {
         <div className="max-w-7xl mx-auto px-6 py-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-8">
-              <a 
-                href="#videos" 
-                onClick={(e) => handleSmoothScroll(e, 'videos')}
-                className="tracking-tight text-2xl" 
-                style={{ fontFamily: "'Neue Haas Grotesk Display Pro', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif", color: "#ffde5a", fontWeight: 700 }}
-              >
-                MOBILE DWELLINGS
-              </a>
-              <nav className="hidden md:flex items-center gap-16">
+              {/* SEO UPDATE: We wrapped your logo in an <h1> so Google knows this is the main topic of the page */}
+              <h1>
+                <a 
+                  href="#videos" 
+                  onClick={(e) => handleSmoothScroll(e, 'videos')}
+                  className="tracking-tight text-2xl" 
+                  style={{ fontFamily: "'Neue Haas Grotesk Display Pro', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif", color: "#ffde5a", fontWeight: 700 }}
+                >
+                  MOBILE DWELLINGS
+                </a>
+              </h1>
+
+              {/* SEO UPDATE: Added aria-label so search bots understand this is your primary navigation menu */}
+              <nav className="hidden md:flex items-center gap-16" aria-label="Main Navigation">
                 <a 
                   href="#submit" 
                   onClick={(e) => handleSmoothScroll(e, 'submit')}
@@ -76,14 +81,14 @@ export function Header() {
                 >
                   Skoolie Support
                 </a>
-        <a 
-  href="#about" 
-  onClick={(e) => handleSmoothScroll(e, 'about')}
-  className="text-neutral-600 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-white transition-colors" 
-  style={{ fontFamily: "'Morl', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif", fontWeight: 700, textTransform: 'uppercase', fontSize: '1rem', textAlign: 'center' }}
->
-  About Mobile Dwellings
-</a>
+                <a 
+                  href="#about" 
+                  onClick={(e) => handleSmoothScroll(e, 'about')}
+                  className="text-neutral-600 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-white transition-colors" 
+                  style={{ fontFamily: "'Morl', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif", fontWeight: 700, textTransform: 'uppercase', fontSize: '1rem', textAlign: 'center' }}
+                >
+                  About Mobile Dwellings
+                </a>
               </nav>
             </div>
             
@@ -95,7 +100,7 @@ export function Header() {
                   target="_blank" 
                   rel="noopener noreferrer"
                   className="text-neutral-600 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-white transition-colors"
-                  aria-label="YouTube"
+                  aria-label="YouTube Channel"
                 >
                   <FaYoutube className="w-[25.5px] h-[25.5px]" />
                 </a>
@@ -104,7 +109,7 @@ export function Header() {
                   target="_blank" 
                   rel="noopener noreferrer"
                   className="text-neutral-600 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-white transition-colors"
-                  aria-label="Instagram"
+                  aria-label="Instagram Profile"
                 >
                   <FaInstagram className="w-5 h-5" />
                 </a>
@@ -113,14 +118,14 @@ export function Header() {
                   target="_blank" 
                   rel="noopener noreferrer"
                   className="text-neutral-600 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-white transition-colors"
-                  aria-label="Facebook"
+                  aria-label="Facebook Page"
                 >
                   <FaFacebook className="w-5 h-5" />
                 </a>
                 <a 
                   href="mailto:gilliganphantom@gmail.com" 
                   className="text-neutral-600 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-white transition-colors"
-                  aria-label="Email"
+                  aria-label="Send Email"
                 >
                   <HiMail className="w-5 h-5" />
                 </a>
@@ -130,7 +135,7 @@ export function Header() {
               <button
                 onClick={toggleTheme}
                 className="text-neutral-600 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-white transition-colors p-2"
-                aria-label="Toggle theme"
+                aria-label="Toggle Dark/Light Mode"
               >
                 {theme === 'light' ? <HiMoon className="w-5 h-5" /> : <HiSun className="w-5 h-5" />}
               </button>
@@ -138,15 +143,15 @@ export function Header() {
               <button 
                 className="md:hidden text-neutral-600 dark:text-neutral-300"
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                aria-label="Menu"
+                aria-label="Open Mobile Menu"
               >
-                <HiMenu className="w-7 h-7" />
+                {mobileMenuOpen ? <HiX className="w-7 h-7" /> : <HiMenu className="w-7 h-7" />}
               </button>
             </div>
           </div>
 
           {mobileMenuOpen && (
-            <nav className="md:hidden pt-4 pb-2 flex flex-col gap-3">
+            <nav className="md:hidden pt-4 pb-2 flex flex-col gap-3" aria-label="Mobile Navigation">
               <a 
                 href="#submit" 
                 onClick={(e) => handleSmoothScroll(e, 'submit')}

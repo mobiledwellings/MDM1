@@ -12,19 +12,23 @@ export function HomePage() {
   return (
     <>
       <SEO 
-        title="Home"
-        description="Discover unique mobile dwellings, converted school buses, and overland rigs for sale. Watch video tours from our YouTube channel and find your perfect tiny home on wheels."
+        // Optimized for keywords people actually search for
+        title="Mobile Dwellings | Buy & Sell Skoolies, Van Conversions & Tiny Homes"
+        description="The ultimate marketplace for nomadic living. Browse skoolies for sale, converted vans, and off-road rigs. Watch expert video tours and find your home on wheels."
         url="https://mobiledwellings.media"
       />
       
       <div className="min-h-screen bg-white dark:bg-neutral-900 transition-colors">
         <Header />
-        <VideoMasonry />
-        <SubmitBanner />
-        <RigsForSale />
-        <SkoolieSupport />
-        <About />
-        <ClosingBanner />
+        {/* Wrapping the core content in <main> is a major SEO & Accessibility win */}
+        <main id="main-content">
+          <VideoMasonry />
+          <SubmitBanner />
+          <RigsForSale />
+          <SkoolieSupport />
+          <About />
+          <ClosingBanner />
+        </main>
         <Footer />
       </div>
     </>
