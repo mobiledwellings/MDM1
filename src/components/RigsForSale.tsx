@@ -241,7 +241,6 @@ export function RigsForSale() {
     <section id="rigs" className="bg-neutral-50 dark:bg-neutral-800 border-y border-neutral-200 dark:border-neutral-700">
       <div className="max-w-7xl mx-auto px-6 py-12 md:py-20">
         <div className="mb-12">
-          {/* SEO UPDATE: Standardized H2 for better ranking */}
           <h2 className="text-center mb-8 dark:text-white text-3xl font-bold text-neutral-800">
             The Mobile Dwellings Marketplace
           </h2>
@@ -249,7 +248,6 @@ export function RigsForSale() {
             Interested in living on the road? Welcome to the premier marketplace for <strong>Skoolies, Van Conversions, and Tiny Homes</strong>. Browse curated listings or list your own rig today.
           </p>
           
-          {/* Filter Buttons with aria-labels for SEO accessibility */}
           <div className="flex flex-wrap gap-2 justify-center" role="group" aria-label="Filter rigs by type">
             <button
               aria-pressed={filter === "featured"}
@@ -315,7 +313,6 @@ export function RigsForSale() {
           </div>
         </div>
 
-        {/* Listings Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-12">
           {filteredRigs.length === 0 ? (
             <div className="col-span-full text-center py-12">
@@ -324,58 +321,33 @@ export function RigsForSale() {
           ) : (
             filteredRigs.map((rig) => (
               <article key={rig.id} className="group bg-white dark:bg-neutral-900 rounded-lg overflow-hidden border border-neutral-200 dark:border-neutral-700 hover:shadow-lg transition-shadow">
-                <Link
-                  to={`/rigs/${rig.id}`}
-                  className="block"
-                  aria-label={`View details for ${rig.title}`}
-                >
+                <Link to={`/rigs/${rig.id}`} className="block" aria-label={`View details for ${rig.title}`}>
                   <div className="relative aspect-video overflow-hidden bg-neutral-100 dark:bg-neutral-800">
                     <ImageWithFallback 
                       src={rig.thumbnail}
                       alt={`${rig.title} - ${rig.type} in ${rig.location}`}
                       className="w-full h-full object-cover transition-all duration-500 group-hover:scale-105"
                     />
-                    {(() => {
-                      const currentStatus = rig.status || (rig.sold ? 'sold' : 'available');
-                      return (
-                        <div className={`absolute top-3 right-3 ${
-                          currentStatus === 'sold' ? 'bg-red-600' : 
-                          currentStatus === 'pending' ? 'bg-yellow-600' : 
-                          'bg-neutral-900 dark:bg-neutral-700'
-                        } text-white px-3 py-1 text-sm rounded font-semibold`}>
-                          {currentStatus === 'sold' ? 'SOLD' : currentStatus === 'pending' ? 'PENDING' : rig.price}
-                        </div>
-                      );
-                    })()}
-                  </div>
-                  
-                  <div className="p-4">
-                    <div className="text-neutral-500 dark:text-neutral-400 text-xs uppercase tracking-wider mb-2 font-bold">
-                      {rig.type}
+                    <div className={`absolute top-3 right-3 ${(rig.status === 'sold' || rig.sold) ? 'bg-red-600' : rig.status === 'pending' ? 'bg-yellow-600' : 'bg-neutral-900 dark:bg-neutral-700'} text-white px-3 py-1 text-sm rounded font-semibold`}>
+                      {(rig.status === 'sold' || rig.sold) ? 'SOLD' : rig.status === 'pending' ? 'PENDING' : rig.price}
                     </div>
-                    {/* SEO UPDATE: Individual rig titles as H3s */}
-                    <h3 className="text-lg font-bold mb-3 dark:text-white group-hover:text-neutral-600 dark:group-hover:text-neutral-400 transition-colors line-clamp-2">
-                      {rig.title}
-                    </h3>
-                    
+                  </div>
+                  <div className="p-4">
+                    <div className="text-neutral-500 dark:text-neutral-400 text-xs uppercase tracking-wider mb-2 font-bold">{rig.type}</div>
+                    <h3 className="text-lg font-bold mb-3 dark:text-white group-hover:text-neutral-600 dark:group-hover:text-neutral-400 transition-colors line-clamp-2">{rig.title}</h3>
                     <div className="flex items-center gap-2 text-sm text-neutral-600 dark:text-neutral-400 mb-3">
                       <HiLocationMarker className="w-4 h-4" />
                       <span>{rig.location}</span>
                     </div>
-
                     {rig.highlights && rig.highlights.length > 0 && (
                       <div className="flex flex-wrap gap-2 mb-4">
                         {rig.highlights.map((highlight, index) => (
-                          <span
-                            key={index}
-                            className="text-xs bg-neutral-100 dark:bg-neutral-800 text-neutral-700 dark:text-neutral-300 px-2 py-1 rounded border border-neutral-200 dark:border-neutral-700"
-                          >
+                          <span key={index} className="text-xs bg-neutral-100 dark:bg-neutral-800 text-neutral-700 dark:text-neutral-300 px-2 py-1 rounded border border-neutral-200 dark:border-neutral-700">
                             {highlight}
                           </span>
                         ))}
                       </div>
                     )}
-
                     <div className="flex items-center gap-2 text-sm text-neutral-900 dark:text-white font-bold group-hover:text-neutral-600 dark:group-hover:text-neutral-400 transition-colors">
                       <span>Full Specs & Photos</span>
                       <HiExternalLink className="w-4 h-4" />
@@ -387,7 +359,6 @@ export function RigsForSale() {
           )}
         </div>
 
-        {/* List Your Rig Button and Form */}
         <div className="mt-16">
           <div className="flex justify-center mb-8">
             <button
@@ -395,15 +366,10 @@ export function RigsForSale() {
               className="px-8 py-3 bg-neutral-900 dark:bg-neutral-800 text-white hover:bg-neutral-700 dark:hover:bg-neutral-700 transition-colors rounded-full font-bold flex items-center gap-2 shadow-md"
             >
               {isFormOpen ? "Close Form" : "List Your Rig For Sale"}
-              {isFormOpen ? (
-                <HiChevronUp className="w-5 h-5" />
-              ) : (
-                <HiChevronDown className="w-5 h-5" />
-              )}
+              {isFormOpen ? <HiChevronUp className="w-5 h-5" /> : <HiChevronDown className="w-5 h-5" />}
             </button>
           </div>
 
-          {/* Form remains exactly as you had it - functionally perfect */}
           {isFormOpen && (
             <div className="max-w-4xl mx-auto">
               <div className="mb-8 text-center">
@@ -414,138 +380,101 @@ export function RigsForSale() {
 
               <div className="bg-white dark:bg-neutral-900 p-8 md:p-12 border border-neutral-200 dark:border-neutral-700 rounded-lg shadow-xl">
                 <form onSubmit={handleSubmit} className="space-y-8">
-                  {/* Basic Information */}
                   <div>
                     <h4 className="mb-6 text-xl font-bold text-neutral-900 dark:text-white text-center">Contact Information</h4>
                     <div className="space-y-4">
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        <Input 
-                          placeholder="Your Name" 
-                          required
-                          name="name"
-                        />
-                        <Input 
-                          placeholder="Location (City, State/Country)" 
-                          required
-                          name="location"
-                        />
+                        <Input placeholder="Your Name" required name="name" />
+                        <Input placeholder="Location (City, State/Country)" required name="location" />
                       </div>
                     </div>
                   </div>
 
-                  {/* Rig Details */}
                   <div className="border-t border-neutral-200 dark:border-neutral-700 pt-8">
                     <h4 className="mb-6 text-xl font-bold text-neutral-900 dark:text-white text-center">Rig Details</h4>
                     <div className="space-y-4">
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        <div>
-                          <Select required onValueChange={setRigType}>
-                            <SelectTrigger>
-                              <SelectValue placeholder="Rig Type" />
-                            </SelectTrigger>
-                            <SelectContent>
-                              <SelectItem value="van">Van / Camper Van</SelectItem>
-                              <SelectItem value="bus">School Bus / Skoolie</SelectItem>
-                              <SelectItem value="rv">RV / Motorhome</SelectItem>
-                              <SelectItem value="truck">Truck Camper</SelectItem>
-                              <SelectItem value="trailer">Trailer / Travel Trailer</SelectItem>
-                              <SelectItem value="tiny">Tiny House</SelectItem>
-                              <SelectItem value="boat">Boat / Sailboat</SelectItem>
-                              <SelectItem value="overland">Overland Rig</SelectItem>
-                              <SelectItem value="other">Other</SelectItem>
-                            </SelectContent>
-                          </Select>
-                        </div>
-                        <Input 
-                          placeholder="Year, Make, Model" 
-                          required
-                          name="yearMakeModel"
-                        />
+                        <Select required onValueChange={setRigType}>
+                          <SelectTrigger><SelectValue placeholder="Rig Type" /></SelectTrigger>
+                          <SelectContent>
+                            <SelectItem value="van">Van / Camper Van</SelectItem>
+                            <SelectItem value="bus">School Bus / Skoolie</SelectItem>
+                            <SelectItem value="rv">RV / Motorhome</SelectItem>
+                            <SelectItem value="truck">Truck Camper</SelectItem>
+                            <SelectItem value="trailer">Trailer / Travel Trailer</SelectItem>
+                            <SelectItem value="tiny">Tiny House</SelectItem>
+                            <SelectItem value="boat">Boat / Sailboat</SelectItem>
+                            <SelectItem value="overland">Overland Rig</SelectItem>
+                            <SelectItem value="other">Other</SelectItem>
+                          </SelectContent>
+                        </Select>
+                        <Input placeholder="Year, Make, Model" required name="yearMakeModel" />
                       </div>
-
                       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                        <Input 
-                          placeholder="Mileage" 
-                          type="text"
-                          name="mileage"
-                        />
-                        <Input 
-                          placeholder="Length (ft)" 
-                          type="text"
-                          name="length"
-                        />
-                        <Input 
-                          placeholder="Asking Price ($)" 
-                          required
-                          type="text"
-                          name="price"
-                        />
+                        <Input placeholder="Mileage" type="text" name="mileage" />
+                        <Input placeholder="Length (ft)" type="text" name="length" />
+                        <Input placeholder="Asking Price ($)" required type="text" name="price" />
                       </div>
                     </div>
                   </div>
 
-                  {/* Build Details */}
                   <div className="border-t border-neutral-200 dark:border-neutral-700 pt-8">
                     <h4 className="mb-6 text-xl font-bold text-neutral-900 dark:text-white text-center">Build Description</h4>
                     <div className="space-y-4">
-                      <Textarea 
-                        placeholder="Please copy and paste your build description here. Buyers love it when you describe your rig in incredible detail! Literally list everything about it. You got this!" 
-                        rows={10}
-                        required
-                        name="buildDescription" 
-                        className="text-center"
-                      />
+                      <Textarea placeholder="Describe your rig in detail..." rows={10} required name="buildDescription" className="text-center" />
                     </div>
                   </div>
 
-                  {/* Story & Links */}
                   <div className="border-t border-neutral-200 dark:border-neutral-700 pt-8">
                     <h4 className="mb-6 text-xl font-bold text-neutral-900 dark:text-white text-center">Your Story</h4>
                     <div className="space-y-4">
-                      <Textarea 
-                        placeholder="Tell your story if you'd like. Did you build it yourself? Did you travel? Why are you selling?" 
-                        rows={5}
-                        name="story" 
-                        className="text-center"
-                      />
-
+                      <Textarea placeholder="Tell your story..." rows={5} name="story" className="text-center" />
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        <Input 
-                          placeholder="Video Walkthrough URL (optional)" 
-                          type="url"
-                          name="youtubeVideo" 
-                          className="text-center"
-                        />
-                        <Input 
-                          placeholder="Instagram URL (optional)" 
-                          type="url"
-                          name="instagram" 
-                          className="text-center"
-                        />
+                        <Input placeholder="Video Walkthrough URL" type="url" name="youtubeVideo" className="text-center" />
+                        <Input placeholder="Instagram URL" type="url" name="instagram" className="text-center" />
                       </div>
                     </div>
                   </div>
 
-                  {/* External Listing Link */}
                   <div className="border-t border-neutral-200 dark:border-neutral-700 pt-8">
-                    <h4 className="mb-6 text-xl font-bold text-neutral-900 dark:text-white text-center">Link to Your External Listing</h4>
+                    <h4 className="mb-6 text-xl font-bold text-neutral-900 dark:text-white text-center">External Listing Link</h4>
                     <div className="space-y-4">
-                      <p className="text-sm text-neutral-600 dark:text-neutral-400 mb-4 text-center">
-                        We showcase your listing, but you handle the sale. Provide a link to your Facebook Marketplace, Craigslist, Gumtree, or other listing where buyers can message you directly.
-                      </p>
-                      <Input 
-                        placeholder="External Listing URL" 
-                        type="url"
-                        required
-                        name="externalLink" 
-                        className="text-center"
-                      />
+                      <p className="text-sm text-neutral-600 dark:text-neutral-400 mb-4 text-center">Provide a link to where buyers can contact you.</p>
+                      <Input placeholder="External Listing URL" type="url" required name="externalLink" className="text-center" />
                     </div>
                   </div>
 
-                  {/* Gallery Images */}
                   <div className="border-t border-neutral-200 dark:border-neutral-700 pt-8">
                     <h4 className="mb-6 text-xl font-bold text-neutral-900 dark:text-white text-center">Photos (10-20 images)</h4>
                     <div className="space-y-4">
-                      <p className="text-sm text-neutral-600 dark:text-neutral-400 mb-4 text-center">
-                        Upload photos of your rig. The <strong>first image will be your cover photo</strong>. Drag and drop to reorder.
+                      <p className="text-sm text-neutral-600 dark:text-neutral-400 mb-4 text-center">Upload photos of your rig. The <strong>first image will be your cover photo</strong>.</p>
+                      <label className="block">
+                        <div className={`border-2 border-dashed border-neutral-300 dark:border-neutral-700 rounded-lg p-8 text-center cursor-pointer ${isDragOver ? 'border-blue-500' : ''}`} onDrop={handleFileDrop} onDragOver={handleDragOverUpload} onDragLeave={handleDragLeaveUpload}>
+                          <input type="file" accept="image/*" multiple onChange={handleGalleryImagesChange} className="hidden" />
+                          <HiUpload className="w-10 h-10 mx-auto mb-3 text-neutral-400" />
+                          <p>Click to upload photos</p>
+                        </div>
+                      </label>
+                      <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-4">
+                        {galleryPreviews.map((preview, index) => (
+                          <div key={index} className="relative" draggable onDragStart={() => handleDragStart(index)} onDragOver={(e) => handleDragOver(e, index)} onDragEnd={handleDragEnd}>
+                            <img src={preview} alt="Preview" className="w-full h-32 object-cover rounded-lg" />
+                            <button type="button" onClick={() => removeGalleryImage(index)} className="absolute top-1 right-1 bg-red-500 text-white p-1 rounded-full"><HiX className="w-3 h-3" /></button>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+
+                  <button type="submit" className="w-full py-4 bg-neutral-900 text-white rounded-lg font-bold" disabled={isSubmitting}>
+                    {isSubmitting ? 'Submitting...' : 'Submit Listing'}
+                  </button>
+                </form>
+              </div>
+            </div>
+          )}
+        </div>
+      </div>
+    </section>
+  );
+}
