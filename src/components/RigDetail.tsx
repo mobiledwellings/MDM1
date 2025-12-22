@@ -180,3 +180,5 @@ export function RigDetailPage() {
     </div>
   );
 }
+
+export { RigDetailPage as RigDetail };
