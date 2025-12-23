@@ -8,7 +8,7 @@ import { useState, useEffect } from "react";
 import { HiExternalLink, HiCalendar, HiLocationMarker, HiArrowLeft } from "react-icons/hi";
 import { MdSpeed } from "react-icons/md";
 import { FaRuler, FaStar, FaTrash } from "react-icons/fa";
-import { ImageWithFallback } from "../components/figma/ImageWithFallback";
+import { ImageWithFallback } from "./figma/ImageWithFallback";
 
 export function RigDetailPage() {
   const { id } = useParams();
@@ -85,16 +85,23 @@ export function RigDetailPage() {
             </div>
 
             {rig.galleryImages && rig.galleryImages.length > 0 && (
-              <div className="grid grid-cols-4 md:grid-cols-6 gap-3">
-                {rig.galleryImages.map((image, index) => (
-                  <button
-                    key={index}
-                    onClick={() => setSelectedImageIndex(index)}
-                    className={`aspect-video rounded-lg overflow-hidden border-2 transition-all ${selectedImageIndex === index ? 'border-neutral-900 dark:border-white' : 'border-transparent'}`}
-                  >
-                    <img src={image} alt="" className="w-full h-full object-cover" />
-                  </button>
-                ))}
+              <div>
+                <h3 className="font-bold text-neutral-900 dark:text-white mb-4">Gallery</h3>
+                <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+                  {rig.galleryImages.map((image, index) => (
+                    <button
+                      key={index}
+                      onClick={() => setSelectedImageIndex(index)}
+                      className={`relative aspect-video overflow-hidden rounded-lg bg-neutral-100 dark:bg-neutral-800 cursor-pointer transition-all hover:ring-4 hover:ring-neutral-900 dark:hover:ring-neutral-100 ${selectedImageIndex === index ? 'ring-4 ring-neutral-900 dark:ring-neutral-100' : ''}`}
+                    >
+                      <ImageWithFallback
+                        src={image}
+                        alt={`${rig.title} - Image ${index + 1}`}
+                        className="w-full h-full object-cover"
+                      />
+                    </button>
+                  ))}
+                </div>
               </div>
             )}
 
