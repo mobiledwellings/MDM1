@@ -154,3 +154,6 @@ export function RigDetailPage() {
     </div>
   );
 }
+
+// Ensure a named export exists for consumers that import { RigDetail }
+export { RigDetailPage };
