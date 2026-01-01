@@ -146,6 +146,19 @@ export function SubmitBanner() {
     // Store reference to form before async operations
     const form = e.currentTarget;
 
+    // Validate required fields that are not native-visible (file inputs are hidden)
+    if (!exteriorImage || !interiorImage) {
+      toast.error('Please add both exterior and interior photos.');
+      setIsSubmitting(false);
+      return;
+    }
+
+    if (!dwellingType) {
+      toast.error('Please select the type of dwelling.');
+      setIsSubmitting(false);
+      return;
+    }
+
     try {
       const formData = new FormData(form);
       const name = formData.get('name') as string;
@@ -306,7 +319,6 @@ export function SubmitBanner() {
                       accept="image/*"
                       onChange={handleExteriorImageChange}
                       className="hidden"
-                      required
                     />
                     <div
                       className={`flex items-center justify-center h-32 border-2 border-dashed rounded-lg transition-colors ${
@@ -344,7 +356,6 @@ export function SubmitBanner() {
                       accept="image/*"
                       onChange={handleInteriorImageChange}
                       className="hidden"
-                      required
                     />
                     <div
                       className={`flex items-center justify-center h-32 border-2 border-dashed rounded-lg transition-colors ${
