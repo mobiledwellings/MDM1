@@ -21,7 +21,7 @@ export function VideoMasonry() {
   useEffect(() => {
     async function loadVideos() {
       const fetchedVideos = await fetchLatestVideos(30); // Fetch 30 videos to account for filtering
-      setVideos(fetchedVideos.slice(0, 9)); // Display only 9 after filtering
+      setVideos(fetchedVideos.slice(0, 6)); // Display only 6 after filtering
       setLoading(false);
     }
     loadVideos();
@@ -41,7 +41,7 @@ export function VideoMasonry() {
             <p className="dark:text-neutral-400">Loading videos...</p>
           </div>
         ) : (
-          videos.slice(0, isMobile ? 4 : 9).map((video) => (
+          videos.slice(0, isMobile ? 4 : 6).map((video) => (
             <article key={video.id} className="group">
               <a
                 href={`https://youtube.com/watch?v=${video.videoId}`}
@@ -90,7 +90,7 @@ export function VideoMasonry() {
           rel="noopener noreferrer"
           className="inline-block text-white bg-neutral-900 dark:bg-neutral-700 px-8 py-3 rounded hover:bg-neutral-700 dark:hover:bg-neutral-600 transition-colors"
         >
-          View All Videos
+          Watch 100+ Tours on Youtube
         </a>
       </div>
     </section>
