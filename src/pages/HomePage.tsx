@@ -23,10 +23,10 @@ export function HomePage() {
         {/* Wrapping the core content in <main> is a major SEO & Accessibility win */}
         <main id="main-content">
           <VideoMasonry />
+          <About />
           <SubmitBanner />
           <RigsForSale />
           <SkoolieSupport />
-          <About />
           <ClosingBanner />
         </main>
         <Footer />
