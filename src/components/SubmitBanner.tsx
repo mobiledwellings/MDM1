@@ -252,11 +252,11 @@ export function SubmitBanner({ compact = false }: SubmitBannerProps) {
             </div>
           )}
 
-          <div className="bg-white dark:bg-neutral-900 p-8 border border-neutral-200 dark:border-neutral-700 rounded-lg">
-            <h3 className="mb-6 dark:text-white text-center">Get Featured</h3>
+          <div className={`bg-white dark:bg-neutral-900 ${compact ? 'p-6' : 'p-8'} border border-neutral-200 dark:border-neutral-700 rounded-lg`}>
+            <h3 className={`mb-4 ${compact ? 'text-lg' : ''} dark:text-white text-center`}>Get Featured</h3>
             
             <form onSubmit={handleFeatureSubmit} className="space-y-4">
-              <div className="grid grid-cols-2 gap-4">
+              <div className={`grid ${compact ? 'grid-cols-1' : 'grid-cols-2'} gap-4`}>
                 <div>
                   <Input 
                     name="name"
@@ -317,7 +317,7 @@ export function SubmitBanner({ compact = false }: SubmitBannerProps) {
                 />
               </div>
 
-              <div className="grid grid-cols-2 gap-4">
+              <div className={`grid ${compact ? 'grid-cols-1' : 'grid-cols-2'} gap-4`}>
                 <div>
                   <label className="block cursor-pointer">
                     <input

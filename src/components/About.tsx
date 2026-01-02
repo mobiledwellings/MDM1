@@ -26,7 +26,7 @@ export function About() {
             </article>
           </div>
 
-          <div className="mx-auto w-full lg:max-w-md">
+          <div className="mx-auto w-full lg:max-w-lg">
             <SubmitBanner compact />
           </div>
         </div>
