@@ -2,7 +2,7 @@ export function About() {
   return (
     // We use <section> with an ID so your header links can find it
     <section id="about" className="bg-white dark:bg-neutral-900 border-y border-neutral-200 dark:border-neutral-700">
-      <div className="max-w-4xl mx-auto px-6 py-12 md:py-20">
+      <div className="max-w-7xl mx-auto px-6 py-12 md:py-20">
         <div className="text-center mb-12">
           {/* SEO UPDATE: Changed h2 styling to be more standard and used an <h2> tag for hierarchy */}
           <h2 className="mb-6 dark:text-white normal-case text-neutral-800 dark:text-neutral-100 text-3xl font-bold text-center">
@@ -11,8 +11,8 @@ export function About() {
         </div>
         
         {/* SEO UPDATE: Wrapped content in an <article> tag to show it is a standalone story */}
-        <article className="prose prose-lg max-w-none">
-          <p className="text-neutral-600 dark:text-neutral-400 leading-relaxed mb-6 text-center">
+        <article className="prose prose-lg mx-auto max-w-3xl">
+          <p className="text-neutral-600 dark:text-neutral-400 leading-relaxed mb-6 text-center md:text-left">
             <strong>Mobile Dwellings</strong> is a documentary video series exploring the diverse world of alternative living. 
             From converted school buses and overland rigs to tiny houses on wheels and liveaboard sailboats, 
             we showcase the creativity, craftsmanship, and courage it takes to embrace a mobile lifestyle.
