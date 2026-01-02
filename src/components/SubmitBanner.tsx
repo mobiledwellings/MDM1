@@ -238,6 +238,9 @@ export function SubmitBanner() {
             <p className="text-neutral-600 dark:text-neutral-400 mb-6 leading-loose text-center text-lg">
               Each video is a conversation, not just a tour. We care as much about why someone chose this life as the challenges, risks, and moments that made it worth it.
             </p>
+            <p className="text-neutral-600 dark:text-neutral-400 leading-loose text-center text-lg">
+              If you have a mobile dwelling and a story you want to share — whether it's finished or still unfolding — we'd love to hear from you.
+            </p>
           </div>
 
           <div className="bg-white dark:bg-neutral-900 p-8 border border-neutral-200 dark:border-neutral-700 rounded-lg">
