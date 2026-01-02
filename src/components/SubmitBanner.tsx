@@ -230,20 +230,20 @@ export function SubmitBanner() {
   return (
     <section id="submit" className="bg-neutral-50 dark:bg-neutral-800 border-y border-neutral-200 dark:border-neutral-700">
       <div className="max-w-7xl mx-auto px-6 py-12 md:py-20">
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
-          <div className="flex flex-col justify-center lg:col-span-2">
-            <p className="text-neutral-600 dark:text-neutral-400 mb-6 leading-loose text-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+          <div className="flex flex-col justify-center">
+            <p className="text-neutral-600 dark:text-neutral-400 mb-6 leading-relaxed text-center">
               <strong>Mobile Dwellings</strong> is a documentary video series exploring alternative ways of living — From converted school buses and overland rigs to tiny homes and liveaboard sailboats, we focus on the people behind the builds: the decisions they made, the tradeoffs they accepted, and the freedom they found along the way.
             </p>
-            <p className="text-neutral-600 dark:text-neutral-400 mb-6 leading-loose text-center">
+            <p className="text-neutral-600 dark:text-neutral-400 mb-6 leading-relaxed text-center">
               Each video is a conversation, not just a tour. We care as much about why someone chose this life as the challenges, risks, and moments that made it worth it.
             </p>
-            <p className="text-neutral-600 dark:text-neutral-400 leading-loose text-center">
+            <p className="text-neutral-600 dark:text-neutral-400 leading-relaxed text-center">
               If you have a mobile dwelling and a story you want to share — whether it's finished or still unfolding — we'd love to hear from you.
             </p>
           </div>
 
-          <div className="bg-white dark:bg-neutral-900 p-8 border border-neutral-200 dark:border-neutral-700 rounded-lg lg:col-span-1">
+          <div className="bg-white dark:bg-neutral-900 p-8 border border-neutral-200 dark:border-neutral-700 rounded-lg">
             <h3 className="mb-6 dark:text-white text-center">Get Featured</h3>
             
             <form onSubmit={handleFeatureSubmit} className="space-y-4">
