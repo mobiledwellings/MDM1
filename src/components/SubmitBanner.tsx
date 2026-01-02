@@ -14,11 +14,7 @@ import {
 } from "./ui/select";
 import { projectId, publicAnonKey } from '../utils/supabase/info';
 
-type SubmitBannerProps = {
-  compact?: boolean;
-};
-
-export function SubmitBanner({ compact = false }: SubmitBannerProps) {
+export function SubmitBanner() {
   const [exteriorImage, setExteriorImage] = useState<File | null>(null);
   const [interiorImage, setInteriorImage] = useState<File | null>(null);
   const [exteriorPreview, setExteriorPreview] = useState<string>("");
@@ -231,185 +227,176 @@ export function SubmitBanner({ compact = false }: SubmitBannerProps) {
     }
   };
 
-  const formContent = (
-    <div className={`w-full bg-white dark:bg-neutral-900 ${compact ? 'p-6' : 'p-8'} border border-neutral-200 dark:border-neutral-700 rounded-lg`}>
-      <h3 className={`mb-4 ${compact ? 'text-lg' : ''} dark:text-white text-center`}>Get Featured</h3>
-
-      <form onSubmit={handleFeatureSubmit} className="space-y-4">
-        <div className={`grid ${compact ? 'grid-cols-1' : 'grid-cols-2'} gap-4`}>
-          <div>
-            <Input 
-              name="name"
-              placeholder="Name" 
-              required className="w-full"
-            />
-          </div>
-          <div>
-            <Input 
-              name="email"
-              type="email" 
-              placeholder="Email" 
-              required className="w-full"
-            />
-          </div>
-        </div>
-
-        <div>
-          <Input 
-            name="location"
-            placeholder="Your location/destination" 
-            required className="w-full"
-          />
-        </div>
-
-        <div>
-          <Select required value={dwellingType} onValueChange={setDwellingType}>
-            <SelectTrigger className="w-full">
-              <SelectValue placeholder="Type of dwelling" />
-            </SelectTrigger>
-            <SelectContent>
-              <SelectItem value="bus">School Bus / Skoolie</SelectItem>
-              <SelectItem value="rv">RV / Motorhome</SelectItem>
-              <SelectItem value="truck">Truck Camper</SelectItem>
-              <SelectItem value="trailer">Trailer</SelectItem>
-              <SelectItem value="tiny">Tiny House</SelectItem>
-              <SelectItem value="boat">Boat / Sailboat</SelectItem>
-              <SelectItem value="overland">Overland Rig</SelectItem>
-              <SelectItem value="van">Van / Camper Van</SelectItem>
-              <SelectItem value="other">Other</SelectItem>
-            </SelectContent>
-          </Select>
-        </div>
-
-        <div>
-          <Textarea 
-            name="story"
-            placeholder="Tell us about your build and your story..." 
-            rows={4}
-            required className="w-full"
-          />
-        </div>
-
-        <div>
-          <Input 
-            name="socials"
-            placeholder="Link your socials (optional)" 
-            className="w-full"
-          />
-        </div>
-
-        <div className={`grid ${compact ? 'grid-cols-1' : 'grid-cols-2'} gap-4`}>
-          <div>
-            <label className="block cursor-pointer">
-              <input
-                type="file"
-                accept="image/*"
-                onChange={handleExteriorImageChange}
-                className="hidden"
-              />
-              <div
-                className={`flex items-center justify-center h-32 border-2 border-dashed rounded-lg transition-colors ${
-                  exteriorDragging
-                    ? 'border-neutral-900 dark:border-neutral-100 bg-neutral-100 dark:bg-neutral-700'
-                    : 'border-neutral-300 dark:border-neutral-600 hover:border-neutral-900 dark:hover:border-neutral-100'
-                }`}
-                onDragOver={handleExteriorDragOver}
-                onDragLeave={handleExteriorDragLeave}
-                onDrop={handleExteriorDrop}
-              >
-                {exteriorPreview ? (
-                  <div className="relative w-full h-full">
-                    <ImageWithFallback
-                      src={exteriorPreview}
-                      alt="Exterior Preview"
-                      className="w-full h-full object-cover rounded-lg"
-                    />
-                  </div>
-                ) : (
-                  <div className="flex flex-col items-center justify-center h-32">
-                    <HiUpload className="h-6 w-6 text-neutral-500 dark:text-neutral-400" />
-                    <p className="text-neutral-500 dark:text-neutral-400 text-sm mt-2 text-center px-2">
-                      {exteriorDragging ? 'Drop here' : 'Exterior Photo *'}
-                    </p>
-                  </div>
-                )}
-              </div>
-            </label>
-          </div>
-          <div>
-            <label className="block cursor-pointer">
-              <input
-                type="file"
-                accept="image/*"
-                onChange={handleInteriorImageChange}
-                className="hidden"
-              />
-              <div
-                className={`flex items-center justify-center h-32 border-2 border-dashed rounded-lg transition-colors ${
-                  interiorDragging
-                    ? 'border-neutral-900 dark:border-neutral-100 bg-neutral-100 dark:bg-neutral-700'
-                    : 'border-neutral-300 dark:border-neutral-600 hover:border-neutral-900 dark:hover:border-neutral-100'
-                }`}
-                onDragOver={handleInteriorDragOver}
-                onDragLeave={handleInteriorDragLeave}
-                onDrop={handleInteriorDrop}
-              >
-                {interiorPreview ? (
-                  <div className="relative w-full h-full">
-                    <ImageWithFallback
-                      src={interiorPreview}
-                      alt="Interior Preview"
-                      className="w-full h-full object-cover rounded-lg"
-                    />
-                  </div>
-                ) : (
-                  <div className="flex flex-col items-center justify-center h-32">
-                    <HiUpload className="h-6 w-6 text-neutral-500 dark:text-neutral-400" />
-                    <p className="text-neutral-500 dark:text-neutral-400 text-sm mt-2 text-center px-2">
-                      {interiorDragging ? 'Drop here' : 'Interior Photo *'}
-                    </p>
-                  </div>
-                )}
-              </div>
-            </label>
-          </div>
-        </div>
-
-        <button 
-          type="submit"
-          className="w-full px-6 py-3 bg-neutral-900 dark:bg-neutral-700 text-white hover:bg-neutral-700 dark:hover:bg-neutral-600 transition-colors"
-          disabled={isSubmitting}
-        >
-          {isSubmitting ? "Submitting..." : "Submit for Feature"}
-        </button>
-      </form>
-    </div>
-  );
-
-  if (compact) {
-    return <div className="w-full">{formContent}</div>;
-  }
-
   return (
     <section id="submit" className="bg-neutral-50 dark:bg-neutral-800 border-y border-neutral-200 dark:border-neutral-700">
       <div className="max-w-7xl mx-auto px-6 py-12 md:py-20">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          <div>
-            <div className="text-[rgb(89,89,89)] dark:text-neutral-400 text-sm mb-4 tracking-wide text-[20px] font-bold bg-[rgba(0,0,0,0)] text-center">
-              Share Your Story
-            </div>
-            <h2 className="mb-6 leading-tight dark:text-white text-center">
-              Have a mobile dwelling? We want to feature you!
-            </h2>
-            <p className="text-neutral-600 dark:text-neutral-400 mb-6 leading-relaxed text-center">
-              Mobile Dwellings showcases the diverse world of alternative living—from DIY Skoolies and Overland Rigs to Tiny Houses and Sailboats.
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+          <div className="flex flex-col justify-start">
+            <p className="text-neutral-600 dark:text-neutral-400 mb-6 leading-relaxed">
+              <strong>Mobile Dwellings</strong> is a documentary video series exploring the diverse world of alternative living. From converted school buses and overland rigs to tiny houses on wheels and liveaboard sailboats, we focus on the people behind the builds: the decisions they made, the tradeoffs they accepted, and the freedom they found along the way.
             </p>
-            <p className="text-neutral-600 dark:text-neutral-400 mb-8 leading-relaxed text-center">
-              If you've embraced mobile living and have a story to tell or a rig to show off, we'd love to hear from you!
+            <p className="text-neutral-600 dark:text-neutral-400 mb-6 leading-relaxed">
+              Each video is a conversation, not just a tour. We care as much about why someone chose this life as how they built it — the challenges, the risks, and the moments that made it worth it.
+            </p>
+            <p className="text-neutral-600 dark:text-neutral-400 mb-6 leading-relaxed">
+              If you're living on the road, in the middle of a build, or doing something different that deserves to be documented, you're exactly who this project is for.
+            </p>
+            <p className="text-neutral-600 dark:text-neutral-400 leading-relaxed">
+              If you have a mobile dwelling and a story you want to share — whether it's finished or still unfolding — we'd love to hear from you.
             </p>
           </div>
 
-          <div className="w-full">{formContent}</div>
+          <div className="bg-white dark:bg-neutral-900 p-8 border border-neutral-200 dark:border-neutral-700 rounded-lg">
+            <h3 className="mb-6 dark:text-white text-center">Get Featured</h3>
+            
+            <form onSubmit={handleFeatureSubmit} className="space-y-4">
+              <div className="grid grid-cols-2 gap-4">
+                <div>
+                  <Input 
+                    name="name"
+                    placeholder="Name" 
+                    required className="text-left"
+                  />
+                </div>
+                <div>
+                  <Input 
+                    name="email"
+                    type="email" 
+                    placeholder="Email" 
+                    required className="text-left"
+                  />
+                </div>
+              </div>
+
+              <div>
+                <Input 
+                  name="location"
+                  placeholder="Your location/destination" 
+                  required className="text-left"
+                />
+              </div>
+
+              <div>
+                <Select required value={dwellingType} onValueChange={setDwellingType}>
+                  <SelectTrigger>
+                    <SelectValue placeholder="Type of dwelling" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="bus">School Bus / Skoolie</SelectItem>
+                    <SelectItem value="rv">RV / Motorhome</SelectItem>
+                    <SelectItem value="truck">Truck Camper</SelectItem>
+                    <SelectItem value="trailer">Trailer</SelectItem>
+                    <SelectItem value="tiny">Tiny House</SelectItem>
+                    <SelectItem value="boat">Boat / Sailboat</SelectItem>
+                    <SelectItem value="overland">Overland Rig</SelectItem>
+                    <SelectItem value="van">Van / Camper Van</SelectItem>
+                    <SelectItem value="other">Other</SelectItem>
+                  </SelectContent>
+                </Select>
+              </div>
+
+              <div>
+                <Textarea 
+                  name="story"
+                  placeholder="Tell us about your build and your story..." 
+                  rows={4}
+                  required className="text-center"
+                />
+              </div>
+
+              <div>
+                <Input 
+                  name="socials"
+                  placeholder="Link your socials (optional)" 
+                />
+              </div>
+
+              <div className="grid grid-cols-2 gap-4">
+                <div>
+                  <label className="block cursor-pointer">
+                    <input
+                      type="file"
+                      accept="image/*"
+                      onChange={handleExteriorImageChange}
+                      className="hidden"
+                    />
+                    <div
+                      className={`flex items-center justify-center h-32 border-2 border-dashed rounded-lg transition-colors ${
+                        exteriorDragging
+                          ? 'border-neutral-900 dark:border-neutral-100 bg-neutral-100 dark:bg-neutral-700'
+                          : 'border-neutral-300 dark:border-neutral-600 hover:border-neutral-900 dark:hover:border-neutral-100'
+                      }`}
+                      onDragOver={handleExteriorDragOver}
+                      onDragLeave={handleExteriorDragLeave}
+                      onDrop={handleExteriorDrop}
+                    >
+                      {exteriorPreview ? (
+                        <div className="relative w-full h-full">
+                          <ImageWithFallback
+                            src={exteriorPreview}
+                            alt="Exterior Preview"
+                            className="w-full h-full object-cover rounded-lg"
+                          />
+                        </div>
+                      ) : (
+                        <div className="flex flex-col items-center justify-center h-32">
+                          <HiUpload className="h-6 w-6 text-neutral-500 dark:text-neutral-400" />
+                          <p className="text-neutral-500 dark:text-neutral-400 text-sm mt-2 text-center px-2">
+                            {exteriorDragging ? 'Drop here' : 'Exterior Photo *'}
+                          </p>
+                        </div>
+                      )}
+                    </div>
+                  </label>
+                </div>
+                <div>
+                  <label className="block cursor-pointer">
+                    <input
+                      type="file"
+                      accept="image/*"
+                      onChange={handleInteriorImageChange}
+                      className="hidden"
+                    />
+                    <div
+                      className={`flex items-center justify-center h-32 border-2 border-dashed rounded-lg transition-colors ${
+                        interiorDragging
+                          ? 'border-neutral-900 dark:border-neutral-100 bg-neutral-100 dark:bg-neutral-700'
+                          : 'border-neutral-300 dark:border-neutral-600 hover:border-neutral-900 dark:hover:border-neutral-100'
+                      }`}
+                      onDragOver={handleInteriorDragOver}
+                      onDragLeave={handleInteriorDragLeave}
+                      onDrop={handleInteriorDrop}
+                    >
+                      {interiorPreview ? (
+                        <div className="relative w-full h-full">
+                          <ImageWithFallback
+                            src={interiorPreview}
+                            alt="Interior Preview"
+                            className="w-full h-full object-cover rounded-lg"
+                          />
+                        </div>
+                      ) : (
+                        <div className="flex flex-col items-center justify-center h-32">
+                          <HiUpload className="h-6 w-6 text-neutral-500 dark:text-neutral-400" />
+                          <p className="text-neutral-500 dark:text-neutral-400 text-sm mt-2 text-center px-2">
+                            {interiorDragging ? 'Drop here' : 'Interior Photo *'}
+                          </p>
+                        </div>
+                      )}
+                    </div>
+                  </label>
+                </div>
+              </div>
+
+              <button 
+                type="submit"
+                className="w-full px-6 py-3 bg-neutral-900 dark:bg-neutral-700 text-white hover:bg-neutral-700 dark:hover:bg-neutral-600 transition-colors"
+                disabled={isSubmitting}
+              >
+                {isSubmitting ? "Submitting..." : "Submit for Feature"}
+              </button>
+            </form>
+          </div>
         </div>
       </div>
     </section>
