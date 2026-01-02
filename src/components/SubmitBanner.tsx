@@ -231,7 +231,7 @@ export function SubmitBanner() {
     <section id="submit" className="bg-neutral-50 dark:bg-neutral-800 border-y border-neutral-200 dark:border-neutral-700">
       <div className="max-w-7xl mx-auto px-6 py-12 md:py-20">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
-          <div className="flex flex-col justify-center lg:col-span-1">
+          <div className="flex flex-col justify-center lg:col-span-2">
             <p className="text-neutral-600 dark:text-neutral-400 mb-6 leading-loose text-center">
               <strong>Mobile Dwellings</strong> is a documentary video series exploring alternative ways of living — From converted school buses and overland rigs to tiny homes and liveaboard sailboats, we focus on the people behind the builds: the decisions they made, the tradeoffs they accepted, and the freedom they found along the way.
             </p>
@@ -243,7 +243,7 @@ export function SubmitBanner() {
             </p>
           </div>
 
-          <div className="bg-white dark:bg-neutral-900 p-8 border border-neutral-200 dark:border-neutral-700 rounded-lg lg:col-span-2">
+          <div className="bg-white dark:bg-neutral-900 p-8 border border-neutral-200 dark:border-neutral-700 rounded-lg lg:col-span-1">
             <h3 className="mb-6 dark:text-white text-center">Get Featured</h3>
             
             <form onSubmit={handleFeatureSubmit} className="space-y-4">
