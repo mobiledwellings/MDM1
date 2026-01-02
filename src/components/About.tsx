@@ -5,8 +5,8 @@ export function About() {
     // We use <section> with an ID so your header links can find it
     <section id="about" className="bg-white dark:bg-neutral-900 border-y border-neutral-200 dark:border-neutral-700">
       <div className="max-w-7xl mx-auto px-6 py-12 md:py-20">
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
-          <div className="lg:col-span-2 mx-auto">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+          <div className="lg:col-span-8">
             <article className="prose prose-lg">
               <p className="text-neutral-600 dark:text-neutral-400 leading-relaxed mb-6 md:text-left text-left">
                 Mobile Dwellings is a documentary video series exploring alternative ways of living — From converted school buses and overland rigs to tiny homes on wheels and liveaboard sailboats, we focus on the people behind the builds: the decisions they made, the tradeoffs they accepted, and the freedom they found along the way.
@@ -26,8 +26,10 @@ export function About() {
             </article>
           </div>
 
-          <div className="mx-auto w-full lg:max-w-lg">
-            <SubmitBanner compact />
+          <div className="w-full lg:col-span-4 self-start">
+            <div className="w-full">
+              <SubmitBanner compact />
+            </div>
           </div>
         </div>
       </div>
