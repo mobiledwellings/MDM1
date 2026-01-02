@@ -265,38 +265,39 @@ export function SubmitBanner() {
                 </div>
               </div>
 
-              <div>
-                <Input 
-                  name="location"
-                  placeholder="Your location/destination" 
-                  required className="text-left"
-                />
-              </div>
-
-              <div>
-                <Select required value={dwellingType} onValueChange={setDwellingType}>
-                  <SelectTrigger>
-                    <SelectValue placeholder="Type of dwelling" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="bus">School Bus / Skoolie</SelectItem>
-                    <SelectItem value="rv">RV / Motorhome</SelectItem>
-                    <SelectItem value="truck">Truck Camper</SelectItem>
-                    <SelectItem value="trailer">Trailer</SelectItem>
-                    <SelectItem value="tiny">Tiny House</SelectItem>
-                    <SelectItem value="boat">Boat / Sailboat</SelectItem>
-                    <SelectItem value="overland">Overland Rig</SelectItem>
-                    <SelectItem value="van">Van / Camper Van</SelectItem>
-                    <SelectItem value="other">Other</SelectItem>
-                  </SelectContent>
-                </Select>
+              <div className="grid grid-cols-2 gap-4">
+                <div>
+                  <Input 
+                    name="location"
+                    placeholder="Your location/destination" 
+                    required className="text-left"
+                  />
+                </div>
+                <div>
+                  <Select required value={dwellingType} onValueChange={setDwellingType}>
+                    <SelectTrigger>
+                      <SelectValue placeholder="Type of dwelling" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="bus">School Bus / Skoolie</SelectItem>
+                      <SelectItem value="rv">RV / Motorhome</SelectItem>
+                      <SelectItem value="truck">Truck Camper</SelectItem>
+                      <SelectItem value="trailer">Trailer</SelectItem>
+                      <SelectItem value="tiny">Tiny House</SelectItem>
+                      <SelectItem value="boat">Boat / Sailboat</SelectItem>
+                      <SelectItem value="overland">Overland Rig</SelectItem>
+                      <SelectItem value="van">Van / Camper Van</SelectItem>
+                      <SelectItem value="other">Other</SelectItem>
+                    </SelectContent>
+                  </Select>
+                </div>
               </div>
 
               <div>
                 <Textarea 
                   name="story"
                   placeholder="Tell us about your build and your story..." 
-                  rows={4}
+                  rows={6}
                   required className="text-center"
                 />
               </div>
