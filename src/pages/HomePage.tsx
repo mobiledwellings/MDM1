@@ -1,7 +1,6 @@
 import { SEO } from "../components/SEO";
 import { Header } from "../components/Header";
 import { VideoMasonry } from "../components/VideoMasonry";
-import { SubmitBanner } from "../components/SubmitBanner";
 import { RigsForSale } from "../components/RigsForSale";
 import { SkoolieSupport } from "../components/SkoolieSupport";
 import { About } from "../components/About";
@@ -24,7 +23,6 @@ export function HomePage() {
         <main id="main-content">
           <VideoMasonry />
           <About />
-          <SubmitBanner />
           <RigsForSale />
           <SkoolieSupport />
           <ClosingBanner />

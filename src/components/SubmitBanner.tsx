@@ -14,7 +14,11 @@ import {
 } from "./ui/select";
 import { projectId, publicAnonKey } from '../utils/supabase/info';
 
-export function SubmitBanner() {
+type SubmitBannerProps = {
+  compact?: boolean;
+};
+
+export function SubmitBanner({ compact = false }: SubmitBannerProps) {
   const [exteriorImage, setExteriorImage] = useState<File | null>(null);
   const [interiorImage, setInteriorImage] = useState<File | null>(null);
   const [exteriorPreview, setExteriorPreview] = useState<string>("");
@@ -231,20 +235,22 @@ export function SubmitBanner() {
     <section id="submit" className="bg-neutral-50 dark:bg-neutral-800 border-y border-neutral-200 dark:border-neutral-700">
       <div className="max-w-7xl mx-auto px-6 py-12 md:py-20">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          <div>
-            <div className="text-[rgb(89,89,89)] dark:text-neutral-400 text-sm mb-4 tracking-wide text-[20px] font-bold bg-[rgba(0,0,0,0)] text-center">
-              Share Your Story
+          {!compact && (
+            <div>
+              <div className="text-[rgb(89,89,89)] dark:text-neutral-400 text-sm mb-4 tracking-wide text-[20px] font-bold bg-[rgba(0,0,0,0)] text-center">
+                Share Your Story
+              </div>
+              <h2 className="mb-6 leading-tight dark:text-white text-center">
+                Have a mobile dwelling? We want to feature you!
+              </h2>
+              <p className="text-neutral-600 dark:text-neutral-400 mb-6 leading-relaxed text-center">
+                Mobile Dwellings showcases the diverse world of alternative living—from DIY Skoolies and Overland Rigs to Tiny Houses and Sailboats.
+              </p>
+              <p className="text-neutral-600 dark:text-neutral-400 mb-8 leading-relaxed text-center">
+                If you've embraced mobile living and have a story to tell or a rig to show off, we'd love to hear from you!
+              </p>
             </div>
-            <h2 className="mb-6 leading-tight dark:text-white text-center">
-              Have a mobile dwelling? We want to feature you!
-            </h2>
-            <p className="text-neutral-600 dark:text-neutral-400 mb-6 leading-relaxed text-center">
-              Mobile Dwellings showcases the diverse world of alternative living—from DIY Skoolies and Overland Rigs to Tiny Houses and Sailboats.
-            </p>
-            <p className="text-neutral-600 dark:text-neutral-400 mb-8 leading-relaxed text-center">
-              If you've embraced mobile living and have a story to tell or a rig to show off, we'd love to hear from you!
-            </p>
-          </div>
+          )}
 
           <div className="bg-white dark:bg-neutral-900 p-8 border border-neutral-200 dark:border-neutral-700 rounded-lg">
             <h3 className="mb-6 dark:text-white text-center">Get Featured</h3>
