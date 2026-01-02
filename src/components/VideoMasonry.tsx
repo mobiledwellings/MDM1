@@ -90,7 +90,7 @@ export function VideoMasonry() {
           rel="noopener noreferrer"
           className="inline-block text-white bg-neutral-900 dark:bg-neutral-700 px-8 py-3 rounded hover:bg-neutral-700 dark:hover:bg-neutral-600 transition-colors"
         >
-          Watch 100+ Tours on Youtube
+          Watch 100+ Full Tours on YouTube
         </a>
       </div>
     </section>
