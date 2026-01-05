@@ -90,7 +90,7 @@ export function SkoolieSupport() {
         <div className="text-center bg-neutral-50 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 rounded-lg p-12">
           <h2 className="mb-6 dark:text-white">Ready to Get Started?</h2>
           <p className="text-neutral-600 dark:text-neutral-400 leading-relaxed mb-8 max-w-2xl mx-auto">
-            Join our Patreon community to get personalized support for your skoolie conversion. Access private messaging, build reviews, video consultations, and a community of fellow builders.
+            Join our Patreon community to get personalized support for your conversion and direct unlimited access to Chuck and Justin.
           </p>
           <a 
             href="http://patreon.com/skooliesupport" 
