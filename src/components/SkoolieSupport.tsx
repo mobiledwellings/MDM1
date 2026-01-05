@@ -33,17 +33,14 @@ export function SkoolieSupport() {
         {/* About Section */}
         <div className="max-w-4xl mx-auto mb-20">
           <div className="prose prose-lg max-w-none">
-            <p className="text-neutral-600 dark:text-neutral-400 leading-relaxed mb-6 text-center">
+            <p className="text-neutral-600 dark:text-neutral-400 leading-relaxed text-center mb-6">
               Skoolie Support is a <a 
                 href="http://patreon.com/skooliesupport" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="text-neutral-900 dark:text-white underline hover:text-neutral-600 dark:hover:text-neutral-400 transition-colors"
               >Patreon community</a> offering direct access to both professional and amateur perspectives on school bus conversions. Get one-on-one consultations, build advice, and ongoing support throughout your conversion journey.
-            </p>
-            
-            <p className="text-neutral-600 dark:text-neutral-400 leading-relaxed text-center">
-              Whether you need help with electrical systems, layout planning, mechanical issues, or just want someone to review your build plans, our team brings both professional expertise and real-world amateur experience to guide you through every step.
+              Whether you need help with electrical systems, layout planning, mechanical issues, or just want someone to review your build plans, we bring professional expertise and real-world amateur experience to guide you through every step.
             </p>
           </div>
         </div>
