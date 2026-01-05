@@ -186,6 +186,11 @@ export async function fetchLatestVideos(maxResults: number = 3): Promise<YouTube
       };
     });
     
+    // List of video IDs to exclude
+    const excludedVideoIds = [
+      'QFJHEmexje0'
+    ];
+    
     // List of video titles to exclude
     const excludedTitles = [
       "Family Transforms Rare School Bus into STUNNING Tiny House: 2 Year Timelapse!",
@@ -199,7 +204,7 @@ export async function fetchLatestVideos(maxResults: number = 3): Promise<YouTube
       if (!video.duration) return true;
       const durationInSeconds = parseDurationToSeconds(videoData.items.find((v: any) => v.id === video.id)?.contentDetails.duration);
       const isLongEnough = durationInSeconds >= 180; // Only include videos 3 minutes or longer
-      const isNotExcluded = !excludedTitles.includes(video.title);
+      const isNotExcluded = !excludedTitles.includes(video.title) && !excludedVideoIds.includes(video.videoId);
       return isLongEnough && isNotExcluded;
     });
     
