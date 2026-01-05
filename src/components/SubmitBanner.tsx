@@ -236,7 +236,7 @@ export function SubmitBanner() {
               <strong>Mobile Dwellings</strong> is a documentary video series exploring alternative ways of living — From converted school buses and overland rigs to tiny homes and liveaboard sailboats, we focus on the people behind the builds: the decisions they made, the tradeoffs they accepted, and the freedom they found along the way.
             </p>
             <p className="text-neutral-600 dark:text-neutral-400 mb-6 leading-loose text-center text-lg">
-              Each video is a conversation, not just a tour. We care as much about why someone chose this life as the challenges, risks, and moments that made it worth it.
+              Each video is a conversation, not just a tour. We care about why someone chose this life and the challenges, risks, and personal growth that made it either worth it or not.
             </p>
             <p className="text-neutral-600 dark:text-neutral-400 leading-loose text-center text-lg">
               If you have a mobile dwelling and a story you want to share — whether it's finished or still unfolding — we'd love to hear from you.
@@ -265,39 +265,38 @@ export function SubmitBanner() {
                 </div>
               </div>
 
-              <div className="grid grid-cols-2 gap-4">
-                <div>
-                  <Input 
-                    name="location"
-                    placeholder="Your location/destination" 
-                    required className="text-left"
-                  />
-                </div>
-                <div>
-                  <Select required value={dwellingType} onValueChange={setDwellingType}>
-                    <SelectTrigger>
-                      <SelectValue placeholder="Type of dwelling" />
-                    </SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="bus">School Bus / Skoolie</SelectItem>
-                      <SelectItem value="rv">RV / Motorhome</SelectItem>
-                      <SelectItem value="truck">Truck Camper</SelectItem>
-                      <SelectItem value="trailer">Trailer</SelectItem>
-                      <SelectItem value="tiny">Tiny House</SelectItem>
-                      <SelectItem value="boat">Boat / Sailboat</SelectItem>
-                      <SelectItem value="overland">Overland Rig</SelectItem>
-                      <SelectItem value="van">Van / Camper Van</SelectItem>
-                      <SelectItem value="other">Other</SelectItem>
-                    </SelectContent>
-                  </Select>
-                </div>
+              <div>
+                <Input 
+                  name="location"
+                  placeholder="Your location/destination" 
+                  required className="text-left"
+                />
+              </div>
+
+              <div>
+                <Select required value={dwellingType} onValueChange={setDwellingType}>
+                  <SelectTrigger>
+                    <SelectValue placeholder="Type of dwelling" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="bus">School Bus / Skoolie</SelectItem>
+                    <SelectItem value="rv">RV / Motorhome</SelectItem>
+                    <SelectItem value="truck">Truck Camper</SelectItem>
+                    <SelectItem value="trailer">Trailer</SelectItem>
+                    <SelectItem value="tiny">Tiny House</SelectItem>
+                    <SelectItem value="boat">Boat / Sailboat</SelectItem>
+                    <SelectItem value="overland">Overland Rig</SelectItem>
+                    <SelectItem value="van">Van / Camper Van</SelectItem>
+                    <SelectItem value="other">Other</SelectItem>
+                  </SelectContent>
+                </Select>
               </div>
 
               <div>
                 <Textarea 
                   name="story"
                   placeholder="Tell us about your build and your story..." 
-                  rows={6}
+                  rows={4}
                   required className="text-center"
                 />
               </div>
