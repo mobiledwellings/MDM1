@@ -13,8 +13,8 @@ export function HomePage() {
     <>
       <SEO 
         // Optimized for keywords people actually search for
-        title="Mobile Dwellings | Buy & Sell Skoolies, Van Conversions & Tiny Homes"
-        description="The ultimate marketplace for nomadic living. Browse skoolies for sale, converted vans, and off-road rigs. Watch expert video tours and find your home on wheels."
+        title="If you Build it You can Go"
+        description="Mobile Dwellings is a documentary series exploring alternative ways of living. Join a community of people embracing mobile lifestyles through conversions, builds, and real stories."
         url="https://mobiledwellings.media"
       />
       
