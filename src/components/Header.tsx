@@ -48,7 +48,7 @@ export function Header() {
               </h1>
 
               {/* SEO UPDATE: Added aria-label so search bots understand this is your primary navigation menu */}
-              <nav className="hidden md:flex items-center gap-16" aria-label="Main Navigation">
+              <nav className="hidden md:flex items-center gap-12" aria-label="Main Navigation">
                 <a 
                   href="#submit" 
                   onClick={(e) => handleSmoothScroll(e, 'submit')}
@@ -80,14 +80,6 @@ export function Header() {
                   style={{ fontFamily: "'Morl', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif", fontWeight: 700, textTransform: 'uppercase', fontSize: '1rem', textAlign: 'center' }}
                 >
                   Skoolie Support
-                </a>
-                <a 
-                  href="#about" 
-                  onClick={(e) => handleSmoothScroll(e, 'about')}
-                  className="text-neutral-600 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-white transition-colors" 
-                  style={{ fontFamily: "'Morl', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif", fontWeight: 700, textTransform: 'uppercase', fontSize: '1rem', textAlign: 'center' }}
-                >
-                  About Mobile Dwellings
                 </a>
               </nav>
             </div>
