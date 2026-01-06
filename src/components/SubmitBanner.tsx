@@ -390,10 +390,10 @@ export function SubmitBanner() {
                 className="w-full px-6 py-3 bg-neutral-900 dark:bg-neutral-700 text-white hover:bg-neutral-700 dark:hover:bg-neutral-600 transition-colors"
                 disabled={isSubmitting}
               >
-                {isSubmitting ? "Submitting..." : "Click here to submit"}
+                {isSubmitting ? "Submitting..." : "Submit Application"}
               </button>
               <p className="text-center text-sm text-neutral-600 dark:text-neutral-400 mt-4">
-                We personally review every submission and will reach out if it's a good fit! No spam. No Obligations. See you out there.
+                We personally review every submission and reach out if it's a good fit. No spam. No obligation.
               </p>
             </form>
           </div>
