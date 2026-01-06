@@ -33,7 +33,7 @@ export function Header() {
     <>
       <header className="border-b border-neutral-200 dark:border-neutral-700 bg-white dark:bg-neutral-900 sticky top-0 z-50 transition-colors">
         <div className="max-w-7xl mx-auto px-6 py-4">
-          <div className="flex items-center justify-between">
+          <div className="flex items-center gap-16">
             {/* SEO UPDATE: We wrapped your logo in an <h1> so Google knows this is the main topic of the page */}
             <h1>
               <a 
@@ -47,7 +47,7 @@ export function Header() {
             </h1>
 
             {/* SEO UPDATE: Added aria-label so search bots understand this is your primary navigation menu */}
-            <nav className="hidden md:flex items-center gap-12 flex-1 justify-center" aria-label="Main Navigation">
+            <nav className="hidden md:flex items-center gap-16" aria-label="Main Navigation">
                 <a 
                   href="#submit" 
                   onClick={(e) => handleSmoothScroll(e, 'submit')}
@@ -82,7 +82,7 @@ export function Header() {
                 </a>
               </nav>
             
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-2 ml-auto">
               {/* Social Media Links */}
               <div className="hidden md:flex items-center gap-3">
                 <a 
