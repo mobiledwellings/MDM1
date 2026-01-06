@@ -231,7 +231,7 @@ export function SubmitBanner() {
     <section id="submit" className="bg-neutral-50 dark:bg-neutral-800 border-y border-neutral-200 dark:border-neutral-700">
       <div className="max-w-7xl mx-auto px-6 py-12 md:py-20">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-          <div className="flex flex-col justify-center max-w-[520px] space-y-[20px]">
+          <div className="flex flex-col justify-center max-w-[520px] space-y-[58px]">
             <p className="text-neutral-600 dark:text-neutral-400 leading-relaxed text-center text-lg">
               <strong>Mobile Dwellings</strong> is a documentary video series exploring alternative ways of living — From converted school buses and overland rigs to tiny homes and liveaboard sailboats, we focus on the people behind the builds: the decisions they made, the tradeoffs they accepted, and the freedom they found along the way.
             </p>
