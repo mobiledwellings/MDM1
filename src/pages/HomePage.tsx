@@ -14,7 +14,7 @@ export function HomePage() {
       <SEO 
         // Optimized for keywords people actually search for
         title="If you Build it You can Go"
-        description="Mobile Dwellings is a documentary series exploring alternative ways of living. Join a community of people embracing mobile lifestyles through conversions, builds, and real stories."
+        description="If You Build It You Can Go - Mobile Dwellings is a documentary series exploring alternative ways of living. Join a community of people embracing mobile lifestyles through conversions, builds, and real stories."
         url="https://mobiledwellings.media"
       />
       
