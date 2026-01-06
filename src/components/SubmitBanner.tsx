@@ -244,14 +244,14 @@ export function SubmitBanner() {
           </div>
 
           <div className="bg-white dark:bg-neutral-900 p-8 border border-neutral-200 dark:border-neutral-700 rounded-lg">
-            <h3 className="mb-6 dark:text-white text-center">Get Featured</h3>
+            <h3 className="mb-6 dark:text-white text-center">Apply to Be Featured</h3>
             
             <form onSubmit={handleFeatureSubmit} className="space-y-4">
               <div className="grid grid-cols-2 gap-4">
                 <div>
                   <Input 
                     name="name"
-                    placeholder="Name" 
+                    placeholder="Your Name" 
                     required className="text-left"
                   />
                 </div>
@@ -259,7 +259,7 @@ export function SubmitBanner() {
                   <Input 
                     name="email"
                     type="email" 
-                    placeholder="Email" 
+                    placeholder="Your Email" 
                     required className="text-left"
                   />
                 </div>
@@ -390,8 +390,11 @@ export function SubmitBanner() {
                 className="w-full px-6 py-3 bg-neutral-900 dark:bg-neutral-700 text-white hover:bg-neutral-700 dark:hover:bg-neutral-600 transition-colors"
                 disabled={isSubmitting}
               >
-                {isSubmitting ? "Submitting..." : "Submit for Feature"}
+                {isSubmitting ? "Submitting..." : "Click here to submit"}
               </button>
+              <p className="text-center text-sm text-neutral-600 dark:text-neutral-400 mt-4">
+                We personally review every submission and will reach out if it's a good fit! No spam. No Obligations. See you out there.
+              </p>
             </form>
           </div>
         </div>
