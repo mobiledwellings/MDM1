@@ -32,8 +32,8 @@ export function Header() {
   return (
     <>
       <header className="border-b border-neutral-200 dark:border-neutral-700 bg-white dark:bg-neutral-900 sticky top-0 z-50 transition-colors">
-        <div className="max-w-7xl mx-auto px-6 py-4">
-          <div className="flex items-center gap-16">
+        <div className="max-w-7xl mx-auto pl-6 pr-0 py-4">
+          <div className="flex items-center gap-16 pr-6">
             {/* SEO UPDATE: We wrapped your logo in an <h1> so Google knows this is the main topic of the page */}
             <h1>
               <a 
@@ -82,7 +82,7 @@ export function Header() {
                 </a>
               </nav>
             
-            <div className="flex items-center gap-2 ml-auto -mr-6">
+            <div className="flex items-center gap-2 ml-auto">
               {/* Social Media Links */}
               <div className="hidden md:flex items-center gap-3">
                 <a 
