@@ -47,7 +47,7 @@ export function Header() {
             </h1>
 
             {/* SEO UPDATE: Added aria-label so search bots understand this is your primary navigation menu */}
-            <nav className="hidden md:flex items-center justify-center flex-1 gap-10" aria-label="Main Navigation">
+            <nav className="hidden md:flex items-center justify-evenly flex-1" aria-label="Main Navigation">
                 <a 
                   href="#submit" 
                   onClick={(e) => handleSmoothScroll(e, 'submit')}
