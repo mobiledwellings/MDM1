@@ -1,3 +1,5 @@
+import { useEffect } from "react";
+import { useLocation } from "react-router-dom";
 import { SEO } from "../components/SEO";
 import { Header } from "../components/Header";
 import { VideoMasonry } from "../components/VideoMasonry";
@@ -9,6 +11,22 @@ import { ClosingBanner } from "../components/ClosingBanner";
 import { Footer } from "../components/Footer";
 
 export function HomePage() {
+  const location = useLocation();
+
+  // Handle scroll to hash when navigating from another page
+  useEffect(() => {
+    if (location.hash) {
+      const targetId = location.hash.replace('#', '');
+      // Small delay to ensure DOM is ready
+      setTimeout(() => {
+        const element = document.getElementById(targetId);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }
+      }, 100);
+    }
+  }, [location]);
+
   return (
     <>
       <SEO 

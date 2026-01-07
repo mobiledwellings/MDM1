@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate, useLocation } from "react-router-dom";
 import { HiMenu, HiX, HiMoon, HiSun, HiLockClosed, HiLogout } from "react-icons/hi";
 import { FaYoutube, FaInstagram, FaFacebook } from "react-icons/fa";
 import { HiMail } from "react-icons/hi";
@@ -14,9 +15,17 @@ export function Header() {
   const [showPasswordModal, setShowPasswordModal] = useState(false);
   const [showAdminDashboard, setShowAdminDashboard] = useState(false);
   const [selectedRig, setSelectedRig] = useState<Rig | null>(null);
+  const navigate = useNavigate();
+  const location = useLocation();
 
   const handleSmoothScroll = (e: React.MouseEvent<HTMLAnchorElement>, targetId: string) => {
     e.preventDefault();
+    
+    // If we're not on the homepage, navigate there first with the hash
+    if (location.pathname !== '/') {
+      navigate('/#' + targetId);
+      return;
+    }
     
     const element = document.getElementById(targetId);
     if (element) {
