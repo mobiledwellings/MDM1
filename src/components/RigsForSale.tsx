@@ -359,7 +359,7 @@ export function RigsForSale() {
           )}
         </div>
 
-        <div className="mt-16">
+        <div id="sell-your-rig" className="mt-16">
           <div className="flex justify-center mb-8">
             <button
               onClick={() => setIsFormOpen(!isFormOpen)}

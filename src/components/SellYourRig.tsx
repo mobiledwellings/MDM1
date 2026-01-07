@@ -272,7 +272,7 @@ export function SellYourRig() {
   };
 
   return (
-    <section id="sell-your-rig" className="bg-white dark:bg-neutral-900 border-y border-neutral-200 dark:border-neutral-700">
+    <section id="sell-your-rig-form" className="bg-white dark:bg-neutral-900 border-y border-neutral-200 dark:border-neutral-700">
       <div className="max-w-7xl mx-auto px-6 py-20 md:py-32">
         <div className="max-w-4xl mx-auto">
           <div className="mb-12 text-center">
