@@ -34,7 +34,6 @@ export function Header() {
       <header className="border-b border-neutral-200 dark:border-neutral-700 bg-white dark:bg-neutral-900 sticky top-0 z-50 transition-colors">
         <div className="max-w-7xl mx-auto px-6 py-4">
           <div className="flex items-center justify-between">
-            <div className="flex items-center gap-8">
               {/* SEO UPDATE: We wrapped your logo in an <h1> so Google knows this is the main topic of the page */}
               <h1>
                 <a 
@@ -48,7 +47,7 @@ export function Header() {
               </h1>
 
               {/* SEO UPDATE: Added aria-label so search bots understand this is your primary navigation menu */}
-              <nav className="hidden md:flex items-center gap-16" aria-label="Main Navigation">
+              <nav className="hidden md:flex items-center gap-8" aria-label="Main Navigation">
                 <a 
                   href="#submit" 
                   onClick={(e) => handleSmoothScroll(e, 'submit')}
@@ -81,16 +80,7 @@ export function Header() {
                 >
                   Skoolie Support
                 </a>
-                <a 
-                  href="#about" 
-                  onClick={(e) => handleSmoothScroll(e, 'about')}
-                  className="text-neutral-600 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-white transition-colors" 
-                  style={{ fontFamily: "'Morl', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif", fontWeight: 700, textTransform: 'uppercase', fontSize: '1rem', textAlign: 'center' }}
-                >
-                  About Mobile Dwellings
-                </a>
               </nav>
-            </div>
             
             <div className="flex items-center gap-2">
               {/* Social Media Links */}
