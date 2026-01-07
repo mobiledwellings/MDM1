@@ -105,6 +105,23 @@ export function RigDetailPage() {
               </div>
             )}
 
+            {rig.youtubeVideo && (
+              <div>
+                <h3 className="font-bold text-neutral-900 dark:text-white mb-4">Video Tour</h3>
+                <div className="relative aspect-video overflow-hidden rounded-xl bg-neutral-100 dark:bg-neutral-800">
+                  <iframe
+                    src={`https://www.youtube.com/embed/${rig.youtubeVideo.includes('youtube.com') || rig.youtubeVideo.includes('youtu.be') 
+                      ? rig.youtubeVideo.split('v=')[1]?.split('&')[0] || rig.youtubeVideo.split('/').pop()?.split('?')[0]
+                      : rig.youtubeVideo}`}
+                    title={`${rig.title} Video Tour`}
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowFullScreen
+                    className="absolute inset-0 w-full h-full"
+                  />
+                </div>
+              </div>
+            )}
+
             <div className="prose dark:prose-invert max-w-none">
               <h3 className="text-2xl font-bold border-b pb-2 dark:border-neutral-700">Build Description</h3>
               <p className="whitespace-pre-line text-neutral-700 dark:text-neutral-300 mt-4">{rig.buildDescription}</p>
