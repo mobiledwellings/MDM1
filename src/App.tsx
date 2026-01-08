@@ -9,6 +9,7 @@ import { SellYourRigPage } from "./pages/SellYourRigPage";
 import { AboutPage } from "./pages/AboutPage";
 import { SkoolieSupportPage } from "./pages/SkoolieSupportPage";
 import { RigDetailPage } from "./pages/RigDetailPage";
+import { DealsPage } from "./pages/DealsPage";
 import { Toaster } from "sonner";
 
 export default function App() {
@@ -26,6 +27,7 @@ export default function App() {
                 <Route path="/sell-your-rig" element={<SellYourRigPage />} />
                 <Route path="/about" element={<AboutPage />} />
                 <Route path="/skoolie-support" element={<SkoolieSupportPage />} />
+                <Route path="/deals" element={<DealsPage />} />
               </Routes>
             </BrowserRouter>
           </RigsProvider>
