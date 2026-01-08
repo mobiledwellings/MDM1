@@ -230,6 +230,9 @@ export function SubmitBanner() {
   return (
     <section id="submit" className="bg-neutral-50 dark:bg-neutral-800 border-y border-neutral-200 dark:border-neutral-700">
       <div className="max-w-7xl mx-auto px-6 py-12 md:py-20">
+        <h2 className="text-2xl md:text-3xl font-bold text-neutral-900 dark:text-white text-center mb-12">
+          Apply to Be Featured
+        </h2>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
           <div className="flex flex-col justify-center max-w-[520px] space-y-[58px]">
             <p className="text-neutral-600 dark:text-neutral-400 leading-relaxed text-center text-lg mb-8">
@@ -244,8 +247,6 @@ export function SubmitBanner() {
           </div>
 
           <div className="bg-white dark:bg-neutral-900 p-8 border border-neutral-200 dark:border-neutral-700 rounded-lg">
-            <h3 className="mb-6 dark:text-white text-center">Apply to Be Featured</h3>
-            
             <form onSubmit={handleFeatureSubmit} className="space-y-4">
               <div className="grid grid-cols-2 gap-4">
                 <div>
@@ -392,12 +393,12 @@ export function SubmitBanner() {
               >
                 {isSubmitting ? "Submitting..." : "Submit Application"}
               </button>
-              <p className="text-center text-sm text-neutral-600 dark:text-neutral-400 mt-4">
-                We personally review every submission and reach out if it's a good fit. No spam. No obligation.
-              </p>
             </form>
           </div>
         </div>
+        <p className="text-center text-sm text-neutral-600 dark:text-neutral-400 mt-12">
+          We personally review every submission and reach out if it's a good fit. No spam. No obligation.
+        </p>
       </div>
     </section>
   );
