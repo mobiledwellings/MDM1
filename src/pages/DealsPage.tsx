@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { SEO } from "../components/SEO";
 import { Header } from "../components/Header";
 import { Footer } from "../components/Footer";
-import { HiExternalLink, HiX, HiClipboardCopy, HiCheck, HiTag, HiChevronLeft, HiChevronRight, HiChevronDown, HiChevronUp, HiPencil, HiTrash, HiStar, HiUpload } from "react-icons/hi";
+import { HiExternalLink, HiClipboardCopy, HiCheck, HiTag, HiChevronDown, HiChevronUp, HiPencil, HiTrash, HiStar, HiUpload } from "react-icons/hi";
 import { useState } from "react";
 import { ImageWithFallback } from "../components/figma/ImageWithFallback";
 import { useDeals, Product, ProductCategory } from "../contexts/DealsContext";
@@ -61,177 +61,29 @@ function CopyButton({ code }: { code: string }) {
   );
 }
 
-function ProductDetailModal({ product, onClose }: { product: Product; onClose: () => void }) {
-  const [currentImageIndex, setCurrentImageIndex] = useState(0);
-  const images = product.galleryImages?.length ? product.galleryImages : [product.thumbnail];
-
-  const nextImage = () => {
-    setCurrentImageIndex((prev) => (prev + 1) % images.length);
-  };
-
-  const prevImage = () => {
-    setCurrentImageIndex((prev) => (prev - 1 + images.length) % images.length);
-  };
-
-  return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70" onClick={onClose}>
-      <div 
-        className="bg-white dark:bg-neutral-900 rounded-lg max-w-4xl w-full max-h-[90vh] overflow-y-auto"
-        onClick={(e) => e.stopPropagation()}
-      >
-        {/* Header */}
-        <div className="sticky top-0 bg-white dark:bg-neutral-900 border-b border-neutral-200 dark:border-neutral-700 p-4 flex justify-between items-center z-10">
-          <h2 className="text-xl font-bold text-neutral-900 dark:text-white">{product.name}</h2>
-          <button 
-            onClick={onClose}
-            className="p-2 hover:bg-neutral-100 dark:hover:bg-neutral-800 rounded-full transition-colors"
-          >
-            <HiX className="w-6 h-6 text-neutral-600 dark:text-neutral-400" />
-          </button>
-        </div>
-
-        <div className="p-6">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {/* Image Gallery */}
-            <div>
-              <div className="relative aspect-square bg-neutral-100 dark:bg-neutral-800 rounded-lg overflow-hidden mb-4">
-                <ImageWithFallback
-                  src={images[currentImageIndex]}
-                  alt={product.name}
-                  className="w-full h-full object-cover"
-                />
-                {images.length > 1 && (
-                  <>
-                    <button
-                      onClick={prevImage}
-                      className="absolute left-2 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white p-2 rounded-full transition-colors"
-                    >
-                      <HiChevronLeft className="w-5 h-5" />
-                    </button>
-                    <button
-                      onClick={nextImage}
-                      className="absolute right-2 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white p-2 rounded-full transition-colors"
-                    >
-                      <HiChevronRight className="w-5 h-5" />
-                    </button>
-                  </>
-                )}
-                {product.discount && (
-                  <div className="absolute top-3 left-3 bg-green-600 text-white px-3 py-1 text-sm rounded font-semibold flex items-center gap-1">
-                    <HiTag className="w-4 h-4" />
-                    {product.discount}
-                  </div>
-                )}
-              </div>
-              {images.length > 1 && (
-                <div className="flex gap-2">
-                  {images.map((img, idx) => (
-                    <button
-                      key={idx}
-                      onClick={() => setCurrentImageIndex(idx)}
-                      className={`w-16 h-16 rounded-lg overflow-hidden border-2 transition-colors ${
-                        idx === currentImageIndex 
-                          ? 'border-neutral-900 dark:border-white' 
-                          : 'border-transparent hover:border-neutral-300 dark:hover:border-neutral-600'
-                      }`}
-                    >
-                      <ImageWithFallback src={img} alt="" className="w-full h-full object-cover" />
-                    </button>
-                  ))}
-                </div>
-              )}
-            </div>
-
-            {/* Product Info */}
-            <div>
-              <div className="text-sm text-neutral-500 dark:text-neutral-400 uppercase tracking-wider mb-2 font-bold">
-                {categoryLabels[product.category]}
-              </div>
-              
-              <div className="flex items-baseline gap-3 mb-4">
-                <span className="text-3xl font-bold text-neutral-900 dark:text-white">{product.price}</span>
-                {product.originalPrice && (
-                  <span className="text-lg text-neutral-400 line-through">{product.originalPrice}</span>
-                )}
-              </div>
-
-              {product.couponCode && (
-                <div className="mb-6 p-4 bg-amber-50 dark:bg-amber-900/20 rounded-lg border border-amber-200 dark:border-amber-800">
-                  <div className="text-sm text-amber-700 dark:text-amber-400 mb-2 font-medium">Use code at checkout:</div>
-                  <div className="flex items-center">
-                    <span className="font-mono text-lg font-bold bg-white dark:bg-neutral-800 px-4 py-2 rounded border border-amber-300 dark:border-amber-700 text-neutral-900 dark:text-white">
-                      {product.couponCode}
-                    </span>
-                    <CopyButton code={product.couponCode} />
-                  </div>
-                </div>
-              )}
-
-              <p className="text-neutral-600 dark:text-neutral-400 mb-6 leading-relaxed">
-                {product.description}
-              </p>
-
-              {product.highlights && product.highlights.length > 0 && (
-                <div className="mb-6">
-                  <h4 className="font-semibold text-neutral-900 dark:text-white mb-3">Highlights</h4>
-                  <div className="flex flex-wrap gap-2">
-                    {product.highlights.map((highlight, idx) => (
-                      <span 
-                        key={idx}
-                        className="text-sm bg-neutral-100 dark:bg-neutral-800 text-neutral-700 dark:text-neutral-300 px-3 py-1 rounded-full border border-neutral-200 dark:border-neutral-700"
-                      >
-                        {highlight}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              )}
-
-              {product.specs && product.specs.length > 0 && (
-                <div className="mb-6">
-                  <h4 className="font-semibold text-neutral-900 dark:text-white mb-3">Specifications</h4>
-                  <div className="bg-neutral-50 dark:bg-neutral-800 rounded-lg overflow-hidden">
-                    {product.specs.map((spec, idx) => (
-                      <div 
-                        key={idx}
-                        className={`flex justify-between px-4 py-2 ${idx % 2 === 0 ? '' : 'bg-neutral-100 dark:bg-neutral-800/50'}`}
-                      >
-                        <span className="text-neutral-600 dark:text-neutral-400">{spec.label}</span>
-                        <span className="font-medium text-neutral-900 dark:text-white">{spec.value}</span>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              )}
-
-              <a
-                href={product.link}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center justify-center gap-2 w-full bg-neutral-900 dark:bg-white text-white dark:text-neutral-900 px-6 py-3 rounded-lg font-bold hover:bg-neutral-700 dark:hover:bg-neutral-200 transition-colors"
-              >
-                Shop Now <HiExternalLink className="w-5 h-5" />
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-}
-
-function ProductCard({ product, onClick, isAdmin, onEdit, onDelete, onToggleFeatured }: { 
+function ProductCard({ product, isAdmin, onEdit, onDelete, onToggleFeatured }: { 
   product: Product; 
-  onClick: () => void;
   isAdmin?: boolean;
   onEdit?: () => void;
   onDelete?: () => void;
   onToggleFeatured?: () => void;
 }) {
+  const [isExpanded, setIsExpanded] = useState(false);
+  const [copied, setCopied] = useState(false);
+
+  const handleCopyCode = async (e: React.MouseEvent) => {
+    e.stopPropagation();
+    if (product.couponCode) {
+      await navigator.clipboard.writeText(product.couponCode);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    }
+  };
+
   return (
     <article 
-      className="group bg-white dark:bg-neutral-900 rounded-lg overflow-hidden border border-neutral-200 dark:border-neutral-700 hover:shadow-lg transition-shadow cursor-pointer relative"
-      onClick={onClick}
+      className={`bg-white dark:bg-neutral-900 rounded-lg overflow-hidden border border-neutral-200 dark:border-neutral-700 transition-all duration-300 ${isExpanded ? 'shadow-xl' : 'hover:shadow-lg'} cursor-pointer relative`}
+      onClick={() => setIsExpanded(!isExpanded)}
     >
       {/* Admin Controls */}
       {isAdmin && (
@@ -275,11 +127,12 @@ function ProductCard({ product, onClick, isAdmin, onEdit, onDelete, onToggleFeat
           </div>
         )}
       </div>
+      
       <div className="p-4">
         <div className="text-neutral-500 dark:text-neutral-400 text-xs uppercase tracking-wider mb-2 font-bold">
           {categoryLabels[product.category]}
         </div>
-        <h3 className="text-lg font-bold mb-2 dark:text-white group-hover:text-neutral-600 dark:group-hover:text-neutral-400 transition-colors line-clamp-2">
+        <h3 className="text-lg font-bold mb-2 dark:text-white transition-colors line-clamp-2">
           {product.name}
         </h3>
         {product.shortDescription && (
@@ -296,14 +149,66 @@ function ProductCard({ product, onClick, isAdmin, onEdit, onDelete, onToggleFeat
             ))}
           </div>
         )}
-        {product.couponCode && (
+        {product.couponCode && !isExpanded && (
           <div className="flex items-center gap-2 text-sm">
             <span className="font-mono bg-amber-100 dark:bg-amber-900/30 text-amber-700 dark:text-amber-400 px-2 py-0.5 rounded text-xs font-semibold">
               {product.couponCode}
             </span>
           </div>
         )}
+        
+        {/* Expand indicator */}
+        <div className="flex items-center justify-center mt-3 text-neutral-400">
+          {isExpanded ? (
+            <HiChevronUp className="w-5 h-5" />
+          ) : (
+            <HiChevronDown className="w-5 h-5" />
+          )}
+        </div>
       </div>
+
+      {/* Expanded Content */}
+      {isExpanded && (
+        <div className="px-4 pb-4 border-t border-neutral-200 dark:border-neutral-700 pt-4 space-y-4" onClick={(e) => e.stopPropagation()}>
+          {/* Full Description */}
+          <p className="text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed">
+            {product.description}
+          </p>
+
+          {/* Coupon Code */}
+          {product.couponCode && (
+            <div className="p-3 bg-amber-50 dark:bg-amber-900/20 rounded-lg border border-amber-200 dark:border-amber-800">
+              <div className="text-xs text-amber-700 dark:text-amber-400 mb-1 font-medium">Use code at checkout:</div>
+              <div className="flex items-center gap-2">
+                <span className="font-mono text-base font-bold bg-white dark:bg-neutral-800 px-3 py-1.5 rounded border border-amber-300 dark:border-amber-700 text-neutral-900 dark:text-white">
+                  {product.couponCode}
+                </span>
+                <button
+                  onClick={handleCopyCode}
+                  className="p-1.5 text-neutral-400 hover:text-neutral-600 dark:hover:text-neutral-200 transition-colors"
+                  title="Copy code"
+                >
+                  {copied ? (
+                    <HiCheck className="w-5 h-5 text-green-500" />
+                  ) : (
+                    <HiClipboardCopy className="w-5 h-5" />
+                  )}
+                </button>
+              </div>
+            </div>
+          )}
+
+          {/* Shop Now Button */}
+          <a
+            href={product.link}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center justify-center gap-2 w-full bg-neutral-900 dark:bg-white text-white dark:text-neutral-900 px-4 py-2.5 rounded-lg font-bold hover:bg-neutral-700 dark:hover:bg-neutral-200 transition-colors text-sm"
+          >
+            Shop Now <HiExternalLink className="w-4 h-4" />
+          </a>
+        </div>
+      )}
     </article>
   );
 }
@@ -312,7 +217,6 @@ export function DealsPage() {
   const { products, addProduct, updateProduct, deleteProduct, toggleFeatured, loading } = useDeals();
   const { isAdmin } = useAdmin();
   const [filter, setFilter] = useState<ProductCategory | "featured">("featured");
-  const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
   const [isFormOpen, setIsFormOpen] = useState(false);
   const [editingProduct, setEditingProduct] = useState<Product | null>(null);
   
@@ -484,7 +388,6 @@ export function DealsPage() {
                     <ProductCard
                       key={product.id}
                       product={product}
-                      onClick={() => setSelectedProduct(product)}
                       isAdmin={isAdmin}
                       onEdit={() => handleEdit(product)}
                       onDelete={() => handleDelete(product.id)}
@@ -705,14 +608,6 @@ export function DealsPage() {
 
         <Footer />
       </div>
-
-      {/* Product Detail Modal */}
-      {selectedProduct && (
-        <ProductDetailModal
-          product={selectedProduct}
-          onClose={() => setSelectedProduct(null)}
-        />
-      )}
     </>
   );
 }
