@@ -89,6 +89,17 @@ export function Header() {
                 >
                   Skoolie Support
                 </a>
+                <a 
+                  href="/deals" 
+                  onClick={(e) => {
+                    e.preventDefault();
+                    navigate('/deals');
+                  }}
+                  className="text-neutral-600 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-white transition-colors" 
+                  style={{ fontFamily: "'Morl', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif", fontWeight: 700, textTransform: 'uppercase', fontSize: '1rem', textAlign: 'center' }}
+                >
+                  Deals
+                </a>
               </nav>
             
             <div className="flex items-center gap-2">
@@ -182,6 +193,18 @@ export function Header() {
                 style={{ fontFamily: "'Neue Haas Grotesk Display Pro', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif", fontWeight: 700, textTransform: 'uppercase' }}
               >
                 Skoolie Support
+              </a>
+              <a 
+                href="/deals" 
+                onClick={(e) => {
+                  e.preventDefault();
+                  navigate('/deals');
+                  setMobileMenuOpen(false);
+                }}
+                className="text-neutral-600 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-white transition-colors" 
+                style={{ fontFamily: "'Neue Haas Grotesk Display Pro', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif", fontWeight: 700, textTransform: 'uppercase' }}
+              >
+                Deals
               </a>
               <a 
                 href="#about" 

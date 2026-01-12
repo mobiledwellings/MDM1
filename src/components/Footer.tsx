@@ -69,6 +69,11 @@ export function Footer() {
                     Get Featured
                   </a>
                 </li>
+                <li>
+                  <a href="/deals" className="text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white transition-colors font-semibold">
+                    Deals & Coupons
+                  </a>
+                </li>
               </ul>
             </div>
           </div>
