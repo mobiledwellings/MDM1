@@ -113,42 +113,42 @@ function ProductCard({ product, isAdmin, onEdit, onDelete, onToggleFeatured }: {
       )}
       
       {/* Product Image */}
-      <div className="relative aspect-[4/3] overflow-hidden bg-neutral-100 dark:bg-neutral-800">
+      <div className="relative aspect-video overflow-hidden bg-white dark:bg-neutral-800">
         <ImageWithFallback 
           src={product.thumbnail}
           alt={product.name}
-          className="w-full h-full object-contain p-4"
+          className="w-full h-full object-contain"
         />
         {/* Price & Discount Badges */}
-        <div className="absolute bottom-0 left-0 right-0 px-3 pb-3 flex items-end justify-between">
+        <div className="absolute bottom-3 left-3 right-3 flex items-end justify-between pointer-events-none">
           {product.discount && (
-            <span className="bg-green-600 text-white px-2.5 py-1 text-xs rounded-md font-bold shadow-sm">
+            <span className="bg-green-600 text-white px-2.5 py-1 text-xs rounded font-bold shadow-lg">
               {product.discount}
             </span>
           )}
-          <span className="bg-neutral-900/90 dark:bg-neutral-700/90 text-white px-3 py-1.5 text-sm rounded-md font-bold ml-auto shadow-sm">
+          <span className="bg-neutral-900 dark:bg-neutral-700 text-white px-3 py-1.5 text-sm rounded font-bold ml-auto shadow-lg">
             {product.price}
           </span>
         </div>
       </div>
       
       {/* Card Content */}
-      <div className="px-4 pt-4 pb-3">
+      <div className="p-4">
         <span className="text-neutral-500 dark:text-neutral-400 text-[11px] uppercase tracking-wider font-semibold">
           {categoryLabels[product.category]}
         </span>
-        <h3 className="text-base font-bold mt-1 mb-1.5 dark:text-white transition-colors line-clamp-2 leading-snug">
+        <h3 className="text-base font-bold mt-1.5 mb-1 dark:text-white transition-colors line-clamp-2 leading-snug">
           {product.name}
         </h3>
         {product.shortDescription && (
-          <p className="text-sm text-neutral-600 dark:text-neutral-400 mb-2.5 line-clamp-2 leading-relaxed">
+          <p className="text-sm text-neutral-600 dark:text-neutral-400 mb-2 line-clamp-2">
             {product.shortDescription}
           </p>
         )}
         {product.highlights && product.highlights.length > 0 && (
-          <div className="flex flex-wrap gap-1.5 mb-2.5">
+          <div className="flex flex-wrap gap-1.5 mb-2">
             {product.highlights.slice(0, 3).map((highlight, index) => (
-              <span key={index} className="text-[11px] bg-neutral-100 dark:bg-neutral-800 text-neutral-600 dark:text-neutral-400 px-2 py-1 rounded-md">
+              <span key={index} className="text-[10px] bg-neutral-100 dark:bg-neutral-800 text-neutral-500 dark:text-neutral-400 px-2 py-0.5 rounded">
                 {highlight}
               </span>
             ))}
@@ -156,14 +156,14 @@ function ProductCard({ product, isAdmin, onEdit, onDelete, onToggleFeatured }: {
         )}
         {product.couponCode && !isExpanded && (
           <div className="mt-2">
-            <span className="font-mono bg-amber-100 dark:bg-amber-900/30 text-amber-700 dark:text-amber-400 px-2 py-1 rounded text-xs font-semibold">
+            <span className="font-mono bg-amber-100 dark:bg-amber-900/30 text-amber-700 dark:text-amber-400 px-2 py-0.5 rounded text-xs font-semibold">
               {product.couponCode}
             </span>
           </div>
         )}
         
         {/* Expand indicator */}
-        <div className="flex items-center justify-center pt-2 mt-2 border-t border-neutral-100 dark:border-neutral-800 text-neutral-400">
+        <div className="flex items-center justify-center pt-3 mt-3 border-t border-neutral-100 dark:border-neutral-800 text-neutral-400">
           {isExpanded ? (
             <HiChevronUp className="w-5 h-5" />
           ) : (
