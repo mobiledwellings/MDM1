@@ -175,38 +175,40 @@ function ProductCard({ product, isAdmin, onEdit, onDelete, onToggleFeatured }: {
             {product.description}
           </p>
 
-          {/* Coupon Code */}
-          {product.couponCode && (
-            <div className="p-3 bg-amber-50 dark:bg-amber-900/20 rounded-lg border border-amber-200 dark:border-amber-800">
-              <div className="text-xs text-amber-700 dark:text-amber-400 mb-1 font-medium">Use code at checkout:</div>
-              <div className="flex items-center gap-2">
-                <span className="font-mono text-base font-bold bg-white dark:bg-neutral-800 px-3 py-1.5 rounded border border-amber-300 dark:border-amber-700 text-neutral-900 dark:text-white">
-                  {product.couponCode}
-                </span>
-                <button
-                  onClick={handleCopyCode}
-                  className="p-1.5 text-neutral-400 hover:text-neutral-600 dark:hover:text-neutral-200 transition-colors"
-                  title="Copy code"
-                >
-                  {copied ? (
-                    <HiCheck className="w-5 h-5 text-green-500" />
-                  ) : (
-                    <HiClipboardCopy className="w-5 h-5" />
-                  )}
-                </button>
+          {/* Coupon Code + Shop Now */}
+          <div className="flex items-end justify-between gap-3">
+            {product.couponCode && (
+              <div className="p-3 bg-amber-50 dark:bg-amber-900/20 rounded-lg border border-amber-200 dark:border-amber-800 flex-shrink-0">
+                <div className="text-xs text-amber-700 dark:text-amber-400 mb-1 font-medium">Use code at checkout:</div>
+                <div className="flex items-center gap-2">
+                  <span className="font-mono text-base font-bold bg-white dark:bg-neutral-800 px-3 py-1.5 rounded border border-amber-300 dark:border-amber-700 text-neutral-900 dark:text-white">
+                    {product.couponCode}
+                  </span>
+                  <button
+                    onClick={handleCopyCode}
+                    className="p-1.5 text-neutral-400 hover:text-neutral-600 dark:hover:text-neutral-200 transition-colors"
+                    title="Copy code"
+                  >
+                    {copied ? (
+                      <HiCheck className="w-5 h-5 text-green-500" />
+                    ) : (
+                      <HiClipboardCopy className="w-5 h-5" />
+                    )}
+                  </button>
+                </div>
               </div>
-            </div>
-          )}
+            )}
 
-          {/* Shop Now Button */}
-          <a
-            href={product.link}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center justify-center gap-2 w-full bg-neutral-900 dark:bg-white text-white dark:text-neutral-900 px-4 py-2.5 mb-4 rounded-lg font-bold hover:bg-neutral-700 dark:hover:bg-neutral-200 transition-colors text-sm"
-          >
-            Shop Now <HiExternalLink className="w-4 h-4" />
-          </a>
+            {/* Shop Now Button */}
+            <a
+              href={product.link}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={`inline-flex items-center justify-center gap-2 bg-neutral-900 dark:bg-white text-white dark:text-neutral-900 px-5 py-2.5 rounded-lg font-bold hover:bg-neutral-700 dark:hover:bg-neutral-200 transition-colors text-sm ${product.couponCode ? '' : 'w-full'}`}
+            >
+              Shop Now <HiExternalLink className="w-4 h-4" />
+            </a>
+          </div>
         </div>
       )}
     </article>
