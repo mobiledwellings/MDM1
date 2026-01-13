@@ -385,4 +385,108 @@ app.post("/make-server-3ab5944d/feature-submission", async (c) => {
   }
 });
 
+// Deals image upload endpoint
+app.post("/make-server-3ab5944d/deals/upload-image", async (c) => {
+  try {
+    const body = await c.req.json();
+    const { base64Image, productId } = body;
+    
+    if (!base64Image) {
+      return c.json({ error: 'No image provided' }, 400);
+    }
+    
+    // Remove data URL prefix
+    const base64Data = base64Image.replace(/^data:image\/\w+;base64,/, '');
+    const imageBuffer = Uint8Array.from(atob(base64Data), ch => ch.charCodeAt(0));
+    
+    const fileName = `deals/${productId || Date.now()}-${Date.now()}.jpg`;
+    
+    const { data, error } = await supabase.storage
+      .from(BUCKET_NAME)
+      .upload(fileName, imageBuffer, {
+        contentType: 'image/jpeg',
+        upsert: true
+      });
+    
+    if (error) {
+      console.error('Error uploading deals image:', error);
+      return c.json({ error: 'Failed to upload image', details: String(error) }, 500);
+    }
+    
+    // Get signed URL (1 year expiry)
+    const { data: signedUrlData } = await supabase.storage
+      .from(BUCKET_NAME)
+      .createSignedUrl(fileName, 60 * 60 * 24 * 365);
+    
+    return c.json({ 
+      success: true, 
+      url: signedUrlData?.signedUrl || null,
+      path: fileName
+    });
+  } catch (error) {
+    console.error('Error processing deals image upload:', error);
+    return c.json({ error: 'Failed to process image upload', details: String(error) }, 500);
+  }
+});
+
+// Get all deals products
+app.get("/make-server-3ab5944d/deals", async (c) => {
+  try {
+    const products = await kv.getByPrefix("deal:");
+    return c.json(products || []);
+  } catch (error) {
+    console.error('Error fetching deals:', error);
+    return c.json({ error: 'Failed to fetch deals', details: String(error) }, 500);
+  }
+});
+
+// Save a deal product
+app.post("/make-server-3ab5944d/deals", async (c) => {
+  try {
+    const product = await c.req.json();
+    const productId = product.id || `deal-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`;
+    const productWithId = { ...product, id: productId };
+    
+    await kv.set(`deal:${productId}`, productWithId);
+    
+    return c.json({ success: true, product: productWithId });
+  } catch (error) {
+    console.error('Error saving deal:', error);
+    return c.json({ error: 'Failed to save deal', details: String(error) }, 500);
+  }
+});
+
+// Update a deal product
+app.put("/make-server-3ab5944d/deals/:id", async (c) => {
+  try {
+    const productId = c.req.param("id");
+    const updates = await c.req.json();
+    
+    const existing = await kv.get(`deal:${productId}`);
+    if (!existing) {
+      return c.json({ error: 'Deal not found' }, 404);
+    }
+    
+    const updated = { ...existing, ...updates };
+    await kv.set(`deal:${productId}`, updated);
+    
+    return c.json({ success: true, product: updated });
+  } catch (error) {
+    console.error('Error updating deal:', error);
+    return c.json({ error: 'Failed to update deal', details: String(error) }, 500);
+  }
+});
+
+// Delete a deal product
+app.delete("/make-server-3ab5944d/deals/:id", async (c) => {
+  try {
+    const productId = c.req.param("id");
+    await kv.del(`deal:${productId}`);
+    return c.json({ success: true });
+  } catch (error) {
+    console.error('Error deleting deal:', error);
+    return c.json({ error: 'Failed to delete deal', details: String(error) }, 500);
+  }
+});
+
 Deno.serve(app.fetch);

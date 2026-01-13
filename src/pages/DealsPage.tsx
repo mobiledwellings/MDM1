@@ -214,11 +214,12 @@ function ProductCard({ product, isAdmin, onEdit, onDelete, onToggleFeatured }: {
 }
 
 export function DealsPage() {
-  const { products, addProduct, updateProduct, deleteProduct, toggleFeatured, loading } = useDeals();
+  const { products, addProduct, updateProduct, deleteProduct, toggleFeatured, loading, uploadImage } = useDeals();
   const { isAdmin } = useAdmin();
   const [filter, setFilter] = useState<ProductCategory | "featured">("featured");
   const [isFormOpen, setIsFormOpen] = useState(false);
   const [editingProduct, setEditingProduct] = useState<Product | null>(null);
+  const [isSubmitting, setIsSubmitting] = useState(false);
   
   // Form state
   const [formCategory, setFormCategory] = useState<ProductCategory>("batteries");
@@ -250,8 +251,8 @@ export function DealsPage() {
       const img = new Image();
       img.onload = () => {
         const canvas = document.createElement('canvas');
-        // Reduced to 400px max and 50% quality to stay within localStorage limits
-        const maxSize = 400;
+        // Now using Supabase storage, we can use larger images
+        const maxSize = 800;
         let width = img.width;
         let height = img.height;
         
@@ -267,7 +268,7 @@ export function DealsPage() {
         canvas.height = height;
         const ctx = canvas.getContext('2d');
         ctx?.drawImage(img, 0, 0, width, height);
-        setThumbnailPreview(canvas.toDataURL('image/jpeg', 0.5));
+        setThumbnailPreview(canvas.toDataURL('image/jpeg', 0.8));
       };
       img.onerror = () => {
         console.error('Failed to load image');
@@ -280,41 +281,67 @@ export function DealsPage() {
     reader.readAsDataURL(file);
   };
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    if (isSubmitting) return;
+    
+    setIsSubmitting(true);
     const form = e.currentTarget;
     const formData = new FormData(form);
 
-    const productData: Omit<Product, 'id'> = {
-      name: formData.get('name') as string,
-      shortDescription: formData.get('shortDescription') as string || undefined,
-      description: formData.get('description') as string,
-      price: formData.get('price') as string,
-      originalPrice: formData.get('originalPrice') as string || undefined,
-      couponCode: formData.get('couponCode') as string || undefined,
-      discount: formData.get('discount') as string || undefined,
-      link: formData.get('link') as string,
-      thumbnail: thumbnailPreview || editingProduct?.thumbnail || "",
-      category: formCategory,
-      featured: formData.get('featured') === 'on',
-      highlights: highlightsInput.split(',').map(h => h.trim()).filter(h => h),
-    };
+    try {
+      // Upload image to Supabase if there's a new base64 image
+      let thumbnailUrl = editingProduct?.thumbnail || "";
+      if (thumbnailPreview && thumbnailPreview.startsWith('data:')) {
+        toast.loading('Uploading image...', { id: 'upload-toast' });
+        const uploadedUrl = await uploadImage(thumbnailPreview, editingProduct?.id);
+        if (uploadedUrl) {
+          thumbnailUrl = uploadedUrl;
+        } else {
+          toast.dismiss('upload-toast');
+          toast.error('Failed to upload image. Please try again.');
+          setIsSubmitting(false);
+          return;
+        }
+        toast.dismiss('upload-toast');
+      }
 
-    if (editingProduct) {
-      updateProduct(editingProduct.id, productData);
-      toast.success('Product updated!');
-    } else {
-      addProduct(productData);
-      toast.success('Product added!');
+      const productData: Omit<Product, 'id'> = {
+        name: formData.get('name') as string,
+        shortDescription: formData.get('shortDescription') as string || undefined,
+        description: formData.get('description') as string,
+        price: formData.get('price') as string,
+        originalPrice: formData.get('originalPrice') as string || undefined,
+        couponCode: formData.get('couponCode') as string || undefined,
+        discount: formData.get('discount') as string || undefined,
+        link: formData.get('link') as string,
+        thumbnail: thumbnailUrl,
+        category: formCategory,
+        featured: formData.get('featured') === 'on',
+        highlights: highlightsInput.split(',').map(h => h.trim()).filter(h => h),
+      };
+
+      if (editingProduct) {
+        await updateProduct(editingProduct.id, productData);
+        toast.success('Product updated!');
+      } else {
+        await addProduct(productData);
+        toast.success('Product added!');
+      }
+
+      // Reset form
+      form.reset();
+      setThumbnailPreview("");
+      setHighlightsInput("");
+      setFormCategory("batteries");
+      setEditingProduct(null);
+      setIsFormOpen(false);
+    } catch (error) {
+      console.error('Error submitting product:', error);
+      toast.error('Failed to save product. Please try again.');
+    } finally {
+      setIsSubmitting(false);
     }
-
-    // Reset form
-    form.reset();
-    setThumbnailPreview("");
-    setHighlightsInput("");
-    setFormCategory("batteries");
-    setEditingProduct(null);
-    setIsFormOpen(false);
   };
 
   const handleEdit = (product: Product) => {
@@ -325,9 +352,9 @@ export function DealsPage() {
     setIsFormOpen(true);
   };
 
-  const handleDelete = (productId: string) => {
+  const handleDelete = async (productId: string) => {
     if (window.confirm('Are you sure you want to delete this product?')) {
-      deleteProduct(productId);
+      await deleteProduct(productId);
       toast.success('Product deleted');
     }
   };
