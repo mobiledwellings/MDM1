@@ -35,79 +35,6 @@ const DealsContext = createContext<DealsContextType | undefined>(undefined);
 
 const API_BASE_URL = `https://${projectId}.supabase.co/functions/v1/make-server-3ab5944d`;
 
-// Default products to show initially (only used if server returns empty)
-const defaultProducts: Product[] = [
-  {
-    id: "battery-48v-100ah",
-    name: "48V 100Ah Server Rack LiFePO4 Battery",
-    shortDescription: "Perfect for larger off-grid systems",
-    description: "This is the exact battery I use in my builds. 48V 100Ah LiFePO4 chemistry means it's safe, long-lasting, and powerful enough to run any appliance.",
-    price: "$599",
-    originalPrice: "$799",
-    couponCode: "MOBILEDWELLINGS",
-    discount: "25% off",
-    link: "https://example.com/48v-battery",
-    thumbnail: "",
-    category: "batteries",
-    featured: true,
-    highlights: ["4.8kWh capacity", "Built-in BMS", "10-year warranty"],
-  },
-  {
-    id: "inverter-3000w",
-    name: "3000W Pure Sine Wave Inverter",
-    shortDescription: "Run any household appliance",
-    description: "3000W continuous, 6000W surge. Pure sine wave output means you can run sensitive electronics.",
-    price: "$299",
-    originalPrice: "$399",
-    couponCode: "MOBILE25",
-    discount: "25% off",
-    link: "https://example.com/inverter-3000w",
-    thumbnail: "",
-    category: "inverters",
-    featured: true,
-    highlights: ["Pure sine wave", "6000W surge", "LCD display"],
-  },
-  {
-    id: "solar-200w-mono",
-    name: "200W Monocrystalline Solar Panel",
-    shortDescription: "High efficiency roof-mount panels",
-    description: "High efficiency monocrystalline panels perfect for roof mounting on vans and buses.",
-    price: "$149",
-    link: "https://example.com/solar-200w",
-    thumbnail: "",
-    category: "solar-panels",
-    featured: true,
-    highlights: ["22% efficiency", "10-year warranty", "Low profile"],
-  },
-  {
-    id: "minisplit-12k",
-    name: "12,000 BTU Mini Split Air Conditioner",
-    shortDescription: "The most efficient AC for mobile living",
-    description: "This is THE mini split for van and bus builds. Runs efficiently on solar, provides both heating and cooling.",
-    price: "$799",
-    originalPrice: "$999",
-    couponCode: "MOBILE10",
-    discount: "20% off",
-    link: "https://example.com/mini-split-12k",
-    thumbnail: "",
-    category: "mini-splits",
-    featured: true,
-    highlights: ["Heat & cool", "Runs on solar", "Whisper quiet"],
-  },
-  {
-    id: "waterheater-propane",
-    name: "On-Demand Propane Water Heater",
-    shortDescription: "Instant hot water anywhere",
-    description: "Tankless propane water heater provides endless hot water on demand.",
-    price: "$139",
-    link: "https://example.com/water-heater-propane",
-    thumbnail: "",
-    category: "water-heaters",
-    featured: true,
-    highlights: ["No electricity needed", "Instant hot water", "Compact"],
-  },
-];
-
 export function DealsProvider({ children }: { children: ReactNode }) {
   const [products, setProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState(true);
@@ -124,35 +51,18 @@ export function DealsProvider({ children }: { children: ReactNode }) {
         
         if (response.ok) {
           const data = await response.json();
-          // data is an array of {key, value} objects from KV store
+          // Filter out any null/undefined values and ensure each item has required fields
           const productsArray = Array.isArray(data) 
-            ? data.map((item: { value: Product }) => item.value)
+            ? data.filter((p: any) => p && typeof p === 'object' && p.id && p.name)
             : [];
-          
-          if (productsArray.length > 0) {
-            setProducts(productsArray);
-          } else {
-            // Initialize with defaults if server has no products
-            setProducts(defaultProducts);
-            // Save defaults to server
-            for (const product of defaultProducts) {
-              await fetch(`${API_BASE_URL}/deals`, {
-                method: 'POST',
-                headers: {
-                  'Authorization': `Bearer ${publicAnonKey}`,
-                  'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(product),
-              });
-            }
-          }
+          setProducts(productsArray);
         } else {
           console.error('Failed to fetch deals from server');
-          setProducts(defaultProducts);
+          setProducts([]);
         }
       } catch (error) {
         console.error('Error fetching deals:', error);
-        setProducts(defaultProducts);
+        setProducts([]);
       } finally {
         setLoading(false);
       }

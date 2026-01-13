@@ -227,8 +227,8 @@ export function DealsPage() {
   const [highlightsInput, setHighlightsInput] = useState("");
 
   const filteredProducts = filter === "featured"
-    ? products.filter(p => p.featured)
-    : products.filter(p => p.category === filter);
+    ? products.filter(p => p && p.featured)
+    : products.filter(p => p && p.category === filter);
 
   const categories: { key: ProductCategory | "featured"; label: string }[] = [
     { key: "featured", label: "Featured" },
