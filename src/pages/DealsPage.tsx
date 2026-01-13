@@ -118,14 +118,14 @@ function ProductCard({ product, isAdmin, onEdit, onDelete, onToggleFeatured }: {
           alt={product.name}
           className="w-full h-full object-cover transition-all duration-500 group-hover:scale-105"
         />
-        <div className="absolute bottom-3 right-3 bg-neutral-900 dark:bg-neutral-700 text-white px-3 py-1 text-sm rounded font-semibold">
-          {product.price}
-        </div>
         {product.discount && (
-          <div className="absolute bottom-3 left-3 bg-green-600 text-white px-2 py-1 text-xs rounded font-semibold">
+          <div className="absolute bottom-3 right-3 bg-green-600 text-white px-2 py-1 text-xs rounded font-semibold">
             {product.discount}
           </div>
         )}
+        <div className="absolute bottom-3 left-3 bg-neutral-900 dark:bg-neutral-700 text-white px-3 py-1 text-sm rounded font-semibold">
+          {product.price}
+        </div>
       </div>
       
       <div className="p-4">
@@ -171,7 +171,7 @@ function ProductCard({ product, isAdmin, onEdit, onDelete, onToggleFeatured }: {
       {isExpanded && (
         <div className="px-4 pb-4 border-t border-neutral-200 dark:border-neutral-700 pt-4 space-y-4" onClick={(e) => e.stopPropagation()}>
           {/* Full Description */}
-          <p className="text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed">
+          <p className="text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed whitespace-pre-line">
             {product.description}
           </p>
 
