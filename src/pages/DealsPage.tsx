@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { SEO } from "../components/SEO";
 import { Header } from "../components/Header";
 import { Footer } from "../components/Footer";
-import { HiExternalLink, HiClipboardCopy, HiCheck, HiTag, HiChevronDown, HiChevronUp, HiPencil, HiTrash, HiStar, HiUpload } from "react-icons/hi";
+import { HiExternalLink, HiClipboardCopy, HiCheck, HiTag, HiChevronDown, HiChevronUp, HiPencil, HiTrash, HiStar, HiUpload, HiX } from "react-icons/hi";
 import { useState } from "react";
 import { ImageWithFallback } from "../components/figma/ImageWithFallback";
 import { useDeals, Product, ProductCategory } from "../contexts/DealsContext";
