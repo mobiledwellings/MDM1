@@ -112,50 +112,45 @@ function ProductCard({ product, isAdmin, onEdit, onDelete, onToggleFeatured }: {
         </div>
       )}
       
-      {/* Product Image */}
-      <div className="relative aspect-video overflow-hidden bg-white dark:bg-neutral-800">
+      <div className="relative aspect-square overflow-hidden bg-neutral-100 dark:bg-neutral-800">
         <ImageWithFallback 
           src={product.thumbnail}
           alt={product.name}
-          className="w-full h-full object-contain"
+          className="w-full h-full object-cover transition-all duration-500 group-hover:scale-105"
         />
-        {/* Price & Discount Badges */}
-        <div className="absolute bottom-3 left-3 right-3 flex items-end justify-between pointer-events-none">
-          {product.discount && (
-            <span className="bg-green-600 text-white px-2.5 py-1 text-xs rounded font-bold shadow-lg">
-              {product.discount}
-            </span>
-          )}
-          <span className="bg-neutral-900 dark:bg-neutral-700 text-white px-3 py-1.5 text-sm rounded font-bold ml-auto shadow-lg">
-            {product.price}
-          </span>
+        <div className="absolute bottom-3 right-3 bg-neutral-900 dark:bg-neutral-700 text-white px-3 py-1 text-sm rounded font-semibold">
+          {product.price}
         </div>
+        {product.discount && (
+          <div className="absolute bottom-3 left-3 bg-green-600 text-white px-2 py-1 text-xs rounded font-semibold">
+            {product.discount}
+          </div>
+        )}
       </div>
       
-      {/* Card Content */}
       <div className="p-4">
-        <span className="text-neutral-500 dark:text-neutral-400 text-[11px] uppercase tracking-wider font-semibold">
+        <div className="text-neutral-500 dark:text-neutral-400 text-xs uppercase tracking-wider mb-2 font-bold">
           {categoryLabels[product.category]}
-        </span>
-        <h3 className="text-base font-bold mt-1.5 mb-1 dark:text-white transition-colors line-clamp-2 leading-snug">
+        </div>
+        <h3 className="text-lg font-bold mb-2 dark:text-white transition-colors line-clamp-2">
           {product.name}
         </h3>
         {product.shortDescription && (
-          <p className="text-sm text-neutral-600 dark:text-neutral-400 mb-2 line-clamp-2">
+          <p className="text-sm text-neutral-600 dark:text-neutral-400 mb-3 line-clamp-2">
             {product.shortDescription}
           </p>
         )}
         {product.highlights && product.highlights.length > 0 && (
-          <div className="flex flex-wrap gap-1.5 mb-2">
+          <div className="flex flex-wrap gap-1 mb-3">
             {product.highlights.slice(0, 3).map((highlight, index) => (
-              <span key={index} className="text-[10px] bg-neutral-100 dark:bg-neutral-800 text-neutral-500 dark:text-neutral-400 px-2 py-0.5 rounded">
+              <span key={index} className="text-xs bg-neutral-100 dark:bg-neutral-800 text-neutral-600 dark:text-neutral-400 px-2 py-0.5 rounded">
                 {highlight}
               </span>
             ))}
           </div>
         )}
         {product.couponCode && !isExpanded && (
-          <div className="mt-2">
+          <div className="flex items-center gap-2 text-sm">
             <span className="font-mono bg-amber-100 dark:bg-amber-900/30 text-amber-700 dark:text-amber-400 px-2 py-0.5 rounded text-xs font-semibold">
               {product.couponCode}
             </span>
@@ -163,7 +158,7 @@ function ProductCard({ product, isAdmin, onEdit, onDelete, onToggleFeatured }: {
         )}
         
         {/* Expand indicator */}
-        <div className="flex items-center justify-center pt-3 mt-3 border-t border-neutral-100 dark:border-neutral-800 text-neutral-400">
+        <div className="flex items-center justify-center mt-3 text-neutral-400">
           {isExpanded ? (
             <HiChevronUp className="w-5 h-5" />
           ) : (
@@ -174,46 +169,44 @@ function ProductCard({ product, isAdmin, onEdit, onDelete, onToggleFeatured }: {
 
       {/* Expanded Content */}
       {isExpanded && (
-        <div className="px-4 pb-4 border-t border-neutral-200 dark:border-neutral-700 pt-3" onClick={(e) => e.stopPropagation()}>
+        <div className="px-4 pb-4 border-t border-neutral-200 dark:border-neutral-700 pt-4 space-y-4" onClick={(e) => e.stopPropagation()}>
           {/* Full Description */}
-          <p className="text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed mb-4">
+          <p className="text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed">
             {product.description}
           </p>
 
-          {/* Coupon Code + Shop Now */}
-          <div className="flex items-center justify-between gap-3 pt-3 border-t border-neutral-100 dark:border-neutral-800">
-            {product.couponCode && (
-              <div className="flex-1 min-w-0">
-                <div className="text-[10px] text-neutral-500 dark:text-neutral-400 uppercase tracking-wide font-medium mb-1.5">Use code at checkout</div>
-                <div className="flex items-center gap-2">
-                  <span className="font-mono text-sm font-bold bg-amber-50 dark:bg-amber-900/30 border border-amber-200 dark:border-amber-700 px-3 py-1.5 rounded text-amber-800 dark:text-amber-300">
-                    {product.couponCode}
-                  </span>
-                  <button
-                    onClick={handleCopyCode}
-                    className="p-1.5 text-neutral-400 hover:text-neutral-600 dark:hover:text-neutral-200 transition-colors rounded hover:bg-neutral-100 dark:hover:bg-neutral-800"
-                    title="Copy code"
-                  >
-                    {copied ? (
-                      <HiCheck className="w-4 h-4 text-green-500" />
-                    ) : (
-                      <HiClipboardCopy className="w-4 h-4" />
-                    )}
-                  </button>
-                </div>
+          {/* Coupon Code */}
+          {product.couponCode && (
+            <div className="p-3 bg-amber-50 dark:bg-amber-900/20 rounded-lg border border-amber-200 dark:border-amber-800">
+              <div className="text-xs text-amber-700 dark:text-amber-400 mb-1 font-medium">Use code at checkout:</div>
+              <div className="flex items-center gap-2">
+                <span className="font-mono text-base font-bold bg-white dark:bg-neutral-800 px-3 py-1.5 rounded border border-amber-300 dark:border-amber-700 text-neutral-900 dark:text-white">
+                  {product.couponCode}
+                </span>
+                <button
+                  onClick={handleCopyCode}
+                  className="p-1.5 text-neutral-400 hover:text-neutral-600 dark:hover:text-neutral-200 transition-colors"
+                  title="Copy code"
+                >
+                  {copied ? (
+                    <HiCheck className="w-5 h-5 text-green-500" />
+                  ) : (
+                    <HiClipboardCopy className="w-5 h-5" />
+                  )}
+                </button>
               </div>
-            )}
+            </div>
+          )}
 
-            {/* Shop Now Button */}
-            <a
-              href={product.link}
-              target="_blank"
-              rel="noopener noreferrer"
-              className={`inline-flex items-center justify-center gap-2 bg-neutral-900 dark:bg-white text-white dark:text-neutral-900 px-5 py-2.5 rounded-lg font-semibold hover:bg-neutral-700 dark:hover:bg-neutral-200 transition-colors text-sm whitespace-nowrap ${product.couponCode ? '' : 'w-full'}`}
-            >
-              Shop Now <HiExternalLink className="w-4 h-4" />
-            </a>
-          </div>
+          {/* Shop Now Button */}
+          <a
+            href={product.link}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center justify-center gap-2 w-full bg-neutral-900 dark:bg-white text-white dark:text-neutral-900 px-4 py-2.5 mb-4 rounded-lg font-bold hover:bg-neutral-700 dark:hover:bg-neutral-200 transition-colors text-sm"
+          >
+            Shop Now <HiExternalLink className="w-4 h-4" />
+          </a>
         </div>
       )}
     </article>
