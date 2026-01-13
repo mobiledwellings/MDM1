@@ -128,7 +128,22 @@ export function DealsProvider({ children }: { children: ReactNode }) {
   // Save to localStorage whenever products change
   useEffect(() => {
     if (!loading && products.length > 0) {
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(products));
+      try {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(products));
+      } catch (e) {
+        console.error('Failed to save to localStorage (quota exceeded?):', e);
+        // If quota exceeded, try to save without images
+        try {
+          const productsWithoutImages = products.map(p => ({
+            ...p,
+            thumbnail: p.thumbnail?.startsWith('data:') ? '' : p.thumbnail,
+            galleryImages: p.galleryImages?.filter(img => !img.startsWith('data:'))
+          }));
+          localStorage.setItem(STORAGE_KEY, JSON.stringify(productsWithoutImages));
+        } catch (e2) {
+          console.error('Failed to save even without images:', e2);
+        }
+      }
     }
   }, [products, loading]);
 

@@ -250,7 +250,8 @@ export function DealsPage() {
       const img = new Image();
       img.onload = () => {
         const canvas = document.createElement('canvas');
-        const maxSize = 800;
+        // Reduced to 400px max and 50% quality to stay within localStorage limits
+        const maxSize = 400;
         let width = img.width;
         let height = img.height;
         
@@ -266,9 +267,15 @@ export function DealsPage() {
         canvas.height = height;
         const ctx = canvas.getContext('2d');
         ctx?.drawImage(img, 0, 0, width, height);
-        setThumbnailPreview(canvas.toDataURL('image/jpeg', 0.8));
+        setThumbnailPreview(canvas.toDataURL('image/jpeg', 0.5));
+      };
+      img.onerror = () => {
+        console.error('Failed to load image');
       };
       img.src = event.target?.result as string;
+    };
+    reader.onerror = () => {
+      console.error('Failed to read file');
     };
     reader.readAsDataURL(file);
   };
