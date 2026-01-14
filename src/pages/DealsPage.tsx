@@ -425,7 +425,6 @@ export function DealsPage() {
                       className="px-8 py-3 bg-neutral-900 dark:bg-neutral-800 text-white hover:bg-neutral-700 dark:hover:bg-neutral-700 transition-colors rounded-full font-bold flex items-center gap-2 shadow-md"
                     >
                       {isFormOpen ? "Close Form" : "Add New Product"}
-                      {isFormOpen ? <HiChevronUp className="w-5 h-5" /> : <HiChevronDown className="w-5 h-5" />}
                     </button>
                   </div>
 
