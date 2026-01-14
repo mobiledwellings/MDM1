@@ -127,8 +127,8 @@ function ProductCard({ product, isAdmin, onEdit, onDelete, onToggleFeatured }: {
         <div className="text-sm mb-3">
           <span className="font-semibold text-neutral-900 dark:text-white">{product.price}</span>
           {product.discount && product.couponCode && (
-            <span className="text-green-600 dark:text-green-400 ml-2">
-              {product.discount} with <span className="font-mono font-semibold">{product.couponCode}</span>
+            <span className="text-neutral-600 dark:text-neutral-400">
+              {" "}but use code <span className="font-mono font-semibold text-green-600 dark:text-green-400">{product.couponCode}</span> for <span className="text-green-600 dark:text-green-400 font-semibold">{product.discount}</span> at checkout
             </span>
           )}
         </div>
