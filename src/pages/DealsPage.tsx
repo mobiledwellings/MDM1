@@ -230,29 +230,35 @@ export function DealsPage() {
       const img = new Image();
       img.onload = () => {
         const canvas = document.createElement('canvas');
-        // Now using Supabase storage, we can use larger images
-        const maxSize = 800;
-        let width = img.width;
-        let height = img.height;
-        
-        if (width > height && width > maxSize) {
-          height = (height * maxSize) / width;
-          width = maxSize;
-        } else if (height > maxSize) {
-          width = (width * maxSize) / height;
-          height = maxSize;
-        }
-        
-        canvas.width = width;
-        canvas.height = height;
+        // Create a square image for consistent card sizes
+        const size = 800;
+        canvas.width = size;
+        canvas.height = size;
         const ctx = canvas.getContext('2d');
-        // Fill with white background for transparent images
+        
         if (ctx) {
+          // Fill with white background for transparent images
           ctx.fillStyle = '#FFFFFF';
-          ctx.fillRect(0, 0, width, height);
-          ctx.drawImage(img, 0, 0, width, height);
+          ctx.fillRect(0, 0, size, size);
+          
+          // Calculate crop to center the image in a square
+          const srcWidth = img.width;
+          const srcHeight = img.height;
+          let sx = 0, sy = 0, sWidth = srcWidth, sHeight = srcHeight;
+          
+          if (srcWidth > srcHeight) {
+            // Landscape: crop sides
+            sx = (srcWidth - srcHeight) / 2;
+            sWidth = srcHeight;
+          } else if (srcHeight > srcWidth) {
+            // Portrait: crop top/bottom
+            sy = (srcHeight - srcWidth) / 2;
+            sHeight = srcWidth;
+          }
+          
+          ctx.drawImage(img, sx, sy, sWidth, sHeight, 0, 0, size, size);
         }
-        setThumbnailPreview(canvas.toDataURL('image/jpeg', 0.8));
+        setThumbnailPreview(canvas.toDataURL('image/jpeg', 0.85));
       };
       img.onerror = () => {
         console.error('Failed to load image');
