@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { SEO } from "../components/SEO";
 import { Header } from "../components/Header";
 import { Footer } from "../components/Footer";
-import { HiExternalLink, HiClipboardCopy, HiCheck, HiTag, HiChevronDown, HiChevronUp, HiPencil, HiTrash, HiStar, HiUpload, HiX } from "react-icons/hi";
+import { HiExternalLink, HiClipboardCopy, HiCheck, HiTag, HiPencil, HiTrash, HiStar, HiUpload, HiX } from "react-icons/hi";
 import { useState } from "react";
 import { ImageWithFallback } from "../components/figma/ImageWithFallback";
 import { useDeals, Product, ProductCategory } from "../contexts/DealsContext";
@@ -68,11 +68,9 @@ function ProductCard({ product, isAdmin, onEdit, onDelete, onToggleFeatured }: {
   onDelete?: () => void;
   onToggleFeatured?: () => void;
 }) {
-  const [isExpanded, setIsExpanded] = useState(false);
   const [copied, setCopied] = useState(false);
 
-  const handleCopyCode = async (e: React.MouseEvent) => {
-    e.stopPropagation();
+  const handleCopyCode = async () => {
     if (product.couponCode) {
       await navigator.clipboard.writeText(product.couponCode);
       setCopied(true);
@@ -82,12 +80,11 @@ function ProductCard({ product, isAdmin, onEdit, onDelete, onToggleFeatured }: {
 
   return (
     <article 
-      className={`bg-white dark:bg-neutral-900 rounded-lg overflow-hidden border border-neutral-200 dark:border-neutral-700 transition-all duration-300 ${isExpanded ? 'shadow-xl' : 'hover:shadow-lg'} cursor-pointer relative`}
-      onClick={() => setIsExpanded(!isExpanded)}
+      className="bg-white dark:bg-neutral-900 rounded-lg overflow-hidden border border-neutral-200 dark:border-neutral-700 transition-all duration-300 hover:shadow-lg relative"
     >
       {/* Admin Controls */}
       {isAdmin && (
-        <div className="absolute top-2 right-2 z-10 flex gap-1" onClick={(e) => e.stopPropagation()}>
+        <div className="absolute top-2 right-2 z-10 flex gap-1">
           <button
             onClick={onToggleFeatured}
             className={`p-1.5 rounded-full transition-colors ${product.featured ? 'bg-amber-500 text-white' : 'bg-white/80 dark:bg-neutral-800/80 text-neutral-600 dark:text-neutral-400 hover:bg-amber-100'}`}
@@ -149,66 +146,48 @@ function ProductCard({ product, isAdmin, onEdit, onDelete, onToggleFeatured }: {
             ))}
           </div>
         )}
-        {product.couponCode && !isExpanded && (
-          <div className="flex items-center gap-2 text-sm">
-            <span className="font-mono bg-amber-100 dark:bg-amber-900/30 text-amber-700 dark:text-amber-400 px-2 py-0.5 rounded text-xs font-semibold">
-              {product.couponCode}
-            </span>
-          </div>
-        )}
-        
-        {/* Expand indicator */}
-        <div className="flex items-center justify-center mt-3 text-neutral-400">
-          {isExpanded ? (
-            <HiChevronUp className="w-5 h-5" />
-          ) : (
-            <HiChevronDown className="w-5 h-5" />
-          )}
-        </div>
       </div>
 
-      {/* Expanded Content */}
-      {isExpanded && (
-        <div className="px-4 pb-4 border-t border-neutral-200 dark:border-neutral-700 pt-4 space-y-4" onClick={(e) => e.stopPropagation()}>
-          {/* Full Description */}
-          <p className="text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed whitespace-pre-line">
-            {product.description}
-          </p>
+      {/* Product Details */}
+      <div className="px-4 pb-4 border-t border-neutral-200 dark:border-neutral-700 pt-4 space-y-4">
+        {/* Full Description */}
+        <p className="text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed whitespace-pre-line">
+          {product.description}
+        </p>
 
-          {/* Coupon Code */}
-          {product.couponCode && (
-            <div className="p-3 bg-amber-50 dark:bg-amber-900/20 rounded-lg border border-amber-200 dark:border-amber-800">
-              <div className="text-xs text-amber-700 dark:text-amber-400 mb-1 font-medium">Use code at checkout:</div>
-              <div className="flex items-center gap-2">
-                <span className="font-mono text-base font-bold bg-white dark:bg-neutral-800 px-3 py-1.5 rounded border border-amber-300 dark:border-amber-700 text-neutral-900 dark:text-white">
-                  {product.couponCode}
-                </span>
-                <button
-                  onClick={handleCopyCode}
-                  className="p-1.5 text-neutral-400 hover:text-neutral-600 dark:hover:text-neutral-200 transition-colors"
-                  title="Copy code"
-                >
-                  {copied ? (
-                    <HiCheck className="w-5 h-5 text-green-500" />
-                  ) : (
-                    <HiClipboardCopy className="w-5 h-5" />
-                  )}
-                </button>
-              </div>
+        {/* Coupon Code */}
+        {product.couponCode && (
+          <div className="p-3 bg-amber-50 dark:bg-amber-900/20 rounded-lg border border-amber-200 dark:border-amber-800">
+            <div className="text-xs text-amber-700 dark:text-amber-400 mb-1 font-medium">Use code at checkout:</div>
+            <div className="flex items-center gap-2">
+              <span className="font-mono text-base font-bold bg-white dark:bg-neutral-800 px-3 py-1.5 rounded border border-amber-300 dark:border-amber-700 text-neutral-900 dark:text-white">
+                {product.couponCode}
+              </span>
+              <button
+                onClick={handleCopyCode}
+                className="p-1.5 text-neutral-400 hover:text-neutral-600 dark:hover:text-neutral-200 transition-colors"
+                title="Copy code"
+              >
+                {copied ? (
+                  <HiCheck className="w-5 h-5 text-green-500" />
+                ) : (
+                  <HiClipboardCopy className="w-5 h-5" />
+                )}
+              </button>
             </div>
-          )}
+          </div>
+        )}
 
-          {/* Shop Now Button */}
-          <a
-            href={product.link}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center justify-center gap-2 w-full bg-neutral-900 dark:bg-white text-white dark:text-neutral-900 px-4 py-2.5 mb-4 rounded-lg font-bold hover:bg-neutral-700 dark:hover:bg-neutral-200 transition-colors text-sm"
-          >
-            Shop Now <HiExternalLink className="w-4 h-4" />
-          </a>
-        </div>
-      )}
+        {/* Shop Now Button */}
+        <a
+          href={product.link}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center justify-center gap-2 w-full bg-neutral-900 dark:bg-white text-white dark:text-neutral-900 px-4 py-2.5 rounded-lg font-bold hover:bg-neutral-700 dark:hover:bg-neutral-200 transition-colors text-sm"
+        >
+          Shop Now <HiExternalLink className="w-4 h-4" />
+        </a>
+      </div>
     </article>
   );
 }
