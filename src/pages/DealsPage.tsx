@@ -115,14 +115,6 @@ function ProductCard({ product, isAdmin, onEdit, onDelete, onToggleFeatured }: {
           alt={product.name}
           className="w-full h-full object-cover transition-all duration-500 group-hover:scale-105"
         />
-        {product.discount && (
-          <div className="absolute bottom-3 right-3 bg-green-600 text-white px-2 py-1 text-xs rounded font-semibold">
-            {product.discount}
-          </div>
-        )}
-        <div className="absolute bottom-3 left-3 bg-neutral-900 dark:bg-neutral-700 text-white px-3 py-1 text-sm rounded font-semibold">
-          {product.price}
-        </div>
       </div>
       
       <div className="p-4">
@@ -132,6 +124,14 @@ function ProductCard({ product, isAdmin, onEdit, onDelete, onToggleFeatured }: {
         <h3 className="text-lg font-bold mb-2 dark:text-white transition-colors line-clamp-2">
           {product.name}
         </h3>
+        <div className="text-sm mb-3">
+          <span className="font-semibold text-neutral-900 dark:text-white">{product.price}</span>
+          {product.discount && product.couponCode && (
+            <span className="text-green-600 dark:text-green-400 ml-2">
+              {product.discount} with <span className="font-mono font-semibold">{product.couponCode}</span>
+            </span>
+          )}
+        </div>
         {product.shortDescription && (
           <p className="text-sm text-neutral-600 dark:text-neutral-400 mb-3 line-clamp-2">
             {product.shortDescription}
