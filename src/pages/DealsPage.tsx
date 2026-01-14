@@ -61,6 +61,21 @@ function CopyButton({ code }: { code: string }) {
   );
 }
 
+// Helper to render text with **bold** markdown support
+function FormattedText({ text, className }: { text: string; className?: string }) {
+  const parts = text.split(/(\*\*.*?\*\*)/g);
+  return (
+    <p className={className}>
+      {parts.map((part, i) => {
+        if (part.startsWith('**') && part.endsWith('**')) {
+          return <strong key={i} className="font-semibold text-neutral-800 dark:text-neutral-200">{part.slice(2, -2)}</strong>;
+        }
+        return <span key={i}>{part}</span>;
+      })}
+    </p>
+  );
+}
+
 function ProductCard({ product, isAdmin, onEdit, onDelete, onToggleFeatured }: { 
   product: Product; 
   isAdmin?: boolean;
@@ -137,9 +152,10 @@ function ProductCard({ product, isAdmin, onEdit, onDelete, onToggleFeatured }: {
       {/* Product Details - Below CTA */}
       {product.description && (
         <div className="px-4 pb-4 border-t border-neutral-200 dark:border-neutral-700 pt-4">
-          <p className="text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed whitespace-pre-line">
-            {product.description}
-          </p>
+          <FormattedText 
+            text={product.description} 
+            className="text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed whitespace-pre-line"
+          />
         </div>
       )}
     </article>
