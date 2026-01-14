@@ -246,7 +246,12 @@ export function DealsPage() {
         canvas.width = width;
         canvas.height = height;
         const ctx = canvas.getContext('2d');
-        ctx?.drawImage(img, 0, 0, width, height);
+        // Fill with white background for transparent images
+        if (ctx) {
+          ctx.fillStyle = '#FFFFFF';
+          ctx.fillRect(0, 0, width, height);
+          ctx.drawImage(img, 0, 0, width, height);
+        }
         setThumbnailPreview(canvas.toDataURL('image/jpeg', 0.8));
       };
       img.onerror = () => {
