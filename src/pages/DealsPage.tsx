@@ -122,11 +122,6 @@ function ProductCard({ product, isAdmin, onEdit, onDelete, onToggleFeatured }: {
             </span>
           )}
         </div>
-        {product.shortDescription && (
-          <p className="text-sm text-neutral-600 dark:text-neutral-400 mb-3 line-clamp-2">
-            {product.shortDescription}
-          </p>
-        )}
 
         {/* Shop Now Button */}
         <a
