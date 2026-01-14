@@ -402,7 +402,7 @@ export function DealsPage() {
               </div>
 
               {/* Product Grid */}
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-12">
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-12 items-start">
                 {filteredProducts.length === 0 ? (
                   <div className="col-span-full text-center py-12">
                     <p className="text-neutral-500 dark:text-neutral-400">No products found in this category.</p>
