@@ -5,6 +5,7 @@ import { Header } from "../components/Header";
 import { VideoMasonry } from "../components/VideoMasonry";
 import { SubmitBanner } from "../components/SubmitBanner";
 import { RigsForSale } from "../components/RigsForSale";
+import { GearShop } from "../components/GearShop";
 import { SkoolieSupport } from "../components/SkoolieSupport";
 import { About } from "../components/About";
 import { ClosingBanner } from "../components/ClosingBanner";
@@ -43,6 +44,7 @@ export function HomePage() {
           <VideoMasonry />
           <SubmitBanner />
           <RigsForSale />
+          <GearShop />
           <SkoolieSupport />
           <ClosingBanner />
         </main>
