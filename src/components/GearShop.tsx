@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { HiExternalLink, HiPencil, HiTrash, HiStar, HiUpload, HiX } from "react-icons/hi";
+import { HiExternalLink, HiPencil, HiTrash, HiStar, HiUpload, HiX, HiChevronDown, HiChevronUp } from "react-icons/hi";
 import { ImageWithFallback } from "./figma/ImageWithFallback";
 import { useDeals, Product, ProductCategory } from "../contexts/DealsContext";
 import { useAdmin } from "../contexts/AdminContext";
@@ -53,6 +53,13 @@ function ProductCard({ product, isAdmin, onEdit, onDelete, onToggleFeatured }: {
   onDelete?: () => void;
   onToggleFeatured?: () => void;
 }) {
+  const [isExpanded, setIsExpanded] = useState(false);
+  
+  // Split description into first line and rest
+  const descriptionLines = product.description?.split('\n') || [];
+  const firstLine = descriptionLines[0] || '';
+  const restOfDescription = descriptionLines.slice(1).join('\n');
+  
   return (
     <article 
       className="bg-white dark:bg-neutral-900 rounded-lg overflow-hidden border border-neutral-200 dark:border-neutral-700 transition-all duration-300 hover:shadow-lg relative"
@@ -122,10 +129,42 @@ function ProductCard({ product, isAdmin, onEdit, onDelete, onToggleFeatured }: {
       {/* Product Details - Below CTA */}
       {product.description && (
         <div className="px-4 pb-4 border-t border-neutral-200 dark:border-neutral-700 pt-4">
+          {/* First line always visible */}
           <FormattedText 
-            text={product.description} 
-            className="text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed whitespace-pre-line"
+            text={firstLine} 
+            className="text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed"
           />
+          
+          {/* Click to expand for more info */}
+          {restOfDescription && (
+            <>
+              <button
+                onClick={() => setIsExpanded(!isExpanded)}
+                className="flex items-center gap-1 text-sm text-neutral-500 dark:text-neutral-400 hover:text-neutral-700 dark:hover:text-neutral-200 mt-3 font-medium transition-colors"
+              >
+                {isExpanded ? (
+                  <>
+                    <HiChevronUp className="w-4 h-4" />
+                    Hide Details
+                  </>
+                ) : (
+                  <>
+                    <HiChevronDown className="w-4 h-4" />
+                    Click Here for More Info
+                  </>
+                )}
+              </button>
+              
+              {isExpanded && (
+                <div className="mt-3">
+                  <FormattedText 
+                    text={restOfDescription} 
+                    className="text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed whitespace-pre-line"
+                  />
+                </div>
+              )}
+            </>
+          )}
         </div>
       )}
     </article>
