@@ -138,6 +138,7 @@ function ProductCard({ product, isAdmin, onEdit, onDelete, onToggleFeatured }: {
           {/* Click to expand for more info */}
           {restOfDescription && (
             <>
+              <div className="border-t border-neutral-200 dark:border-neutral-700 mt-3"></div>
               <button
                 onClick={() => setIsExpanded(!isExpanded)}
                 className="flex items-center gap-1 text-sm text-neutral-500 dark:text-neutral-400 hover:text-neutral-700 dark:hover:text-neutral-200 mt-3 mb-2 font-medium transition-colors"
