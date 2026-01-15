@@ -175,9 +175,10 @@ export function DealsPage() {
   const [thumbnailPreview, setThumbnailPreview] = useState<string>("");
   const [highlightsInput, setHighlightsInput] = useState("");
 
-  const filteredProducts = filter === "featured"
+  const filteredProducts = (filter === "featured"
     ? products.filter(p => p && p.featured)
-    : products.filter(p => p && p.category === filter);
+    : products.filter(p => p && p.category === filter)
+  ).sort((a, b) => (a.sortOrder ?? 999) - (b.sortOrder ?? 999));
 
   const categories: { key: ProductCategory | "featured"; label: string }[] = [
     { key: "featured", label: "Featured" },
@@ -266,6 +267,7 @@ export function DealsPage() {
         toast.dismiss('upload-toast');
       }
 
+      const sortOrderValue = formData.get('sortOrder') as string;
       const productData: Omit<Product, 'id'> = {
         name: formData.get('name') as string,
         shortDescription: formData.get('shortDescription') as string || undefined,
@@ -279,6 +281,7 @@ export function DealsPage() {
         category: formCategory,
         featured: formData.get('featured') === 'on',
         highlights: highlightsInput.split(',').map(h => h.trim()).filter(h => h),
+        sortOrder: sortOrderValue ? parseInt(sortOrderValue, 10) : undefined,
       };
 
       if (editingProduct) {
@@ -488,6 +491,14 @@ export function DealsPage() {
                           placeholder="Product Link (URL) *" 
                           required 
                           defaultValue={editingProduct?.link}
+                        />
+
+                        {/* Sort Order */}
+                        <Input 
+                          name="sortOrder" 
+                          type="number" 
+                          placeholder="Sort Order (lower = first, e.g. 1, 2, 3)" 
+                          defaultValue={editingProduct?.sortOrder?.toString() || ''}
                         />
 
                         {/* Highlights */}

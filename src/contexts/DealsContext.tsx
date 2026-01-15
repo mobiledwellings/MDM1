@@ -19,6 +19,7 @@ export interface Product {
   featured?: boolean;
   highlights?: string[];
   specs?: { label: string; value: string }[];
+  sortOrder?: number;
 }
 
 interface DealsContextType {
