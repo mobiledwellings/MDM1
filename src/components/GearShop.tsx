@@ -128,7 +128,7 @@ function ProductCard({ product, isAdmin, onEdit, onDelete, onToggleFeatured }: {
 
       {/* Product Details - Below CTA */}
       {product.description && (
-        <div className="px-4 pb-4 border-t border-neutral-200 dark:border-neutral-700 pt-4">
+        <div className="px-4 pb-6 border-t border-neutral-200 dark:border-neutral-700 pt-4">
           {/* First line always visible */}
           <FormattedText 
             text={firstLine} 
@@ -140,7 +140,7 @@ function ProductCard({ product, isAdmin, onEdit, onDelete, onToggleFeatured }: {
             <>
               <button
                 onClick={() => setIsExpanded(!isExpanded)}
-                className="flex items-center gap-1 text-sm text-neutral-500 dark:text-neutral-400 hover:text-neutral-700 dark:hover:text-neutral-200 mt-3 font-medium transition-colors"
+                className="flex items-center gap-1 text-sm text-neutral-500 dark:text-neutral-400 hover:text-neutral-700 dark:hover:text-neutral-200 mt-3 mb-2 font-medium transition-colors"
               >
                 {isExpanded ? (
                   <>
