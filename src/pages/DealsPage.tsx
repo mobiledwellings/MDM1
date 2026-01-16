@@ -114,7 +114,7 @@ function ProductCard({ product, isAdmin, onEdit, onDelete, onToggleFeatured }: {
         </div>
       )}
       
-      <div className="relative aspect-[4/3] overflow-hidden bg-white dark:bg-neutral-800 p-6">
+      <div className="relative aspect-[3/4] overflow-hidden bg-white dark:bg-neutral-800 p-6">
         <ImageWithFallback 
           src={product.thumbnail}
           alt={product.name}
