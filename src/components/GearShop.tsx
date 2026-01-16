@@ -91,11 +91,11 @@ function ProductCard({ product, isAdmin, onEdit, onDelete, onToggleFeatured }: {
         </div>
       )}
       
-      <div className="relative aspect-square overflow-hidden bg-neutral-100 dark:bg-neutral-800">
+      <div className="relative aspect-square overflow-hidden bg-white dark:bg-neutral-800 p-4">
         <ImageWithFallback 
           src={product.thumbnail}
           alt={product.name}
-          className="w-full h-full object-cover transition-all duration-500 group-hover:scale-105"
+          className="w-full h-full object-contain transition-all duration-500 group-hover:scale-105"
         />
       </div>
       
