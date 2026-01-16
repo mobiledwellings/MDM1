@@ -210,28 +210,31 @@ export function GearShop() {
       const img = new Image();
       img.onload = () => {
         const canvas = document.createElement('canvas');
-        const size = 800;
-        canvas.width = size;
-        canvas.height = size;
+        // Keep original aspect ratio, max dimension 800px
+        const maxSize = 800;
+        let width = img.width;
+        let height = img.height;
+        
+        if (width > height) {
+          if (width > maxSize) {
+            height = (height * maxSize) / width;
+            width = maxSize;
+          }
+        } else {
+          if (height > maxSize) {
+            width = (width * maxSize) / height;
+            height = maxSize;
+          }
+        }
+        
+        canvas.width = width;
+        canvas.height = height;
         const ctx = canvas.getContext('2d');
         
         if (ctx) {
           ctx.fillStyle = '#FFFFFF';
-          ctx.fillRect(0, 0, size, size);
-          
-          const srcWidth = img.width;
-          const srcHeight = img.height;
-          let sx = 0, sy = 0, sWidth = srcWidth, sHeight = srcHeight;
-          
-          if (srcWidth > srcHeight) {
-            sx = (srcWidth - srcHeight) / 2;
-            sWidth = srcHeight;
-          } else if (srcHeight > srcWidth) {
-            sy = (srcHeight - srcWidth) / 2;
-            sHeight = srcWidth;
-          }
-          
-          ctx.drawImage(img, sx, sy, sWidth, sHeight, 0, 0, size, size);
+          ctx.fillRect(0, 0, width, height);
+          ctx.drawImage(img, 0, 0, width, height);
         }
         setThumbnailPreview(canvas.toDataURL('image/jpeg', 0.85));
       };
