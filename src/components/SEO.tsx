@@ -11,8 +11,8 @@ interface SEOProps {
 
 export const SEO = ({ 
   title, 
-  description, 
-  keywords = 'mobile dwellings, converted school bus, skoolie, van life, tiny house, overland rig, alternative living',
+  description = 'Exploring authenticity, sustainability, and freedom through intimate video portraits about mobile living.', 
+  keywords = 'mobile dwellings, converted school bus, skoolie, van life, tiny house, overland rig, alternative living, video portraits, sustainable living',
   image = 'https://mobiledwellings.media/og-image.jpg',
   url = 'https://mobiledwellings.media',
   type = 'website'
