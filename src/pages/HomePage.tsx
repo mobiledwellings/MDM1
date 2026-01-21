@@ -41,6 +41,14 @@ export function HomePage() {
         <Header />
         {/* Wrapping the core content in <main> is a major SEO & Accessibility win */}
         <main id="main-content">
+          {/* Centered animal GIF */}
+          <div className="flex justify-center py-8">
+            <img 
+              src="https://img1.picmix.com/output/stamp/normal/4/9/0/1/261094_b64a6.gif" 
+              alt="Animated animal" 
+              className="max-w-full"
+            />
+          </div>
           <VideoMasonry />
           <SubmitBanner />
           <RigsForSale />
