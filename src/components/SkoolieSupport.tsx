@@ -1,4 +1,3 @@
-import skoolieSupportImage from "@/assets/skoolie-support/hero.jpg";
 import chuckCassadyImage from "@/assets/skoolie-support/chuck.jpg";
 import justinSmithImage from "@/assets/skoolie-support/justin.jpg";
 
@@ -12,22 +11,6 @@ export function SkoolieSupport() {
           <p className="text-neutral-600 dark:text-neutral-400 max-w-3xl mx-auto text-lg leading-relaxed">
             Get personalized guidance for your skoolie conversion from experienced builders. Whether you're planning your first build or troubleshooting a complex system, we're here to help.
           </p>
-        </div>
-
-        {/* Hero Image - Clickable */}
-        <div className="mb-16">
-          <a 
-            href="http://patreon.com/skooliesupport" 
-            target="_blank" 
-            rel="noopener noreferrer"
-            className="block transition-opacity hover:opacity-90"
-          >
-            <img 
-              src={skoolieSupportImage} 
-              alt="Join Skoolie Support on Patreon" 
-              className="w-full h-auto rounded-lg shadow-lg"
-            />
-          </a>
         </div>
 
         {/* About Section */}
