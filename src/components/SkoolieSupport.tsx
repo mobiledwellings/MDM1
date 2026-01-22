@@ -30,13 +30,17 @@ export function SkoolieSupport() {
         <div className="grid md:grid-cols-2 gap-12 mb-16">
           {/* Chuck Cassady */}
           <div className="border border-neutral-200 dark:border-neutral-700 rounded-lg overflow-hidden">
-            <img 
-              src={chuckCassadyImage} 
-              alt="Chuck Cassady - Professional Skoolie Builder" 
-              className="w-full h-auto"
-            />
+            <a href="https://www.youtube.com/@ChuckCassadyYT" target="_blank" rel="noopener noreferrer">
+              <img 
+                src={chuckCassadyImage} 
+                alt="Chuck Cassady - Professional Skoolie Builder" 
+                className="w-full h-auto hover:opacity-90 transition-opacity"
+              />
+            </a>
             <div className="p-8 dark:bg-neutral-800">
-              <h3 className="mb-4 dark:text-white text-center">Chuck Cassady</h3>
+              <a href="https://www.youtube.com/@ChuckCassadyYT" target="_blank" rel="noopener noreferrer" className="hover:text-neutral-600 dark:hover:text-neutral-300 transition-colors">
+                <h3 className="mb-4 dark:text-white text-center">Chuck Cassady</h3>
+              </a>
               <p className="text-sm text-neutral-500 dark:text-neutral-400 mb-6 text-center" style={{ fontFamily: "'Neue Haas Grotesk Display Pro', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif" }}>The Professional</p>
               <p className="text-neutral-600 dark:text-neutral-400 leading-relaxed mb-4 text-center">
                 Chuck is a professional builder with years of experience constructing custom skoolie conversions. From structural modifications to complex electrical and plumbing systems, Chuck brings technical expertise and industry knowledge to help you build safely and efficiently.
@@ -49,13 +53,17 @@ export function SkoolieSupport() {
 
           {/* Justin from Mobile Dwellings */}
           <div className="border border-neutral-200 dark:border-neutral-700 rounded-lg overflow-hidden">
-            <img 
-              src={justinSmithImage} 
-              alt="Justin Smith - Mobile Dwellings / Amateur Builder" 
-              className="w-full h-auto"
-            />
+            <a href="https://www.youtube.com/@MobileDwellings" target="_blank" rel="noopener noreferrer">
+              <img 
+                src={justinSmithImage} 
+                alt="Justin Smith - Mobile Dwellings / Amateur Builder" 
+                className="w-full h-auto hover:opacity-90 transition-opacity"
+              />
+            </a>
             <div className="p-8 dark:bg-neutral-800">
-              <h3 className="mb-4 dark:text-white text-center">Justin Smith</h3>
+              <a href="https://www.youtube.com/@MobileDwellings" target="_blank" rel="noopener noreferrer" className="hover:text-neutral-600 dark:hover:text-neutral-300 transition-colors">
+                <h3 className="mb-4 dark:text-white text-center">Justin Smith</h3>
+              </a>
               <p className="text-sm text-neutral-500 dark:text-neutral-400 mb-6 text-center" style={{ fontFamily: "'Neue Haas Grotesk Display Pro', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif" }}>The Amateur</p>
               <p className="text-neutral-600 dark:text-neutral-400 leading-relaxed mb-4 text-center">
                 Justin is the creator of Mobile Dwellings and an amateur builder who's been through the conversion process himself. He understands the challenges of learning on the fly, working with limited budgets, and making decisions without professional training.
