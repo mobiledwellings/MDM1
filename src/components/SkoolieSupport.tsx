@@ -5,13 +5,6 @@ export function SkoolieSupport() {
   return (
     <section id="skoolie-support" className="bg-white dark:bg-neutral-900">
       <div className="max-w-6xl mx-auto px-6 py-12 md:py-20">
-        {/* Header */}
-        <div className="text-center mb-16">
-          <h2 className="mb-6 dark:text-white text-[20px] text-[rgb(89,89,89)] font-bold">Skoolie Support</h2>
-          <p className="text-neutral-600 dark:text-neutral-400 max-w-3xl mx-auto text-lg leading-relaxed">
-            Get personalized guidance for your skoolie conversion from experienced builders. Whether you're planning your first build or troubleshooting a complex system, we're here to help.
-          </p>
-        </div>
 
         {/* About Section */}
         <div className="max-w-4xl mx-auto mb-20">
