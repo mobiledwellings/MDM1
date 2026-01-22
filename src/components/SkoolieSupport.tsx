@@ -6,6 +6,11 @@ export function SkoolieSupport() {
     <section id="skoolie-support" className="bg-white dark:bg-neutral-900">
       <div className="max-w-6xl mx-auto px-6 py-12 md:py-20">
 
+        {/* Title */}
+        <h2 className="text-2xl md:text-3xl font-bold text-neutral-900 dark:text-white text-center mb-8">
+          Do You Need Help With Your Build?
+        </h2>
+
         {/* About Section */}
         <div className="max-w-4xl mx-auto mb-20">
           <div className="prose prose-lg max-w-none">
