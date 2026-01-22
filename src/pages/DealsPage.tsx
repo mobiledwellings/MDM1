@@ -570,20 +570,6 @@ export function DealsPage() {
                 </div>
               )}
 
-              {/* Help Section */}
-              <div className="mt-16 p-6 bg-amber-50 dark:bg-amber-900/20 rounded-lg border border-amber-200 dark:border-amber-800 max-w-2xl mx-auto">
-                <h3 className="font-semibold text-neutral-900 dark:text-white mb-2 text-center">
-                  💡 Have a question about a product?
-                </h3>
-                <p className="text-sm text-neutral-600 dark:text-neutral-400 text-center">
-                  Drop a comment on any of our videos or send us an email at{" "}
-                  <a href="mailto:justin@mobiledwellings.media" className="font-medium hover:text-neutral-900 dark:hover:text-white transition-colors underline">
-                    justin@mobiledwellings.media
-                  </a>
-                  . Happy to help you choose the right gear for your build.
-                </p>
-              </div>
-
               {/* Footer Links */}
               <div className="mt-12 flex flex-wrap gap-x-6 gap-y-2 text-sm justify-center">
                 <Link
