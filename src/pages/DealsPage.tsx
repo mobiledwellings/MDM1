@@ -577,8 +577,8 @@ export function DealsPage() {
                 </h3>
                 <p className="text-sm text-neutral-600 dark:text-neutral-400 text-center">
                   Drop a comment on any of our videos or send us an email at{" "}
-                  <a href="mailto:gilliganphantom@gmail.com" className="font-medium hover:text-neutral-900 dark:hover:text-white transition-colors underline">
-                    gilliganphantom@gmail.com
+                  <a href="mailto:justin@mobiledwellings.media" className="font-medium hover:text-neutral-900 dark:hover:text-white transition-colors underline">
+                    justin@mobiledwellings.media
                   </a>
                   . Happy to help you choose the right gear for your build.
                 </p>

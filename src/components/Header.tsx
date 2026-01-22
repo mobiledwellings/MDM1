@@ -133,7 +133,7 @@ export function Header() {
                   <FaFacebook className="w-5 h-5" />
                 </a>
                 <a 
-                  href="mailto:gilliganphantom@gmail.com" 
+                  href="mailto:justin@mobiledwellings.media" 
                   className="text-neutral-600 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-white transition-colors"
                   aria-label="Send Email"
                 >

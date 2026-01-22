@@ -42,11 +42,11 @@ export function Footer() {
                   Landon
                 </a>{" "}
                 (Videographer) and{" "}
-                <a href="mailto:medha6172@gmail.com" className="hover:text-neutral-900 dark:hover:text-white transition-colors font-semibold">
+                <a href="mailto:justin@mobiledwellings.media" className="hover:text-neutral-900 dark:hover:text-white transition-colors font-semibold">
                   Medha
                 </a>{" "}
                 (Our Superstar Editor). We are always looking to expand our team with more videographers so if you're interested in telling stories with us too please email us{" "}
-                <a href="mailto:gilliganphantom@gmail.com" className="hover:text-neutral-900 dark:hover:text-white transition-colors font-semibold">
+                <a href="mailto:justin@mobiledwellings.media" className="hover:text-neutral-900 dark:hover:text-white transition-colors font-semibold">
                   here!
                 </a>
               </p>

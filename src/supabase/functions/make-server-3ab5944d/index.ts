@@ -359,7 +359,7 @@ app.post("/make-server-3ab5944d/feature-submission", async (c) => {
       },
       body: JSON.stringify({
         from: 'Mobile Dwellings <onboarding@resend.dev>',
-        to: 'gilliganphantom@gmail.com',
+        to: 'justin@mobiledwellings.media',
         reply_to: email,
         subject: `New Feature Submission - ${dwellingType} from ${name}`,
         html: emailHtml
