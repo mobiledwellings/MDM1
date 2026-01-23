@@ -193,6 +193,35 @@ app.post("/make-server-3ab5944d/rigs", async (c) => {
   }
 });
 
+// Update rig listing (full update)
+app.put("/make-server-3ab5944d/rigs/:id", async (c) => {
+  try {
+    const rigId = c.req.param("id");
+    const updates = await c.req.json();
+    
+    const existingRig = await kv.get(rigId);
+    if (!existingRig) {
+      return c.json({ error: "Rig not found" }, 404);
+    }
+    
+    // Merge existing rig with updates, preserving id
+    const updatedRig = { 
+      ...existingRig, 
+      ...updates,
+      id: rigId // Ensure id is preserved
+    };
+    
+    await kv.set(rigId, updatedRig);
+    
+    console.log('Rig listing updated successfully:', rigId);
+    
+    return c.json({ success: true, rig: updatedRig });
+  } catch (error) {
+    console.error("Error updating rig listing:", error);
+    return c.json({ error: "Failed to update rig listing", details: String(error) }, 500);
+  }
+});
+
 // Update rig status
 app.put("/make-server-3ab5944d/rigs/:id/status", async (c) => {
   try {
