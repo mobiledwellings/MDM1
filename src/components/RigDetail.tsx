@@ -203,9 +203,9 @@ export function RigDetailPage() {
 
       {/* Edit Modal */}
       {isEditing && (
-        <div className="fixed inset-0 bg-black/50 z-[60] flex items-center justify-center p-4">
-          <div className="bg-white dark:bg-neutral-900 rounded-lg max-w-2xl w-full max-h-[90vh] overflow-y-auto">
-            <div className="sticky top-0 bg-white dark:bg-neutral-900 border-b border-neutral-200 dark:border-neutral-700 p-4 flex items-center justify-between">
+        <div className="fixed inset-0 bg-black/50 z-[100] flex items-center justify-center p-4 overflow-y-auto">
+          <div className="bg-white dark:bg-neutral-900 rounded-lg max-w-2xl w-full my-8" style={{ maxHeight: 'calc(100vh - 4rem)' }}>
+            <div className="sticky top-0 bg-white dark:bg-neutral-900 border-b border-neutral-200 dark:border-neutral-700 p-4 flex items-center justify-between z-10 rounded-t-lg">
               <h2 className="font-bold text-neutral-900 dark:text-white">Edit Listing</h2>
               <button
                 onClick={() => setIsEditing(false)}
@@ -215,16 +215,17 @@ export function RigDetailPage() {
               </button>
             </div>
             
-            <form onSubmit={async (e) => {
-              e.preventDefault();
-              try {
-                await updateRig(rig.id, editForm);
-                toast.success('Listing updated successfully!');
-                setIsEditing(false);
-              } catch (error) {
-                toast.error('Failed to update listing');
-              }
-            }} className="p-6 space-y-4">
+            <div className="overflow-y-auto" style={{ maxHeight: 'calc(100vh - 8rem)' }}>
+              <form onSubmit={async (e) => {
+                e.preventDefault();
+                try {
+                  await updateRig(rig.id, editForm);
+                  toast.success('Listing updated successfully!');
+                  setIsEditing(false);
+                } catch (error) {
+                  toast.error('Failed to update listing');
+                }
+              }} className="p-6 space-y-4">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
                   <label className="block text-sm font-medium text-neutral-700 dark:text-neutral-300 mb-1">Title (Year, Make, Model)</label>
@@ -346,7 +347,8 @@ export function RigDetailPage() {
                   Save Changes
                 </button>
               </div>
-            </form>
+              </form>
+            </div>
           </div>
         </div>
       )}
