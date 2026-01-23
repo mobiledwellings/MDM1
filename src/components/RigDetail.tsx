@@ -21,6 +21,8 @@ export function RigDetailPage() {
   const [selectedImageIndex, setSelectedImageIndex] = useState(0);
   const [isEditing, setIsEditing] = useState(false);
   const [editForm, setEditForm] = useState<any>({});
+  const [editGalleryImages, setEditGalleryImages] = useState<string[]>([]);
+  const [draggedImageIndex, setDraggedImageIndex] = useState<number | null>(null);
 
   // Match by ID or by the SEO Slug
   const rig = rigs.find((r) => r.id === id || r.slug === id);
@@ -185,6 +187,7 @@ export function RigDetailPage() {
                         instagram: rig.instagram,
                         externalLink: rig.externalLink,
                       });
+                      setEditGalleryImages(rig.galleryImages || []);
                       setIsEditing(true);
                     }} 
                     className="w-full py-2 bg-blue-100 text-blue-700 rounded-lg flex items-center justify-center gap-2 font-medium hover:bg-blue-200 transition-colors"
@@ -203,150 +206,215 @@ export function RigDetailPage() {
 
       {/* Edit Modal */}
       {isEditing && (
-        <div className="fixed inset-0 bg-black/50 z-[100] flex items-center justify-center p-4 overflow-y-auto">
-          <div className="bg-white dark:bg-neutral-900 rounded-lg max-w-2xl w-full my-8" style={{ maxHeight: 'calc(100vh - 4rem)' }}>
-            <div className="sticky top-0 bg-white dark:bg-neutral-900 border-b border-neutral-200 dark:border-neutral-700 p-4 flex items-center justify-between z-10 rounded-t-lg">
-              <h2 className="font-bold text-neutral-900 dark:text-white">Edit Listing</h2>
-              <button
-                onClick={() => setIsEditing(false)}
-                className="p-2 hover:bg-neutral-100 dark:hover:bg-neutral-800 rounded-full transition-colors text-neutral-600 dark:text-neutral-400"
-              >
-                ✕
-              </button>
-            </div>
-            
-            <div className="overflow-y-auto" style={{ maxHeight: 'calc(100vh - 8rem)' }}>
+        <div className="fixed inset-0 bg-black/50 z-[100] overflow-y-auto">
+          <div className="min-h-full flex items-start justify-center p-4 py-8">
+            <div className="bg-white dark:bg-neutral-900 rounded-lg max-w-2xl w-full">
+              <div className="sticky top-0 bg-white dark:bg-neutral-900 border-b border-neutral-200 dark:border-neutral-700 p-4 flex items-center justify-between z-10 rounded-t-lg">
+                <h2 className="font-bold text-neutral-900 dark:text-white">Edit Listing</h2>
+                <button
+                  onClick={() => setIsEditing(false)}
+                  className="p-2 hover:bg-neutral-100 dark:hover:bg-neutral-800 rounded-full transition-colors text-neutral-600 dark:text-neutral-400"
+                >
+                  ✕
+                </button>
+              </div>
+              
               <form onSubmit={async (e) => {
                 e.preventDefault();
                 try {
-                  await updateRig(rig.id, editForm);
+                  await updateRig(rig.id, {
+                    ...editForm,
+                    galleryImages: editGalleryImages,
+                    thumbnail: editGalleryImages[0] || rig.thumbnail,
+                  });
                   toast.success('Listing updated successfully!');
                   setIsEditing(false);
                 } catch (error) {
                   toast.error('Failed to update listing');
                 }
               }} className="p-6 space-y-4">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                
+                {/* Photo Management Section */}
+                <div className="border-b border-neutral-200 dark:border-neutral-700 pb-6">
+                  <label className="block text-sm font-medium text-neutral-700 dark:text-neutral-300 mb-2">
+                    Photos (drag to reorder, first image is cover photo)
+                  </label>
+                  <div className="grid grid-cols-3 md:grid-cols-4 gap-3">
+                    {editGalleryImages.map((image, index) => (
+                      <div 
+                        key={index}
+                        draggable
+                        onDragStart={() => setDraggedImageIndex(index)}
+                        onDragOver={(e) => {
+                          e.preventDefault();
+                          if (draggedImageIndex === null || draggedImageIndex === index) return;
+                          const newImages = [...editGalleryImages];
+                          const [dragged] = newImages.splice(draggedImageIndex, 1);
+                          newImages.splice(index, 0, dragged);
+                          setEditGalleryImages(newImages);
+                          setDraggedImageIndex(index);
+                        }}
+                        onDragEnd={() => setDraggedImageIndex(null)}
+                        className={`relative aspect-square rounded-lg overflow-hidden cursor-move border-2 ${index === 0 ? 'border-green-500' : 'border-transparent'} ${draggedImageIndex === index ? 'opacity-50' : ''}`}
+                      >
+                        <img src={image} alt={`Photo ${index + 1}`} className="w-full h-full object-cover" />
+                        {index === 0 && (
+                          <div className="absolute top-1 left-1 bg-green-500 text-white text-xs px-1.5 py-0.5 rounded font-medium">
+                            Cover
+                          </div>
+                        )}
+                        <button
+                          type="button"
+                          onClick={() => {
+                            const newImages = editGalleryImages.filter((_, i) => i !== index);
+                            setEditGalleryImages(newImages);
+                          }}
+                          className="absolute top-1 right-1 bg-red-500 text-white p-1 rounded-full hover:bg-red-600 transition-colors"
+                        >
+                          <FaTrash className="w-3 h-3" />
+                        </button>
+                        <button
+                          type="button"
+                          onClick={() => {
+                            // Move this image to first position (make it cover)
+                            const newImages = [...editGalleryImages];
+                            const [selected] = newImages.splice(index, 1);
+                            newImages.unshift(selected);
+                            setEditGalleryImages(newImages);
+                          }}
+                          className={`absolute bottom-1 left-1 bg-neutral-900/80 text-white text-xs px-2 py-1 rounded hover:bg-neutral-900 transition-colors ${index === 0 ? 'hidden' : ''}`}
+                        >
+                          Set as Cover
+                        </button>
+                      </div>
+                    ))}
+                  </div>
+                  {editGalleryImages.length === 0 && (
+                    <p className="text-neutral-500 text-sm mt-2">No photos available</p>
+                  )}
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div>
+                    <label className="block text-sm font-medium text-neutral-700 dark:text-neutral-300 mb-1">Title (Year, Make, Model)</label>
+                    <Input 
+                      value={editForm.title || ''} 
+                      onChange={(e) => setEditForm({...editForm, title: e.target.value})}
+                      required
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-sm font-medium text-neutral-700 dark:text-neutral-300 mb-1">Type</label>
+                    <Input 
+                      value={editForm.type || ''} 
+                      onChange={(e) => setEditForm({...editForm, type: e.target.value})}
+                      required
+                    />
+                  </div>
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div>
+                    <label className="block text-sm font-medium text-neutral-700 dark:text-neutral-300 mb-1">Price</label>
+                    <Input 
+                      value={editForm.price || ''} 
+                      onChange={(e) => setEditForm({...editForm, price: e.target.value})}
+                      required
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-sm font-medium text-neutral-700 dark:text-neutral-300 mb-1">Location</label>
+                    <Input 
+                      value={editForm.location || ''} 
+                      onChange={(e) => setEditForm({...editForm, location: e.target.value})}
+                      required
+                    />
+                  </div>
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                  <div>
+                    <label className="block text-sm font-medium text-neutral-700 dark:text-neutral-300 mb-1">Seller Name</label>
+                    <Input 
+                      value={editForm.name || ''} 
+                      onChange={(e) => setEditForm({...editForm, name: e.target.value})}
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-sm font-medium text-neutral-700 dark:text-neutral-300 mb-1">Mileage</label>
+                    <Input 
+                      value={editForm.mileage || ''} 
+                      onChange={(e) => setEditForm({...editForm, mileage: e.target.value})}
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-sm font-medium text-neutral-700 dark:text-neutral-300 mb-1">Length (ft)</label>
+                    <Input 
+                      value={editForm.length || ''} 
+                      onChange={(e) => setEditForm({...editForm, length: e.target.value})}
+                    />
+                  </div>
+                </div>
+
                 <div>
-                  <label className="block text-sm font-medium text-neutral-700 dark:text-neutral-300 mb-1">Title (Year, Make, Model)</label>
+                  <label className="block text-sm font-medium text-neutral-700 dark:text-neutral-300 mb-1">Build Description</label>
+                  <Textarea 
+                    value={editForm.buildDescription || ''} 
+                    onChange={(e) => setEditForm({...editForm, buildDescription: e.target.value})}
+                    rows={4}
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-sm font-medium text-neutral-700 dark:text-neutral-300 mb-1">Story</label>
+                  <Textarea 
+                    value={editForm.story || ''} 
+                    onChange={(e) => setEditForm({...editForm, story: e.target.value})}
+                    rows={3}
+                  />
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div>
+                    <label className="block text-sm font-medium text-neutral-700 dark:text-neutral-300 mb-1">YouTube Video URL</label>
+                    <Input 
+                      value={editForm.youtubeVideo || ''} 
+                      onChange={(e) => setEditForm({...editForm, youtubeVideo: e.target.value})}
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-sm font-medium text-neutral-700 dark:text-neutral-300 mb-1">Instagram URL</label>
+                    <Input 
+                      value={editForm.instagram || ''} 
+                      onChange={(e) => setEditForm({...editForm, instagram: e.target.value})}
+                    />
+                  </div>
+                </div>
+
+                <div>
+                  <label className="block text-sm font-medium text-neutral-700 dark:text-neutral-300 mb-1">External Listing Link</label>
                   <Input 
-                    value={editForm.title || ''} 
-                    onChange={(e) => setEditForm({...editForm, title: e.target.value})}
+                    value={editForm.externalLink || ''} 
+                    onChange={(e) => setEditForm({...editForm, externalLink: e.target.value})}
                     required
                   />
                 </div>
-                <div>
-                  <label className="block text-sm font-medium text-neutral-700 dark:text-neutral-300 mb-1">Type</label>
-                  <Input 
-                    value={editForm.type || ''} 
-                    onChange={(e) => setEditForm({...editForm, type: e.target.value})}
-                    required
-                  />
-                </div>
-              </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div>
-                  <label className="block text-sm font-medium text-neutral-700 dark:text-neutral-300 mb-1">Price</label>
-                  <Input 
-                    value={editForm.price || ''} 
-                    onChange={(e) => setEditForm({...editForm, price: e.target.value})}
-                    required
-                  />
+                <div className="flex gap-3 pt-4 sticky bottom-0 bg-white dark:bg-neutral-900 pb-2">
+                  <button
+                    type="button"
+                    onClick={() => setIsEditing(false)}
+                    className="flex-1 py-3 bg-neutral-200 dark:bg-neutral-700 text-neutral-700 dark:text-neutral-300 rounded-lg font-medium hover:bg-neutral-300 dark:hover:bg-neutral-600 transition-colors"
+                  >
+                    Cancel
+                  </button>
+                  <button
+                    type="submit"
+                    className="flex-1 py-3 bg-neutral-900 dark:bg-white text-white dark:text-neutral-900 rounded-lg font-medium hover:bg-neutral-700 dark:hover:bg-neutral-200 transition-colors"
+                  >
+                    Save Changes
+                  </button>
                 </div>
-                <div>
-                  <label className="block text-sm font-medium text-neutral-700 dark:text-neutral-300 mb-1">Location</label>
-                  <Input 
-                    value={editForm.location || ''} 
-                    onChange={(e) => setEditForm({...editForm, location: e.target.value})}
-                    required
-                  />
-                </div>
-              </div>
-
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                <div>
-                  <label className="block text-sm font-medium text-neutral-700 dark:text-neutral-300 mb-1">Seller Name</label>
-                  <Input 
-                    value={editForm.name || ''} 
-                    onChange={(e) => setEditForm({...editForm, name: e.target.value})}
-                  />
-                </div>
-                <div>
-                  <label className="block text-sm font-medium text-neutral-700 dark:text-neutral-300 mb-1">Mileage</label>
-                  <Input 
-                    value={editForm.mileage || ''} 
-                    onChange={(e) => setEditForm({...editForm, mileage: e.target.value})}
-                  />
-                </div>
-                <div>
-                  <label className="block text-sm font-medium text-neutral-700 dark:text-neutral-300 mb-1">Length (ft)</label>
-                  <Input 
-                    value={editForm.length || ''} 
-                    onChange={(e) => setEditForm({...editForm, length: e.target.value})}
-                  />
-                </div>
-              </div>
-
-              <div>
-                <label className="block text-sm font-medium text-neutral-700 dark:text-neutral-300 mb-1">Build Description</label>
-                <Textarea 
-                  value={editForm.buildDescription || ''} 
-                  onChange={(e) => setEditForm({...editForm, buildDescription: e.target.value})}
-                  rows={4}
-                />
-              </div>
-
-              <div>
-                <label className="block text-sm font-medium text-neutral-700 dark:text-neutral-300 mb-1">Story</label>
-                <Textarea 
-                  value={editForm.story || ''} 
-                  onChange={(e) => setEditForm({...editForm, story: e.target.value})}
-                  rows={3}
-                />
-              </div>
-
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div>
-                  <label className="block text-sm font-medium text-neutral-700 dark:text-neutral-300 mb-1">YouTube Video URL</label>
-                  <Input 
-                    value={editForm.youtubeVideo || ''} 
-                    onChange={(e) => setEditForm({...editForm, youtubeVideo: e.target.value})}
-                  />
-                </div>
-                <div>
-                  <label className="block text-sm font-medium text-neutral-700 dark:text-neutral-300 mb-1">Instagram URL</label>
-                  <Input 
-                    value={editForm.instagram || ''} 
-                    onChange={(e) => setEditForm({...editForm, instagram: e.target.value})}
-                  />
-                </div>
-              </div>
-
-              <div>
-                <label className="block text-sm font-medium text-neutral-700 dark:text-neutral-300 mb-1">External Listing Link</label>
-                <Input 
-                  value={editForm.externalLink || ''} 
-                  onChange={(e) => setEditForm({...editForm, externalLink: e.target.value})}
-                  required
-                />
-              </div>
-
-              <div className="flex gap-3 pt-4">
-                <button
-                  type="button"
-                  onClick={() => setIsEditing(false)}
-                  className="flex-1 py-3 bg-neutral-200 dark:bg-neutral-700 text-neutral-700 dark:text-neutral-300 rounded-lg font-medium hover:bg-neutral-300 dark:hover:bg-neutral-600 transition-colors"
-                >
-                  Cancel
-                </button>
-                <button
-                  type="submit"
-                  className="flex-1 py-3 bg-neutral-900 dark:bg-white text-white dark:text-neutral-900 rounded-lg font-medium hover:bg-neutral-700 dark:hover:bg-neutral-200 transition-colors"
-                >
-                  Save Changes
-                </button>
-              </div>
               </form>
             </div>
           </div>
