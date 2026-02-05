@@ -107,7 +107,11 @@ export function RigsProvider({ children }: { children: ReactNode }) {
         },
         body: JSON.stringify(updates),
       });
-      if (!response.ok) throw new Error(`Failed to update rig`);
+      if (!response.ok) {
+        const errorData = await response.json().catch(() => ({ error: 'Unknown error' }));
+        const errorMessage = errorData.error || errorData.details || 'Failed to update rig';
+        throw new Error(errorMessage);
+      }
       await fetchRigs();
     } catch (error) {
       console.error('Error updating rig:', error);

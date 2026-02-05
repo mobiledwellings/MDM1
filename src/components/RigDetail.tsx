@@ -230,7 +230,9 @@ export function RigDetailPage() {
                   toast.success('Listing updated successfully!');
                   setIsEditing(false);
                 } catch (error) {
-                  toast.error('Failed to update listing');
+                  console.error('Update error:', error);
+                  const errorMessage = error instanceof Error ? error.message : 'Failed to update listing';
+                  toast.error(`Failed to update listing: ${errorMessage}`);
                 }
               }} className="p-6 space-y-4">
                 
