@@ -193,10 +193,10 @@ app.post("/make-server-3ab5944d/rigs", async (c) => {
   }
 });
 
-// Update rig listing (full update)
+// Update rig listing (full update) - OLD PUT method (deprecated)
 app.put("/make-server-3ab5944d/rigs/:id", async (c) => {
   try {
-    const rigId = c.req.param("id");
+    const rigId = decodeURIComponent(c.req.param("id"));
     const updates = await c.req.json();
     
     const existingRig = await kv.get(rigId);
@@ -222,10 +222,131 @@ app.put("/make-server-3ab5944d/rigs/:id", async (c) => {
   }
 });
 
-// Update rig status
+// Update rig listing (POST-based to avoid URL routing issues with colons)
+app.post("/make-server-3ab5944d/rigs/update", async (c) => {
+  try {
+    const { rigId, updates } = await c.req.json();
+    
+    const existingRig = await kv.get(rigId);
+    if (!existingRig) {
+      return c.json({ error: "Rig not found" }, 404);
+    }
+    
+    // Merge existing rig with updates, preserving id
+    const updatedRig = { 
+      ...existingRig, 
+      ...updates,
+      id: rigId // Ensure id is preserved
+    };
+    
+    await kv.set(rigId, updatedRig);
+    
+    console.log('Rig listing updated successfully:', rigId);
+    
+    return c.json({ success: true, rig: updatedRig });
+  } catch (error) {
+    console.error("Error updating rig listing:", error);
+    return c.json({ error: "Failed to update rig listing", details: String(error) }, 500);
+  }
+});
+
+// Update rig status (POST-based)
+app.post("/make-server-3ab5944d/rigs/update-status", async (c) => {
+  try {
+    const { rigId, status } = await c.req.json();
+    
+    const rig = await kv.get(rigId);
+    if (!rig) {
+      return c.json({ error: "Rig not found" }, 404);
+    }
+    
+    const updatedRig = { ...rig, status };
+    await kv.set(rigId, updatedRig);
+    
+    console.log('Rig status updated successfully:', rigId, status);
+    
+    return c.json({ success: true, rig: updatedRig });
+  } catch (error) {
+    console.error("Error updating rig status:", error);
+    return c.json({ error: "Failed to update rig status", details: String(error) }, 500);
+  }
+});
+
+// Toggle featured status (POST-based)
+app.post("/make-server-3ab5944d/rigs/toggle-featured", async (c) => {
+  try {
+    const { rigId } = await c.req.json();
+    
+    const rig = await kv.get(rigId);
+    if (!rig) {
+      return c.json({ error: "Rig not found" }, 404);
+    }
+    
+    // If rig is already featured, unfeature it
+    if (rig.featured) {
+      const updatedRig = { ...rig, featured: false, featuredOrder: undefined };
+      await kv.set(rigId, updatedRig);
+      return c.json({ success: true, rig: updatedRig });
+    }
+    
+    // Get all rigs to check featured count
+    const allRigs = await kv.getByPrefix("rig:");
+    const featuredRigs = allRigs
+      .filter((r: any) => r.featured)
+      .sort((a: any, b: any) => (a.featuredOrder || 0) - (b.featuredOrder || 0));
+    
+    // If we already have 3 featured, unfeature the oldest
+    if (featuredRigs.length >= 3) {
+      const oldestFeatured = featuredRigs[0];
+      await kv.set(oldestFeatured.id, { 
+        ...oldestFeatured, 
+        featured: false, 
+        featuredOrder: undefined 
+      });
+    }
+    
+    // Feature the new rig
+    const updatedRig = { 
+      ...rig, 
+      featured: true, 
+      featuredOrder: Date.now() 
+    };
+    await kv.set(rigId, updatedRig);
+    
+    console.log('Rig featured status toggled:', rigId);
+    
+    return c.json({ success: true, rig: updatedRig });
+  } catch (error) {
+    console.error("Error toggling featured status:", error);
+    return c.json({ error: "Failed to toggle featured status", details: String(error) }, 500);
+  }
+});
+
+// Delete a rig listing (POST-based)
+app.post("/make-server-3ab5944d/rigs/delete", async (c) => {
+  try {
+    const { rigId } = await c.req.json();
+    
+    const rig = await kv.get(rigId);
+    if (!rig) {
+      return c.json({ error: "Rig not found" }, 404);
+    }
+    
+    await kv.del(rigId);
+    
+    console.log('Rig deleted successfully:', rigId);
+    
+    return c.json({ success: true });
+  } catch (error) {
+    console.error("Error deleting rig listing:", error);
+    return c.json({ error: "Failed to delete rig listing", details: String(error) }, 500);
+  }
+});
+
+// Update rig status - OLD PUT method (deprecated)
 app.put("/make-server-3ab5944d/rigs/:id/status", async (c) => {
   try {
-    const rigId = c.req.param("id");
+    const rigId = decodeURIComponent(c.req.param("id"));
     const { status } = await c.req.json();
     
     const rig = await kv.get(rigId);
@@ -246,7 +367,7 @@ app.put("/make-server-3ab5944d/rigs/:id/status", async (c) => {
 // Toggle featured status
 app.put("/make-server-3ab5944d/rigs/:id/featured", async (c) => {
   try {
-    const rigId = c.req.param("id");
+    const rigId = decodeURIComponent(c.req.param("id"));
     
     const rig = await kv.get(rigId);
     if (!rig) {
@@ -294,7 +415,7 @@ app.put("/make-server-3ab5944d/rigs/:id/featured", async (c) => {
 // Delete a rig listing
 app.delete("/make-server-3ab5944d/rigs/:id", async (c) => {
   try {
-    const rigId = c.req.param("id");
+    const rigId = decodeURIComponent(c.req.param("id"));
     
     const rig = await kv.get(rigId);
     if (!rig) {

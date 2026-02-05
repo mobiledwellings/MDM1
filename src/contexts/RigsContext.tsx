@@ -99,13 +99,13 @@ export function RigsProvider({ children }: { children: ReactNode }) {
 
   const updateRig = async (rigId: string, updates: Partial<Rig>) => {
     try {
-      const response = await fetch(`${API_BASE_URL}/rigs/${rigId}`, {
-        method: 'PUT',
+      const response = await fetch(`${API_BASE_URL}/rigs/update`, {
+        method: 'POST',
         headers: {
           'Content-Type': 'application/json',
           'Authorization': `Bearer ${publicAnonKey}`,
         },
-        body: JSON.stringify(updates),
+        body: JSON.stringify({ rigId, updates }),
       });
       if (!response.ok) {
         const errorData = await response.json().catch(() => ({ error: 'Unknown error' }));
@@ -121,13 +121,13 @@ export function RigsProvider({ children }: { children: ReactNode }) {
 
   const updateRigStatus = async (rigId: string, status: 'available' | 'pending' | 'sold') => {
     try {
-      await fetch(`${API_BASE_URL}/rigs/${rigId}/status`, {
-        method: 'PUT',
+      await fetch(`${API_BASE_URL}/rigs/update-status`, {
+        method: 'POST',
         headers: {
           'Content-Type': 'application/json',
           'Authorization': `Bearer ${publicAnonKey}`,
         },
-        body: JSON.stringify({ status }),
+        body: JSON.stringify({ rigId, status }),
       });
       await fetchRigs();
     } catch (error) {
@@ -137,9 +137,13 @@ export function RigsProvider({ children }: { children: ReactNode }) {
 
   const toggleFeatured = async (rigId: string) => {
     try {
-      await fetch(`${API_BASE_URL}/rigs/${rigId}/featured`, {
-        method: 'PUT',
-        headers: { 'Authorization': `Bearer ${publicAnonKey}` },
+      await fetch(`${API_BASE_URL}/rigs/toggle-featured`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${publicAnonKey}`,
+        },
+        body: JSON.stringify({ rigId }),
       });
       await fetchRigs();
     } catch (error) {
@@ -149,9 +153,13 @@ export function RigsProvider({ children }: { children: ReactNode }) {
 
   const deleteRig = async (rigId: string) => {
     try {
-      await fetch(`${API_BASE_URL}/rigs/${rigId}`, {
-        method: 'DELETE',
-        headers: { 'Authorization': `Bearer ${publicAnonKey}` },
+      await fetch(`${API_BASE_URL}/rigs/delete`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${publicAnonKey}`,
+        },
+        body: JSON.stringify({ rigId }),
       });
       await fetchRigs();
     } catch (error) {
