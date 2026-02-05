@@ -13,6 +13,31 @@ import { Input } from "./ui/input";
 import { Textarea } from "./ui/textarea";
 import { toast } from "sonner";
 
+// Helper to render text with **bold** markdown support and preserve newlines
+function FormattedText({ text, className }: { text: string; className?: string }) {
+  // Split by newlines first, then process each line for bold
+  const lines = text.split('\n');
+  
+  return (
+    <div className={className}>
+      {lines.map((line, lineIndex) => {
+        const parts = line.split(/(\*\*.*?\*\*)/g);
+        return (
+          <p key={lineIndex} className={lineIndex > 0 ? 'mt-2' : ''}>
+            {parts.map((part, i) => {
+              if (part.startsWith('**') && part.endsWith('**')) {
+                return <strong key={i} className="font-bold">{part.slice(2, -2)}</strong>;
+              }
+              return <span key={i}>{part}</span>;
+            })}
+            {line === '' && <br />}
+          </p>
+        );
+      })}
+    </div>
+  );
+}
+
 export function RigDetailPage() {
   const { id } = useParams();
   const navigate = useNavigate();
@@ -131,12 +156,14 @@ export function RigDetailPage() {
 
             <div className="prose dark:prose-invert max-w-none">
               <h3 className="text-2xl font-bold border-b pb-2 dark:border-neutral-700">Build Description</h3>
-              <p className="whitespace-pre-line text-neutral-700 dark:text-neutral-300 mt-4">{rig.buildDescription}</p>
+              {rig.buildDescription && (
+                <FormattedText text={rig.buildDescription} className="text-neutral-700 dark:text-neutral-300 mt-4" />
+              )}
               
               {rig.story && (
                 <>
                   <h3 className="text-2xl font-bold mt-12 border-b pb-2 dark:border-neutral-700">The Story</h3>
-                  <p className="whitespace-pre-line text-neutral-700 dark:text-neutral-300 mt-4">{rig.story}</p>
+                  <FormattedText text={rig.story} className="text-neutral-700 dark:text-neutral-300 mt-4" />
                 </>
               )}
             </div>
