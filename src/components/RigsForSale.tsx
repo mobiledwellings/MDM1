@@ -1,4 +1,6 @@
 import { HiExternalLink, HiLocationMarker, HiChevronDown, HiChevronUp, HiUpload, HiX } from "react-icons/hi";
+import { MdSpeed } from "react-icons/md";
+import { FaRuler } from "react-icons/fa";
 import { ImageWithFallback } from "./figma/ImageWithFallback";
 import { useState } from "react";
 import { useRigs } from "../contexts/RigsContext";
@@ -338,6 +340,20 @@ export function RigsForSale() {
                     <div className="flex items-center gap-2 text-sm text-neutral-600 dark:text-neutral-400 mb-3">
                       <HiLocationMarker className="w-4 h-4" />
                       <span>{rig.location}</span>
+                      {rig.length && (
+                        <>
+                          <span className="text-neutral-300 dark:text-neutral-600">•</span>
+                          <FaRuler className="w-3 h-3" />
+                          <span>{rig.length} ft</span>
+                        </>
+                      )}
+                      {rig.mileage && (
+                        <>
+                          <span className="text-neutral-300 dark:text-neutral-600">•</span>
+                          <MdSpeed className="w-4 h-4" />
+                          <span>{rig.mileage}</span>
+                        </>
+                      )}
                     </div>
                     {rig.highlights && rig.highlights.length > 0 && (
                       <div className="flex flex-wrap gap-2 mb-4">
