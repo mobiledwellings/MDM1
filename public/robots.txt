@@ -1,0 +1,14 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://mobiledwellings.media/sitemap.xml
+
+# Crawl-delay (be nice to Google)
+Crawl-delay: 1
+
+# Important pages
+Allow: /rigs-for-sale
+Allow: /rigs/
+Allow: /about
+Allow: /skoolie-support

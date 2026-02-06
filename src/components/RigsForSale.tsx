@@ -243,11 +243,14 @@ export function RigsForSale() {
     <section id="rigs" className="bg-neutral-50 dark:bg-neutral-800 border-y border-neutral-200 dark:border-neutral-700">
       <div className="max-w-7xl mx-auto px-6 py-12 md:py-20">
         <div className="mb-12">
-          <h2 className="text-center mb-8 dark:text-white text-3xl font-bold text-neutral-800">
-            The Mobile Dwellings Marketplace
+          <h1 className="text-center mb-4 dark:text-white text-3xl md:text-4xl font-bold text-neutral-800">
+            Skoolies For Sale | Converted Buses & Vans
+          </h1>
+          <h2 className="text-center text-lg text-neutral-600 dark:text-neutral-400 max-w-3xl mx-auto mb-4">
+            The Premier Marketplace for School Bus Conversions, Van Life Builds & Tiny Homes on Wheels
           </h2>
           <p className="text-center text-neutral-600 dark:text-neutral-400 max-w-2xl mx-auto mb-12">
-            Interested in living on the road? Welcome to the premier marketplace for <strong>Skoolies, Van Conversions, and Tiny Homes</strong>. Browse curated listings or list your own rig today.
+            Looking to buy a <strong>skoolie</strong> or <strong>converted school bus</strong>? Browse our curated collection of finished builds from verified sellers. From professionally built <strong>skoolie conversions</strong> to custom <strong>camper vans</strong> and <strong>overland rigs</strong>, find your dream mobile dwelling today.
           </p>
           
           <div className="flex flex-wrap gap-2 justify-center" role="group" aria-label="Filter rigs by type">

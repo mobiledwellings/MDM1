@@ -86,13 +86,48 @@ export function RigDetailPage() {
     ? rig.galleryImages[selectedImageIndex]
     : rig.thumbnail;
 
+  // Generate SEO-friendly description
+  const seoDescription = `${rig.title} for sale - ${rig.price}. ${rig.type} located in ${rig.location}. ${rig.mileage ? `${rig.mileage} miles. ` : ''}${rig.length ? `${rig.length} ft. ` : ''}${rig.buildDescription?.substring(0, 120) || ''}...`;
+  
+  // Structured data for individual listing
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "Vehicle",
+    "name": rig.title,
+    "description": rig.buildDescription?.substring(0, 500),
+    "image": rig.galleryImages || [rig.thumbnail],
+    "url": `https://mobiledwellings.media/rigs/${rig.id}`,
+    "vehicleConfiguration": rig.type,
+    "mileageFromOdometer": rig.mileage ? {
+      "@type": "QuantitativeValue",
+      "value": rig.mileage.replace(/[^0-9]/g, ''),
+      "unitCode": "SMI"
+    } : undefined,
+    "offers": {
+      "@type": "Offer",
+      "price": rig.price?.replace(/[^0-9]/g, ''),
+      "priceCurrency": "USD",
+      "availability": currentStatus === 'sold' ? "https://schema.org/SoldOut" : "https://schema.org/InStock",
+      "itemCondition": "https://schema.org/UsedCondition",
+      "seller": {
+        "@type": "Person",
+        "name": rig.name || "Mobile Dwellings Seller"
+      }
+    }
+  };
+
   return (
     <div className="min-h-screen bg-white dark:bg-neutral-900">
       <SEO 
-        title={rig.title}
-        description={`Price: ${rig.price}. Location: ${rig.location}. ${rig.buildDescription?.substring(0, 100)}...`}
+        title={`${rig.title} | ${rig.type} For Sale`}
+        description={seoDescription}
+        keywords={`${rig.type} for sale, ${rig.title}, skoolie for sale, converted bus, ${rig.location}, buy skoolie`}
         image={rig.thumbnail}
-        url={window.location.href}
+        url={`https://mobiledwellings.media/rigs/${rig.id}`}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
       />
       
       <Header />
