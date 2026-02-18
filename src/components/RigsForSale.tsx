@@ -35,11 +35,13 @@ export function RigsForSale() {
   // Featured rigs for hero section (6 on desktop, 4 on mobile)
   const featuredRigs = rigs.filter(rig => rig.featured).sort((a, b) => (a.featuredOrder || 0) - (b.featuredOrder || 0));
   const visibleFeaturedRigs = featuredRigs.slice(0, isMobile ? 4 : 6);
+  const visibleFeaturedIds = new Set(visibleFeaturedRigs.map(rig => rig.id));
 
-  // Filter logic for categories
-  const filteredRigs = filter === "all" 
+  // Filter logic for categories - exclude featured rigs that are shown above
+  const filteredRigs = (filter === "all" 
     ? rigs 
-    : rigs.filter(rig => rig.type.toLowerCase().includes(filter.toLowerCase()));
+    : rigs.filter(rig => rig.type.toLowerCase().includes(filter.toLowerCase()))
+  ).filter(rig => !visibleFeaturedIds.has(rig.id));
 
   // Compress image before adding to gallery
   const compressImage = (file: File): Promise<string> => {
