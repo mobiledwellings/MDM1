@@ -186,6 +186,43 @@ app.post("/make-server-3ab5944d/rigs", async (c) => {
     
     console.log('Rig listing created successfully:', rigId);
     
+    // Send email notification for new listing
+    const resendApiKey = Deno.env.get('RESEND_API_KEY');
+    if (resendApiKey) {
+      try {
+        const emailHtml = `
+          <h2>New Rig Listing Submitted</h2>
+          <p><strong>Title:</strong> ${rig.title}</p>
+          <p><strong>Type:</strong> ${rig.type}</p>
+          <p><strong>Price:</strong> ${rig.price}</p>
+          <p><strong>Location:</strong> ${rig.location}</p>
+          <p><strong>Seller Name:</strong> ${rig.name || 'Not provided'}</p>
+          <p><strong>Length:</strong> ${rig.length || 'Not provided'} ft</p>
+          <p><strong>Mileage:</strong> ${rig.mileage || 'Not provided'}</p>
+          <p><strong>Instagram:</strong> ${rig.instagram || 'Not provided'}</p>
+          <br/>
+          <p><a href="https://mobiledwellings.media/rigs/${rigId}">View Listing</a></p>
+        `;
+        
+        await fetch('https://api.resend.com/emails', {
+          method: 'POST',
+          headers: {
+            'Authorization': `Bearer ${resendApiKey}`,
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            from: 'Mobile Dwellings <onboarding@resend.dev>',
+            to: 'justin@mobiledwellings.media',
+            subject: `🚐 New Listing Submitted: ${rig.title}`,
+            html: emailHtml,
+          }),
+        });
+        console.log('New listing email notification sent');
+      } catch (emailError) {
+        console.error('Failed to send email notification:', emailError);
+      }
+    }
+    
     return c.json({ success: true, rig });
   } catch (error) {
     console.error("Error creating rig listing:", error);
