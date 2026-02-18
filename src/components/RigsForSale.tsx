@@ -45,6 +45,14 @@ export function RigsForSale() {
     ? getFeaturedRigs()
     : rigs.filter(rig => rig.type.toLowerCase().includes(filter.toLowerCase()));
 
+  // Format price as rounded K (e.g., $84,444 -> $85K)
+  const formatPriceK = (price: string) => {
+    const numericPrice = parseInt(price.replace(/[^0-9]/g, ''), 10);
+    if (isNaN(numericPrice)) return price;
+    const roundedK = Math.ceil(numericPrice / 1000);
+    return `$${roundedK}K`;
+  };
+
   // Compress image before adding to gallery
   const compressImage = (file: File): Promise<string> => {
     return new Promise((resolve, reject) => {
@@ -363,7 +371,7 @@ export function RigsForSale() {
                       className="w-full h-full object-cover transition-all duration-500 group-hover:scale-105"
                     />
                     <div className={`absolute top-3 right-3 ${(rig.status === 'sold' || rig.sold) ? 'bg-red-600' : rig.status === 'pending' ? 'bg-yellow-600' : 'bg-neutral-900 dark:bg-neutral-700'} text-white px-3 py-1 text-sm rounded font-semibold`}>
-                      {(rig.status === 'sold' || rig.sold) ? 'SOLD' : rig.status === 'pending' ? 'PENDING' : rig.price}
+                      {(rig.status === 'sold' || rig.sold) ? 'SOLD' : rig.status === 'pending' ? 'PENDING' : formatPriceK(rig.price)}
                     </div>
                   </div>
                   <div className="p-4">
