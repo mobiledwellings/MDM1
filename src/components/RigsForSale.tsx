@@ -2,7 +2,7 @@ import { HiExternalLink, HiLocationMarker, HiChevronDown, HiChevronUp, HiUpload,
 import { MdSpeed } from "react-icons/md";
 import { FaRuler } from "react-icons/fa";
 import { ImageWithFallback } from "./figma/ImageWithFallback";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useRigs } from "../contexts/RigsContext";
 import { Link } from "react-router-dom";
 import { Input } from "./ui/input";
@@ -12,8 +12,17 @@ import { toast } from "sonner";
 
 export function RigsForSale() {
   const { rigs, addRig } = useRigs();
-  const [filter, setFilter] = useState<string>("featured");
+  const [filter, setFilter] = useState<string>("all");
   const [isFormOpen, setIsFormOpen] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+  
+  // Check screen size for featured rigs count
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth < 768);
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
   
   // Form states
   const [galleryImages, setGalleryImages] = useState<File[]>([]);
@@ -23,9 +32,12 @@ export function RigsForSale() {
   const [isDragOver, setIsDragOver] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const filteredRigs = filter === "featured"
-    ? rigs.filter(rig => rig.featured).sort((a, b) => (a.featuredOrder || 0) - (b.featuredOrder || 0))
-    : filter === "all" 
+  // Featured rigs for hero section (6 on desktop, 4 on mobile)
+  const featuredRigs = rigs.filter(rig => rig.featured).sort((a, b) => (a.featuredOrder || 0) - (b.featuredOrder || 0));
+  const visibleFeaturedRigs = featuredRigs.slice(0, isMobile ? 4 : 6);
+
+  // Filter logic for categories
+  const filteredRigs = filter === "all" 
     ? rigs 
     : rigs.filter(rig => rig.type.toLowerCase().includes(filter.toLowerCase()));
 
@@ -246,20 +258,64 @@ export function RigsForSale() {
           <h1 className="text-center mb-8 dark:text-white text-3xl md:text-4xl font-bold text-neutral-800">
             The Mobile Dwellings Marketplace
           </h1>
-          
+        </div>
+
+        {/* Featured Rigs Section */}
+        {featuredRigs.length > 0 && (
+          <div className="mb-16">
+            <h2 className="text-xl font-bold text-neutral-800 dark:text-white mb-6">Featured Listings</h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-12">
+              {visibleFeaturedRigs.map((rig) => (
+                <article key={rig.id} className="group bg-white dark:bg-neutral-900 rounded-lg overflow-hidden border border-neutral-200 dark:border-neutral-700 hover:shadow-lg transition-shadow">
+                  <Link to={`/rigs/${rig.id}`} className="block" aria-label={`View details for ${rig.title}`}>
+                    <div className="relative aspect-video overflow-hidden bg-neutral-100 dark:bg-neutral-800">
+                      <ImageWithFallback 
+                        src={rig.thumbnail}
+                        alt={`${rig.title} - ${rig.type} in ${rig.location}`}
+                        className="w-full h-full object-cover transition-all duration-500 group-hover:scale-105"
+                      />
+                      <div className={`absolute top-3 right-3 ${(rig.status === 'sold' || rig.sold) ? 'bg-red-600' : rig.status === 'pending' ? 'bg-yellow-600' : 'bg-neutral-900 dark:bg-neutral-700'} text-white px-3 py-1 text-sm rounded font-semibold`}>
+                        {(rig.status === 'sold' || rig.sold) ? 'SOLD' : rig.status === 'pending' ? 'PENDING' : rig.price}
+                      </div>
+                    </div>
+                    <div className="p-4">
+                      <div className="text-neutral-500 dark:text-neutral-400 text-xs uppercase tracking-wider mb-2 font-bold">{rig.type}</div>
+                      <h3 className="text-lg font-bold mb-3 dark:text-white group-hover:text-neutral-600 dark:group-hover:text-neutral-400 transition-colors line-clamp-2">{rig.title}</h3>
+                      <div className="flex items-center gap-2 text-sm text-neutral-600 dark:text-neutral-400 mb-3">
+                        <HiLocationMarker className="w-4 h-4" />
+                        <span>{rig.location}</span>
+                        {rig.length && (
+                          <>
+                            <span className="text-neutral-300 dark:text-neutral-600">•</span>
+                            <FaRuler className="w-3 h-3" />
+                            <span>{rig.length} ft</span>
+                          </>
+                        )}
+                        {rig.mileage && (
+                          <>
+                            <span className="text-neutral-300 dark:text-neutral-600">•</span>
+                            <MdSpeed className="w-4 h-4" />
+                            <span>{Number(rig.mileage).toLocaleString()}</span>
+                          </>
+                        )}
+                      </div>
+                      <div className="flex items-center gap-2 text-neutral-600 dark:text-neutral-400 text-sm font-medium">
+                        Full Specs & Photos
+                        <HiExternalLink className="w-4 h-4" />
+                      </div>
+                    </div>
+                  </Link>
+                </article>
+              ))}
+            </div>
+          </div>
+        )}
+
+        {/* Category Filters */}
+        <div className="mb-8">
           <div className="flex flex-wrap gap-2 justify-center" role="group" aria-label="Filter rigs by type">
             <button
-              aria-pressed={filter === "featured"}
-              onClick={() => setFilter("featured")}
-              className={`px-4 py-2 rounded transition-colors font-medium ${
-                filter === "featured"
-                  ? "bg-neutral-900 dark:bg-neutral-700 text-white"
-                  : "bg-white dark:bg-neutral-900 text-neutral-600 dark:text-neutral-400 hover:bg-neutral-100 dark:hover:bg-neutral-800 border border-neutral-200 dark:border-neutral-700"
-              }`}
-            >
-              Featured Rigs
-            </button>
-            <button
+              aria-pressed={filter === "all"}
               onClick={() => setFilter("all")}
               className={`px-4 py-2 rounded transition-colors font-medium ${
                 filter === "all"
@@ -270,36 +326,40 @@ export function RigsForSale() {
               All Listings
             </button>
             <button
-              onClick={() => setFilter("bus")}
+              aria-pressed={filter === "skoolie"}
+              onClick={() => setFilter("skoolie")}
               className={`px-4 py-2 rounded transition-colors font-medium ${
-                filter === "bus"
+                filter === "skoolie"
                   ? "bg-neutral-900 dark:bg-neutral-700 text-white"
                   : "bg-white dark:bg-neutral-900 text-neutral-600 dark:text-neutral-400 hover:bg-neutral-100 dark:hover:bg-neutral-800 border border-neutral-200 dark:border-neutral-700"
               }`}
             >
-              Skoolies for Sale
+              Skoolies
             </button>
             <button
-              onClick={() => setFilter("van")}
+              aria-pressed={filter === "coach"}
+              onClick={() => setFilter("coach")}
               className={`px-4 py-2 rounded transition-colors font-medium ${
-                filter === "van"
+                filter === "coach"
                   ? "bg-neutral-900 dark:bg-neutral-700 text-white"
                   : "bg-white dark:bg-neutral-900 text-neutral-600 dark:text-neutral-400 hover:bg-neutral-100 dark:hover:bg-neutral-800 border border-neutral-200 dark:border-neutral-700"
               }`}
             >
-              Vans
+              Coaches
             </button>
             <button
-              onClick={() => setFilter("tiny")}
+              aria-pressed={filter === "box truck"}
+              onClick={() => setFilter("box truck")}
               className={`px-4 py-2 rounded transition-colors font-medium ${
-                filter === "tiny"
+                filter === "box truck"
                   ? "bg-neutral-900 dark:bg-neutral-700 text-white"
                   : "bg-white dark:bg-neutral-900 text-neutral-600 dark:text-neutral-400 hover:bg-neutral-100 dark:hover:bg-neutral-800 border border-neutral-200 dark:border-neutral-700"
               }`}
             >
-              Tiny Houses
+              Box Trucks
             </button>
             <button
+              aria-pressed={filter === "overland"}
               onClick={() => setFilter("overland")}
               className={`px-4 py-2 rounded transition-colors font-medium ${
                 filter === "overland"
@@ -308,6 +368,28 @@ export function RigsForSale() {
               }`}
             >
               Overland
+            </button>
+            <button
+              aria-pressed={filter === "towable"}
+              onClick={() => setFilter("towable")}
+              className={`px-4 py-2 rounded transition-colors font-medium ${
+                filter === "towable"
+                  ? "bg-neutral-900 dark:bg-neutral-700 text-white"
+                  : "bg-white dark:bg-neutral-900 text-neutral-600 dark:text-neutral-400 hover:bg-neutral-100 dark:hover:bg-neutral-800 border border-neutral-200 dark:border-neutral-700"
+              }`}
+            >
+              Towables
+            </button>
+            <button
+              aria-pressed={filter === "sailboat"}
+              onClick={() => setFilter("sailboat")}
+              className={`px-4 py-2 rounded transition-colors font-medium ${
+                filter === "sailboat"
+                  ? "bg-neutral-900 dark:bg-neutral-700 text-white"
+                  : "bg-white dark:bg-neutral-900 text-neutral-600 dark:text-neutral-400 hover:bg-neutral-100 dark:hover:bg-neutral-800 border border-neutral-200 dark:border-neutral-700"
+              }`}
+            >
+              Sailboats
             </button>
           </div>
         </div>
