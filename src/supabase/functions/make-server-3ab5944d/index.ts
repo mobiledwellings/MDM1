@@ -12,6 +12,41 @@ const supabase = createClient(
   Deno.env.get('SUPABASE_SERVICE_ROLE_KEY')!,
 );
 
+// Email notification helper using Resend
+const NOTIFICATION_EMAIL = 'justin@mobiledwellings.media';
+const sendEmailNotification = async (subject: string, htmlContent: string) => {
+  const resendApiKey = Deno.env.get('RESEND_API_KEY');
+  if (!resendApiKey) {
+    console.log('RESEND_API_KEY not configured, skipping email notification');
+    return;
+  }
+  
+  try {
+    const response = await fetch('https://api.resend.com/emails', {
+      method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${resendApiKey}`,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        from: 'Mobile Dwellings <notifications@mobiledwellings.media>',
+        to: NOTIFICATION_EMAIL,
+        subject: subject,
+        html: htmlContent,
+      }),
+    });
+    
+    if (response.ok) {
+      console.log('Email notification sent successfully');
+    } else {
+      const error = await response.text();
+      console.error('Failed to send email notification:', error);
+    }
+  } catch (error) {
+    console.error('Error sending email notification:', error);
+  }
+};
+
 // Initialize storage bucket on startup
 const BUCKET_NAME = 'make-3ab5944d-rig-images';
 (async () => {
@@ -186,6 +221,24 @@ app.post("/make-server-3ab5944d/rigs", async (c) => {
     
     console.log('Rig listing created successfully:', rigId);
     
+    // Send email notification for new listing
+    await sendEmailNotification(
+      `🚐 New Listing Submitted: ${rig.title}`,
+      `
+        <h2>New Rig Listing Submitted</h2>
+        <p><strong>Title:</strong> ${rig.title}</p>
+        <p><strong>Type:</strong> ${rig.type}</p>
+        <p><strong>Price:</strong> ${rig.price}</p>
+        <p><strong>Location:</strong> ${rig.location}</p>
+        <p><strong>Seller Name:</strong> ${rig.name || 'Not provided'}</p>
+        <p><strong>Length:</strong> ${rig.length || 'Not provided'} ft</p>
+        <p><strong>Mileage:</strong> ${rig.mileage || 'Not provided'}</p>
+        <p><strong>Instagram:</strong> ${rig.instagram || 'Not provided'}</p>
+        <br/>
+        <p><a href="https://mobiledwellings.media/rigs/${rigId}">View Listing</a></p>
+      `
+    );
+    
     return c.json({ success: true, rig });
   } catch (error) {
     console.error("Error creating rig listing:", error);
@@ -314,6 +367,20 @@ app.post("/make-server-3ab5944d/rigs/toggle-featured", async (c) => {
     await kv.set(rigId, updatedRig);
     
     console.log('Rig featured status toggled:', rigId);
+    
+    // Send email notification when a rig is featured
+    await sendEmailNotification(
+      `⭐ Rig Featured: ${updatedRig.title}`,
+      `
+        <h2>Rig Has Been Featured</h2>
+        <p><strong>Title:</strong> ${updatedRig.title}</p>
+        <p><strong>Type:</strong> ${updatedRig.type}</p>
+        <p><strong>Price:</strong> ${updatedRig.price}</p>
+        <p><strong>Location:</strong> ${updatedRig.location}</p>
+        <br/>
+        <p><a href="https://mobiledwellings.media/rigs/${rigId}">View Listing</a></p>
+      `
+    );
     
     return c.json({ success: true, rig: updatedRig });
   } catch (error) {
