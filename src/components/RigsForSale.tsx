@@ -267,9 +267,12 @@ export function RigsForSale() {
     <section id="rigs" className="bg-neutral-50 dark:bg-neutral-800 border-y border-neutral-200 dark:border-neutral-700">
       <div className="max-w-7xl mx-auto px-6 py-12 md:py-20">
         <div className="mb-12">
-          <h1 className="text-center mb-8 dark:text-white text-3xl md:text-4xl font-bold text-neutral-800">
+          <h1 className="text-center mb-4 dark:text-white text-3xl md:text-4xl font-bold text-neutral-800">
             The Mobile Dwellings Marketplace
           </h1>
+          <p className="text-center text-neutral-600 dark:text-neutral-400 max-w-2xl mx-auto">
+            Whether by land or by sea the Mobile Dwellings Marketplace is a space for full time homes that you can take with you. These are finished rigs for your window shopping or literal shopping pleasure.
+          </p>
         </div>
 
         {/* Category Filters */}
