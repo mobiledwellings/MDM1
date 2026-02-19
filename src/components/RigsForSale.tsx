@@ -271,7 +271,7 @@ export function RigsForSale() {
             The Mobile Dwellings Marketplace
           </h1>
           <p className="text-center text-neutral-600 dark:text-neutral-400 max-w-2xl mx-auto">
-            Whether by land or by sea the Mobile Dwellings Marketplace is a space for full time homes that you can take with you. These are finished rigs for your window shopping or literal shopping pleasure.
+            Whether by land or by sea the Mobile Dwellings Marketplace is a space for full time homes that you can take with you. Finished rigs for your window shopping or literal shopping pleasure.
           </p>
         </div>
 
