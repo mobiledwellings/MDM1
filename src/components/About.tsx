@@ -12,21 +12,15 @@ export function About() {
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           <article className="prose prose-lg lg:col-span-2 mx-auto">
             <p className="text-neutral-600 dark:text-neutral-400 leading-relaxed mb-6 md:text-left text-center">
-              <strong>Mobile Dwellings</strong> is a documentary video series exploring the diverse world of alternative living. 
-              From converted school buses and overland rigs to tiny houses on wheels and liveaboard sailboats, 
-              we showcase the creativity, craftsmanship, and courage it takes to embrace a mobile lifestyle.
+              <strong>Mobile Dwellings</strong> is a documentary video series exploring alternative ways of living. From converted school buses and overland rigs to tiny homes and liveaboard sailboats, we focus on the people behind the builds: the decisions they made, the tradeoffs they accepted, and the freedom they found along the way.
             </p>
 
             <p className="text-neutral-600 dark:text-neutral-400 leading-relaxed mb-6 md:text-left text-center">
-              Each video is an intimate portrait—a conversation with individuals who've chosen to live differently. 
-              We're interested in the "why" as much as the "how." What drives someone to downsize, simplify, and 
-              hit the road? What challenges do they face? What freedoms have they discovered? We believe these stories 
-              matter, and we're committed to telling them with care.
+              Each video is a conversation, not just a tour. We care about why someone chose this life and the challenges, risks, and personal growth that made it either worth it or not.
             </p>
 
             <p className="text-neutral-600 dark:text-neutral-400 leading-relaxed md:text-left text-center">
-              Whether you're already living on the road, dreaming of your first build, or simply curious about 
-              alternative lifestyles, Mobile Dwellings is here to inspire, inform, and connect you with a community of nomadic explorers.
+              If you have a mobile dwelling and a story you want to share we'd love to hear from you.
             </p>
           </article>
         </div>
