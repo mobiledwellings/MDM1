@@ -345,7 +345,7 @@ export function GearShop() {
             The Mobile Dwellings Gear Shop
           </h2>
           <p className="text-center text-neutral-600 dark:text-neutral-400 max-w-2xl mx-auto mb-4">
-            Gear I actually use and recommend for your conversion. These are the same products featured in our builds — tested in real-world conditions.
+            Gear I actually use and recommend for your conversion. These are the same products featured in our builds and tested in real-world conditions.
           </p>
           <p className="text-center text-sm text-neutral-500 dark:text-neutral-500 max-w-2xl mx-auto mb-12">
             Affiliate links support the channel at no extra cost to you. Updated regularly with new deals.
