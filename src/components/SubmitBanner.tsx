@@ -236,13 +236,13 @@ export function SubmitBanner() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
           <div className="flex flex-col justify-center max-w-[520px] space-y-[58px]">
             <p className="text-neutral-600 dark:text-neutral-400 leading-relaxed text-center text-lg mb-8">
-              <strong>Mobile Dwellings</strong> is a documentary video series exploring alternative ways of living — From converted school buses and overland rigs to tiny homes and liveaboard sailboats, we focus on the people behind the builds: the decisions they made, the tradeoffs they accepted, and the freedom they found along the way.
+              <strong>Mobile Dwellings</strong> is a documentary video series exploring alternative ways of living. From converted school buses and overland rigs to tiny homes and liveaboard sailboats, we focus on the people behind the builds: the decisions they made, the tradeoffs they accepted, and the freedom they found along the way.
             </p>
             <p className="text-neutral-600 dark:text-neutral-400 leading-relaxed text-center text-lg mb-8">
               Each video is a conversation, not just a tour. We care about why someone chose this life and the challenges, risks, and personal growth that made it either worth it or not.
             </p>
             <p className="text-neutral-600 dark:text-neutral-400 leading-relaxed text-center text-lg">
-              If you have a mobile dwelling and a story you want to share — whether it's finished or still unfolding — we'd love to hear from you.
+              If you have a mobile dwelling and a story you want to share we'd love to hear from you.
             </p>
           </div>
 
