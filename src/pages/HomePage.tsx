@@ -10,7 +10,6 @@ import { SkoolieSupport } from "../components/SkoolieSupport";
 import { About } from "../components/About";
 import { ClosingBanner } from "../components/ClosingBanner";
 import { Footer } from "../components/Footer";
-import { WalkingCat } from "../components/WalkingCat";
 
 export function HomePage() {
   const location = useLocation();
@@ -50,7 +49,6 @@ export function HomePage() {
           <ClosingBanner />
         </main>
         <Footer />
-        <WalkingCat />
       </div>
     </>
   );
