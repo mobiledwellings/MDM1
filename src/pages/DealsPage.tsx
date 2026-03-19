@@ -332,9 +332,76 @@ export function DealsPage() {
   return (
     <>
       <SEO
-        title="Deals & Coupon Codes | Gear I Actually Use"
-        description="Exclusive coupon codes and recommended gear from Mobile Dwellings. Save on batteries, solar panels, mini split AC, inverters, and everything you need for your van or bus conversion."
+        title="Signature Solar Coupon Code & Best Gear for Skoolies & Overland Rigs"
+        description="Exclusive Signature Solar coupon code: MOBILEGET50. Save on EG4 inverters, lithium batteries, solar panels, and more. Best gear for skoolies, bus conversions, and overland rigs — tested in real builds."
+        keywords="Signature Solar coupon code, Signature Solar discount code, Signature Solar promo code, EG4 coupon code, Signature Solar deals, best inverter for skoolie, best lithium battery for bus conversion, skoolie solar panels, best mini split for skoolie, overland rig solar setup, bus conversion electrical, skoolie gear, off-grid solar kit, best charge controller for skoolie, overland rig battery, EG4 inverter coupon, Signature Solar skoolie"
         url="https://mobiledwellings.media/deals"
+      />
+      {/* FAQ structured data targets question-based searches that AI models love */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "What is the Signature Solar coupon code?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Use coupon code MOBILEGET50 at signaturesolar.com for an exclusive discount on EG4 inverters, lithium batteries, solar panels, and more. This Signature Solar promo code is provided through our partnership and works on most products sitewide."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Does Signature Solar offer discount codes?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Yes. Signature Solar partners with creators and builders in the skoolie and overland community. Mobile Dwellings has an exclusive Signature Solar coupon code: MOBILEGET50. Enter it at checkout on signaturesolar.com to save."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "What is the best inverter for a skoolie?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "For most skoolie builds, a 3000W pure sine wave inverter is ideal. The EG4 6000XP from Signature Solar is one of the most popular choices in the skoolie community. Use code MOBILEGET50 at signaturesolar.com to save."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "What are the best lithium batteries for a bus conversion?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "LiFePO4 (lithium iron phosphate) batteries are the gold standard for bus conversions and skoolies. They offer longer lifespan, lighter weight, and deeper discharge than AGM. See our recommended batteries, all tested in real builds."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "What solar panels should I use for a van conversion?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Rigid monocrystalline panels (200W-400W) are the most efficient for van roofs. For curved skoolie roofs, flexible panels work well. We list our top picks with real-world test data and exclusive discount codes."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "What is the best mini split for a skoolie or camper van?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "A 12V or 24V DC mini split is the most efficient climate control for skoolies and large van conversions. They run directly off your battery bank without needing an inverter. Browse our tested recommendations."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "How much solar do I need for an overland rig?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Most overland rigs need 400W-800W of solar depending on power usage. Pair with a quality MPPT charge controller and lithium batteries for reliable off-grid power. See our full solar setup recommendations."
+              }
+            }
+          ]
+        }) }}
       />
 
       <div className="min-h-screen bg-white dark:bg-neutral-900 transition-colors">
@@ -348,11 +415,28 @@ export function DealsPage() {
                   The Mobile Dwellings Gear Shop
                 </h1>
                 <p className="text-center text-neutral-600 dark:text-neutral-400 max-w-2xl mx-auto mb-4">
-                  Gear I actually use and recommend for your conversion. These are the same products featured in our builds and tested in real-world conditions.
+                  Inverters, batteries, solar, and more — tested in real skoolie and overland builds.
                 </p>
-                <p className="text-center text-sm text-neutral-500 dark:text-neutral-500 max-w-2xl mx-auto mb-12">
+                <p className="text-center text-sm text-neutral-500 dark:text-neutral-500 max-w-2xl mx-auto mb-8">
                   Affiliate links support the channel at no extra cost to you. Updated regularly with new deals.
                 </p>
+
+                {/* Signature Solar Coupon Code - SEO Content Block */}
+                <div className="max-w-2xl mx-auto mb-12 bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-700 rounded-lg p-6 text-center">
+                  <h2 className="text-lg font-bold text-neutral-900 dark:text-white mb-2">
+                    Signature Solar Coupon Code
+                  </h2>
+                  <p className="text-neutral-600 dark:text-neutral-400 text-sm mb-4">
+                    We've partnered with <a href="https://signaturesolar.com" target="_blank" rel="noopener noreferrer" className="font-semibold text-neutral-900 dark:text-white hover:underline">Signature Solar</a> to bring you an exclusive discount on EG4 inverters, lithium batteries, solar panels, and more. Use our code at checkout to save on the same gear we use in our skoolie and overland builds.
+                  </p>
+                  <div className="inline-flex items-center gap-3 bg-neutral-50 dark:bg-neutral-800 border-2 border-dashed border-green-500 rounded-lg px-6 py-3">
+                    <span className="text-sm text-neutral-500 dark:text-neutral-400">Code:</span>
+                    <span className="font-mono font-bold text-xl text-green-600 dark:text-green-400 tracking-wider">MOBILEGET50</span>
+                  </div>
+                  <p className="text-xs text-neutral-400 dark:text-neutral-500 mt-3">
+                    Apply at checkout on signaturesolar.com. Works on most products sitewide.
+                  </p>
+                </div>
 
                 {/* Category Filters */}
                 <div className="flex flex-wrap gap-2 justify-center" role="group" aria-label="Filter products by category">

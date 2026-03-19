@@ -31,9 +31,9 @@ export function HomePage() {
   return (
     <>
       <SEO 
-        // Optimized for keywords people actually search for
-        title="If you Build it You can Go"
-        description="If You Build It You Can Go - Mobile Dwellings is a documentary series exploring alternative ways of living. Join a community of people embracing mobile lifestyles through conversions, builds, and real stories."
+        title="Skoolies, Bus Conversions, Van Life & Overland Rigs"
+        description="Browse skoolies for sale, watch bus conversion tours, and explore van life and overland rigs. Mobile Dwellings is the community marketplace for converted school buses, camper vans, tiny homes on wheels, and alternative mobile living."
+        keywords="skoolie, skoolies for sale, bus conversion, school bus conversion, van life, overland rig, converted bus, camper van, tiny home on wheels, mobile living, skoolie marketplace, van conversion for sale, RV alternative, off-grid living"
         url="https://mobiledwellings.media"
       />
       

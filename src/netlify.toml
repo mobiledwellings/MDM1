@@ -2,6 +2,8 @@
   command = "npm run build"
   publish = "build"
 
+# Prerendered pages get their own HTML with correct SEO meta tags.
+# Netlify serves actual files first, then falls back to SPA index.html.
 [[redirects]]
   from = "/*"
   to = "/index.html"
