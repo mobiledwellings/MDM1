@@ -333,7 +333,7 @@ export function DealsPage() {
     <>
       <SEO
         title="Signature Solar Coupon Code & Best Gear for Skoolies & Overland Rigs"
-        description="Exclusive Signature Solar coupon code: MOBILEGET50. Save on EG4 inverters, lithium batteries, solar panels, and more. Best gear for skoolies, bus conversions, and overland rigs — tested in real builds."
+        description="Exclusive Signature Solar coupon code: SAVE50MD. Save on EG4 inverters, lithium batteries, solar panels, and more. Best gear for skoolies, bus conversions, and overland rigs — tested in real builds."
         keywords="Signature Solar coupon code, Signature Solar discount code, Signature Solar promo code, EG4 coupon code, Signature Solar deals, best inverter for skoolie, best lithium battery for bus conversion, skoolie solar panels, best mini split for skoolie, overland rig solar setup, bus conversion electrical, skoolie gear, off-grid solar kit, best charge controller for skoolie, overland rig battery, EG4 inverter coupon, Signature Solar skoolie"
         url="https://mobiledwellings.media/deals"
       />
@@ -349,7 +349,7 @@ export function DealsPage() {
               "name": "What is the Signature Solar coupon code?",
               "acceptedAnswer": {
                 "@type": "Answer",
-                "text": "Use coupon code MOBILEGET50 at signaturesolar.com for an exclusive discount on EG4 inverters, lithium batteries, solar panels, and more. This Signature Solar promo code is provided through our partnership and works on most products sitewide."
+                "text": "Use coupon code SAVE50MD at signaturesolar.com for an exclusive discount on EG4 inverters, lithium batteries, solar panels, and more. This Signature Solar promo code is provided through our partnership and works on most products sitewide."
               }
             },
             {
@@ -357,7 +357,7 @@ export function DealsPage() {
               "name": "Does Signature Solar offer discount codes?",
               "acceptedAnswer": {
                 "@type": "Answer",
-                "text": "Yes. Signature Solar partners with creators and builders in the skoolie and overland community. Mobile Dwellings has an exclusive Signature Solar coupon code: MOBILEGET50. Enter it at checkout on signaturesolar.com to save."
+                "text": "Yes. Signature Solar partners with creators and builders in the skoolie and overland community. Mobile Dwellings has an exclusive Signature Solar coupon code: SAVE50MD. Enter it at checkout on signaturesolar.com to save."
               }
             },
             {
@@ -365,7 +365,7 @@ export function DealsPage() {
               "name": "What is the best inverter for a skoolie?",
               "acceptedAnswer": {
                 "@type": "Answer",
-                "text": "For most skoolie builds, a 3000W pure sine wave inverter is ideal. The EG4 6000XP from Signature Solar is one of the most popular choices in the skoolie community. Use code MOBILEGET50 at signaturesolar.com to save."
+                "text": "For most skoolie builds, a 3000W pure sine wave inverter is ideal. The EG4 6000XP from Signature Solar is one of the most popular choices in the skoolie community. Use code SAVE50MD at signaturesolar.com to save."
               }
             },
             {
@@ -431,7 +431,7 @@ export function DealsPage() {
                   </p>
                   <div className="inline-flex items-center gap-3 bg-neutral-50 dark:bg-neutral-800 border-2 border-dashed border-green-500 rounded-lg px-6 py-3">
                     <span className="text-sm text-neutral-500 dark:text-neutral-400">Code:</span>
-                    <span className="font-mono font-bold text-xl text-green-600 dark:text-green-400 tracking-wider">MOBILEGET50</span>
+                    <span className="font-mono font-bold text-xl text-green-600 dark:text-green-400 tracking-wider">SAVE50MD</span>
                   </div>
                   <p className="text-xs text-neutral-400 dark:text-neutral-500 mt-3">
                     Apply at checkout on signaturesolar.com. Works on most products sitewide.

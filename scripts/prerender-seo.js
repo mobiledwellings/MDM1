@@ -41,9 +41,9 @@ const pages = [
   {
     route: '/deals',
     title: 'Signature Solar Coupon Code & Best Gear for Skoolies & Overland Rigs | Mobile Dwellings',
-    description: 'Exclusive Signature Solar coupon code: MOBILEGET50. Save on EG4 inverters, lithium batteries, solar panels, and more. Best gear for skoolies, bus conversions, and overland rigs — tested in real builds.',
+    description: 'Exclusive Signature Solar coupon code: SAVE50MD. Save on EG4 inverters, lithium batteries, solar panels, and more. Best gear for skoolies, bus conversions, and overland rigs — tested in real builds.',
     keywords: 'Signature Solar coupon code, Signature Solar discount code, Signature Solar promo code, EG4 coupon code, Signature Solar deals, best inverter for skoolie, best lithium battery for bus conversion, skoolie solar panels, best mini split for skoolie, overland rig solar setup',
-    noscript: 'Signature Solar coupon code MOBILEGET50 — save on EG4 inverters, lithium batteries, solar panels, and more. Tested gear for skoolies, bus conversions, and overland rigs.',
+    noscript: 'Signature Solar coupon code SAVE50MD — save on EG4 inverters, lithium batteries, solar panels, and more. Tested gear for skoolies, bus conversions, and overland rigs.',
     extraStructuredData: `
     <script type="application/ld+json">
     {
@@ -55,7 +55,7 @@ const pages = [
           "name": "What is the Signature Solar coupon code?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Use coupon code MOBILEGET50 at signaturesolar.com for an exclusive discount on EG4 inverters, lithium batteries, solar panels, and more."
+            "text": "Use coupon code SAVE50MD at signaturesolar.com for an exclusive discount on EG4 inverters, lithium batteries, solar panels, and more."
           }
         },
         {
@@ -63,7 +63,7 @@ const pages = [
           "name": "Does Signature Solar offer discount codes?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Yes. Mobile Dwellings has an exclusive Signature Solar coupon code: MOBILEGET50. Enter it at checkout on signaturesolar.com to save."
+            "text": "Yes. Mobile Dwellings has an exclusive Signature Solar coupon code: SAVE50MD. Enter it at checkout on signaturesolar.com to save."
           }
         },
         {
@@ -71,7 +71,7 @@ const pages = [
           "name": "What is the best inverter for a skoolie?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "For most skoolie builds, a 3000W pure sine wave inverter is ideal. The EG4 6000XP from Signature Solar is popular. Use code MOBILEGET50 at signaturesolar.com to save."
+            "text": "For most skoolie builds, a 3000W pure sine wave inverter is ideal. The EG4 6000XP from Signature Solar is popular. Use code SAVE50MD at signaturesolar.com to save."
           }
         },
         {
