@@ -14,8 +14,12 @@ export function Footer() {
   const { isAdmin } = useAdmin();
 
   const handleSmoothScroll = (e: React.MouseEvent<HTMLAnchorElement>, targetId: string) => {
+    // On the homepage, intercept the click and smooth-scroll to the section.
+    // On any other page, fall through so the browser navigates to "/#targetId"
+    // and lands on the homepage at the right anchor.
+    if (window.location.pathname !== '/') return;
+
     e.preventDefault();
-    
     const element = document.getElementById(targetId);
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });
@@ -55,23 +59,28 @@ export function Footer() {
             <div className="flex flex-col items-center md:items-end gap-6">
               <ul className="space-y-2 text-sm text-center md:text-right">
                 <li>
-                  <a href="#rigs" className="text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white transition-colors font-semibold" onClick={(e) => handleSmoothScroll(e, 'rigs')}>
+                  <a href="/#rigs" className="text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white transition-colors font-semibold" onClick={(e) => handleSmoothScroll(e, 'rigs')}>
                     Rigs For Sale
                   </a>
                 </li>
                 <li>
-                  <a href="#sell-your-rig" className="text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white transition-colors font-semibold" onClick={(e) => handleSmoothScroll(e, 'sell-your-rig')}>
+                  <a href="/#sell-your-rig" className="text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white transition-colors font-semibold" onClick={(e) => handleSmoothScroll(e, 'sell-your-rig')}>
                     Sell Your Rig
                   </a>
                 </li>
                 <li>
-                  <a href="#submit" className="text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white transition-colors font-semibold" onClick={(e) => handleSmoothScroll(e, 'submit')}>
+                  <a href="/#submit" className="text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white transition-colors font-semibold" onClick={(e) => handleSmoothScroll(e, 'submit')}>
                     Get Featured
                   </a>
                 </li>
                 <li>
                   <a href="/deals" className="text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white transition-colors font-semibold">
                     Deals & Coupons
+                  </a>
+                </li>
+                <li>
+                  <a href="/signature-solar-coupon" className="text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white transition-colors font-semibold">
+                    Signature Solar Coupon
                   </a>
                 </li>
               </ul>

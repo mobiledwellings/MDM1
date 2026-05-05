@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { HelmetProvider } from "react-helmet-async";
 import { ThemeProvider } from "./contexts/ThemeContext";
 import { RigsProvider } from "./contexts/RigsContext";
@@ -10,6 +10,9 @@ import { SellYourRigPage } from "./pages/SellYourRigPage";
 import { AboutPage } from "./pages/AboutPage";
 import { SkoolieSupportPage } from "./pages/SkoolieSupportPage";
 import { RigDetailPage } from "./pages/RigDetailPage";
+import { LeadFinderPage } from "./pages/LeadFinderPage";
+import { DealsPage } from "./pages/DealsPage";
+import { SignatureSolarCouponPage } from "./pages/SignatureSolarCouponPage";
 import { Toaster } from "sonner";
 
 export default function App() {
@@ -28,7 +31,10 @@ export default function App() {
                   <Route path="/sell-your-rig" element={<SellYourRigPage />} />
                   <Route path="/about" element={<AboutPage />} />
                   <Route path="/skoolie-support" element={<SkoolieSupportPage />} />
-                  <Route path="/deals" element={<Navigate to="/#gear" replace />} />
+                  <Route path="/deals" element={<DealsPage />} />
+                  <Route path="/leads" element={<LeadFinderPage />} />
+                  <Route path="/signature-solar-coupon" element={<SignatureSolarCouponPage />} />
+                  <Route path="/signature-solar-coupon-code" element={<SignatureSolarCouponPage />} />
                 </Routes>
               </BrowserRouter>
             </DealsProvider>

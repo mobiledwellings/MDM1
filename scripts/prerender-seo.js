@@ -107,6 +107,55 @@ const pages = [
     </script>`,
   },
   {
+    route: '/signature-solar-coupon',
+    title: 'Signature Solar Coupon Code SAVE50MD – $50 Off Your Order | Mobile Dwellings',
+    description: 'Use coupon code SAVE50MD at Signature Solar for $50 off any order over $500. Exclusive Mobile Dwellings discount on EG4 batteries, inverters, solar panels, charge controllers & more at signaturesolar.com.',
+    keywords: 'signature solar coupon code, signature solar discount code, SAVE50MD, signature solar promo code, EG4 coupon code, signature solar off grid discount, skoolie solar discount, van life solar coupon, mobile dwellings coupon, EG4 battery discount, signature solar deals',
+    noscript: 'Mobile Dwellings exclusive Signature Solar coupon code SAVE50MD — $50 off any order over $500 at signaturesolar.com. Works on EG4 batteries, inverters, solar panels, and more.',
+    extraStructuredData: `
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Offer",
+          "name": "Mobile Dwellings Signature Solar Discount Code SAVE50MD",
+          "description": "Save $50 off any Signature Solar order over $500 with coupon code SAVE50MD",
+          "url": "https://signaturesolar.com",
+          "priceSpecification": { "@type": "PriceSpecification", "price": "-50", "priceCurrency": "USD" },
+          "seller": { "@type": "Organization", "name": "Signature Solar", "url": "https://signaturesolar.com" },
+          "validThrough": "2026-05-31"
+        },
+        {
+          "@type": "FAQPage",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "What is the Mobile Dwellings Signature Solar coupon code?",
+              "acceptedAnswer": { "@type": "Answer", "text": "The current Mobile Dwellings coupon code for Signature Solar is SAVE50MD. Enter it at checkout on signaturesolar.com to save $50 off any order over $500." }
+            },
+            {
+              "@type": "Question",
+              "name": "How much does the SAVE50MD coupon code save?",
+              "acceptedAnswer": { "@type": "Answer", "text": "SAVE50MD saves you $50 off any single order of $500 or more at Signature Solar (signaturesolar.com). This applies to EG4 lithium batteries, inverters, solar panels, charge controllers, and solar generators." }
+            },
+            {
+              "@type": "Question",
+              "name": "Does the Mobile Dwellings Signature Solar code work on EG4 products?",
+              "acceptedAnswer": { "@type": "Answer", "text": "Yes. The code SAVE50MD works on EG4 batteries, EG4 inverters, and all other EG4 products sold on signaturesolar.com, as long as your order totals $500 or more." }
+            },
+            {
+              "@type": "Question",
+              "name": "When does the SAVE50MD coupon code expire?",
+              "acceptedAnswer": { "@type": "Answer", "text": "The current code expires May 31, 2026. Mobile Dwellings regularly updates this page with new codes — bookmark it and check back for future Signature Solar discounts." }
+            }
+          ]
+        }
+      ]
+    }
+    </script>`,
+  },
+  {
     route: '/about',
     title: 'About | Skoolie & Van Life Documentary Series | Mobile Dwellings',
     description: 'Mobile Dwellings is a documentary video series featuring converted school buses, overland rigs, van conversions, tiny homes, and liveaboard sailboats. Meet the people behind the builds.',

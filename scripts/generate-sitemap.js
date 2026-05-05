@@ -25,6 +25,7 @@ const staticPages = [
   { path: "/skoolie-support", changefreq: "monthly", priority: "0.8" },
   { path: "/about", changefreq: "monthly", priority: "0.7" },
   { path: "/deals", changefreq: "weekly", priority: "0.6" },
+  { path: "/signature-solar-coupon", changefreq: "monthly", priority: "0.9" },
 ];
 
 async function fetchRigs() {

@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useSearchParams } from "react-router-dom";
 import { SEO } from "../components/SEO";
 import { Header } from "../components/Header";
 import { Footer } from "../components/Footer";
@@ -162,10 +162,43 @@ function ProductCard({ product, isAdmin, onEdit, onDelete, onToggleFeatured }: {
   );
 }
 
+// Valid filter values — used to validate the ?filter=... URL param so an
+// arbitrary string in the URL can't poison state.
+const VALID_FILTERS: readonly (ProductCategory | "featured")[] = [
+  "featured",
+  "batteries",
+  "inverters",
+  "charge-controllers",
+  "solar-panels",
+  "solar-racks",
+  "mini-splits",
+  "solar-generators",
+  "water-heaters",
+] as const;
+
+function parseFilterParam(raw: string | null): ProductCategory | "featured" {
+  return raw && (VALID_FILTERS as readonly string[]).includes(raw)
+    ? (raw as ProductCategory | "featured")
+    : "featured";
+}
+
 export function DealsPage() {
   const { products, addProduct, updateProduct, deleteProduct, toggleFeatured, loading, uploadImage } = useDeals();
   const { isAdmin } = useAdmin();
-  const [filter, setFilter] = useState<ProductCategory | "featured">("featured");
+
+  // URL is the source of truth for the active filter. Reading via useSearchParams
+  // lets the coupon page (and anyone) deep-link to e.g. /deals?filter=batteries.
+  const [searchParams, setSearchParams] = useSearchParams();
+  const filter = parseFilterParam(searchParams.get("filter"));
+  const setFilter = (next: ProductCategory | "featured") => {
+    const params = new URLSearchParams(searchParams);
+    if (next === "featured") {
+      params.delete("filter");
+    } else {
+      params.set("filter", next);
+    }
+    setSearchParams(params);
+  };
   const [isFormOpen, setIsFormOpen] = useState(false);
   const [editingProduct, setEditingProduct] = useState<Product | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -424,17 +457,22 @@ export function DealsPage() {
                 {/* Signature Solar Coupon Code - SEO Content Block */}
                 <div className="max-w-2xl mx-auto mb-12 bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-700 rounded-lg p-6 text-center">
                   <h2 className="text-lg font-bold text-neutral-900 dark:text-white mb-2">
-                    Signature Solar Coupon Code
+                    <Link to="/signature-solar-coupon" className="hover:underline">
+                      Signature Solar Coupon Code
+                    </Link>
                   </h2>
                   <p className="text-neutral-600 dark:text-neutral-400 text-sm mb-4">
-                    We've partnered with <a href="https://signaturesolar.com" target="_blank" rel="noopener noreferrer" className="font-semibold text-neutral-900 dark:text-white hover:underline">Signature Solar</a> to bring you an exclusive discount on EG4 inverters, lithium batteries, solar panels, and more. Use our code at checkout to save on the same gear we use in our skoolie and overland builds.
+                    We've partnered with <a href="https://signaturesolar.com/?ref=mobiledwellings" target="_blank" rel="noopener noreferrer sponsored" className="font-semibold text-neutral-900 dark:text-white hover:underline">Signature Solar</a> to bring you an exclusive discount on EG4 inverters, lithium batteries, solar panels, and more. Use our code at checkout to save on the same gear we use in our skoolie and overland builds.
                   </p>
                   <div className="inline-flex items-center gap-3 bg-neutral-50 dark:bg-neutral-800 border-2 border-dashed border-green-500 rounded-lg px-6 py-3">
                     <span className="text-sm text-neutral-500 dark:text-neutral-400">Code:</span>
                     <span className="font-mono font-bold text-xl text-green-600 dark:text-green-400 tracking-wider">SAVE50MD</span>
                   </div>
                   <p className="text-xs text-neutral-400 dark:text-neutral-500 mt-3">
-                    Apply at checkout on signaturesolar.com. Works on most products sitewide.
+                    Apply at checkout on signaturesolar.com. Works on most products sitewide.{" "}
+                    <Link to="/signature-solar-coupon" className="underline hover:text-neutral-700 dark:hover:text-neutral-300">
+                      Full details &amp; FAQ →
+                    </Link>
                   </p>
                 </div>
 
@@ -654,27 +692,7 @@ export function DealsPage() {
                 </div>
               )}
 
-              {/* Footer Links */}
-              <div className="mt-12 flex flex-wrap gap-x-6 gap-y-2 text-sm justify-center">
-                <Link
-                  to="/#videos"
-                  className="text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white transition-colors"
-                >
-                  ← Watch full rig tours
-                </Link>
-                <Link
-                  to="/#submit"
-                  className="text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white transition-colors"
-                >
-                  Apply to be featured
-                </Link>
-                <Link
-                  to="/#rigs"
-                  className="text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white transition-colors"
-                >
-                  Browse rigs for sale
-                </Link>
-              </div>
+
             </div>
           </section>
         </main>

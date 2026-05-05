@@ -12,3 +12,5 @@ Allow: /rigs-for-sale
 Allow: /rigs/
 Allow: /about
 Allow: /skoolie-support
+Allow: /deals
+Allow: /signature-solar-coupon
