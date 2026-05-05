@@ -44,47 +44,9 @@ const pages = [
     description: 'Exclusive Signature Solar coupon code: SAVE50MD. Save on EG4 inverters, lithium batteries, solar panels, and more. Best gear for skoolies, bus conversions, and overland rigs — tested in real builds.',
     keywords: 'Signature Solar coupon code, Signature Solar discount code, Signature Solar promo code, EG4 coupon code, Signature Solar deals, best inverter for skoolie, best lithium battery for bus conversion, skoolie solar panels, best mini split for skoolie, overland rig solar setup',
     noscript: 'Signature Solar coupon code SAVE50MD — save on EG4 inverters, lithium batteries, solar panels, and more. Tested gear for skoolies, bus conversions, and overland rigs.',
-    extraStructuredData: `
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "FAQPage",
-      "mainEntity": [
-        {
-          "@type": "Question",
-          "name": "What is the Signature Solar coupon code?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Use coupon code SAVE50MD at signaturesolar.com for an exclusive discount on EG4 inverters, lithium batteries, solar panels, and more."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Does Signature Solar offer discount codes?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Yes. Mobile Dwellings has an exclusive Signature Solar coupon code: SAVE50MD. Enter it at checkout on signaturesolar.com to save."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "What is the best inverter for a skoolie?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "For most skoolie builds, a 3000W pure sine wave inverter is ideal. The EG4 6000XP from Signature Solar is popular. Use code SAVE50MD at signaturesolar.com to save."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "What are the best lithium batteries for a bus conversion?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "LiFePO4 (lithium iron phosphate) batteries are the gold standard for bus conversions and skoolies. They offer longer lifespan, lighter weight, and deeper discharge than AGM."
-          }
-        }
-      ]
-    }
-    </script>`,
+    // FAQPage schema is injected at runtime by DealsPage.tsx via
+    // dangerouslySetInnerHTML. Don't duplicate it here — Google flags duplicate
+    // FAQPage entries on the same URL as a critical issue.
   },
   {
     route: '/skoolie-support',
@@ -112,48 +74,11 @@ const pages = [
     description: 'Use coupon code SAVE50MD at Signature Solar for $50 off any order over $500. Exclusive Mobile Dwellings discount on EG4 batteries, inverters, solar panels, charge controllers & more at signaturesolar.com.',
     keywords: 'signature solar coupon code, signature solar discount code, SAVE50MD, signature solar promo code, EG4 coupon code, signature solar off grid discount, skoolie solar discount, van life solar coupon, mobile dwellings coupon, EG4 battery discount, signature solar deals',
     noscript: 'Mobile Dwellings exclusive Signature Solar coupon code SAVE50MD — $50 off any order over $500 at signaturesolar.com. Works on EG4 batteries, inverters, solar panels, and more.',
-    extraStructuredData: `
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@graph": [
-        {
-          "@type": "Offer",
-          "name": "Mobile Dwellings Signature Solar Discount Code SAVE50MD",
-          "description": "Save $50 off any Signature Solar order over $500 with coupon code SAVE50MD",
-          "url": "https://signaturesolar.com",
-          "priceSpecification": { "@type": "PriceSpecification", "price": "-50", "priceCurrency": "USD" },
-          "seller": { "@type": "Organization", "name": "Signature Solar", "url": "https://signaturesolar.com" },
-          "validThrough": "2026-05-31"
-        },
-        {
-          "@type": "FAQPage",
-          "mainEntity": [
-            {
-              "@type": "Question",
-              "name": "What is the Mobile Dwellings Signature Solar coupon code?",
-              "acceptedAnswer": { "@type": "Answer", "text": "The current Mobile Dwellings coupon code for Signature Solar is SAVE50MD. Enter it at checkout on signaturesolar.com to save $50 off any order over $500." }
-            },
-            {
-              "@type": "Question",
-              "name": "How much does the SAVE50MD coupon code save?",
-              "acceptedAnswer": { "@type": "Answer", "text": "SAVE50MD saves you $50 off any single order of $500 or more at Signature Solar (signaturesolar.com). This applies to EG4 lithium batteries, inverters, solar panels, charge controllers, and solar generators." }
-            },
-            {
-              "@type": "Question",
-              "name": "Does the Mobile Dwellings Signature Solar code work on EG4 products?",
-              "acceptedAnswer": { "@type": "Answer", "text": "Yes. The code SAVE50MD works on EG4 batteries, EG4 inverters, and all other EG4 products sold on signaturesolar.com, as long as your order totals $500 or more." }
-            },
-            {
-              "@type": "Question",
-              "name": "When does the SAVE50MD coupon code expire?",
-              "acceptedAnswer": { "@type": "Answer", "text": "The current code expires May 31, 2026. Mobile Dwellings regularly updates this page with new codes — bookmark it and check back for future Signature Solar discounts." }
-            }
-          ]
-        }
-      ]
-    }
-    </script>`,
+    // The full schema graph (WebPage, Person, Organization, Offer, FAQPage,
+    // VideoObject(s), ImageObject(s)) is injected at runtime by
+    // SignatureSolarCouponPage.tsx via react-helmet-async. Don't duplicate
+    // any of those entities here — Google flags duplicate FAQPage / Offer
+    // entries on the same URL as a critical structured-data issue.
   },
   {
     route: '/about',
