@@ -33,12 +33,12 @@ export function RigsForSale() {
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   // Filter logic for categories
-  // On "All Listings", show featured rigs first (6 desktop, 4 mobile)
+  // On "All Listings", show featured rigs first (6 desktop, 3 mobile)
   const getFeaturedRigs = () => {
     return rigs
       .filter(rig => rig.featured)
       .sort((a, b) => (a.featuredOrder || 0) - (b.featuredOrder || 0))
-      .slice(0, isMobile ? 4 : 6);
+      .slice(0, isMobile ? 3 : 6);
   };
 
   const filteredRigs = filter === "all" 

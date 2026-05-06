@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { X, Star, Trash2, ExternalLink, Eye, Pencil } from 'lucide-react';
+import { X, Star, Trash2, ExternalLink, Eye, Pencil, ChevronUp, ChevronDown } from 'lucide-react';
 import { useRigs } from '../contexts/RigsContext';
 import { Rig } from '../contexts/RigsContext';
 import { ImageWithFallback } from './figma/ImageWithFallback';
@@ -14,10 +14,15 @@ interface AdminDashboardProps {
 }
 
 export function AdminDashboard({ open, onClose, onViewRig }: AdminDashboardProps) {
-  const { rigs, updateRig, updateRigStatus, toggleFeatured, deleteRig } = useRigs();
+  const { rigs, updateRig, updateRigStatus, toggleFeatured, reorderFeaturedRigs, deleteRig } = useRigs();
   const [filter, setFilter] = useState<'all' | 'pending' | 'available' | 'sold'>('all');
   const [editingRig, setEditingRig] = useState<Rig | null>(null);
   const [editForm, setEditForm] = useState<Partial<Rig>>({});
+  const [reorderingFeatured, setReorderingFeatured] = useState(false);
+
+  const featuredSorted = rigs
+    .filter((r) => r.featured)
+    .sort((a, b) => (a.featuredOrder ?? 0) - (b.featuredOrder ?? 0));
 
   if (!open) return null;
 
@@ -37,6 +42,24 @@ export function AdminDashboard({ open, onClose, onViewRig }: AdminDashboardProps
 
   const handleToggleFeatured = (rigId: string) => {
     toggleFeatured(rigId);
+  };
+
+  const handleMoveFeatured = async (index: number, direction: -1 | 1) => {
+    const next = index + direction;
+    if (next < 0 || next >= featuredSorted.length) return;
+    setReorderingFeatured(true);
+    try {
+      const ids = featuredSorted.map((r) => r.id);
+      const reordered = [...ids];
+      [reordered[index], reordered[next]] = [reordered[next], reordered[index]];
+      await reorderFeaturedRigs(reordered);
+      toast.success('Featured homepage order saved');
+    } catch (error) {
+      console.error(error);
+      toast.error('Could not save order. Try again.');
+    } finally {
+      setReorderingFeatured(false);
+    }
   };
 
   const handleDelete = (rigId: string, title: string) => {
@@ -145,6 +168,53 @@ export function AdminDashboard({ open, onClose, onViewRig }: AdminDashboardProps
 
       {/* Content */}
       <div className="max-w-7xl mx-auto px-6 py-8">
+        {featuredSorted.length > 0 && (
+          <div className="mb-8 p-5 rounded-lg border border-amber-200 dark:border-amber-900/50 bg-amber-50/80 dark:bg-amber-950/20">
+            <h2 className="font-semibold text-neutral-900 dark:text-white mb-1 flex items-center gap-2">
+              <Star className="w-5 h-5 text-amber-600 fill-amber-400 shrink-0" />
+              Featured order (homepage)
+            </h2>
+            <p className="text-sm text-neutral-600 dark:text-neutral-400 mb-4">
+              Top of the list = first card (top-left on desktop). Use arrows to reorder; up to six listings can stay featured.
+            </p>
+            <ol className="space-y-2">
+              {featuredSorted.map((rig, index) => (
+                <li
+                  key={rig.id}
+                  className="flex items-center gap-3 py-2 px-3 rounded-md bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-700"
+                >
+                  <span className="text-xs font-bold text-neutral-400 w-5 tabular-nums">{index + 1}</span>
+                  <span className="flex-1 min-w-0 font-medium text-neutral-900 dark:text-white truncate">
+                    {rig.title}
+                  </span>
+                  <div className="flex gap-1 shrink-0">
+                    <button
+                      type="button"
+                      disabled={reorderingFeatured || index === 0}
+                      onClick={() => handleMoveFeatured(index, -1)}
+                      className="p-2 rounded border border-neutral-200 dark:border-neutral-600 hover:bg-neutral-100 dark:hover:bg-neutral-800 disabled:opacity-40 disabled:cursor-not-allowed"
+                      aria-label={`Move ${rig.title} up`}
+                      title="Move up"
+                    >
+                      <ChevronUp className="w-4 h-4" />
+                    </button>
+                    <button
+                      type="button"
+                      disabled={reorderingFeatured || index === featuredSorted.length - 1}
+                      onClick={() => handleMoveFeatured(index, 1)}
+                      className="p-2 rounded border border-neutral-200 dark:border-neutral-600 hover:bg-neutral-100 dark:hover:bg-neutral-800 disabled:opacity-40 disabled:cursor-not-allowed"
+                      aria-label={`Move ${rig.title} down`}
+                      title="Move down"
+                    >
+                      <ChevronDown className="w-4 h-4" />
+                    </button>
+                  </div>
+                </li>
+              ))}
+            </ol>
+          </div>
+        )}
+
         {filteredRigs.length === 0 ? (
           <div className="text-center py-12 text-neutral-500 dark:text-neutral-400">
             No listings found

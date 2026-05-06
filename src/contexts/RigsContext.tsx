@@ -33,6 +33,8 @@ interface RigsContextType {
   updateRig: (rigId: string, updates: Partial<Rig>) => Promise<void>;
   updateRigStatus: (rigId: string, status: 'available' | 'pending' | 'sold') => void;
   toggleFeatured: (rigId: string) => void;
+  /** Set homepage order for featured rigs: first ID = left / top slot. */
+  reorderFeaturedRigs: (orderedFeaturedIds: string[]) => Promise<void>;
   deleteRig: (rigId: string) => void;
 }
 
@@ -151,6 +153,29 @@ export function RigsProvider({ children }: { children: ReactNode }) {
     }
   };
 
+  const reorderFeaturedRigs = async (orderedFeaturedIds: string[]) => {
+    const updates = orderedFeaturedIds.map((rigId, index) =>
+      fetch(`${API_BASE_URL}/rigs/update`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${publicAnonKey}`,
+        },
+        body: JSON.stringify({
+          rigId,
+          updates: { featuredOrder: index * 1000 },
+        }),
+      }).then(async (response) => {
+        if (!response.ok) {
+          const err = await response.json().catch(() => ({ error: 'Update failed' }));
+          throw new Error(err.error || 'Failed to update featured order');
+        }
+      }),
+    );
+    await Promise.all(updates);
+    await fetchRigs();
+  };
+
   const deleteRig = async (rigId: string) => {
     try {
       await fetch(`${API_BASE_URL}/rigs/delete`, {
@@ -168,7 +193,7 @@ export function RigsProvider({ children }: { children: ReactNode }) {
   };
 
   return (
-    <RigsContext.Provider value={{ rigs, loading, addRig, updateRig, updateRigStatus, toggleFeatured, deleteRig }}>
+    <RigsContext.Provider value={{ rigs, loading, addRig, updateRig, updateRigStatus, toggleFeatured, reorderFeaturedRigs, deleteRig }}>
       {children}
     </RigsContext.Provider>
   );
