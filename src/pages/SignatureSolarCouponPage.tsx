@@ -32,7 +32,9 @@ const FEATURED_VIDEO = {
     "Justin from Mobile Dwellings reviews his favorite lithium batteries and explains why the EG4 Server Rack Batteries (LiFePower4) consistently provided the best long-term value in his off-grid builds. He installed 3 of them in his 40-foot skoolie, Gilligan Phantom — the same gear sold by Signature Solar with code SAVE50MD.",
   caption:
     "Watch Justin from Mobile Dwellings review his favorite lithium batteries. The EG4 Server Rack Batteries consistently provided the best long term value and he installed 3 of them in his 40 foot Skoolie, Gilligan Phantom",
-  uploadDate: "2025-07-04",
+  // ISO 8601 datetime with UTC timezone — Google's VideoObject validator
+  // expects a datetime (not just a date) for uploadDate.
+  uploadDate: "2025-07-04T12:00:00Z",
 };
 
 // Build-tour stills + linked-out video evidence. Each entry pairs a screenshot
@@ -65,7 +67,7 @@ const BUILD_SHOTS: BuildShot[] = [
       "Brian and Amber's 40-foot skoolie The Beers Bus: EG4 Server Rack Battery bank and Victron components tour",
     videoDescription:
       "Mobile Dwellings tours The Beers Bus, Brian and Amber's 40-foot skoolie running 4 EG4 Server Rack Batteries (LiFePower4, 25.6V 200Ah, 5,120 Wh each) wired into a full Victron suite — MPPT charge controllers, Cerbo GX, Orion-Tr Smart DC-DC chargers — for a ~20 kWh off-grid build using gear from Signature Solar with code SAVE50MD.",
-    uploadDate: "2025-10-12",
+    uploadDate: "2025-10-12T12:00:00Z",
     dealsHref: "/deals?filter=batteries",
     dealsCtaLabel: "Recommended Lithium Batteries in our gear shop →",
   },
@@ -275,6 +277,7 @@ const schemaMarkup = {
         "description": s.blurb,
         "creator": { "@id": "https://mobiledwellings.media/#justin" },
         "creditText": "Mobile Dwellings",
+        "copyrightNotice": "© Mobile Dwellings",
       },
       {
         "@type": "VideoObject",
@@ -296,6 +299,7 @@ const schemaMarkup = {
       "description": g.body,
       "creator": { "@id": "https://mobiledwellings.media/#justin" },
       "creditText": "Mobile Dwellings",
+      "copyrightNotice": "© Mobile Dwellings",
     })),
   ],
 };
