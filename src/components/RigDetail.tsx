@@ -5,13 +5,47 @@ import { SEO } from "../components/SEO";
 import { Header } from "../components/Header";
 import { Footer } from "../components/Footer";
 import { useState, useEffect } from "react";
-import { HiExternalLink, HiCalendar, HiLocationMarker, HiArrowLeft } from "react-icons/hi";
+import { HiExternalLink, HiCalendar, HiLocationMarker, HiArrowLeft, HiUpload } from "react-icons/hi";
 import { MdSpeed } from "react-icons/md";
 import { FaRuler, FaStar, FaTrash, FaPencilAlt } from "react-icons/fa";
 import { ImageWithFallback } from "./figma/ImageWithFallback";
 import { Input } from "./ui/input";
 import { Textarea } from "./ui/textarea";
 import { toast } from "sonner";
+import { projectId, publicAnonKey } from "../utils/supabase/info";
+
+const API_BASE_URL = `https://${projectId}.supabase.co/functions/v1/make-server-3ab5944d`;
+
+function compressImageForUpload(file: File): Promise<string> {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onload = (ev) => {
+      const img = new Image();
+      img.onload = () => {
+        const canvas = document.createElement("canvas");
+        let width = img.width;
+        let height = img.height;
+        const maxSize = 1920;
+        if (width > height && width > maxSize) {
+          height = (height * maxSize) / width;
+          width = maxSize;
+        } else if (height > maxSize) {
+          width = (width * maxSize) / height;
+          height = maxSize;
+        }
+        canvas.width = width;
+        canvas.height = height;
+        const ctx = canvas.getContext("2d");
+        ctx?.drawImage(img, 0, 0, width, height);
+        resolve(canvas.toDataURL("image/jpeg", 0.8));
+      };
+      img.onerror = reject;
+      img.src = ev.target?.result as string;
+    };
+    reader.onerror = reject;
+    reader.readAsDataURL(file);
+  });
+}
 
 // Helper to render text with **bold** markdown support and preserve newlines
 function FormattedText({ text, className }: { text: string; className?: string }) {
@@ -48,6 +82,73 @@ export function RigDetailPage() {
   const [editForm, setEditForm] = useState<any>({});
   const [editGalleryImages, setEditGalleryImages] = useState<string[]>([]);
   const [draggedImageIndex, setDraggedImageIndex] = useState<number | null>(null);
+  const [uploadingGallery, setUploadingGallery] = useState(false);
+
+  const gallerySlotLimit = 20;
+
+  const handleAppendGalleryPhotos = async (files: FileList | null) => {
+    if (!rig || !files?.length) return;
+    const remainingSlots = gallerySlotLimit - editGalleryImages.length;
+    if (remainingSlots <= 0) {
+      toast.error(`Maximum ${gallerySlotLimit} photos per listing`);
+      return;
+    }
+    const toProcess = Array.from(files).slice(0, remainingSlots);
+
+    setUploadingGallery(true);
+    const toastId = toast.loading(`Uploading ${toProcess.length} photo(s)…`);
+
+    try {
+      const payloads: string[] = [];
+      for (const file of toProcess) {
+        if (!file.type.startsWith("image/")) continue;
+        payloads.push(await compressImageForUpload(file));
+      }
+      if (payloads.length === 0) {
+        toast.dismiss(toastId);
+        toast.error("No valid images selected");
+        setUploadingGallery(false);
+        return;
+      }
+
+      const res = await fetch(`${API_BASE_URL}/rigs/append-gallery-images`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${publicAnonKey}`,
+        },
+        body: JSON.stringify({
+          rigId: rig.id,
+          newImagesBase64: payloads,
+        }),
+      });
+      const data = await res.json().catch(() => ({}));
+
+      toast.dismiss(toastId);
+
+      if (!res.ok) {
+        toast.error(typeof data?.error === "string" ? data.error : "Upload failed");
+        setUploadingGallery(false);
+        return;
+      }
+
+      const urls = data.urls as string[] | undefined;
+      if (!urls?.length) {
+        toast.error("No photos were uploaded");
+        setUploadingGallery(false);
+        return;
+      }
+
+      setEditGalleryImages((prev) => [...prev, ...urls]);
+      toast.success(`Added ${urls.length} photo(s). Save changes to finalize.`);
+    } catch (e) {
+      console.error(e);
+      toast.dismiss(toastId);
+      toast.error("Photo upload failed");
+    } finally {
+      setUploadingGallery(false);
+    }
+  };
 
   // Match by ID or by the SEO Slug
   const rig = rigs.find((r) => r.id === id || r.slug === id);
@@ -302,6 +403,30 @@ export function RigDetailPage() {
                 <div className="border-b border-neutral-200 dark:border-neutral-700 pb-6">
                   <label className="block text-sm font-medium text-neutral-700 dark:text-neutral-300 mb-2">
                     Photos (drag to reorder, first image is cover photo)
+                  </label>
+                  <label
+                    className={`mb-4 flex cursor-pointer flex-col items-center justify-center gap-2 rounded-lg border-2 border-dashed border-neutral-300 bg-neutral-50 py-6 transition-colors hover:border-neutral-400 dark:border-neutral-600 dark:bg-neutral-900/50 dark:hover:border-neutral-500 ${
+                      uploadingGallery || editGalleryImages.length >= gallerySlotLimit ? "pointer-events-none opacity-50" : ""
+                    }`}
+                  >
+                    <input
+                      type="file"
+                      accept="image/*"
+                      multiple
+                      className="hidden"
+                      disabled={uploadingGallery || editGalleryImages.length >= gallerySlotLimit}
+                      onChange={(e) => {
+                        void handleAppendGalleryPhotos(e.target.files);
+                        e.target.value = "";
+                      }}
+                    />
+                    <HiUpload className="h-8 w-8 text-neutral-400" />
+                    <span className="text-sm font-medium text-neutral-700 dark:text-neutral-300">
+                      {uploadingGallery ? "Uploading…" : "Add photos"}
+                    </span>
+                    <span className="text-xs text-neutral-500">
+                      Up to {gallerySlotLimit} total · JPG/PNG resized on upload
+                    </span>
                   </label>
                   <div className="grid grid-cols-3 md:grid-cols-4 gap-3">
                     {editGalleryImages.map((image, index) => (

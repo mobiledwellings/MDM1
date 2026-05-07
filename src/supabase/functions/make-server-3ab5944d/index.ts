@@ -302,6 +302,81 @@ app.post("/make-server-3ab5944d/rigs", async (c) => {
   }
 });
 
+// Upload new gallery images for an existing listing (base64 JPEG data URLs → signed URLs).
+// Client merges urls into listing and saves via /rigs/update.
+app.post("/make-server-3ab5944d/rigs/append-gallery-images", async (c) => {
+  try {
+    const { rigId, newImagesBase64 } = await c.req.json() as {
+      rigId?: string;
+      newImagesBase64?: string[];
+    };
+    if (!rigId || typeof rigId !== "string") {
+      return c.json({ error: "rigId required" }, 400);
+    }
+    if (!Array.isArray(newImagesBase64) || newImagesBase64.length === 0) {
+      return c.json({ error: "newImagesBase64 must be a non-empty array" }, 400);
+    }
+    const rig = await kv.get(rigId);
+    if (!rig) {
+      return c.json({ error: "Rig not found" }, 404);
+    }
+
+    /** Per-request batch cap; frontend enforces 20 photos total per listing before save */
+    const maxAppendBatch = 20;
+    if (newImagesBase64.length > maxAppendBatch) {
+      return c.json({ error: `At most ${maxAppendBatch} images per upload` }, 400);
+    }
+
+    const folder = rigId.replace(/^rig:/, "");
+    const imageUrls: string[] = [];
+
+    const batchSize = 3;
+    for (let batchStart = 0; batchStart < newImagesBase64.length; batchStart += batchSize) {
+      const batch = newImagesBase64.slice(batchStart, batchStart + batchSize);
+      for (let j = 0; j < batch.length; j++) {
+        const i = batchStart + j;
+        const base64Image = batch[j];
+        try {
+          const matches = base64Image.match(/^data:([A-Za-z-+\/]+);base64,(.+)$/);
+          if (!matches || matches.length !== 3) {
+            console.error("Invalid base64 format for appended image at index", i);
+            continue;
+          }
+          const base64Data = matches[2];
+          const imageBuffer = Uint8Array.from(atob(base64Data), (ch) => ch.charCodeAt(0));
+          const uniqueSuffix = `${Date.now()}-${Math.random().toString(36).slice(2, 9)}`;
+          const fileName = `${folder}/add-${uniqueSuffix}-${i}.jpg`;
+
+          const { error } = await supabase.storage.from(BUCKET_NAME).upload(fileName, imageBuffer, {
+            contentType: "image/jpeg",
+            upsert: false,
+          });
+          if (error) {
+            console.error("Error uploading appended gallery image:", error);
+            continue;
+          }
+          const { data: signedUrlData } = await supabase.storage
+            .from(BUCKET_NAME)
+            .createSignedUrl(fileName, 315360000);
+          if (signedUrlData?.signedUrl) {
+            imageUrls.push(signedUrlData.signedUrl);
+          }
+        } catch (e) {
+          console.error(`Error processing appended image ${i}:`, e);
+        }
+      }
+      if (batchStart + batchSize < newImagesBase64.length) {
+        await new Promise((r) => setTimeout(r, 100));
+      }
+    }
+
+    return c.json({ success: true, urls: imageUrls });
+  } catch (error) {
+    console.error("Error appending gallery images:", error);
+    return c.json({ error: "Failed to append gallery images", details: String(error) }, 500);
+  }
+});
+
 // Admin: send full listing-detail emails again for existing rigs (requires ADMIN_PASSWORD).
 // Body: { password: string, rigIds?: string[] } — omit rigIds to notify for every stored listing.
 app.post("/make-server-3ab5944d/rigs/resend-notification-emails", async (c) => {
