@@ -7,14 +7,14 @@ import { Footer } from "../components/Footer";
 // ──────────────────────────────────────────────────────────
 // Constants
 // ──────────────────────────────────────────────────────────
-const COUPON_CODE = "SAVE50MD";
-const COUPON_EXPIRES = "May 31, 2026";
-const COUPON_EXPIRES_DATE = "2026-05-31";
+const COUPON_CODE = "MOBILE50";
+const COUPON_EXPIRES = "July 31, 2026";
+const COUPON_EXPIRES_DATE = "2026-07-31";
 const AFFILIATE_URL = "https://signaturesolar.com/?ref=mobiledwellings";
 
 // Update this when you re-test the code each month.
-const LAST_VERIFIED = "May 1, 2026";
-const LAST_VERIFIED_DATE = "2026-05-01";
+const LAST_VERIFIED = "June 1, 2026";
+const LAST_VERIFIED_DATE = "2026-06-01";
 
 const AUTHOR = {
   name: "Justin Smith",
@@ -29,7 +29,7 @@ const FEATURED_VIDEO = {
   title:
     "Justin from Mobile Dwellings reviews EG4 Server Rack Batteries in the Gilligan Phantom 40-foot skoolie",
   description:
-    "Justin from Mobile Dwellings reviews his favorite lithium batteries and explains why the EG4 Server Rack Batteries (LiFePower4) consistently provided the best long-term value in his off-grid builds. He installed 3 of them in his 40-foot skoolie, Gilligan Phantom — the same gear sold by Signature Solar with code SAVE50MD.",
+    "Justin from Mobile Dwellings reviews his favorite lithium batteries and explains why the EG4 Server Rack Batteries (LiFePower4) consistently provided the best long-term value in his off-grid builds. He installed 3 of them in his 40-foot skoolie, Gilligan Phantom — the same gear sold by Signature Solar with code MOBILE50.",
   caption:
     "Watch Justin from Mobile Dwellings review his favorite lithium batteries. The EG4 Server Rack Batteries consistently provided the best long term value and he installed 3 of them in his 40 foot Skoolie, Gilligan Phantom",
   // ISO 8601 datetime with UTC timezone — Google's VideoObject validator
@@ -66,7 +66,7 @@ const BUILD_SHOTS: BuildShot[] = [
     videoTitle:
       "Brian and Amber's 40-foot skoolie The Beers Bus: EG4 Server Rack Battery bank and Victron components tour",
     videoDescription:
-      "Mobile Dwellings tours The Beers Bus, Brian and Amber's 40-foot skoolie running 4 EG4 Server Rack Batteries (LiFePower4, 25.6V 200Ah, 5,120 Wh each) wired into a full Victron suite — MPPT charge controllers, Cerbo GX, Orion-Tr Smart DC-DC chargers — for a ~20 kWh off-grid build using gear from Signature Solar with code SAVE50MD.",
+      "Mobile Dwellings tours The Beers Bus, Brian and Amber's 40-foot skoolie running 4 EG4 Server Rack Batteries (LiFePower4, 25.6V 200Ah, 5,120 Wh each) wired into a full Victron suite — MPPT charge controllers, Cerbo GX, Orion-Tr Smart DC-DC chargers — for a ~20 kWh off-grid build using gear from Signature Solar with code MOBILE50.",
     uploadDate: "2025-10-12T12:00:00Z",
     dealsHref: "/deals?filter=batteries",
     dealsCtaLabel: "Recommended Lithium Batteries in our gear shop →",
@@ -155,7 +155,7 @@ type FaqItem = {
 
 const faqItems: FaqItem[] = [
   {
-    question: "How does the SAVE50MD code work?",
+    question: "How does the MOBILE50 code work?",
     answer: `Add at least $500 of gear to your cart at signaturesolar.com, then enter ${COUPON_CODE} in the discount code field at checkout. You'll save $50 and the discount applies sitewide, including batteries, inverters, solar panels, and complete off-grid kits.`,
     answerNode: (
       <>
@@ -499,7 +499,7 @@ export function SignatureSolarCouponPage() {
       <SEO
         title={`Signature Solar Coupon Code ${COUPON_CODE} – $50 Off Your Order (Verified ${LAST_VERIFIED})`}
         description={`Use coupon code ${COUPON_CODE} at Signature Solar for $50 off any order of $500 or more. Verified active on ${LAST_VERIFIED} by Justin Smith of Mobile Dwellings. Works on EG4 batteries, inverters, solar panels and more at signaturesolar.com.`}
-        keywords="signature solar coupon code, signature solar discount code, signature solar promo code, SAVE50MD, EG4 coupon code, EG4 promo code, EG4 discount code, signature solar deals, signature solar sale, signature solar off grid discount, skoolie solar discount, van life solar coupon, mobile dwellings coupon, EG4 battery discount, EG4 inverter coupon"
+        keywords="signature solar coupon code, signature solar discount code, signature solar promo code, MOBILE50, EG4 coupon code, EG4 promo code, EG4 discount code, signature solar deals, signature solar sale, signature solar off grid discount, skoolie solar discount, van life solar coupon, mobile dwellings coupon, EG4 battery discount, EG4 inverter coupon"
         url="https://mobiledwellings.media/signature-solar-coupon"
         image="https://mobiledwellings.media/og-signature-solar.jpg"
         type="article"
