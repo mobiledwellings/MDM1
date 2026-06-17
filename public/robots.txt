@@ -14,3 +14,5 @@ Allow: /about
 Allow: /skoolie-support
 Allow: /deals
 Allow: /signature-solar-coupon
+Allow: /partners
+Allow: /partners/

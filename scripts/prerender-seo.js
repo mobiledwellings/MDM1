@@ -81,6 +81,20 @@ const pages = [
     // entries on the same URL as a critical structured-data issue.
   },
   {
+    route: '/partners',
+    title: 'Our Partners — Brands We Trust | Mobile Dwellings',
+    description: 'The brands Mobile Dwellings partners with for skoolie, van, and overland builds — Signature Solar, onX Offroad, and WattCycle. Each offers an exclusive discount.',
+    keywords: 'mobile dwellings partners, skoolie gear, van life brands, overland gear, signature solar, onx offroad, wattcycle, skoolie discount codes, off grid gear deals',
+    noscript: 'Mobile Dwellings partners — the brands we trust for skoolie, van, and overland builds, each with an exclusive discount code.',
+  },
+  {
+    route: '/partners/onx-offroad',
+    title: 'onX Offroad Discount Code JUICEBOX – 20% Off | Mobile Dwellings',
+    description: 'Save 20% on onX Offroad with code JUICEBOX. The GPS trail and route-planning app we use for off-road navigation, dispersed camping, and offline maps.',
+    keywords: 'onx offroad, onx offroad discount, onx offroad coupon code, offline trail maps, overland gps app, route planning app, boondocking app, public land map, dispersed camping app, van life navigation, onx offroad review',
+    noscript: 'onX Offroad — trail maps, route planning, and offline GPS for overlanding and boondocking, with public land and dispersed-camping layers. A Mobile Dwellings partner with an exclusive discount.',
+  },
+  {
     route: '/about',
     title: 'About | Skoolie & Van Life Documentary Series | Mobile Dwellings',
     description: 'Mobile Dwellings is a documentary video series featuring converted school buses, overland rigs, van conversions, tiny homes, and liveaboard sailboats. Meet the people behind the builds.',

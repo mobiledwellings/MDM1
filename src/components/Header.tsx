@@ -43,17 +43,19 @@ export function Header() {
       <header className="border-b border-neutral-200 dark:border-neutral-700 bg-white dark:bg-neutral-900 sticky top-0 z-50 transition-colors">
         <div className="max-w-7xl mx-auto px-6 py-4">
           <div className="flex items-center justify-between">
-              {/* SEO UPDATE: We wrapped your logo in an <h1> so Google knows this is the main topic of the page */}
-              <h1>
-                <a 
-                  href="#videos" 
+              {/* Site logo. Kept as a plain link (not an <h1>) so each page's
+                  own content heading is the single <h1> Google reads. */}
+              <div>
+                <a
+                  href="#videos"
                   onClick={(e) => handleSmoothScroll(e, 'videos')}
-                  className="tracking-tight text-2xl" 
+                  className="tracking-tight text-2xl"
+                  aria-label="Mobile Dwellings home"
                   style={{ fontFamily: "'Neue Haas Grotesk Display Pro', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif", color: "#ffde5a", fontWeight: 700 }}
                 >
                   MOBILE DWELLINGS
                 </a>
-              </h1>
+              </div>
 
               {/* SEO UPDATE: Added aria-label so search bots understand this is your primary navigation menu */}
               <nav className="hidden md:flex items-center gap-8" aria-label="Main Navigation">
@@ -99,6 +101,17 @@ export function Header() {
                   style={{ fontFamily: "'Morl', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif", fontWeight: 700, textTransform: 'uppercase', fontSize: '1rem', textAlign: 'center' }}
                 >
                   Deals
+                </a>
+                <a
+                  href="/partners"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    navigate('/partners');
+                  }}
+                  className="text-neutral-600 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-white transition-colors"
+                  style={{ fontFamily: "'Morl', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif", fontWeight: 700, textTransform: 'uppercase', fontSize: '1rem', textAlign: 'center' }}
+                >
+                  Partners
                 </a>
               </nav>
             
@@ -206,8 +219,21 @@ export function Header() {
               >
                 Deals
               </a>
-              <a 
-                href="#about" 
+              {/* Partners (mobile) */}
+              <a
+                href="/partners"
+                onClick={(e) => {
+                  e.preventDefault();
+                  navigate('/partners');
+                  setMobileMenuOpen(false);
+                }}
+                className="text-neutral-600 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-white transition-colors"
+                style={{ fontFamily: "'Neue Haas Grotesk Display Pro', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif", fontWeight: 700, textTransform: 'uppercase' }}
+              >
+                Partners
+              </a>
+              <a
+                href="#about"
                 onClick={(e) => handleSmoothScroll(e, 'about')}
                 className="text-neutral-600 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-white transition-colors" 
                 style={{ fontFamily: "'Neue Haas Grotesk Display Pro', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif", fontWeight: 700, textTransform: 'uppercase' }}

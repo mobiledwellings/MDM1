@@ -13,6 +13,8 @@ import { RigDetailPage } from "./pages/RigDetailPage";
 import { LeadFinderPage } from "./pages/LeadFinderPage";
 import { DealsPage } from "./pages/DealsPage";
 import { SignatureSolarCouponPage } from "./pages/SignatureSolarCouponPage";
+import { PartnersPage } from "./pages/PartnersPage";
+import { PartnerPage } from "./pages/PartnerPage";
 import { Toaster } from "sonner";
 
 export default function App() {
@@ -32,6 +34,8 @@ export default function App() {
                   <Route path="/about" element={<AboutPage />} />
                   <Route path="/skoolie-support" element={<SkoolieSupportPage />} />
                   <Route path="/deals" element={<DealsPage />} />
+                  <Route path="/partners" element={<PartnersPage />} />
+                  <Route path="/partners/:slug" element={<PartnerPage />} />
                   <Route path="/leads" element={<LeadFinderPage />} />
                   <Route path="/signature-solar-coupon" element={<SignatureSolarCouponPage />} />
                   <Route path="/signature-solar-coupon-code" element={<SignatureSolarCouponPage />} />

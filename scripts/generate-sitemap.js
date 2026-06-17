@@ -26,6 +26,10 @@ const staticPages = [
   { path: "/about", changefreq: "monthly", priority: "0.7" },
   { path: "/deals", changefreq: "weekly", priority: "0.6" },
   { path: "/signature-solar-coupon", changefreq: "monthly", priority: "0.9" },
+  { path: "/partners", changefreq: "monthly", priority: "0.7" },
+  // Partner pages rendered by the generic template. Keep in sync with
+  // PARTNERS in src/data/partners.tsx (one entry per published partner slug).
+  { path: "/partners/onx-offroad", changefreq: "monthly", priority: "0.8" },
 ];
 
 async function fetchRigs() {

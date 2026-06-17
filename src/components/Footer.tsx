@@ -79,8 +79,8 @@ export function Footer() {
                   </a>
                 </li>
                 <li>
-                  <a href="/signature-solar-coupon" className="text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white transition-colors font-semibold">
-                    Signature Solar Coupon
+                  <a href="/partners" className="text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white transition-colors font-semibold">
+                    Partners
                   </a>
                 </li>
               </ul>
