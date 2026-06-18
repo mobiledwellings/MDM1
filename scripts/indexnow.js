@@ -10,17 +10,18 @@
  *   https://mobiledwellings.media/<KEY>.txt   (lives in public/)
  *
  * Runs as the last step of `npm run build`. Failures are non-fatal — a missed
- * ping should never break a deploy.
+ * ping should never break a deploy. Uses the built-in https module (no global
+ * fetch) so it works on any Node version Cloudflare Pages might use.
  */
 
 const fs = require("fs");
 const path = require("path");
+const https = require("https");
 
 const KEY = "2d3ab480dc362bb29eac1228d17e0d4b";
 const HOST = "mobiledwellings.media";
 const SITE_URL = `https://${HOST}`;
 const KEY_LOCATION = `${SITE_URL}/${KEY}.txt`;
-const ENDPOINT = "https://api.indexnow.org/indexnow";
 
 function readSitemapUrls() {
   const sitemapPath = path.resolve(__dirname, "../build/sitemap.xml");
@@ -33,6 +34,36 @@ function readSitemapUrls() {
   return [...new Set(urls)];
 }
 
+function postIndexNow(urlList) {
+  return new Promise((resolve) => {
+    const payload = JSON.stringify({
+      host: HOST,
+      key: KEY,
+      keyLocation: KEY_LOCATION,
+      urlList,
+    });
+    const req = https.request(
+      {
+        hostname: "api.indexnow.org",
+        path: "/indexnow",
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json; charset=utf-8",
+          "Content-Length": Buffer.byteLength(payload),
+        },
+      },
+      (res) => {
+        let body = "";
+        res.on("data", (c) => (body += c));
+        res.on("end", () => resolve({ status: res.statusCode, body }));
+      }
+    );
+    req.on("error", (err) => resolve({ error: err.message }));
+    req.write(payload);
+    req.end();
+  });
+}
+
 async function main() {
   console.log("🔔 IndexNow: notifying search engines...");
 
@@ -42,22 +73,15 @@ async function main() {
     return;
   }
 
-  const body = { host: HOST, key: KEY, keyLocation: KEY_LOCATION, urlList };
-
-  try {
-    const res = await fetch(ENDPOINT, {
-      method: "POST",
-      headers: { "Content-Type": "application/json; charset=utf-8" },
-      body: JSON.stringify(body),
-    });
-    // IndexNow returns 200 or 202 on success.
-    if (res.ok) {
-      console.log(`   ✅ Submitted ${urlList.length} URLs (HTTP ${res.status})`);
-    } else {
-      console.warn(`   ⚠️  IndexNow responded HTTP ${res.status} — continuing build`);
-    }
-  } catch (err) {
-    console.warn(`   ⚠️  IndexNow ping failed (${err.message}) — continuing build`);
+  const result = await postIndexNow(urlList);
+  if (result.error) {
+    console.warn(`   ⚠️  IndexNow ping failed (${result.error}) — continuing build`);
+  } else if (result.status === 200 || result.status === 202) {
+    console.log(`   ✅ Submitted ${urlList.length} URLs to IndexNow (HTTP ${result.status})`);
+  } else {
+    console.warn(
+      `   ⚠️  IndexNow responded HTTP ${result.status} ${result.body || ""} — continuing build`
+    );
   }
 }
 
