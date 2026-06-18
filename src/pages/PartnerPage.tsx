@@ -1,10 +1,9 @@
 import { useState, useEffect } from "react";
 import { useParams, Navigate } from "react-router-dom";
-import { Helmet } from "react-helmet-async";
 import { SEO } from "../components/SEO";
 import { Header } from "../components/Header";
 import { Footer } from "../components/Footer";
-import { getPartner, Partner } from "../data/partners";
+import { getPartner } from "../data/partners";
 
 const SITE = "https://mobiledwellings.media";
 
@@ -70,82 +69,6 @@ function useIsDarkMode(): boolean {
     return () => observer.disconnect();
   }, []);
   return isDark;
-}
-
-// ──────────────────────────────────────────────────────────
-// Schema graph builder
-// ──────────────────────────────────────────────────────────
-function buildSchema(p: Partner) {
-  const pageUrl = `${SITE}/partners/${p.slug}`;
-  const graph: Record<string, unknown>[] = [
-    {
-      "@type": "WebPage",
-      "@id": `${pageUrl}#webpage`,
-      url: pageUrl,
-      name: p.seo.title,
-      description: p.seo.description,
-      publisher: { "@id": `${SITE}/#organization` },
-    },
-    {
-      "@type": "BreadcrumbList",
-      itemListElement: [
-        { "@type": "ListItem", position: 1, name: "Home", item: SITE },
-        { "@type": "ListItem", position: 2, name: "Partners", item: `${SITE}/partners` },
-        { "@type": "ListItem", position: 3, name: p.name, item: pageUrl },
-      ],
-    },
-    {
-      "@type": "Organization",
-      "@id": `${SITE}/#organization`,
-      name: "Mobile Dwellings",
-      url: SITE,
-      logo: `${SITE}/logo.png`,
-    },
-    {
-      "@type": "Brand",
-      name: p.name,
-      description: p.tagline,
-      ...(p.logo ? { logo: `${SITE}${p.logo}` } : {}),
-    },
-  ];
-
-  if (p.coupon) {
-    graph.push({
-      "@type": "Offer",
-      name: `${p.name} discount${p.coupon.code ? ` — code ${p.coupon.code}` : ""}`,
-      description: p.coupon.terms ?? p.seo.description,
-      url: p.affiliateUrl,
-      seller: { "@type": "Organization", name: p.name },
-      ...(p.coupon.expiresDate ? { validThrough: p.coupon.expiresDate } : {}),
-    });
-  }
-
-  if (p.heroVideo) {
-    const v = p.heroVideo;
-    graph.push({
-      "@type": "VideoObject",
-      name: v.title,
-      description: v.description,
-      uploadDate: v.uploadDate,
-      thumbnailUrl: `https://i.ytimg.com/vi/${v.id}/maxresdefault.jpg`,
-      contentUrl: `https://www.youtube.com/watch?v=${v.id}`,
-      embedUrl: `https://www.youtube.com/embed/${v.id}`,
-    });
-  }
-
-  if (p.faqs.length > 0) {
-    graph.push({
-      "@type": "FAQPage",
-      "@id": `${pageUrl}#faq`,
-      mainEntity: p.faqs.map((f) => ({
-        "@type": "Question",
-        name: f.question,
-        acceptedAnswer: { "@type": "Answer", text: f.answer },
-      })),
-    });
-  }
-
-  return { "@context": "https://schema.org", "@graph": graph };
 }
 
 // ──────────────────────────────────────────────────────────
@@ -257,11 +180,10 @@ export function PartnerPage() {
         image={p.seo.ogImage ?? `${SITE}/og-image.jpg`}
         type="article"
       />
-      <Helmet>
-        <script type="application/ld+json">
-          {JSON.stringify(buildSchema(p))}
-        </script>
-      </Helmet>
+      {/* JSON-LD structured data for partner pages is baked into the
+          prerendered static HTML by scripts/prerender-seo.js (so non-JS
+          crawlers and AI bots see it). It is intentionally NOT injected here at
+          runtime, to avoid duplicate FAQPage/Offer entries on the same URL. */}
 
       <div
         style={{

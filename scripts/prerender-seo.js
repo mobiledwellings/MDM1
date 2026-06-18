@@ -93,6 +93,74 @@ const pages = [
     description: 'Save 20% on onX Offroad with code JUICEBOX. The GPS trail and route-planning app we use for off-road navigation, dispersed camping, and offline maps.',
     keywords: 'onx offroad, onx offroad discount, onx offroad coupon code, offline trail maps, overland gps app, route planning app, boondocking app, public land map, dispersed camping app, van life navigation, onx offroad review',
     noscript: 'onX Offroad — trail maps, route planning, and offline GPS for overlanding and boondocking, with public land and dispersed-camping layers. A Mobile Dwellings partner with an exclusive discount.',
+    image: 'https://mobiledwellings.media/onx-mexican-hat-hero.jpg',
+    // Full schema graph baked into the static HTML so non-JS crawlers (incl. AI
+    // bots) and Google's first pass see it. The runtime react-helmet injection
+    // in PartnerPage.tsx was removed to avoid duplicate FAQPage/Offer entries.
+    extraStructuredData: `
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "WebPage",
+          "@id": "https://mobiledwellings.media/partners/onx-offroad#webpage",
+          "url": "https://mobiledwellings.media/partners/onx-offroad",
+          "name": "onX Offroad Discount Code JUICEBOX – 20% Off",
+          "description": "Save 20% on onX Offroad with code JUICEBOX. The GPS trail and route-planning app we use for off-road navigation, dispersed camping, and offline maps.",
+          "publisher": { "@id": "https://mobiledwellings.media/#organization" }
+        },
+        {
+          "@type": "Organization",
+          "@id": "https://mobiledwellings.media/#organization",
+          "name": "Mobile Dwellings",
+          "url": "https://mobiledwellings.media",
+          "logo": "https://mobiledwellings.media/logo.png"
+        },
+        {
+          "@type": "Brand",
+          "name": "onX Offroad",
+          "description": "Trail maps, route planning & offline GPS for off road adventures."
+        },
+        {
+          "@type": "Offer",
+          "name": "onX Offroad discount — code JUICEBOX",
+          "description": "20% off any onX Offroad membership — Premium or Elite.",
+          "url": "https://www.onxmaps.com/purchase/offroad/membership?promo=juicebox&utm_source=or_ic_partnerships&utm_medium=ambassador&utm_campaign=mobiledwellings",
+          "seller": { "@type": "Organization", "name": "onX Offroad" }
+        },
+        {
+          "@type": "FAQPage",
+          "@id": "https://mobiledwellings.media/partners/onx-offroad#faq",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "Is there an onX Offroad coupon code?",
+              "acceptedAnswer": { "@type": "Answer", "text": "Yes — use code JUICEBOX at checkout for 20% off an onX Offroad membership. When the checkout survey asks how you heard about onX, please reference Mobile Dwellings so we get the credit. We update this page whenever the offer changes." }
+            },
+            {
+              "@type": "Question",
+              "name": "What's the difference between onX Offroad Premium and Elite?",
+              "acceptedAnswer": { "@type": "Answer", "text": "Premium covers trail maps, difficulty ratings, offline maps, route planning, and dispersed camping — everything most boondockers need. Elite adds private property boundaries, landowner info, and partner discounts. Your JUICEBOX code takes 20% off either tier; check onX for current pricing." }
+            },
+            {
+              "@type": "Question",
+              "name": "Is onX Offroad worth it for Bus Conversions and Skoolies?",
+              "acceptedAnswer": { "@type": "Answer", "text": "For just $28 per year with our 20% discount it's absolutely worth it to have a navigation app that will help you find off road adventures and to provide route planning and navigation outside of cell service." }
+            }
+          ]
+        },
+        {
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://mobiledwellings.media" },
+            { "@type": "ListItem", "position": 2, "name": "Partners", "item": "https://mobiledwellings.media/partners" },
+            { "@type": "ListItem", "position": 3, "name": "onX Offroad", "item": "https://mobiledwellings.media/partners/onx-offroad" }
+          ]
+        }
+      ]
+    }
+    </script>`,
   },
   {
     route: '/about',
@@ -172,6 +240,18 @@ function prerender() {
       /<meta property="twitter:description" content=".*?" \/>/,
       `<meta property="twitter:description" content="${page.description}" />`
     );
+
+    // Replace OG / Twitter image (only when the page specifies its own)
+    if (page.image) {
+      html = html.replace(
+        /<meta property="og:image" content=".*?" \/>/,
+        `<meta property="og:image" content="${page.image}" />`
+      );
+      html = html.replace(
+        /<meta property="twitter:image" content=".*?" \/>/,
+        `<meta property="twitter:image" content="${page.image}" />`
+      );
+    }
 
     // Replace canonical URL
     html = html.replace(
