@@ -75,12 +75,12 @@ export function Footer() {
                 </li>
                 <li>
                   <a href="/deals" className="text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white transition-colors font-semibold">
-                    Deals & Coupons
+                    The Off Grid Gear Shop
                   </a>
                 </li>
                 <li>
                   <a href="/partners" className="text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white transition-colors font-semibold">
-                    Partners
+                    Partners and Discounts
                   </a>
                 </li>
               </ul>
