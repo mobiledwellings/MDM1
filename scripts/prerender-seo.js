@@ -272,13 +272,19 @@ function prerender() {
       );
     }
 
-    // Write to build/[route]/index.html
-    const dir = path.join(BUILD_DIR, page.route);
-    fs.mkdirSync(dir, { recursive: true });
-    fs.writeFileSync(path.join(dir, 'index.html'), html, 'utf-8');
+    // Write to build/[route].html (a flat file, NOT [route]/index.html).
+    // Cloudflare Pages serves a flat file at its exact extensionless path
+    // (e.g. /partners/onx-offroad) with a 200 and no trailing-slash redirect,
+    // so the served URL matches our canonical exactly. The directory form
+    // (route/index.html) makes Cloudflare 308-redirect /route -> /route/,
+    // which — combined with a no-slash canonical — causes Google to report a
+    // "Redirect error" and refuse to index.
+    const outPath = path.join(BUILD_DIR, `${page.route}.html`);
+    fs.mkdirSync(path.dirname(outPath), { recursive: true });
+    fs.writeFileSync(outPath, html, 'utf-8');
 
     count++;
-    console.log(`   ✅ ${page.route} → build${page.route}/index.html`);
+    console.log(`   ✅ ${page.route} → build${page.route}.html`);
   }
 
   console.log(`\n   📄 Prerendered ${count} pages with unique SEO meta tags`);
