@@ -133,25 +133,25 @@ const signatureSolar: Partner = {
   ctaLabel: "Shop Signature Solar →",
   externalPath: "/signature-solar-coupon",
   coupon: {
-    code: "MOBILE50",
+    code: "MD50OFF",
     discount: "$50",
-    expires: "July 31, 2026",
-    expiresDate: "2026-07-31",
-    lastVerified: "June 1, 2026",
+    expires: "October 1, 2026",
+    expiresDate: "2026-10-01",
+    lastVerified: "July 31, 2026",
     terms: "$50 off orders of $500+. Works on most products sitewide.",
   },
   intro: [
-    "Signature Solar supplies the EG4 inverters, lithium batteries, and solar panels we install in skoolies and overland rigs. Use code MOBILE50 for $50 off orders over $500.",
+    "Signature Solar supplies the EG4 inverters, lithium batteries, and solar panels we install in skoolies and overland rigs. Use code MD50OFF for $50 off orders over $500.",
   ],
   about:
     "Signature Solar is our go-to source for off-grid electrical components. We've installed their EG4 gear in multiple builds featured on the channel.",
   products: [],
   faqs: [],
   seo: {
-    title: "Signature Solar Coupon Code MOBILE50",
+    title: "Signature Solar Coupon Code MD50OFF",
     description:
-      "Use coupon code MOBILE50 at Signature Solar for $50 off orders over $500.",
-    keywords: "signature solar coupon code, MOBILE50, EG4 coupon code",
+      "Use coupon code MD50OFF at Signature Solar for $50 off orders over $500.",
+    keywords: "signature solar coupon code, MD50OFF, EG4 coupon code",
     ogImage: `${SITE}/og-signature-solar.jpg`,
   },
 };
