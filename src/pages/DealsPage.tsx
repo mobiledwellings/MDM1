@@ -2,7 +2,7 @@ import { Link, useSearchParams } from "react-router-dom";
 import { SEO } from "../components/SEO";
 import { Header } from "../components/Header";
 import { Footer } from "../components/Footer";
-import { HiExternalLink, HiPencil, HiTrash, HiStar, HiUpload, HiX } from "react-icons/hi";
+import { HiExternalLink, HiPencil, HiTrash, HiStar, HiUpload, HiX, HiCheck, HiClipboardCopy } from "react-icons/hi";
 import { useState } from "react";
 import { ImageWithFallback } from "../components/figma/ImageWithFallback";
 import { useDeals, Product, ProductCategory } from "../contexts/DealsContext";
@@ -36,6 +36,89 @@ const categoryOptions: { value: ProductCategory; label: string }[] = [
   { value: "solar-generators", label: "Solar Generators" },
   { value: "water-heaters", label: "Water Heaters" },
 ];
+
+// Single source of truth for the Signature Solar offer shown in the hero.
+// Changing the code here updates the H1, the hero block, and the copy button.
+// (SEO title/description live in the <SEO> block below and in
+// scripts/prerender-seo.js — update those too when the code changes.)
+const SIGNATURE_SOLAR_CODE = "MD50OFF";
+const SIGNATURE_SOLAR_URL = "https://signaturesolar.com/?ref=mobiledwellings";
+const COUPON_CODE_ELEMENT_ID = "signature-solar-coupon-code";
+
+// src/index.css is a pre-compiled Tailwind build, so only the utilities already
+// in that file exist — an arbitrary value like `bg-[#ffde5a]` silently renders
+// as nothing. The brand yellow is therefore applied inline.
+const BRAND_YELLOW = "#ffde5a"; // Mobile Dwellings logo yellow (Header.tsx)
+const BRAND_INK = "#171717"; // Dark ink for text sitting on the yellow.
+
+// The coupon ticket keeps a dark background in BOTH themes. Brand yellow on
+// white fails contrast, and a fixed dark chip lets the real brand color be used
+// at full strength rather than substituting a muddier amber in light mode.
+const COUPON_TICKET_BG = "#171717";
+
+/**
+ * Copy state for the coupon code, shared by the ticket and the copy button so
+ * clicking either one copies and shows the same "Copied!" confirmation.
+ */
+function useCopyCode(code: string) {
+  const [copied, setCopied] = useState(false);
+
+  const copy = async () => {
+    try {
+      await navigator.clipboard.writeText(code);
+    } catch {
+      // The Clipboard API rejects on non-secure origins, when permission is
+      // denied, and in some in-app browsers. Select the code instead so the
+      // buyer can still copy it manually rather than getting no response.
+      const el = document.getElementById(COUPON_CODE_ELEMENT_ID);
+      const selection = window.getSelection();
+      if (el && selection) {
+        const range = document.createRange();
+        range.selectNodeContents(el);
+        selection.removeAllRanges();
+        selection.addRange(range);
+      }
+    }
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  };
+
+  return { copied, copy };
+}
+
+/** Large labelled copy button for the hero coupon block. */
+function CouponCopyButton({
+  code,
+  copied,
+  onCopy,
+}: {
+  code: string;
+  copied: boolean;
+  onCopy: () => void;
+}) {
+  return (
+    <button
+      onClick={onCopy}
+      aria-label={`Copy coupon code ${code}`}
+      className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg font-semibold text-sm border-2 transition-opacity hover:opacity-90"
+      // border-transparent is absent from the compiled stylesheet; the inline
+      // color keeps this button the same height as the outlined CTA beside it.
+      style={{ backgroundColor: BRAND_YELLOW, color: BRAND_INK, borderColor: "transparent" }}
+    >
+      {copied ? (
+        <>
+          <HiCheck className="w-4 h-4" />
+          Copied!
+        </>
+      ) : (
+        <>
+          <HiClipboardCopy className="w-4 h-4" />
+          Copy Code
+        </>
+      )}
+    </button>
+  );
+}
 
 function CopyButton({ code }: { code: string }) {
   const [copied, setCopied] = useState(false);
@@ -133,7 +216,7 @@ function ProductCard({ product, isAdmin, onEdit, onDelete, onToggleFeatured }: {
           <span className="font-semibold text-neutral-900 dark:text-white">{product.price}</span>
           {product.discount && product.couponCode && (
             <span className="text-neutral-600 dark:text-neutral-400">
-              {" "}but use code <span className="font-mono font-semibold text-green-600 dark:text-green-400">{product.couponCode}</span> for <span className="text-green-600 dark:text-green-400 font-semibold">{product.discount}</span> at checkout
+              {" "}but use code <span className="font-mono font-semibold text-green-800 dark:text-green-400">{product.couponCode}</span> for <span className="text-green-800 dark:text-green-400 font-semibold">{product.discount}</span> at checkout
             </span>
           )}
         </div>
@@ -185,6 +268,10 @@ function parseFilterParam(raw: string | null): ProductCategory | "featured" {
 export function DealsPage() {
   const { products, addProduct, updateProduct, deleteProduct, toggleFeatured, loading, uploadImage } = useDeals();
   const { isAdmin } = useAdmin();
+
+  // Shared between the coupon ticket and the Copy Code button below it, so
+  // clicking either surface copies and confirms in both places.
+  const copyCoupon = useCopyCode(SIGNATURE_SOLAR_CODE);
 
   // URL is the source of truth for the active filter. Reading via useSearchParams
   // lets the coupon page (and anyone) deep-link to e.g. /deals?filter=batteries.
@@ -365,7 +452,7 @@ export function DealsPage() {
   return (
     <>
       <SEO
-        title="Signature Solar Coupon Code & Best Gear for Skoolies & Overland Rigs"
+        title="Signature Solar Coupon Code MD50OFF – Best Gear for Skoolies & Overland Rigs"
         description="Exclusive Signature Solar coupon code: MD50OFF. Save on EG4 inverters, lithium batteries, solar panels, and more. Best gear for skoolies, bus conversions, and overland rigs — tested in real builds."
         keywords="Signature Solar coupon code, Signature Solar discount code, Signature Solar promo code, EG4 coupon code, Signature Solar deals, best inverter for skoolie, best lithium battery for bus conversion, skoolie solar panels, best mini split for skoolie, overland rig solar setup, bus conversion electrical, skoolie gear, off-grid solar kit, best charge controller for skoolie, overland rig battery, EG4 inverter coupon, Signature Solar skoolie"
         url="https://mobiledwellings.media/deals"
@@ -444,37 +531,85 @@ export function DealsPage() {
           <section className="bg-neutral-50 dark:bg-neutral-800 border-y border-neutral-200 dark:border-neutral-700">
             <div className="max-w-7xl mx-auto px-6 py-12 md:py-20">
               <div className="mb-12">
-                <h1 className="text-center mb-8 dark:text-white text-3xl font-bold text-neutral-800">
-                  The Mobile Dwellings Gear Shop
+                {/* Search-intent header: buyers arriving from "signature solar
+                    coupon code" see the code itself as the largest text on the
+                    page, above the fold, before any other copy. */}
+                {/* The H1 names the page; the ticket below carries the code at
+                    a larger size. Repeating the code in both put two competing
+                    focal points ~120px apart. The code still appears in the
+                    <title>, meta description, ticket, and product cards. */}
+                <h1 className="text-center mb-8 dark:text-white text-3xl md:text-4xl font-bold text-neutral-800">
+                  Signature Solar Coupon Code
                 </h1>
-                <p className="text-center text-neutral-600 dark:text-neutral-400 max-w-2xl mx-auto mb-4">
-                  Inverters, batteries, solar, and more — tested in real skoolie and overland builds.
-                </p>
-                <p className="text-center text-sm text-neutral-500 dark:text-neutral-500 max-w-2xl mx-auto mb-8">
-                  Affiliate links support the channel at no extra cost to you. Updated regularly with new deals.
-                </p>
 
-                {/* Signature Solar Coupon Code - SEO Content Block */}
-                <div className="max-w-2xl mx-auto mb-12 bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-700 rounded-lg p-6 text-center">
-                  <h2 className="text-lg font-bold text-neutral-900 dark:text-white mb-2">
-                    <Link to="/signature-solar-coupon" className="hover:underline">
-                      Signature Solar Coupon Code
-                    </Link>
-                  </h2>
-                  <p className="text-neutral-600 dark:text-neutral-400 text-sm mb-4">
-                    We've partnered with <a href="https://signaturesolar.com/?ref=mobiledwellings" target="_blank" rel="noopener noreferrer sponsored" className="font-semibold text-neutral-900 dark:text-white hover:underline">Signature Solar</a> to bring you an exclusive discount on EG4 inverters, lithium batteries, solar panels, and more. Use our code at checkout to save on the same gear we use in our skoolie and overland builds.
-                  </p>
-                  <div className="inline-flex items-center gap-3 bg-neutral-50 dark:bg-neutral-800 border-2 border-dashed border-green-500 rounded-lg px-6 py-3">
-                    <span className="text-sm text-neutral-500 dark:text-neutral-400">Code:</span>
-                    <span className="font-mono font-bold text-xl text-green-600 dark:text-green-400 tracking-wider">MD50OFF</span>
+                {/* Coupon block — copy the code or go straight to the store. */}
+                <div className="max-w-2xl mx-auto mb-8 bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-700 rounded-lg p-8 text-center">
+                  {/* Sizing and letter-spacing are inline: the compiled
+                      stylesheet has no text-4xl/5xl, gap-x-*, px-10 or
+                      tracking-widest, so those classes render as nothing. */}
+                  <button
+                    type="button"
+                    onClick={copyCoupon.copy}
+                    aria-label={`Copy coupon code ${SIGNATURE_SOLAR_CODE}`}
+                    title="Click to copy"
+                    className="inline-flex flex-wrap items-center justify-center gap-3 border-2 border-dashed rounded-lg px-8 py-4 mb-6 transition-opacity hover:opacity-90"
+                    style={{ backgroundColor: COUPON_TICKET_BG, borderColor: BRAND_YELLOW }}
+                  >
+                    <span
+                      className="text-xs uppercase text-neutral-400"
+                      style={{ letterSpacing: "0.18em" }}
+                    >
+                      {copyCoupon.copied ? "Copied" : "Code"}
+                    </span>
+                    <span
+                      id={COUPON_CODE_ELEMENT_ID}
+                      className="font-mono font-bold leading-none"
+                      style={{
+                        color: BRAND_YELLOW,
+                        fontSize: "clamp(2rem, 7vw, 3rem)",
+                        letterSpacing: "0.08em",
+                      }}
+                    >
+                      {SIGNATURE_SOLAR_CODE}
+                    </span>
+                  </button>
+
+                  <div className="flex flex-wrap gap-4 justify-center mb-6">
+                    <CouponCopyButton
+                      code={SIGNATURE_SOLAR_CODE}
+                      copied={copyCoupon.copied}
+                      onCopy={copyCoupon.copy}
+                    />
+                    <a
+                      href={SIGNATURE_SOLAR_URL}
+                      target="_blank"
+                      rel="noopener noreferrer sponsored"
+                      className="inline-flex items-center justify-center px-6 py-3 rounded-lg font-semibold text-sm border-2 border-neutral-300 dark:border-neutral-600 text-neutral-900 dark:text-white hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors"
+                    >
+                      Shop Signature Solar →
+                    </a>
                   </div>
-                  <p className="text-xs text-neutral-400 dark:text-neutral-500 mt-3">
+
+                  <p className="text-neutral-600 dark:text-neutral-400 text-sm mb-3">
+                    $50 off orders over $500 on EG4 inverters, lithium batteries, solar panels, and more — the same gear we use in our skoolie and overland builds.
+                  </p>
+                  <p className="text-xs text-neutral-400 dark:text-neutral-500">
                     Apply at checkout on signaturesolar.com. Works on most products sitewide.{" "}
                     <Link to="/signature-solar-coupon" className="underline hover:text-neutral-700 dark:hover:text-neutral-300">
                       Full details &amp; FAQ →
                     </Link>
                   </p>
                 </div>
+
+                <h2 className="text-center mb-4 dark:text-white text-2xl font-bold text-neutral-800">
+                  The Mobile Dwellings Gear Shop
+                </h2>
+                <p className="text-center text-neutral-600 dark:text-neutral-400 max-w-2xl mx-auto mb-4">
+                  Inverters, batteries, solar, and more — tested in real skoolie and overland builds.
+                </p>
+                <p className="text-center text-sm text-neutral-500 dark:text-neutral-500 max-w-2xl mx-auto mb-8">
+                  Affiliate links support the channel at no extra cost to you. Updated regularly with new deals.
+                </p>
 
                 {/* Category Filters */}
                 <div className="flex flex-wrap gap-2 justify-center" role="group" aria-label="Filter products by category">

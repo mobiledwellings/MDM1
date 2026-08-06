@@ -40,7 +40,7 @@ const pages = [
   },
   {
     route: '/deals',
-    title: 'Signature Solar Coupon Code & Best Gear for Skoolies & Overland Rigs | Mobile Dwellings',
+    title: 'Signature Solar Coupon Code MD50OFF – Best Gear for Skoolies & Overland Rigs | Mobile Dwellings',
     description: 'Exclusive Signature Solar coupon code: MD50OFF. Save on EG4 inverters, lithium batteries, solar panels, and more. Best gear for skoolies, bus conversions, and overland rigs — tested in real builds.',
     keywords: 'Signature Solar coupon code, Signature Solar discount code, Signature Solar promo code, EG4 coupon code, Signature Solar deals, best inverter for skoolie, best lithium battery for bus conversion, skoolie solar panels, best mini split for skoolie, overland rig solar setup',
     noscript: 'Signature Solar coupon code MD50OFF — save on EG4 inverters, lithium batteries, solar panels, and more. Tested gear for skoolies, bus conversions, and overland rigs.',
