@@ -644,7 +644,7 @@ export function DealsPage() {
                     focal points ~120px apart. The code still appears in the
                     <title>, meta description, ticket, and product cards. */}
                 <h1 className="text-center mb-8 dark:text-white text-3xl md:text-4xl font-bold text-neutral-800">
-                  Skoolie &amp; Van Build Coupon Codes
+                  Signature Solar Coupon Code + WattCycle Discount
                 </h1>
 
                 {/* Partner coupons — side by side on desktop, stacked on
