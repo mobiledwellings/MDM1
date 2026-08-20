@@ -8,13 +8,19 @@ import { Footer } from "../components/Footer";
 // Constants
 // ──────────────────────────────────────────────────────────
 const COUPON_CODE = "MD50OFF";
-const COUPON_EXPIRES = "October 1, 2026";
-const COUPON_EXPIRES_DATE = "2026-10-01";
 const AFFILIATE_URL = "https://signaturesolar.com/?ref=mobiledwellings";
 
-// Update this when you re-test the code each month.
-const LAST_VERIFIED = "July 31, 2026";
-const LAST_VERIFIED_DATE = "2026-07-31";
+// The offer is treated as ongoing rather than dated. A hard expiry decays into
+// a page that tells crawlers the deal is dead the moment it passes, and an
+// `Offer` needs no validThrough. Recency of verification carries the freshness
+// signal instead — which is also what AI summarizers weigh.
+//
+// ── Updated weekly after Justin re-tests the code. Do not edit by hand: ──
+//    npm run verify-coupon
+// That script rewrites both constants below to today's date, so the claim on
+// the page always reflects a real check.
+const LAST_VERIFIED = "August 20, 2026";
+const LAST_VERIFIED_DATE = "2026-08-20";
 
 const AUTHOR = {
   name: "Justin Smith",
@@ -179,8 +185,20 @@ const faqItems: FaqItem[] = [
     answer: `Sitewide on orders over $500, so it covers most of what you'd build a system around: EG4 LiFePO4 lithium batteries, EG4 all-in-one inverter/chargers, the full Victron lineup (Cerbo GX, SmartSolar MPPT, Orion-Tr, MultiPlus), solar panels by the pallet, IronRidge racking, and mini-splits.`,
   },
   {
-    question: "When does the code expire?",
-    answer: `${COUPON_EXPIRES}. We update this page whenever Signature Solar issues a new code, so it's worth bookmarking. When this one expires we'll have the next one here.`,
+    question: "Does this code expire?",
+    answer: `${COUPON_CODE} is an ongoing offer with no published end date. We re-test it at signaturesolar.com every week and update the verified date at the top of this page, so if it's dated within the last few days the code is working. If Signature Solar ever swaps it out, the replacement goes here.`,
+  },
+  {
+    question: "Does Signature Solar offer free shipping?",
+    answer: `Signature Solar ships most items freight and runs free-shipping promotions on select pallets and kits rather than sitewide. ${COUPON_CODE} is a discount code, not a shipping code — it takes $50 off the order total and shipping is calculated separately at checkout based on your address and whether the item ships parcel or freight.`,
+  },
+  {
+    question: "Can I use this code with a sale or another discount?",
+    answer: `Usually yes. ${COUPON_CODE} applies at checkout on top of live sale pricing in most cases, so a sale item plus the code stacks. It generally won't combine with another discount code, since Signature Solar's checkout accepts one code per order. If the code is rejected on a deeply discounted item, that item is likely already excluded.`,
+  },
+  {
+    question: "Is Signature Solar legit?",
+    answer: `Yes. They're a Texas-based distributor and the primary US seller of the EG4 line, and they're the supplier we see most often when we film skoolie and bus conversion tours. We've installed their EG4 gear in builds featured on the channel, including three EG4 server rack batteries in our own 40-foot skoolie, Gilligan Phantom.`,
   },
   {
     question: "Is Signature Solar a good fit for skoolie and van builds?",
@@ -243,7 +261,9 @@ const schemaMarkup = {
         "name": "Signature Solar",
         "url": AFFILIATE_URL,
       },
-      "validThrough": COUPON_EXPIRES_DATE,
+      // No validThrough: the offer is ongoing. A past validThrough would tell
+      // crawlers the deal is dead; availabilityStarts + dateModified carry the
+      // freshness signal instead.
       "availabilityStarts": LAST_VERIFIED_DATE,
     },
     {
@@ -497,8 +517,8 @@ export function SignatureSolarCouponPage() {
   return (
     <>
       <SEO
-        title={`Signature Solar Coupon Code ${COUPON_CODE} – $50 Off Your Order (Verified ${LAST_VERIFIED})`}
-        description={`Use coupon code ${COUPON_CODE} at Signature Solar for $50 off any order of $500 or more. Verified active on ${LAST_VERIFIED} by Justin Smith of Mobile Dwellings. Works on EG4 batteries, inverters, solar panels and more at signaturesolar.com.`}
+        title={`Signature Solar Coupon Code 2026 – ${COUPON_CODE} Gets $50 Off`}
+        description={`Use coupon code ${COUPON_CODE} at Signature Solar for $50 off. Re-tested weekly and verified active on ${LAST_VERIFIED} by Justin Smith of Mobile Dwellings, who runs EG4 gear in a 40-foot skoolie. Works on EG4 batteries, inverters, solar panels and more at signaturesolar.com. $500 minimum order.`}
         keywords="signature solar coupon code, signature solar discount code, signature solar promo code, MD50OFF, EG4 coupon code, EG4 promo code, EG4 discount code, signature solar deals, signature solar sale, signature solar off grid discount, skoolie solar discount, van life solar coupon, mobile dwellings coupon, EG4 battery discount, EG4 inverter coupon"
         url="https://mobiledwellings.media/signature-solar-coupon"
         image="https://mobiledwellings.media/og-signature-solar.jpg"
@@ -556,7 +576,7 @@ export function SignatureSolarCouponPage() {
                   marginBottom: "0.75rem",
                 }}
               >
-                Signature Solar Coupon Code:{" "}
+                Signature Solar Coupon Code 2026:{" "}
                 <span style={{ whiteSpace: "nowrap" }}>{COUPON_CODE}</span>{" "}
                 <span style={{ color: HERO.textSecondary }}>— $50 Off</span>
               </h1>
@@ -582,7 +602,7 @@ export function SignatureSolarCouponPage() {
                 >
                   signaturesolar.com
                 </a>{" "}
-                and is valid through {COUPON_EXPIRES}.
+                and we re-test it every week.
               </p>
 
               {/* Author byline + verification stamp */}
@@ -691,7 +711,7 @@ export function SignatureSolarCouponPage() {
                   marginBottom: "2rem",
                 }}
               >
-                Expires {COUPON_EXPIRES} · This page is updated whenever new codes are available
+                Re-tested weekly · Last verified {LAST_VERIFIED} · $500 minimum order
               </p>
 
               <HeroCTA />
@@ -1142,7 +1162,7 @@ export function SignatureSolarCouponPage() {
                   marginBottom: "1.75rem",
                 }}
               >
-                $50 off orders over $500 · Expires {COUPON_EXPIRES}
+                $50 off · $500 minimum order · Verified {LAST_VERIFIED}
               </p>
               <FooterCTA palette={c} />
               <p

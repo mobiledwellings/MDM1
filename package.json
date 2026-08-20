@@ -65,6 +65,7 @@
       },
       "scripts": {
             "dev": "vite",
+            "verify-coupon": "node scripts/verify-coupon.js",
             "build": "vite build && node scripts/generate-sitemap.js && node scripts/prerender-seo.js && node scripts/indexnow.js"
       }
 }

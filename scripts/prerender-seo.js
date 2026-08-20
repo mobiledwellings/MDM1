@@ -70,10 +70,10 @@ const pages = [
   },
   {
     route: '/signature-solar-coupon',
-    title: 'Signature Solar Coupon Code MD50OFF – $50 Off Your Order | Mobile Dwellings',
-    description: 'Use coupon code MD50OFF at Signature Solar for $50 off any order over $500. Exclusive Mobile Dwellings discount on EG4 batteries, inverters, solar panels, charge controllers & more at signaturesolar.com.',
-    keywords: 'signature solar coupon code, signature solar discount code, MD50OFF, signature solar promo code, EG4 coupon code, signature solar off grid discount, skoolie solar discount, van life solar coupon, mobile dwellings coupon, EG4 battery discount, signature solar deals',
-    noscript: 'Mobile Dwellings exclusive Signature Solar coupon code MD50OFF — $50 off any order over $500 at signaturesolar.com. Works on EG4 batteries, inverters, solar panels, and more.',
+    title: 'Signature Solar Coupon Code 2026 – MD50OFF Gets $50 Off | Mobile Dwellings',
+    description: 'Use coupon code MD50OFF at Signature Solar for $50 off. Re-tested weekly by Justin Smith of Mobile Dwellings, who runs EG4 gear in a 40-foot skoolie. Works on EG4 batteries, inverters, solar panels, charge controllers & more at signaturesolar.com. $500 minimum order.',
+    keywords: 'signature solar coupon code, signature solar coupon code 2026, signature solar discount code, MD50OFF, signature solar promo code, EG4 coupon code, signature solar off grid discount, skoolie solar discount, van life solar coupon, mobile dwellings coupon, EG4 battery discount, signature solar deals',
+    noscript: 'Mobile Dwellings exclusive Signature Solar coupon code MD50OFF — $50 off at signaturesolar.com, $500 minimum order. Re-tested weekly. Works on EG4 batteries, inverters, solar panels, and more.',
     // The full schema graph (WebPage, Person, Organization, Offer, FAQPage,
     // VideoObject(s), ImageObject(s)) is injected at runtime by
     // SignatureSolarCouponPage.tsx via react-helmet-async. Don't duplicate
