@@ -11,6 +11,10 @@ import { Input } from "../components/ui/input";
 import { Textarea } from "../components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "../components/ui/select";
 import { toast } from "sonner";
+import {
+  SIGNATURE_SOLAR_LAST_VERIFIED,
+  SIGNATURE_SOLAR_LAST_VERIFIED_DATE,
+} from "../data/coupon-verification";
 
 // Products are now managed via DealsContext
 
@@ -55,6 +59,10 @@ type CouponOffer = {
   blurb: string;
   /** Fine print under the CTAs. */
   finePrint: string;
+  /** Optional "last checked" stamp. Human-readable + ISO for <time>. Omitted
+   *  for partners whose codes we don't re-check on a cadence. */
+  verifiedOn?: string;
+  verifiedOnIso?: string;
   /** Optional internal link to a full details page. Omitted for partners
    *  without a published page (WattCycle is still in DRAFT_PARTNERS). */
   detailsHref?: string;
@@ -79,6 +87,10 @@ const SIGNATURE_SOLAR_OFFER: CouponOffer = {
   blurb:
     "$50 off orders over $500 on EG4 inverters, lithium batteries, solar panels, and mini splits. Our go to source for off-grid gear.",
   finePrint: "Apply at checkout on signaturesolar.com. Works on most products sitewide.",
+  // Shared with the /signature-solar-coupon page so the two dates can't drift.
+  // Both are re-stamped by `npm run verify-coupon`.
+  verifiedOn: SIGNATURE_SOLAR_LAST_VERIFIED,
+  verifiedOnIso: SIGNATURE_SOLAR_LAST_VERIFIED_DATE,
   detailsHref: "/signature-solar-coupon",
   ticketBg: BRAND_INK,
   codeColor: "#ffde5a", // Mobile Dwellings logo yellow (Header.tsx)
@@ -209,6 +221,15 @@ function CouponCard({ offer }: { offer: CouponOffer }) {
           {offer.ctaLabel}
         </a>
       </div>
+
+      {offer.verifiedOn && (
+        <p className="text-xs text-neutral-500 dark:text-neutral-400 mb-3">
+          ✓ Code verified working{" "}
+          <time dateTime={offer.verifiedOnIso} className="font-semibold">
+            {offer.verifiedOn}
+          </time>
+        </p>
+      )}
 
       <p className="text-neutral-600 dark:text-neutral-400 text-sm mb-3">{offer.blurb}</p>
       <p className="text-xs text-neutral-400 dark:text-neutral-500 mt-auto">

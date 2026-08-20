@@ -3,6 +3,10 @@ import { Helmet } from "react-helmet-async";
 import { SEO } from "../components/SEO";
 import { Header } from "../components/Header";
 import { Footer } from "../components/Footer";
+import {
+  SIGNATURE_SOLAR_LAST_VERIFIED,
+  SIGNATURE_SOLAR_LAST_VERIFIED_DATE,
+} from "../data/coupon-verification";
 
 // ──────────────────────────────────────────────────────────
 // Constants
@@ -10,17 +14,16 @@ import { Footer } from "../components/Footer";
 const COUPON_CODE = "MD50OFF";
 const AFFILIATE_URL = "https://signaturesolar.com/?ref=mobiledwellings";
 
-// The offer is treated as ongoing rather than dated. A hard expiry decays into
-// a page that tells crawlers the deal is dead the moment it passes, and an
-// `Offer` needs no validThrough. Recency of verification carries the freshness
+// The offer carries no hard expiry. Signature Solar rotates codes roughly every
+// 60 days, so a validThrough would go stale every couple of months and leave
+// crawlers reading a dead offer. Recency of verification carries the freshness
 // signal instead — which is also what AI summarizers weigh.
 //
-// ── Re-stamp after Justin checks the code (every few days). Not by hand: ──
-//    npm run verify-coupon
-// That script rewrites both constants below to today's date, so the claim on
-// the page always reflects a real check.
-const LAST_VERIFIED = "August 20, 2026";
-const LAST_VERIFIED_DATE = "2026-08-20";
+// The dates live in src/data/coupon-verification.ts so this page and the coupon
+// card on /deals can never disagree. Re-stamp both with `npm run verify-coupon`
+// after actually checking the code.
+const LAST_VERIFIED = SIGNATURE_SOLAR_LAST_VERIFIED;
+const LAST_VERIFIED_DATE = SIGNATURE_SOLAR_LAST_VERIFIED_DATE;
 
 const AUTHOR = {
   name: "Justin Smith",

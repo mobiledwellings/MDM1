@@ -26,7 +26,9 @@ import { fileURLToPath } from "node:url";
 import { dirname, join } from "node:path";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
-const PAGE = join(__dirname, "..", "src", "pages", "SignatureSolarCouponPage.tsx");
+// Single source of truth, imported by both /signature-solar-coupon and the
+// coupon card on /deals — so one stamp updates every place the date appears.
+const PAGE = join(__dirname, "..", "src", "data", "coupon-verification.ts");
 
 /** Format a Date as "August 20, 2026" in a timezone-stable way. */
 function longDate(iso) {
@@ -57,20 +59,22 @@ const pretty = longDate(iso);
 let src = readFileSync(PAGE, "utf8");
 
 const before = src;
+// The ` = ` in each pattern keeps the first from also matching the _DATE
+// constant, since that one is followed by `_` rather than a space.
 src = src.replace(
-  /const LAST_VERIFIED = "[^"]*";/,
-  `const LAST_VERIFIED = "${pretty}";`
+  /export const SIGNATURE_SOLAR_LAST_VERIFIED = "[^"]*";/,
+  `export const SIGNATURE_SOLAR_LAST_VERIFIED = "${pretty}";`
 );
 src = src.replace(
-  /const LAST_VERIFIED_DATE = "[^"]*";/,
-  `const LAST_VERIFIED_DATE = "${iso}";`
+  /export const SIGNATURE_SOLAR_LAST_VERIFIED_DATE = "[^"]*";/,
+  `export const SIGNATURE_SOLAR_LAST_VERIFIED_DATE = "${iso}";`
 );
 
 if (src === before) {
   console.error(
-    "✗ Could not find LAST_VERIFIED / LAST_VERIFIED_DATE constants in\n  " +
+    "✗ Could not find SIGNATURE_SOLAR_LAST_VERIFIED / _DATE constants in\n  " +
       PAGE +
-      "\n  Were they renamed? Update this script to match."
+      "\n  Were they renamed or moved? Update this script to match."
   );
   process.exit(1);
 }
