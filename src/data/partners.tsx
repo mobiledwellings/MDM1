@@ -136,7 +136,7 @@ const signatureSolar: Partner = {
     code: "MD50OFF",
     discount: "$50",
     // Ongoing offer — no expiry published. Freshness is carried by
-    // lastVerified, which is re-stamped weekly via `npm run verify-coupon`.
+    // lastVerified, re-stamped every few days via `npm run verify-coupon`.
     lastVerified: "August 20, 2026",
     terms: "$50 off orders of $500+. Works on most products sitewide.",
   },

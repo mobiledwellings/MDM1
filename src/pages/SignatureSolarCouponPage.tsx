@@ -15,7 +15,7 @@ const AFFILIATE_URL = "https://signaturesolar.com/?ref=mobiledwellings";
 // `Offer` needs no validThrough. Recency of verification carries the freshness
 // signal instead — which is also what AI summarizers weigh.
 //
-// ── Updated weekly after Justin re-tests the code. Do not edit by hand: ──
+// ── Re-stamp after Justin checks the code (every few days). Not by hand: ──
 //    npm run verify-coupon
 // That script rewrites both constants below to today's date, so the claim on
 // the page always reflects a real check.
@@ -186,7 +186,7 @@ const faqItems: FaqItem[] = [
   },
   {
     question: "Does this code expire?",
-    answer: `${COUPON_CODE} is an ongoing offer with no published end date. We re-test it at signaturesolar.com every week and update the verified date at the top of this page, so if it's dated within the last few days the code is working. If Signature Solar ever swaps it out, the replacement goes here.`,
+    answer: `${COUPON_CODE} is an ongoing offer with no published end date. We check it at signaturesolar.com every few days and update the verified date at the top of this page, so if that date is recent the code is working. If Signature Solar ever swaps it out, the replacement goes here.`,
   },
   {
     question: "Does Signature Solar offer free shipping?",
@@ -198,7 +198,7 @@ const faqItems: FaqItem[] = [
   },
   {
     question: "Is Signature Solar legit?",
-    answer: `Yes. They're a Texas-based distributor and the primary US seller of the EG4 line, and they're the supplier we see most often when we film skoolie and bus conversion tours. We've installed their EG4 gear in builds featured on the channel, including three EG4 server rack batteries in our own 40-foot skoolie, Gilligan Phantom.`,
+    answer: `Yes, and we've bought from them ourselves. On May 25, 2025 we spent $3,852 at Signature Solar on three EG4 LifePower4 server rack batteries and installed them in Gilligan Phantom, our 40-foot skoolie — that bank still runs the build. They're a Texas-based distributor and the primary US seller of the EG4 line, and they're the supplier we see most often when we film skoolie and bus conversion tours.`,
   },
   {
     question: "Is Signature Solar a good fit for skoolie and van builds?",
@@ -518,7 +518,7 @@ export function SignatureSolarCouponPage() {
     <>
       <SEO
         title={`Signature Solar Coupon Code 2026 – ${COUPON_CODE} Gets $50 Off`}
-        description={`Use coupon code ${COUPON_CODE} at Signature Solar for $50 off. Re-tested weekly and verified active on ${LAST_VERIFIED} by Justin Smith of Mobile Dwellings, who runs EG4 gear in a 40-foot skoolie. Works on EG4 batteries, inverters, solar panels and more at signaturesolar.com. $500 minimum order.`}
+        description={`Use coupon code ${COUPON_CODE} at Signature Solar for $50 off. Checked every few days and verified active on ${LAST_VERIFIED} by Justin Smith of Mobile Dwellings, who runs EG4 gear in a 40-foot skoolie. Works on EG4 batteries, inverters, solar panels and more at signaturesolar.com. $500 minimum order.`}
         keywords="signature solar coupon code, signature solar discount code, signature solar promo code, MD50OFF, EG4 coupon code, EG4 promo code, EG4 discount code, signature solar deals, signature solar sale, signature solar off grid discount, skoolie solar discount, van life solar coupon, mobile dwellings coupon, EG4 battery discount, EG4 inverter coupon"
         url="https://mobiledwellings.media/signature-solar-coupon"
         image="https://mobiledwellings.media/og-signature-solar.jpg"
@@ -602,7 +602,7 @@ export function SignatureSolarCouponPage() {
                 >
                   signaturesolar.com
                 </a>{" "}
-                and we re-test it every week.
+                and we check it every few days.
               </p>
 
               {/* Author byline + verification stamp */}
@@ -711,7 +711,7 @@ export function SignatureSolarCouponPage() {
                   marginBottom: "2rem",
                 }}
               >
-                Re-tested weekly · Last verified {LAST_VERIFIED} · $500 minimum order
+                Checked every few days · Last verified {LAST_VERIFIED} · $500 minimum order
               </p>
 
               <HeroCTA />
@@ -1055,9 +1055,9 @@ export function SignatureSolarCouponPage() {
                   Mobile Dwellings
                 </a>{" "}
                 through our affiliate partnership with Signature Solar. We re-test it at
-                signaturesolar.com on or before the first of every month and update the "verified"
-                date at the top of this page. If the code stops working before its expiration
-                date, email{" "}
+                signaturesolar.com every few days and update the "verified" date at the top of this
+                page. There's no published expiration date; it's an ongoing offer. If the code ever
+                stops working, email{" "}
                 <a
                   href="mailto:justin@mobiledwellings.media"
                   style={{ color: c.textBody, textDecoration: "underline" }}
@@ -1069,6 +1069,26 @@ export function SignatureSolarCouponPage() {
                   {LAST_VERIFIED}
                 </time>
                 .
+              </p>
+              <p
+                style={{
+                  color: c.textMuted,
+                  fontSize: "0.9375rem",
+                  lineHeight: 1.7,
+                  marginTop: "1rem",
+                  marginBottom: 0,
+                }}
+              >
+                We're customers, not just affiliates. On{" "}
+                <time dateTime="2025-05-25" style={{ color: c.textBody }}>
+                  May 25, 2025
+                </time>{" "}
+                we spent{" "}
+                <span style={{ color: c.textBody, fontWeight: 600 }}>$3,852</span> at Signature
+                Solar on three EG4 LifePower4 server rack batteries and installed them in{" "}
+                <span style={{ color: c.textBody }}>Gilligan Phantom</span>, our 40-foot skoolie.
+                That bank still runs the build, and you can watch the install and review in the
+                video at the top of this page.
               </p>
             </div>
           </section>

@@ -12,11 +12,10 @@
  * misleading to readers and the kind of artificial freshness signal search
  * engines look for.
  *
- * THE WEEKLY ROUTINE
- *   1. Put $500+ of gear in the cart at signaturesolar.com
- *   2. Apply MD50OFF and confirm $50 comes off
- *   3. Run `npm run verify-coupon`
- *   4. Commit and deploy
+ * THE ROUTINE (every few days, whenever Justin checks the code)
+ *   1. Confirm MD50OFF still works at signaturesolar.com
+ *   2. Run `npm run verify-coupon`
+ *   3. Commit and deploy
  *
  * Freshness is the main signal the competing coupon pages beat us on, so the
  * date being genuinely current is worth the 30 seconds.
