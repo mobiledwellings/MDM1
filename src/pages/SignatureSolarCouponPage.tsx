@@ -1074,26 +1074,6 @@ export function SignatureSolarCouponPage() {
                 </time>
                 .
               </p>
-              <p
-                style={{
-                  color: c.textMuted,
-                  fontSize: "0.9375rem",
-                  lineHeight: 1.7,
-                  marginTop: "1rem",
-                  marginBottom: 0,
-                }}
-              >
-                We're customers, not just affiliates. On{" "}
-                <time dateTime="2025-05-25" style={{ color: c.textBody }}>
-                  May 25, 2025
-                </time>{" "}
-                we spent{" "}
-                <span style={{ color: c.textBody, fontWeight: 600 }}>$3,852</span> at Signature
-                Solar on three EG4 LifePower4 server rack batteries and installed them in{" "}
-                <span style={{ color: c.textBody }}>Gilligan Phantom</span>, our 40-foot skoolie.
-                That bank still runs the build, and you can watch the install and review in the
-                video at the top of this page.
-              </p>
             </div>
           </section>
 
