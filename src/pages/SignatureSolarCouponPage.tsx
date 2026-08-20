@@ -162,7 +162,7 @@ type FaqItem = {
 const faqItems: FaqItem[] = [
   {
     question: "How does the MD50OFF code work?",
-    answer: `Add at least $500 of gear to your cart at signaturesolar.com, then enter ${COUPON_CODE} in the discount code field at checkout. You'll save $50 and the discount applies sitewide, including batteries, inverters, solar panels, and complete off-grid kits.`,
+    answer: `Add at least $500 of gear to your cart at signaturesolar.com, then enter ${COUPON_CODE} in the discount code field at checkout. You'll save $50 and the discount applies sitewide, including batteries, inverters, solar panels, and complete off-grid kits, and it also stacks with other discounts like free shipping.`,
     answerNode: (
       <>
         Add at least $500 of gear to your cart at{" "}
@@ -176,7 +176,7 @@ const faqItems: FaqItem[] = [
         </a>
         , then enter {COUPON_CODE} in the discount code field at checkout. You'll save $50 and the
         discount applies sitewide, including batteries, inverters, solar panels, and complete
-        off-grid kits.
+        off-grid kits, and it also stacks with other discounts like free shipping.
       </>
     ),
   },
@@ -186,19 +186,19 @@ const faqItems: FaqItem[] = [
   },
   {
     question: "Does this code expire?",
-    answer: `${COUPON_CODE} is an ongoing offer with no published end date. We check it at signaturesolar.com every few days and update the verified date at the top of this page, so if that date is recent the code is working. If Signature Solar ever swaps it out, the replacement goes here.`,
+    answer: `Signature Solar coupon codes expire every 60 days. ${COUPON_CODE} is the current code. I check it at signaturesolar.com every few days and update the verified date at the top of this page, to ensure that the code is working. When a new code goes live I update it here.`,
   },
   {
     question: "Does Signature Solar offer free shipping?",
-    answer: `Signature Solar ships most items freight and runs free-shipping promotions on select pallets and kits rather than sitewide. ${COUPON_CODE} is a discount code, not a shipping code — it takes $50 off the order total and shipping is calculated separately at checkout based on your address and whether the item ships parcel or freight.`,
+    answer: `Signature Solar ships most items freight and runs free-shipping promotions sometimes on select items and sometimes sitewide. ${COUPON_CODE} will still give you $50 off during free-shipping sales.`,
   },
   {
     question: "Can I use this code with a sale or another discount?",
-    answer: `Usually yes. ${COUPON_CODE} applies at checkout on top of live sale pricing in most cases, so a sale item plus the code stacks. It generally won't combine with another discount code, since Signature Solar's checkout accepts one code per order. If the code is rejected on a deeply discounted item, that item is likely already excluded.`,
+    answer: `Yes. ${COUPON_CODE} applies at checkout on top of live sale pricing in most cases, so a sale item plus the code stacks. It doesn't combine with another discount code, since Signature Solar's checkout accepts one code per order, but that's okay because all codes give $50 off anyway as far as I know.`,
   },
   {
     question: "Is Signature Solar legit?",
-    answer: `Yes, and we've bought from them ourselves. On May 25, 2025 we spent $3,852 at Signature Solar on three EG4 LifePower4 server rack batteries and installed them in Gilligan Phantom, our 40-foot skoolie — that bank still runs the build. They're a Texas-based distributor and the primary US seller of the EG4 line, and they're the supplier we see most often when we film skoolie and bus conversion tours.`,
+    answer: `Yes, and we've bought from them ourselves. On May 25, 2025 we spent $3,852 at Signature Solar on three EG4 LifePower4 server rack batteries and installed them in Gilligan Phantom, our 40-foot skoolie, and they've worked flawlessly since. They're a Texas-based distributor and the primary US seller of the EG4 line, and they're the supplier we see most often when we film Skoolie and bus conversion tours.`,
   },
   {
     question: "Is Signature Solar a good fit for skoolie and van builds?",
@@ -1056,8 +1056,9 @@ export function SignatureSolarCouponPage() {
                 </a>{" "}
                 through our affiliate partnership with Signature Solar. We re-test it at
                 signaturesolar.com every few days and update the "verified" date at the top of this
-                page. There's no published expiration date; it's an ongoing offer. If the code ever
-                stops working, email{" "}
+                page. Signature Solar rotates its coupon codes about every 60 days, so the verified
+                date is the thing to look at — if it's recent, {COUPON_CODE} is live. When a new
+                code replaces it, that one goes here. If the code ever stops working, email{" "}
                 <a
                   href="mailto:justin@mobiledwellings.media"
                   style={{ color: c.textBody, textDecoration: "underline" }}
