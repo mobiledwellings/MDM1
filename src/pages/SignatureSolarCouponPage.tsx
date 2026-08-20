@@ -1057,18 +1057,18 @@ export function SignatureSolarCouponPage() {
                 <a href="/about" style={{ color: c.textBody, textDecoration: "underline" }}>
                   Mobile Dwellings
                 </a>{" "}
-                through our affiliate partnership with Signature Solar. We re-test it at
-                signaturesolar.com every few days and update the "verified" date at the top of this
-                page. Signature Solar rotates its coupon codes about every 60 days, so the verified
-                date is the thing to look at — if it's recent, {COUPON_CODE} is live. When a new
-                code replaces it, that one goes here. If the code ever stops working, email{" "}
+                through our affiliate relationship with Signature Solar. I re-test it at
+                signaturesolar.com every handful of days to make sure it works and update the
+                "verified" date at the top of this page. Signature Solar rotates its coupon codes
+                about every 60 days and when a new code replaces it, that one goes here. If the
+                code ever stops working, email{" "}
                 <a
                   href="mailto:justin@mobiledwellings.media"
                   style={{ color: c.textBody, textDecoration: "underline" }}
                 >
                   justin@mobiledwellings.media
                 </a>{" "}
-                and we'll fix it the same day. Last verified active on{" "}
+                and I'll fix it the same day. Last verified active on{" "}
                 <time dateTime={LAST_VERIFIED_DATE} style={{ color: c.textBody }}>
                   {LAST_VERIFIED}
                 </time>
