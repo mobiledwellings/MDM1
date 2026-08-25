@@ -185,7 +185,7 @@ const faqItems: FaqItem[] = [
   },
   {
     question: "What gear is the discount good for?",
-    answer: `Sitewide on orders over $500, so it covers most of what you'd build a system around: EG4 LiFePO4 lithium batteries, EG4 all-in-one inverter/chargers, the full Victron lineup (Cerbo GX, SmartSolar MPPT, Orion-Tr, MultiPlus), solar panels by the pallet, IronRidge racking, and mini-splits.`,
+    answer: `The ${COUPON_CODE} code applies sitewide to Signature Solar products on orders over $500. That covers most of what you'd build a system around: EG4 LiFePO4 lithium batteries, EG4 all-in-one inverter/chargers, the full Victron lineup (Cerbo GX, SmartSolar MPPT, Orion-Tr, MultiPlus), solar panels by the pallet, IronRidge racking, and mini-splits.`,
   },
   {
     question: "Does this code expire?",
@@ -205,7 +205,7 @@ const faqItems: FaqItem[] = [
   },
   {
     question: "Is Signature Solar a good fit for skoolie and van builds?",
-    answer: `It's the most common supplier we see when we film skoolie and bus conversion tours. Reliable, affordable, and built for the kind of use a mobile dwelling actually puts on its electrical system.`,
+    answer: `Signature Solar is the most common supplier we see when we film skoolie and bus conversion tours. Their EG4 gear is reliable, affordable, and built for the kind of use a mobile dwelling actually puts on its electrical system.`,
   },
 ];
 
@@ -747,7 +747,7 @@ export function SignatureSolarCouponPage() {
                   marginBottom: "1.5rem",
                 }}
               >
-                Why Signature Solar?
+                Why We Recommend Signature Solar for Skoolie Builds
               </h2>
               <p
                 style={{
@@ -811,7 +811,7 @@ export function SignatureSolarCouponPage() {
                   marginBottom: "1rem",
                 }}
               >
-                Signature Solar Gear We Keep Seeing in Real Builds
+                Best Signature Solar Gear for Skoolie &amp; Van Builds
               </h2>
               <p
                 style={{
@@ -824,7 +824,18 @@ export function SignatureSolarCouponPage() {
                 }}
               >
                 These are the components that show up over and over when we tour Skoolies, Sail
-                Boats, and Overland Rigs.
+                Boats, and Overland Rigs. You'll find all of them in our{" "}
+                <a href="/deals" style={{ color: c.textBody, textDecoration: "underline" }}>
+                  recommended solar and lithium battery gear for skoolies
+                </a>
+                , or compare them against{" "}
+                <a
+                  href="/partners/wattcycle"
+                  style={{ color: c.textBody, textDecoration: "underline" }}
+                >
+                  budget LiFePO4 batteries from WattCycle
+                </a>
+                .
               </p>
 
               {/* Hero build-tour video */}
@@ -1042,7 +1053,7 @@ export function SignatureSolarCouponPage() {
                   marginBottom: "1rem",
                 }}
               >
-                How We Verify This Code
+                How We Test and Verify Our Signature Solar Discount Code
               </h2>
               <p
                 style={{
