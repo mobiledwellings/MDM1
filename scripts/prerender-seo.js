@@ -163,6 +163,81 @@ const pages = [
     </script>`,
   },
   {
+    route: '/partners/wattcycle',
+    title: 'WattCycle Coupon Code DWELLINGS – 8% Off LiFePO4 Batteries | Mobile Dwellings',
+    description: 'Use code DWELLINGS for 8% off WattCycle LiFePO4 batteries at wattcycle.com. Budget 12V, 24V, and 48V packs for skoolie, van, and RV builds — tested and verified by Mobile Dwellings.',
+    keywords: 'wattcycle, wattcycle coupon code, wattcycle discount code, DWELLINGS, wattcycle promo code, wattcycle review, lifepo4 battery for skoolie, budget lithium battery van, cheap lifepo4 battery, 12v 314ah lifepo4, wattcycle 48v server rack, wattcycle vs eg4, best budget skoolie battery',
+    noscript: 'WattCycle coupon code DWELLINGS — 8% off LiFePO4 lithium batteries at wattcycle.com, no minimum order. Budget 12V, 24V, and 48V server rack batteries for skoolie, van, and RV builds.',
+    image: 'https://mobiledwellings.media/wattcycle-12v-314ah-battery.jpg',
+    // Full schema graph baked into the static HTML so non-JS crawlers (incl. AI
+    // bots) and Google's first pass see it, matching the onX entry above.
+    extraStructuredData: `
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "WebPage",
+          "@id": "https://mobiledwellings.media/partners/wattcycle#webpage",
+          "url": "https://mobiledwellings.media/partners/wattcycle",
+          "name": "WattCycle Coupon Code DWELLINGS – 8% Off LiFePO4 Batteries",
+          "description": "Use code DWELLINGS for 8% off WattCycle LiFePO4 batteries at wattcycle.com. Budget 12V, 24V, and 48V packs for skoolie, van, and RV builds.",
+          "publisher": { "@id": "https://mobiledwellings.media/#organization" }
+        },
+        {
+          "@type": "Organization",
+          "@id": "https://mobiledwellings.media/#organization",
+          "name": "Mobile Dwellings",
+          "url": "https://mobiledwellings.media",
+          "logo": "https://mobiledwellings.media/logo.png"
+        },
+        {
+          "@type": "Brand",
+          "name": "WattCycle",
+          "description": "Affordable Lithium Batteries for Skoolies, Vans & RVs."
+        },
+        {
+          "@type": "Offer",
+          "name": "WattCycle discount — code DWELLINGS",
+          "description": "8% off sitewide at wattcycle.com. No minimum order.",
+          "url": "https://www.wattcycle.com/?ref=mobiledwellings",
+          "availabilityStarts": "2026-08-20",
+          "seller": { "@type": "Organization", "name": "WattCycle" }
+        },
+        {
+          "@type": "FAQPage",
+          "@id": "https://mobiledwellings.media/partners/wattcycle#faq",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "Is there a WattCycle coupon code?",
+              "acceptedAnswer": { "@type": "Answer", "text": "Yes. Use code DWELLINGS at checkout for 8% off at wattcycle.com. We tested it on August 20, 2026 on a $1,088.98 cart and it took $87.12 off, stacking on top of the 2-pack bundle discount already applied. There's no minimum order." }
+            },
+            {
+              "@type": "Question",
+              "name": "Are WattCycle batteries good for a Skoolie or van build?",
+              "acceptedAnswer": { "@type": "Answer", "text": "They're a popular budget LiFePO4 option. The built-in bluetooth, low temperature protection, and compact cases make them a practical choice when you need a lot of storage without paying a premium price." }
+            },
+            {
+              "@type": "Question",
+              "name": "Do WattCycle batteries work in cold weather?",
+              "acceptedAnswer": { "@type": "Answer", "text": "Standard LiFePO4 batteries shouldn't be charged below freezing, but WattCycle's self-heating models add a low-temperature heating element so they can charge in cold conditions making them well-suited to four-season builds while still being affordable." }
+            }
+          ]
+        },
+        {
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://mobiledwellings.media" },
+            { "@type": "ListItem", "position": 2, "name": "Partners", "item": "https://mobiledwellings.media/partners" },
+            { "@type": "ListItem", "position": 3, "name": "WattCycle", "item": "https://mobiledwellings.media/partners/wattcycle" }
+          ]
+        }
+      ]
+    }
+    </script>`,
+  },
+  {
     route: '/about',
     title: 'About | Skoolie & Van Life Documentary Series | Mobile Dwellings',
     description: 'Mobile Dwellings is a documentary video series featuring converted school buses, overland rigs, van conversions, tiny homes, and liveaboard sailboats. Meet the people behind the builds.',

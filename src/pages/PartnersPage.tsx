@@ -84,13 +84,21 @@ function PartnerCard({
       }}
     >
       <div style={{ height: "6px", backgroundColor: partner.accent }} />
-      <div style={{ padding: "1.75rem", display: "flex", flexDirection: "column", flex: 1 }}>
+      <div
+        style={{
+          padding: "1.75rem",
+          display: "flex",
+          flexDirection: "column",
+          flex: 1,
+          textAlign: "center",
+        }}
+      >
         <h2
           style={{
             ...HEADING_RESET,
             fontSize: "1.375rem",
             fontWeight: 700,
-            marginBottom: "0.5rem",
+            marginBottom: "0.75rem",
           }}
         >
           {partner.name}
@@ -100,24 +108,31 @@ function PartnerCard({
             fontSize: "0.9375rem",
             lineHeight: 1.55,
             color: c.textBody,
-            marginBottom: "1.5rem",
+            marginBottom: "1.75rem",
           }}
         >
           {partner.tagline}
         </p>
         {partner.coupon && (
-          <div style={{ textAlign: "center" }}>
+          // marginTop:auto pins the pill to the bottom of the card, so the
+          // pills line up across the row even when taglines wrap to different
+          // numbers of lines.
+          <div style={{ textAlign: "center", marginTop: "auto" }}>
             <span
               style={{
                 display: "inline-block",
-                fontSize: "1rem",
+                fontSize: "0.875rem",
                 fontWeight: 800,
                 letterSpacing: "0.01em",
-                padding: "0.5rem 0.95rem",
+                padding: "0.5rem 0.75rem",
                 borderRadius: "0.5rem",
                 border: `1px dashed ${c.border}`,
                 color: c.text,
-                whiteSpace: "nowrap",
+                // No `nowrap`: at 1rem the pill measured wider than the card's
+                // content box on all three partners and overflow:hidden clipped
+                // it flush to the card edge. Wrapping is the safety net for a
+                // longer code or discount than today's.
+                maxWidth: "100%",
               }}
             >
               {partner.coupon.discount

@@ -255,59 +255,83 @@ const onxOffroad: Partner = {
 const wattCycle: Partner = {
   slug: "wattcycle",
   name: "WattCycle",
-  tagline: "Affordable LiFePO4 lithium batteries for skoolies, vans & RVs.",
+  tagline: "Affordable Lithium Batteries for Skoolies, Vans & RVs.",
   category: "Solar & Power",
-  accent: "#1f9e5a",
+  accent: "#033ACD", // WattCycle brand blue, sampled from wattcycle.com
   logo: undefined, // TODO: add "/wattcycle-logo.png" to /public
+  // No heroImage: the hero stays a plain dark panel so the coupon code reads
+  // cleanly. The photos all live in the product cards below instead.
   affiliateUrl: "https://www.wattcycle.com/?ref=mobiledwellings",
   ctaLabel: "Shop WattCycle →",
   coupon: {
     code: "DWELLINGS",
     discount: "8%",
-    terms: "Discount on WattCycle LiFePO4 batteries.",
-    lastVerified: "June 1, 2026",
+    terms: "8% off sitewide at wattcycle.com",
+    lastVerified: "August 20, 2026",
   },
   intro: [
-    "WattCycle makes budget-friendly LiFePO4 (lithium iron phosphate) batteries that have become a popular choice for skoolie and van builds that need a lot of storage without the premium price tag.",
-    "Their 12V Mini and Group 24/31 batteries pack a built-in BMS, thousands of charge cycles, and a low-temperature cutoff into a footprint that drops into tight electrical bays — exactly the kind of value gear we like to flag for budget builds.",
+    "WattCycle makes budget-friendly LiFePO4 (lithium iron phosphate) batteries that have become a popular choice for Skoolie and van builds that need battery storage without the premium price tag.",
+    "Their 12V Mini and Group 24/31 batteries have a built-in BMS, bluetooth monitoring, and a low-temperature cutoff and a footprint that drops into tight electrical bays.",
   ],
   about:
-    "WattCycle focuses on high-cycle LiFePO4 batteries at accessible prices, with self-heating and Bluetooth-monitored models in the lineup. For builders weighing cost against capacity, they're worth a serious look.",
+    "WattCycle focuses on quality LiFePO4 batteries at accessible prices, with self-heating and Bluetooth-monitored models in the lineup. For builders weighing cost against capacity, they're worth a serious look.",
   products: [
     {
-      title: "12V 100Ah / 200Ah LiFePO4 Batteries",
+      title: "Wattcycle Budget LiFePO4 Batteries",
       body:
-        "The core of a WattCycle bank: drop-in 12V LiFePO4 batteries with a built-in BMS, 4,000–15,000 cycle ratings, and a compact case that fits standard battery boxes. Wire several in parallel for a high-capacity skoolie or van bank.",
+        "Drop-in standard sized 12V or 24V LiFePO4 batteries with built-in bluetooth, low temperature protection, and a compact case that fits battery boxes and other tight spaces. Wire several in parallel for a high-capacity Skoolie or van bank at a fraction of the cost of some of the more established brands while still getting most of the value.",
+      image: "/wattcycle-justin-314ah-review.jpg",
+      imageAlt:
+        "Justin Smith of Mobile Dwellings sitting beside a WattCycle 12V 314Ah LiFePO4 Mini battery with Bluetooth and a 200A BMS.",
       ctaLabel: "See WattCycle batteries →",
     },
     {
-      title: "Mini & Group 24 Batteries",
+      title: "12V 314Ah Mini with Bluetooth",
       body:
-        "Smaller-footprint cells for builds where space is tight. Same LiFePO4 chemistry and BMS protection in a case that squeezes into cabinets and benches where a full Group 31 won't fit.",
-      ctaLabel: "Browse the lineup →",
+        "The one I tested: 314Ah in a Mini case with a 200A BMS and Bluetooth monitoring, so you can watch state of charge from your phone. It's a lot of usable amp-hours in a footprint that drops into a bench or cabinet.",
+      image: "/wattcycle-12v-314ah-battery.jpg",
+      imageAlt:
+        "WattCycle 12V 314Ah LiFePO4 Mini battery with Smart Edition Bluetooth and a 200A BMS, held by its rope handles.",
+      ctaLabel: "See the 314Ah Mini →",
     },
     {
-      title: "Self-Heating & Bluetooth Models",
+      title: "48V Server Rack — The Budget EG4 Alternative",
+      // PRICES ARE LIVE FIGURES — re-check both when you re-verify the coupon.
+      // EG4 LifePower4 V2 48V 100Ah at Signature Solar and WattCycle's 48V
+      // 100Ah were checked August 2026. WattCycle's was a promo price
+      // ($899.99, down from $1,599.99), so it is the more volatile of the two.
       body:
-        "Cold-weather and smart-monitoring options: self-heating batteries that keep charging below freezing, and Bluetooth models so you can watch state-of-charge from your phone — handy for four-season rigs.",
-      ctaLabel: "Compare models →",
+        "Same 5.12 kWh server rack format as the EG4 LifePower4 batteries for a lot less money. The EG4 V2 runs $1,470.99 at Signature Solar and WattCycle's is $899.99 but the EG4 carries a UL rating and has proven to be durable. This is a budget vs value decision that could make sense for you.",
+      image: "/wattcycle-48v-100ah-server-rack.webp",
+      imageAlt:
+        "WattCycle 51.2V 100Ah 5120Wh server rack LiFePO4 battery with a 100A BMS, LCD touchscreen, and Bluetooth — a budget alternative to the EG4 LifePower4.",
+      ctaLabel: "See the 48V server rack →",
+    },
+    {
+      title: "What the DWELLINGS Code Takes Off",
+      body:
+        "Proof it works: 8% came off a $1,088.98 cart at checkout. No minimum order to hit.",
+      image: "/wattcycle-dwellings-code-checkout.jpg",
+      imageAlt:
+        "WattCycle checkout showing coupon code DWELLINGS applied to a $1,088.98 order for an $87.12 discount.",
+      ctaLabel: "Use code DWELLINGS →",
     },
   ],
   faqs: [
     {
       question: "Is there a WattCycle coupon code?",
       answer:
-        "Yes — use code DWELLINGS at checkout for a discount on WattCycle LiFePO4 batteries. We re-verify this page's offer regularly.",
+        "Yes. Use code DWELLINGS at checkout for 8% off at wattcycle.com. We tested it on August 20, 2026 on a $1,088.98 cart and it took $87.12 off, stacking on top of the 2-pack bundle discount already applied. There's no minimum order.",
     },
     {
-      question: "Are WattCycle batteries good for a skoolie or van build?",
+      question: "Are WattCycle batteries good for a Skoolie or van build?",
       answer:
-        "They're a popular budget LiFePO4 option. The built-in BMS, high cycle life, and compact case make them a practical choice when you need a lot of storage without paying a premium-brand price.",
+        "They're a popular budget LiFePO4 option. The built-in bluetooth, low temperature protection, and compact cases make them a practical choice when you need a lot of storage without paying a premium price.",
     },
     {
       question: "Do WattCycle batteries work in cold weather?",
       answer:
-        "Standard LiFePO4 batteries shouldn't be charged below freezing, but WattCycle's self-heating models add a low-temperature heating element so they can charge in cold conditions — worth it for four-season builds.",
+        "Standard LiFePO4 batteries shouldn't be charged below freezing, but WattCycle's self-heating models add a low-temperature heating element so they can charge in cold conditions making them well-suited to four-season builds while still being affordable.",
     },
   ],
   seo: {
@@ -316,19 +340,19 @@ const wattCycle: Partner = {
       "WattCycle LiFePO4 lithium batteries are a budget-friendly power option for skoolies, vans, and RVs. High cycle life, built-in BMS, self-heating models. Save with our code.",
     keywords:
       "wattcycle, wattcycle review, wattcycle coupon code, wattcycle discount, lifepo4 battery for skoolie, budget lithium battery van, cheap lifepo4 battery, 12v 100ah lifepo4, wattcycle vs eg4, best budget skoolie battery",
-    ogImage: `${SITE}/og-image.jpg`,
+    ogImage: `${SITE}/wattcycle-12v-314ah-battery.jpg`,
   },
 };
 
 // ──────────────────────────────────────────────────────────────────────────
 // Registry. Order here = order on the /partners hub and the nav dropdown.
 // ──────────────────────────────────────────────────────────────────────────
-export const PARTNERS: Partner[] = [signatureSolar, onxOffroad];
+export const PARTNERS: Partner[] = [signatureSolar, onxOffroad, wattCycle];
 
-// Not published yet — WattCycle is built out but held back pending a copy/branding
-// pass. Add it back into PARTNERS above (and re-add its sitemap/prerender/llms
-// entries) when ready.
-export const DRAFT_PARTNERS: Partner[] = [wattCycle];
+// Staging area for partners that are written but not yet live. Move one into
+// PARTNERS above and add its sitemap / prerender / llms.txt entries to publish.
+// (WattCycle graduated from here — it is live as of August 2026.)
+export const DRAFT_PARTNERS: Partner[] = [];
 
 /** Partners rendered by the generic template (excludes bespoke pages). */
 export const TEMPLATE_PARTNERS = PARTNERS.filter((p) => !p.externalPath);

@@ -353,7 +353,7 @@ export function PartnerPage() {
                 >
                   {hasPlaceholder
                     ? "⚠︎ Affiliate link / code not yet set — replace the PLACEHOLDER values in src/data/partners.tsx."
-                    : `Verified active on ${p.coupon!.lastVerified} by Justin Smith of Mobile Dwellings.`}
+                    : `Verified active on ${p.coupon!.lastVerified} by Justin`}
                 </p>
               )}
             </div>

@@ -30,6 +30,7 @@ const staticPages = [
   // Partner pages rendered by the generic template. Keep in sync with
   // PARTNERS in src/data/partners.tsx (one entry per published partner slug).
   { path: "/partners/onx-offroad", changefreq: "monthly", priority: "0.8" },
+  { path: "/partners/wattcycle", changefreq: "monthly", priority: "0.8" },
 ];
 
 async function fetchRigs() {
