@@ -185,7 +185,7 @@ const faqItems: FaqItem[] = [
   },
   {
     question: "What gear is the discount good for?",
-    answer: `The ${COUPON_CODE} code applies sitewide to Signature Solar products on orders over $500. That covers most of what you'd build a system around: EG4 LiFePO4 lithium batteries, EG4 all-in-one inverter/chargers, the full Victron lineup (Cerbo GX, SmartSolar MPPT, Orion-Tr, MultiPlus), solar panels by the pallet, IronRidge racking, and mini-splits.`,
+    answer: `The ${COUPON_CODE} code applies sitewide to Signature Solar products. That covers most of what you'd build a system around: EG4 LiFePO4 lithium batteries, EG4 all-in-one inverter/chargers, the full Victron lineup (Cerbo GX, SmartSolar MPPT, Orion-Tr, MultiPlus), solar panels by the pallet, IronRidge racking, and mini-splits.`,
   },
   {
     question: "Does this code expire?",
@@ -596,7 +596,7 @@ export function SignatureSolarCouponPage() {
               >
                 The current Mobile Dwellings coupon code for Signature Solar is{" "}
                 <strong style={{ color: HERO.textSecondary }}>{COUPON_CODE}</strong>. It saves $50
-                on any order of $500 or more at{" "}
+                at{" "}
                 <a
                   href={AFFILIATE_URL}
                   target="_blank"
@@ -706,18 +706,12 @@ export function SignatureSolarCouponPage() {
                 <CopyButton code={COUPON_CODE} />
               </div>
 
-              <p
-                style={{
-                  fontSize: "0.75rem",
-                  color: HERO.subtle,
-                  marginTop: "1.25rem",
-                  marginBottom: "2rem",
-                }}
-              >
-                Checked every few days · Last verified {LAST_VERIFIED} · $500 minimum order
-              </p>
-
-              <HeroCTA />
+              {/* No fine-print strip here: its three facts (cadence, verified
+                  date, minimum order) were each already stated above, and it
+                  sat between the code and the CTA. */}
+              <div style={{ marginTop: "2rem" }}>
+                <HeroCTA />
+              </div>
             </div>
           </section>
 
@@ -1178,7 +1172,7 @@ export function SignatureSolarCouponPage() {
                   marginBottom: "1.75rem",
                 }}
               >
-                $50 off · $500 minimum order · Verified {LAST_VERIFIED}
+                $50 off · Verified {LAST_VERIFIED}
               </p>
               <FooterCTA palette={c} />
               <p
