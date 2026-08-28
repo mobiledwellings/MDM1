@@ -66,6 +66,7 @@
       "scripts": {
             "dev": "vite",
             "verify-coupon": "node scripts/verify-coupon.js",
-            "build": "vite build && node scripts/generate-sitemap.js && node scripts/prerender-seo.js && node scripts/indexnow.js"
+            "build": "vite build && vite build --config vite.ssr.config.ts && node scripts/generate-sitemap.js && node scripts/prerender-seo.js && node scripts/indexnow.js",
+            "build:ssr": "vite build --config vite.ssr.config.ts"
       }
 }

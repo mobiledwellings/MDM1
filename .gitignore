@@ -34,3 +34,6 @@ Thumbs.db
 # Supabase
 .supabase/
 supabase/.temp/
+
+# Build-time SSR bundle used by scripts/prerender-seo.js (artifact, not source)
+.ssr-build/

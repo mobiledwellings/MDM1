@@ -18,6 +18,42 @@ const BUILD_DIR = path.resolve(__dirname, '../build');
 const SITE_URL = 'https://mobiledwellings.media';
 
 // ---------------------------------------------------------------------------
+// Signature Solar coupon page: schema baked from the shared content module
+//
+// The coupon page's structured data is generated, not hand-written — it derives
+// from the live coupon code, the verification date, the FAQ list, and the build
+// photos/videos, all of which change. Hand-copying that JSON into this file
+// would guarantee drift the next time the code rotates (roughly every 60 days).
+//
+// So both consumers read one module: the page component renders from it, and
+// this script bakes the schema from it. See src/data/signature-solar-content.mjs.
+// ---------------------------------------------------------------------------
+
+/** Read the human + ISO verification dates out of the TS source of truth. */
+function readCouponVerification() {
+  const file = path.resolve(__dirname, '../src/data/coupon-verification.ts');
+  const src = fs.readFileSync(file, 'utf-8');
+  const pretty = src.match(/SIGNATURE_SOLAR_LAST_VERIFIED = "([^"]+)"/);
+  const iso = src.match(/SIGNATURE_SOLAR_LAST_VERIFIED_DATE = "([^"]+)"/);
+  if (!pretty || !iso) {
+    throw new Error(
+      'Could not read SIGNATURE_SOLAR_LAST_VERIFIED / _DATE from ' + file +
+      '\n  Were they renamed? Update readCouponVerification() to match.'
+    );
+  }
+  return { lastVerified: pretty[1], lastVerifiedDate: iso[1] };
+}
+
+/**
+ * Serialize a schema object into a <script> tag.
+ * Escapes < so a literal </script> inside any string can't close the tag early.
+ */
+function schemaScript(schema) {
+  const json = JSON.stringify(schema, null, 2).replace(/</g, '\\u003c');
+  return '\n    <script type="application/ld+json">\n' + json + '\n    </script>';
+}
+
+// ---------------------------------------------------------------------------
 // Page-specific SEO data
 // Keep this in sync with the <SEO> components in your React pages.
 // When you update a page's SEO component, update the matching entry here.
@@ -44,9 +80,11 @@ const pages = [
     description: 'Exclusive Signature Solar coupon code: MD50OFF. Save on EG4 inverters, lithium batteries, solar panels, and more. Best gear for skoolies, bus conversions, and overland rigs — tested in real builds.',
     keywords: 'Signature Solar coupon code, Signature Solar discount code, Signature Solar promo code, EG4 coupon code, Signature Solar deals, best inverter for skoolie, best lithium battery for bus conversion, skoolie solar panels, best mini split for skoolie, overland rig solar setup',
     noscript: 'Signature Solar coupon code MD50OFF — save on EG4 inverters, lithium batteries, solar panels, and more. Tested gear for skoolies, bus conversions, and overland rigs.',
-    // FAQPage schema is injected at runtime by DealsPage.tsx via
-    // dangerouslySetInnerHTML. Don't duplicate it here — Google flags duplicate
-    // FAQPage entries on the same URL as a critical issue.
+    // FAQPage schema and the coupon block are both baked in below, from
+    // src/data/deals-content.mjs and the SSR bundle. The runtime
+    // dangerouslySetInnerHTML injection that used to live in DealsPage.tsx was
+    // removed — keeping both would put two FAQPage entries on one URL, which
+    // Google flags as a critical error.
   },
   {
     route: '/skoolie-support',
@@ -339,6 +377,21 @@ function prerender() {
       html = html.replace('</head>', `${page.extraStructuredData}\n  </head>`);
     }
 
+    // Bake the page's rendered content into #root.
+    //
+    // The client mounts with createRoot().render(), which replaces #root
+    // wholesale, so this is not hydration — it's the same markup React would
+    // produce, sitting in the served bytes for crawlers that never run JS.
+    // A replacer function (not a string) is required: the copy contains $50,
+    // and $ followed by a digit is a capture-group reference in a string
+    // replacement, which would silently corrupt the output.
+    if (page.bodyHtml) {
+      html = html.replace(
+        /<div id="root"><\/div>/,
+        () => `<div id="root">${page.bodyHtml}</div>`
+      );
+    }
+
     // Replace noscript content
     if (page.noscript) {
       html = html.replace(
@@ -365,5 +418,48 @@ function prerender() {
   console.log(`\n   📄 Prerendered ${count} pages with unique SEO meta tags`);
 }
 
-console.log('🔍 Prerendering SEO meta tags...');
-prerender();
+async function main() {
+  // Bake the coupon page's schema graph into its static HTML. Previously this
+  // graph only existed after react-helmet-async injected it at runtime, so the
+  // served bytes carried none of it — invisible to every crawler that doesn't
+  // execute JavaScript.
+  const content = await import('../src/data/signature-solar-content.mjs');
+  const schema = content.buildSignatureSolarSchema(readCouponVerification());
+  const couponPage = pages.find((p) => p.route === '/signature-solar-coupon');
+  if (!couponPage) {
+    throw new Error('No /signature-solar-coupon entry in pages[] — cannot bake its schema.');
+  }
+  couponPage.extraStructuredData = schemaScript(schema);
+
+  // Render the page's real React component to HTML so the served bytes carry
+  // the actual copy — headings, the coupon code, the FAQ answers. Built by
+  // `vite build --config vite.ssr.config.ts` immediately before this script.
+  const ssr = await import('../.ssr-build/entry-ssr-signature-solar.mjs');
+  couponPage.bodyHtml = ssr.renderSignatureSolarMain();
+  console.log(`   🧩 Rendered coupon page content: ${couponPage.bodyHtml.length.toLocaleString()} bytes`);
+
+  // /deals is the site's highest-impression page for "signature solar coupon
+  // code" (941 impressions, position 7.2) and served nothing but an empty shell
+  // to any crawler that doesn't run JavaScript. Bake its coupon block and FAQ
+  // schema the same way.
+  //
+  // Only the coupon block, not the whole page — the product catalog loads
+  // asynchronously from DealsContext, so there's nothing to render at build
+  // time. It carries no coupon code, so nothing important is missing.
+  const dealsContent = await import('../src/data/deals-content.mjs');
+  const dealsPage = pages.find((p) => p.route === '/deals');
+  if (!dealsPage) {
+    throw new Error('No /deals entry in pages[] — cannot bake its coupon block.');
+  }
+  dealsPage.extraStructuredData = schemaScript(dealsContent.buildDealsFaqSchema());
+  dealsPage.bodyHtml = ssr.renderDealsCouponHero();
+  console.log(`   🧩 Rendered deals coupon block:   ${dealsPage.bodyHtml.length.toLocaleString()} bytes`);
+
+  console.log('🔍 Prerendering SEO meta tags...');
+  prerender();
+}
+
+main().catch((err) => {
+  console.error('✗ Prerender failed:', err.message);
+  process.exit(1);
+});
