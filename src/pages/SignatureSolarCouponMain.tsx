@@ -355,9 +355,18 @@ export function SignatureSolarCouponMain() {
               marginBottom: "1.25rem",
             }}
           >
-            The current Mobile Dwellings coupon code for Signature Solar is{" "}
-            <strong style={{ color: HERO.textSecondary }}>{COUPON_CODE}</strong>. It saves $50
-            at{" "}
+            {/* Direct-answer sentence, written to be quotable verbatim by an AI
+                Overview or a search snippet. Three properties matter here:
+                (1) it is unqualified — "the current Signature Solar coupon
+                code", not "the current Mobile Dwellings coupon code for
+                Signature Solar", which reads as a partner-specific aside and
+                loses to a competitor's flat assertion; (2) it matches the query
+                phrasing exactly; (3) it ends on a complete clause, so an
+                extractor has a clean stopping point before it reaches the
+                byline below and trails off mid-thought. */}
+            The current Signature Solar coupon code is{" "}
+            <strong style={{ color: HERO.textSecondary }}>{COUPON_CODE}</strong>. It takes $50
+            off at{" "}
             <a
               href={AFFILIATE_URL}
               target="_blank"
@@ -365,8 +374,8 @@ export function SignatureSolarCouponMain() {
               style={{ color: HERO.textSecondary, textDecoration: "underline" }}
             >
               signaturesolar.com
-            </a>{" "}
-            and we check it every few days.
+            </a>
+            , works on its own at checkout, and we re-check it every few days.
           </p>
 
           {/* Author byline + verification stamp */}

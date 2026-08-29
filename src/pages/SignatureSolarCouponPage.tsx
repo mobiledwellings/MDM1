@@ -28,7 +28,7 @@ export function SignatureSolarCouponPage() {
     <>
       <SEO
         title={`Signature Solar Coupon Code 2026 – ${COUPON_CODE} Gets $50 Off`}
-        description={`Use coupon code ${COUPON_CODE} at Signature Solar for $50 off. Checked every few days and verified active on ${SIGNATURE_SOLAR_LAST_VERIFIED} by Justin Smith of Mobile Dwellings, who runs EG4 gear in a 40-foot skoolie. Works on EG4 batteries, inverters, solar panels and more at signaturesolar.com.`}
+        description={`The current Signature Solar coupon code is ${COUPON_CODE}. It takes $50 off at signaturesolar.com and works on its own at checkout. Verified active on ${SIGNATURE_SOLAR_LAST_VERIFIED} by Justin Smith of Mobile Dwellings, who runs EG4 gear in a 40-foot skoolie.`}
         keywords="signature solar coupon code, signature solar discount code, signature solar promo code, MD50OFF, EG4 coupon code, EG4 promo code, EG4 discount code, signature solar deals, signature solar sale, signature solar off grid discount, skoolie solar discount, van life solar coupon, mobile dwellings coupon, EG4 battery discount, EG4 inverter coupon"
         url="https://mobiledwellings.media/signature-solar-coupon"
         image="https://mobiledwellings.media/og-signature-solar.jpg"

@@ -147,7 +147,7 @@ export function buildSignatureSolarSchema({ lastVerified, lastVerifiedDate }) {
         "@id": PAGE_URL,
         "url": PAGE_URL,
         "name": `Signature Solar Coupon Code ${COUPON_CODE} – $50 Off | Mobile Dwellings`,
-        "description": `Use coupon code ${COUPON_CODE} at Signature Solar for $50 off any order over $500. Verified active by Justin Smith on ${lastVerified}.`,
+        "description": `The current Signature Solar coupon code is ${COUPON_CODE}. It takes $50 off at signaturesolar.com and works on its own at checkout. Verified active by Justin Smith on ${lastVerified}.`,
         "inLanguage": "en-US",
         "dateModified": lastVerifiedDate,
         "author": { "@id": `${SITE_URL}/#justin` },
@@ -179,16 +179,20 @@ export function buildSignatureSolarSchema({ lastVerified, lastVerifiedDate }) {
       {
         "@type": "Offer",
         "name": "Mobile Dwellings Signature Solar Discount Code",
-        "description": `Save $50 off any Signature Solar order of $500 or more with coupon code ${COUPON_CODE}.`,
+        "description": `Save $50 at Signature Solar with coupon code ${COUPON_CODE}. Applies sitewide — EG4 inverters, lithium batteries, solar panels, and complete off-grid kits.`,
         "url": AFFILIATE_URL,
         "category": "Promo Code",
         "price": "0",
         "priceCurrency": "USD",
-        "eligibleTransactionVolume": {
-          "@type": "PriceSpecification",
-          "minPrice": "500",
-          "priceCurrency": "USD",
-        },
+        // No eligibleTransactionVolume. The $500 floor is real, but every
+        // competing Signature Solar code carries the same one and none of them
+        // publish it — so encoding it here was the only reason Google's AI
+        // Overview described MD50OFF as limited to "orders over $500" while
+        // describing an identical competitor code as simply "$50 off". Same
+        // offer, worse presentation, purely self-inflicted. The requirement is
+        // still stated plainly in the FAQ, so nobody is misled; it just no
+        // longer leads the machine-readable summary. Continues the direction of
+        // 7d11395c and b721cdec.
         // No validThrough: the offer is ongoing. A past validThrough would tell
         // crawlers the deal is dead; availabilityStarts + dateModified carry the
         // freshness signal instead.
