@@ -63,9 +63,17 @@ const SIGNATURE_SOLAR_OFFER: CouponOffer = {
   code: "MD50OFF",
   url: "https://signaturesolar.com/?ref=mobiledwellings",
   ctaLabel: "Shop Signature Solar →",
+  // The $500 floor lives in finePrint, not here. This blurb is the most
+  // quotable line on the page — it sits beside the code and is the first thing
+  // an extractor reaches — and every competing Signature Solar code carries the
+  // same floor without publishing it. Leading with it made an identical offer
+  // read as more restricted, which is what Google's AI Overview echoed back.
+  // Still disclosed below, where terms belong. Matches the coupon page, which
+  // previously said "works on its own at checkout" while this card said
+  // "orders over $500" — same offer, two framings, on one site.
   blurb:
-    "$50 off orders over $500 on EG4 inverters, lithium batteries, solar panels, and mini splits. Our go to source for off-grid gear.",
-  finePrint: "Apply at checkout on signaturesolar.com. Works on most products sitewide.",
+    "$50 off EG4 inverters, lithium batteries, solar panels, and mini splits. Our go to source for off-grid gear.",
+  finePrint: "Apply at checkout on signaturesolar.com. Works on most products sitewide. $500 order minimum.",
   // Shared with the /signature-solar-coupon page so the two dates can't drift.
   // Both are re-stamped by `npm run verify-coupon`.
   verifiedOn: SIGNATURE_SOLAR_LAST_VERIFIED,
