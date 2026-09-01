@@ -156,6 +156,37 @@ export function verifiedMonthLabel(isoDate) {
   return `${months[m - 1]} ${y}`;
 }
 
+/**
+ * Key facts as label/value pairs, rendered as a <dl> near the top of the page.
+ *
+ * WHY A LIST AND NOT A SENTENCE: the same facts already appear in the intro
+ * prose, but a definition list is far easier for a model to extract cleanly —
+ * each fact is delimited rather than needing to be parsed out of a clause. The
+ * competitor pages that keep winning the AI Overview all lead with a scannable
+ * block like this.
+ *
+ * The $500 order minimum is deliberately NOT here. It stays in the FAQ. Every
+ * competing Signature Solar code carries the same floor without publishing it,
+ * and listing it in a spec block is precisely what made an identical offer read
+ * as more restricted. See a4901790.
+ *
+ * `iso` marks the row that should render inside a <time> element.
+ */
+export function buildFastFacts({ lastVerified, lastVerifiedDate }) {
+  return [
+    { label: "Retailer", value: "Signature Solar (signaturesolar.com)" },
+    { label: "Coupon code", value: COUPON_CODE, isCode: true },
+    { label: "Discount", value: "$50 off" },
+    {
+      label: "Applies to",
+      value:
+        "Sitewide — EG4 lithium batteries and inverters, the full Victron lineup, solar panels by the pallet, IronRidge racking, and mini-splits",
+    },
+    { label: "Stacks with", value: "Live sale pricing and free-shipping promotions" },
+    { label: "Last verified", value: `${lastVerified} by ${AUTHOR.name}`, iso: lastVerifiedDate },
+  ];
+}
+
 export function buildSignatureSolarSchema({ lastVerified, lastVerifiedDate }) {
   return {
     "@context": "https://schema.org",

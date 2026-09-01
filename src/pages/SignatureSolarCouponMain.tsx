@@ -21,6 +21,7 @@ import {
   GEAR_ITEMS as GEAR_CONTENT,
   FAQ_ITEMS as FAQ_CONTENT,
   verifiedMonthLabel,
+  buildFastFacts,
 } from "../data/signature-solar-content.mjs";
 
 // The dates live in src/data/coupon-verification.ts so this page and the coupon
@@ -483,6 +484,92 @@ export function SignatureSolarCouponMain() {
           <div style={{ marginTop: "2rem" }}>
             <HeroCTA />
           </div>
+        </div>
+      </section>
+
+      {/* ─────────────── AT A GLANCE ───────────────
+          A <dl> rather than prose: each fact is delimited, so a model pulling
+          "what is the code / what does it save / when was it checked" gets
+          clean pairs instead of having to parse them out of a sentence. Sits
+          immediately after the hero so it lands early in the document.
+          The $500 minimum is deliberately absent — see buildFastFacts(). */}
+      <section
+        style={{
+          ...sectionPad,
+          paddingTop: "2.5rem",
+          paddingBottom: "2.5rem",
+          backgroundColor: c.sectionBg,
+          borderBottom: `1px solid ${c.border}`,
+        }}
+      >
+        <div style={{ maxWidth: "42rem", marginLeft: "auto", marginRight: "auto" }}>
+          <h2
+            style={{
+              ...HEADING_RESET,
+              fontSize: "1.125rem",
+              fontWeight: 700,
+              color: c.text,
+              marginTop: 0,
+              marginBottom: "1rem",
+            }}
+          >
+            {COUPON_CODE} at a Glance
+          </h2>
+          <dl
+            style={{
+              margin: 0,
+              border: `1px solid ${c.border}`,
+              borderRadius: "0.5rem",
+              overflow: "hidden",
+            }}
+          >
+            {buildFastFacts({
+              lastVerified: LAST_VERIFIED,
+              lastVerifiedDate: LAST_VERIFIED_DATE,
+            }).map((fact, i) => (
+              <div
+                key={fact.label}
+                style={{
+                  display: "flex",
+                  flexWrap: "wrap",
+                  gap: "0.25rem 1rem",
+                  padding: "0.75rem 1rem",
+                  backgroundColor: i % 2 ? c.altBg : c.sectionBg,
+                  borderTop: i === 0 ? "none" : `1px solid ${c.border}`,
+                }}
+              >
+                <dt
+                  style={{
+                    flex: "0 0 8.5rem",
+                    fontSize: "0.8125rem",
+                    fontWeight: 600,
+                    color: c.textMuted,
+                    textTransform: "uppercase",
+                    letterSpacing: "0.04em",
+                  }}
+                >
+                  {fact.label}
+                </dt>
+                <dd
+                  style={{
+                    flex: "1 1 14rem",
+                    margin: 0,
+                    fontSize: "0.9375rem",
+                    lineHeight: 1.6,
+                    color: c.textBody,
+                    fontWeight: fact.isCode ? 700 : 400,
+                    letterSpacing: fact.isCode ? "0.05em" : "normal",
+                  }}
+                >
+                  {fact.iso ? (
+                    <time dateTime={fact.iso}>{fact.value}</time>
+                  ) : (
+                    fact.value
+                  )}
+                </dd>
+              </div>
+            ))}
+          </dl>
         </div>
       </section>
 

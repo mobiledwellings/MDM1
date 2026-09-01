@@ -63,6 +63,18 @@ export const FAQ_ITEMS: FaqContentItem[];
 
 export function verifiedMonthLabel(isoDate: string): string;
 
+export type FastFact = {
+  label: string;
+  value: string;
+  isCode?: boolean;
+  iso?: string;
+};
+
+export function buildFastFacts(verification: {
+  lastVerified: string;
+  lastVerifiedDate: string;
+}): FastFact[];
+
 export function buildSignatureSolarSchema(verification: {
   lastVerified: string;
   lastVerifiedDate: string;
