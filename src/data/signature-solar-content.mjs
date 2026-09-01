@@ -177,11 +177,12 @@ export function buildFastFacts({ lastVerified, lastVerifiedDate }) {
     { label: "Retailer", value: "Signature Solar (signaturesolar.com)" },
     { label: "Coupon code", value: COUPON_CODE, isCode: true },
     { label: "Discount", value: "$50 off" },
-    {
-      label: "Applies to",
-      value:
-        "Sitewide — EG4 lithium batteries and inverters, the full Victron lineup, solar panels by the pallet, IronRidge racking, and mini-splits",
-    },
+    // Just "Sitewide". An enumeration of categories reads as a limited set —
+    // it invites the inference that anything unlisted is excluded, which is
+    // weaker than the truth. It also broke the scan rhythm: every other row is
+    // a few words. The product names still appear in the gear section, the FAQ,
+    // the image alt text, and the schema, so nothing is lost.
+    { label: "Applies to", value: "Sitewide" },
     { label: "Stacks with", value: "Live sale pricing and free-shipping promotions" },
     { label: "Last verified", value: `${lastVerified} by ${AUTHOR.name}`, iso: lastVerifiedDate },
   ];
