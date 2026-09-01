@@ -17,6 +17,8 @@
 // the hub list below (with `externalPath`) so it shows up on /partners.
 // ──────────────────────────────────────────────────────────────────────────
 
+import { SIGNATURE_SOLAR_LAST_VERIFIED } from "./coupon-verification";
+
 export type PartnerProduct = {
   /** Product / category name shown as the card heading. */
   title: string;
@@ -137,11 +139,20 @@ const signatureSolar: Partner = {
     discount: "$50",
     // Ongoing offer — no expiry published. Freshness is carried by
     // lastVerified, re-stamped every few days via `npm run verify-coupon`.
-    lastVerified: "August 20, 2026",
-    terms: "$50 off orders of $500+. Works on most products sitewide.",
+    //
+    // Imported, not hardcoded: that script only rewrites
+    // src/data/coupon-verification.ts, so a literal here silently went stale
+    // every time the code was re-verified and left /partners contradicting the
+    // coupon page and /deals.
+    lastVerified: SIGNATURE_SOLAR_LAST_VERIFIED,
+    // The $500 floor stays out of the summary line — every competing Signature
+    // Solar code carries it unpublished, and leading with it made an identical
+    // offer read as more restricted. Disclosed in the coupon page FAQ and the
+    // /deals fine print. Matches a4901790 and 4c409f4b.
+    terms: "$50 off. Works on most products sitewide.",
   },
   intro: [
-    "Signature Solar supplies the EG4 inverters, lithium batteries, and solar panels we install in skoolies and overland rigs. Use code MD50OFF for $50 off orders over $500.",
+    "Signature Solar supplies the EG4 inverters, lithium batteries, and solar panels we install in skoolies and overland rigs. Use code MD50OFF for $50 off.",
   ],
   about:
     "Signature Solar is our go-to source for off-grid electrical components. We've installed their EG4 gear in multiple builds featured on the channel.",
@@ -267,7 +278,10 @@ const wattCycle: Partner = {
     code: "DWELLINGS",
     discount: "8%",
     terms: "8% off sitewide at wattcycle.com",
-    lastVerified: "August 20, 2026",
+    // Re-confirmed working 2026-09-01. The FAQ's "$1,088.98 cart, $87.12 off"
+    // narrative stays dated Aug 20 — that was a specific test on a specific
+    // cart, not something re-run today.
+    lastVerified: "September 1, 2026",
   },
   intro: [
     "WattCycle makes budget-friendly LiFePO4 (lithium iron phosphate) batteries that have become a popular choice for Skoolie and van builds that need battery storage without the premium price tag.",
