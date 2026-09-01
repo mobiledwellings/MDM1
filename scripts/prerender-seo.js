@@ -431,6 +431,15 @@ async function main() {
   }
   couponPage.extraStructuredData = schemaScript(schema);
 
+  // Title carries the month the code was last verified, derived from the same
+  // stamp as everything else on the page — so it can never claim a freshness
+  // that isn't real, and never goes stale the way a hardcoded "September 2026"
+  // would on October 1.
+  const verification = readCouponVerification();
+  const monthLabel = content.verifiedMonthLabel(verification.lastVerifiedDate);
+  couponPage.title =
+    `Signature Solar Coupon Code ${monthLabel} – ${content.COUPON_CODE} Gets $50 Off | Mobile Dwellings`;
+
   // Render the page's real React component to HTML so the served bytes carry
   // the actual copy — headings, the coupon code, the FAQ answers. Built by
   // `vite build --config vite.ssr.config.ts` immediately before this script.

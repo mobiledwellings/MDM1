@@ -20,6 +20,7 @@ import {
   BUILD_SHOTS,
   GEAR_ITEMS as GEAR_CONTENT,
   FAQ_ITEMS as FAQ_CONTENT,
+  verifiedMonthLabel,
 } from "../data/signature-solar-content.mjs";
 
 // The dates live in src/data/coupon-verification.ts so this page and the coupon
@@ -340,7 +341,7 @@ export function SignatureSolarCouponMain() {
               marginBottom: "0.75rem",
             }}
           >
-            Signature Solar Coupon Code 2026:{" "}
+            Signature Solar Coupon Code {verifiedMonthLabel(LAST_VERIFIED_DATE)}:{" "}
             <span style={{ whiteSpace: "nowrap" }}>{COUPON_CODE}</span>{" "}
             <span style={{ color: HERO.textSecondary }}>— $50 Off</span>
           </h1>

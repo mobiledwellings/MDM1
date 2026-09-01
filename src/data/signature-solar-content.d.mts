@@ -61,6 +61,8 @@ export type FaqContentItem = {
 
 export const FAQ_ITEMS: FaqContentItem[];
 
+export function verifiedMonthLabel(isoDate: string): string;
+
 export function buildSignatureSolarSchema(verification: {
   lastVerified: string;
   lastVerifiedDate: string;

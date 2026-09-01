@@ -138,6 +138,24 @@ export const FAQ_ITEMS = [
  *
  * @param {{ lastVerified: string, lastVerifiedDate: string }} verification
  */
+/**
+ * "September 2026" from an ISO verification date.
+ *
+ * The month is derived from when the code was last actually checked, never
+ * hardcoded, so it cannot drift into claiming a freshness that isn't real —
+ * `npm run verify-coupon` moves it along with every other date on the page.
+ * That also keeps the claim honest: the page says the code was verified in
+ * that month, not that it expires at the end of it.
+ */
+export function verifiedMonthLabel(isoDate) {
+  const [y, m] = isoDate.split("-").map(Number);
+  const months = [
+    "January", "February", "March", "April", "May", "June",
+    "July", "August", "September", "October", "November", "December",
+  ];
+  return `${months[m - 1]} ${y}`;
+}
+
 export function buildSignatureSolarSchema({ lastVerified, lastVerifiedDate }) {
   return {
     "@context": "https://schema.org",
@@ -146,7 +164,7 @@ export function buildSignatureSolarSchema({ lastVerified, lastVerifiedDate }) {
         "@type": "WebPage",
         "@id": PAGE_URL,
         "url": PAGE_URL,
-        "name": `Signature Solar Coupon Code ${COUPON_CODE} – $50 Off | Mobile Dwellings`,
+        "name": `Signature Solar Coupon Code ${verifiedMonthLabel(lastVerifiedDate)} – ${COUPON_CODE} Gets $50 Off | Mobile Dwellings`,
         "description": `The current Signature Solar coupon code is ${COUPON_CODE}. It takes $50 off at signaturesolar.com and works on its own at checkout. Verified active by Justin Smith on ${lastVerified}.`,
         "inLanguage": "en-US",
         "dateModified": lastVerifiedDate,
