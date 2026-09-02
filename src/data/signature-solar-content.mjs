@@ -30,6 +30,22 @@ export const AFFILIATE_URL = "https://signaturesolar.com/?ref=mobiledwellings";
 export const SITE_URL = "https://mobiledwellings.media";
 export const PAGE_URL = `${SITE_URL}/signature-solar-coupon`;
 
+/** First published — commit 3b729634. Fixed; only dateModified moves. */
+export const DATE_PUBLISHED = "2026-05-05";
+
+/**
+ * The page's one-line description, used for the meta description, the og/
+ * twitter descriptions, and the Article schema.
+ *
+ * Kept under ~155 characters because Google truncates there. The previous
+ * version ran 225 and lost its whole closing clause — the "who runs EG4 gear
+ * in a 40-foot skoolie" credibility line was cut off in every SERP it
+ * appeared in, which is the one part a coupon aggregator can't copy.
+ */
+export function pageDescription(lastVerified) {
+  return `The current Signature Solar coupon code is ${COUPON_CODE}. $50 off sitewide at signaturesolar.com, works on its own at checkout. Verified ${lastVerified}.`;
+}
+
 export const AUTHOR = {
   name: "Justin Smith",
   role: "Founder, Mobile Dwellings",
@@ -193,12 +209,21 @@ export function buildSignatureSolarSchema({ lastVerified, lastVerifiedDate }) {
     "@context": "https://schema.org",
     "@graph": [
       {
-        "@type": "WebPage",
+        // Article rather than WebPage: this is maintained editorial content
+        // with a named author, a first-published date and a verification
+        // cadence, and Google reads the datePublished/dateModified pair to
+        // judge whether a page is actively maintained rather than merely new.
+        // WebPage carried no datePublished at all.
+        "@type": "Article",
         "@id": PAGE_URL,
         "url": PAGE_URL,
+        "mainEntityOfPage": PAGE_URL,
+        "headline": `Signature Solar Coupon Code ${verifiedMonthLabel(lastVerifiedDate)}: ${COUPON_CODE} — $50 Off`,
         "name": `Signature Solar Coupon Code ${verifiedMonthLabel(lastVerifiedDate)} – ${COUPON_CODE} Gets $50 Off | Mobile Dwellings`,
-        "description": `The current Signature Solar coupon code is ${COUPON_CODE}. It takes $50 off at signaturesolar.com and works on its own at checkout. Verified active by Justin Smith on ${lastVerified}.`,
+        "description": pageDescription(lastVerified),
+        "image": `${SITE_URL}/og-signature-solar.jpg`,
         "inLanguage": "en-US",
+        "datePublished": DATE_PUBLISHED,
         "dateModified": lastVerifiedDate,
         "author": { "@id": `${SITE_URL}/#justin` },
         "publisher": { "@id": `${SITE_URL}/#organization` },

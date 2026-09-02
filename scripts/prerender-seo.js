@@ -440,6 +440,18 @@ async function main() {
   couponPage.title =
     `Signature Solar Coupon Code ${monthLabel} – ${content.COUPON_CODE} Gets $50 Off | Mobile Dwellings`;
 
+  // Description and noscript come from the same shared helper as the on-page
+  // copy and the Article schema, so every surface says one thing.
+  //
+  // The old description ran 225 characters and was truncated at ~155 in the
+  // SERP, cutting the author credibility line entirely. The old noscript was
+  // written when this page had no prerendered body — it was the first text a
+  // crawler read and still described the code as working on "EG4 batteries,
+  // inverters, solar panels", the category enumeration replaced by "sitewide"
+  // everywhere else.
+  couponPage.description = content.pageDescription(verification.lastVerified);
+  couponPage.noscript = couponPage.description;
+
   // Render the page's real React component to HTML so the served bytes carry
   // the actual copy — headings, the coupon code, the FAQ answers. Built by
   // `vite build --config vite.ssr.config.ts` immediately before this script.

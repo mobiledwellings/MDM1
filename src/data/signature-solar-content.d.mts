@@ -13,6 +13,10 @@ export const AFFILIATE_URL: string;
 export const SITE_URL: string;
 export const PAGE_URL: string;
 
+export const DATE_PUBLISHED: string;
+
+export function pageDescription(lastVerified: string): string;
+
 export const AUTHOR: {
   name: string;
   role: string;
