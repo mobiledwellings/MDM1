@@ -5,7 +5,7 @@ import {
   SIGNATURE_SOLAR_LAST_VERIFIED,
   SIGNATURE_SOLAR_LAST_VERIFIED_DATE,
 } from "../data/coupon-verification";
-import { verifiedMonthLabel } from "../data/signature-solar-content.mjs";
+import { verifiedMonthLabel, buildFastFacts } from "../data/signature-solar-content.mjs";
 
 /**
  * The coupon block at the top of /deals.
@@ -261,6 +261,64 @@ export function DealsCouponHero() {
                   {COUPON_OFFERS.map((offer) => (
                     <CouponCard key={offer.code} offer={offer} />
                   ))}
+                </div>
+
+                {/* At-a-glance spec block, mirroring the one on
+                    /signature-solar-coupon. The card above states the same
+                    facts, but only as prose and visual design — a <dl> gives a
+                    model delimited label/value pairs instead of something it has
+                    to parse out of a sentence.
+
+                    Both pages read from buildFastFacts() in the shared module,
+                    so whichever one Google decides to rank, the extracted facts
+                    are identical and can't drift apart. The $500 floor is
+                    deliberately not a row here either; it stays in the card's
+                    fine print. */}
+                <div className="max-w-2xl mx-auto mb-8">
+                  <h2 className="mb-3 text-lg font-bold text-neutral-900 dark:text-white">
+                    {SIGNATURE_SOLAR_OFFER.code} at a Glance
+                  </h2>
+                  <dl className="rounded-lg border border-neutral-200 dark:border-neutral-700 overflow-hidden text-left">
+                    {buildFastFacts({
+                      lastVerified: SIGNATURE_SOLAR_LAST_VERIFIED,
+                      lastVerifiedDate: SIGNATURE_SOLAR_LAST_VERIFIED_DATE,
+                    }).map((fact, i) => (
+                      <div
+                        key={fact.label}
+                        className={`flex px-4 py-3 ${
+                          i % 2
+                            ? "bg-neutral-50 dark:bg-neutral-800"
+                            : "bg-white dark:bg-neutral-900"
+                        } ${i ? "border-t border-neutral-200 dark:border-neutral-700" : ""}`}
+                        // Layout is inline, not Tailwind: this project ships a
+                        // pre-compiled stylesheet, and gap-x-*, basis-* and
+                        // shrink-0 are not in it — using them silently collapsed
+                        // the label and value into each other. Colors stay as
+                        // classes because they need dark: variants, and every
+                        // one used here was checked against the built CSS.
+                        style={{ flexWrap: "wrap", columnGap: "1rem", rowGap: "0.25rem" }}
+                      >
+                        <dt
+                          className="text-xs font-semibold uppercase tracking-wider text-neutral-500 dark:text-neutral-400"
+                          style={{ flex: "0 0 8.5rem" }}
+                        >
+                          {fact.label}
+                        </dt>
+                        <dd
+                          className={`text-sm text-neutral-700 dark:text-neutral-300 ${
+                            fact.isCode ? "font-bold tracking-wider" : ""
+                          }`}
+                          style={{ flex: "1 1 14rem", margin: 0 }}
+                        >
+                          {fact.iso ? (
+                            <time dateTime={fact.iso}>{fact.value}</time>
+                          ) : (
+                            fact.value
+                          )}
+                        </dd>
+                      </div>
+                    ))}
+                  </dl>
                 </div>
 
                 <h2 className="text-center mb-4 dark:text-white text-2xl font-bold text-neutral-800">
