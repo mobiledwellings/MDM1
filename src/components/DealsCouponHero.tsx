@@ -5,6 +5,7 @@ import {
   SIGNATURE_SOLAR_LAST_VERIFIED,
   SIGNATURE_SOLAR_LAST_VERIFIED_DATE,
 } from "../data/coupon-verification";
+import { verifiedMonthLabel } from "../data/signature-solar-content.mjs";
 
 /**
  * The coupon block at the top of /deals.
@@ -229,13 +230,27 @@ export function DealsCouponHero() {
     <>
                 {/* Search-intent header: buyers arriving from "signature solar
                     coupon code" see the code itself as the largest text on the
-                    page, above the fold, before any other copy. */}
-                {/* The H1 names the page; the ticket below carries the code at
-                    a larger size. Repeating the code in both put two competing
-                    focal points ~120px apart. The code still appears in the
-                    <title>, meta description, ticket, and product cards. */}
+                    page, above the fold, before any other copy.
+
+                    The code is repeated here and in the ticket below. An earlier
+                    revision kept it out of the H1 to avoid two focal points
+                    ~120px apart, but conversions here are attributed by code
+                    rather than by click — a reader who never visits still earns
+                    the commission if they can read MD50OFF — so exposure in the
+                    most extractable element on the page outweighs the visual
+                    redundancy.
+
+                    "Works Sitewide" states scope as a benefit. The $500 floor
+                    stays in the card's fine print: every competing Signature
+                    Solar code carries the same one unpublished, and leading with
+                    it made an identical offer read as more restricted.
+
+                    The month is derived from the verification stamp, never
+                    hardcoded, so `npm run verify-coupon` moves it and it can't
+                    drift into claiming a currency the page no longer has. */}
                 <h1 className="text-center mb-8 dark:text-white text-3xl md:text-4xl font-bold text-neutral-800">
-                  Signature Solar Coupon Code
+                  Signature Solar Coupon Code {SIGNATURE_SOLAR_OFFER.code} – Works Sitewide,
+                  Verified {verifiedMonthLabel(SIGNATURE_SOLAR_LAST_VERIFIED_DATE)}
                 </h1>
 
                 {/* Partner coupons — side by side on desktop, stacked on
