@@ -73,7 +73,7 @@ const SIGNATURE_SOLAR_OFFER: CouponOffer = {
   // previously said "works on its own at checkout" while this card said
   // "orders over $500" — same offer, two framings, on one site.
   blurb:
-    "$50 off EG4 inverters, lithium batteries, solar panels, and mini splits. Our go to source for off-grid gear.",
+    "$50 off sitewide, stacks with sales and free shipping promotions.",
   finePrint: "Apply at checkout on signaturesolar.com. Works on most products sitewide. $500 order minimum.",
   // Shared with the /signature-solar-coupon page so the two dates can't drift.
   // Both are re-stamped by `npm run verify-coupon`.
