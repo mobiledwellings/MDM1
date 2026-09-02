@@ -199,7 +199,6 @@ function CopyButton({ code }: { code: string }) {
       onMouseLeave={() => setHovered(false)}
       aria-label="Copy coupon code"
       style={{
-        marginTop: "1rem",
         paddingLeft: "1.5rem",
         paddingRight: "1.5rem",
         paddingTop: "0.5rem",
@@ -305,26 +304,46 @@ export function SignatureSolarCouponMain() {
   };
   return (
     <main>
-      {/* ─────────────── HERO ─────────────── */}
+      {/* ─────────────── HERO + AT A GLANCE (one card) ───────────────
+          Previously two full-height sections: a hero that ran ~1,300px before
+          any content, then a separate spec block in its own section. Both are
+          now a single card.
+
+          What had to survive the compaction: the H1 text, the direct-answer
+          sentence, the code at a size that still reads as the page's focal
+          point, the verification stamp, and every row of the <dl>. All of it
+          is still here and still visible — the block is for extraction, so
+          hiding or collapsing any of it would defeat the purpose. Only the
+          spacing changed. */}
       <section
         style={{
           backgroundColor: HERO.bg,
           color: HERO.text,
-          paddingTop: "5rem",
-          paddingBottom: "5rem",
+          paddingTop: "2.75rem",
+          paddingBottom: "2.75rem",
           paddingLeft: "1.5rem",
           paddingRight: "1.5rem",
-          textAlign: "center",
         }}
       >
-        <div style={{ maxWidth: "36rem", marginLeft: "auto", marginRight: "auto" }}>
+        <div
+          style={{
+            maxWidth: "44rem",
+            marginLeft: "auto",
+            marginRight: "auto",
+            border: `1px solid ${HERO.border}`,
+            borderRadius: "0.75rem",
+            padding: "1.75rem 1.5rem",
+            textAlign: "center",
+          }}
+        >
           <p
             style={{
-              fontSize: "0.75rem",
+              fontSize: "0.6875rem",
               textTransform: "uppercase",
               letterSpacing: "0.2em",
               color: HERO.subtle,
-              marginBottom: "1.25rem",
+              marginTop: 0,
+              marginBottom: "0.625rem",
               fontWeight: 500,
             }}
           >
@@ -335,11 +354,11 @@ export function SignatureSolarCouponMain() {
             style={{
               ...HEADING_RESET,
               color: HERO.text,
-              fontSize: "clamp(1.875rem, 5vw, 2.5rem)",
+              fontSize: "clamp(1.5rem, 3.6vw, 2rem)",
               fontWeight: 700,
-              lineHeight: 1.15,
+              lineHeight: 1.2,
               marginTop: 0,
-              marginBottom: "0.75rem",
+              marginBottom: "0.625rem",
             }}
           >
             Signature Solar Coupon Code {verifiedMonthLabel(LAST_VERIFIED_DATE)}:{" "}
@@ -347,25 +366,21 @@ export function SignatureSolarCouponMain() {
             <span style={{ color: HERO.textSecondary }}>— $50 Off</span>
           </h1>
 
-          {/* Direct-answer sentence for LLM extraction */}
+          {/* Direct-answer sentence, written to be quotable verbatim by an AI
+              Overview or a search snippet: unqualified, matching the query
+              phrasing, and ending on a complete clause. */}
           <p
             style={{
-              fontSize: "0.9375rem",
+              fontSize: "0.875rem",
               color: HERO.muted,
               lineHeight: 1.6,
               marginTop: 0,
               marginBottom: "1.25rem",
+              maxWidth: "34rem",
+              marginLeft: "auto",
+              marginRight: "auto",
             }}
           >
-            {/* Direct-answer sentence, written to be quotable verbatim by an AI
-                Overview or a search snippet. Three properties matter here:
-                (1) it is unqualified — "the current Signature Solar coupon
-                code", not "the current Mobile Dwellings coupon code for
-                Signature Solar", which reads as a partner-specific aside and
-                loses to a competitor's flat assertion; (2) it matches the query
-                phrasing exactly; (3) it ends on a complete clause, so an
-                extractor has a clean stopping point before it reaches the
-                byline below and trails off mid-thought. */}
             The current Signature Solar coupon code is{" "}
             <strong style={{ color: HERO.textSecondary }}>{COUPON_CODE}</strong>. It takes $50
             off at{" "}
@@ -380,94 +395,27 @@ export function SignatureSolarCouponMain() {
             , works on its own at checkout, and we re-check it every few days.
           </p>
 
-          {/* Author byline + verification stamp */}
+          {/* Code and both actions on one row instead of stacked. */}
           <div
             style={{
-              display: "inline-flex",
+              display: "flex",
+              flexWrap: "wrap",
               alignItems: "center",
-              gap: "0.625rem",
-              border: `1px solid ${HERO.border}`,
-              borderRadius: "9999px",
-              paddingTop: "0.375rem",
-              paddingBottom: "0.375rem",
-              paddingLeft: "0.75rem",
-              paddingRight: "0.875rem",
-              marginBottom: "2.5rem",
-            }}
-          >
-            <span
-              aria-hidden="true"
-              style={{
-                width: "1.5rem",
-                height: "1.5rem",
-                borderRadius: "9999px",
-                backgroundColor: "#262626",
-                color: HERO.textSecondary,
-                fontSize: "0.625rem",
-                fontWeight: 700,
-                display: "inline-flex",
-                alignItems: "center",
-                justifyContent: "center",
-                flex: "0 0 auto",
-              }}
-            >
-              JS
-            </span>
-            <span
-              style={{
-                fontSize: "0.75rem",
-                color: HERO.muted,
-                lineHeight: 1.4,
-              }}
-            >
-              Verified active by{" "}
-              <a
-                href="/about"
-                rel="author"
-                style={{ color: HERO.textSecondary, textDecoration: "none", fontWeight: 600 }}
-              >
-                {AUTHOR.name}
-              </a>{" "}
-              on{" "}
-              <time dateTime={LAST_VERIFIED_DATE} style={{ color: HERO.textSecondary }}>
-                {LAST_VERIFIED}
-              </time>
-            </span>
-          </div>
-
-          {/* Code box */}
-          <div
-            style={{
+              justifyContent: "center",
+              gap: "1rem",
               border: `1px solid ${HERO.border}`,
               borderRadius: "0.5rem",
-              paddingTop: "2rem",
-              paddingBottom: "2rem",
-              paddingLeft: "1.5rem",
-              paddingRight: "1.5rem",
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "center",
+              padding: "1rem 1.25rem",
+              marginBottom: "0.875rem",
             }}
           >
-            <p
-              style={{
-                fontSize: "0.75rem",
-                textTransform: "uppercase",
-                letterSpacing: "0.2em",
-                color: HERO.subtle,
-                marginTop: 0,
-                marginBottom: "1rem",
-              }}
-            >
-              Your Coupon Code
-            </p>
             <p
               className="select-all"
               style={{
                 color: HERO.text,
-                fontSize: "clamp(2.5rem, 8vw, 3.75rem)",
+                fontSize: "clamp(1.75rem, 5vw, 2.5rem)",
                 fontWeight: 900,
-                letterSpacing: "0.15em",
+                letterSpacing: "0.12em",
                 lineHeight: 1,
                 margin: 0,
                 userSelect: "all",
@@ -475,48 +423,56 @@ export function SignatureSolarCouponMain() {
             >
               {COUPON_CODE}
             </p>
-            <CopyButton code={COUPON_CODE} />
+            <div
+              style={{
+                display: "flex",
+                flexWrap: "wrap",
+                alignItems: "center",
+                justifyContent: "center",
+                gap: "0.625rem",
+              }}
+            >
+              <CopyButton code={COUPON_CODE} />
+              <HeroCTA />
+            </div>
           </div>
 
-          {/* No fine-print strip here: its three facts (cadence, verified
-              date, minimum order) were each already stated above, and it
-              sat between the code and the CTA. */}
-          <div style={{ marginTop: "2rem" }}>
-            <HeroCTA />
+          <div
+            style={{
+              fontSize: "0.75rem",
+              color: HERO.muted,
+              lineHeight: 1.4,
+              marginBottom: "1.25rem",
+            }}
+          >
+            Verified active by{" "}
+            <a
+              href="/about"
+              rel="author"
+              style={{ color: HERO.textSecondary, textDecoration: "none", fontWeight: 600 }}
+            >
+              {AUTHOR.name}
+            </a>{" "}
+            on{" "}
+            <time dateTime={LAST_VERIFIED_DATE} style={{ color: HERO.textSecondary }}>
+              {LAST_VERIFIED}
+            </time>
           </div>
-        </div>
-      </section>
 
-      {/* ─────────────── AT A GLANCE ───────────────
-          A <dl> rather than prose: each fact is delimited, so a model pulling
-          "what is the code / what does it save / when was it checked" gets clean
-          pairs instead of parsing them out of a sentence.
-
-          Laid out two-up and tight. The block is for machines, not readers, so
-          it should cost as little vertical space as possible — but it has to
-          stay visible: display:none, sr-only and collapsed <details> all risk a
-          spam signal and extractors that skip non-visible text. Density is the
-          safe lever. auto-fit drops it to one column on narrow screens.
-          The $500 minimum is deliberately absent — see buildFastFacts(). */}
-      <section
-        style={{
-          ...sectionPad,
-          paddingTop: "1.75rem",
-          paddingBottom: "1.75rem",
-          backgroundColor: c.sectionBg,
-          borderBottom: `1px solid ${c.border}`,
-        }}
-      >
-        <div style={{ maxWidth: "42rem", marginLeft: "auto", marginRight: "auto" }}>
+          {/* At a glance — same <dl> as before, now inside the card. Two-up
+              grid, still fully visible: this exists to give a model delimited
+              label/value pairs, so display:none, sr-only or a collapsed
+              <details> would trade away the reason it's here.
+              The $500 minimum is deliberately absent — see buildFastFacts(). */}
           <h2
             style={{
               ...HEADING_RESET,
-              fontSize: "0.8125rem",
+              fontSize: "0.6875rem",
               fontWeight: 700,
               textAlign: "center",
               textTransform: "uppercase",
               letterSpacing: "0.06em",
-              color: c.textMuted,
+              color: HERO.subtle,
               marginTop: 0,
               marginBottom: "0.5rem",
             }}
@@ -527,10 +483,11 @@ export function SignatureSolarCouponMain() {
             style={{
               margin: 0,
               display: "grid",
-              gridTemplateColumns: "repeat(auto-fit, minmax(16rem, 1fr))",
-              border: `1px solid ${c.border}`,
+              gridTemplateColumns: "repeat(auto-fit, minmax(15rem, 1fr))",
+              border: `1px solid ${HERO.border}`,
               borderRadius: "0.5rem",
               overflow: "hidden",
+              textAlign: "left",
             }}
           >
             {buildFastFacts({
@@ -544,29 +501,29 @@ export function SignatureSolarCouponMain() {
                   flexWrap: "wrap",
                   columnGap: "0.5rem",
                   padding: "0.375rem 0.75rem",
-                  borderTop: `1px solid ${c.border}`,
+                  borderTop: `1px solid ${HERO.border}`,
                 }}
               >
                 <dt
                   style={{
-                    flex: "0 0 6.5rem",
-                    fontSize: "0.6875rem",
+                    flex: "0 0 6.25rem",
+                    fontSize: "0.625rem",
                     fontWeight: 700,
-                    color: c.textMuted,
+                    color: HERO.subtle,
                     textTransform: "uppercase",
                     letterSpacing: "0.04em",
-                    lineHeight: 1.7,
+                    lineHeight: 1.8,
                   }}
                 >
                   {fact.label}
                 </dt>
                 <dd
                   style={{
-                    flex: "1 1 8rem",
+                    flex: "1 1 7rem",
                     margin: 0,
-                    fontSize: "0.8125rem",
-                    lineHeight: 1.5,
-                    color: c.textBody,
+                    fontSize: "0.75rem",
+                    lineHeight: 1.6,
+                    color: HERO.textSecondary,
                     fontWeight: fact.isCode ? 700 : 400,
                   }}
                 >
