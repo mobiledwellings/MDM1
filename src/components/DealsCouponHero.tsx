@@ -275,40 +275,60 @@ export function DealsCouponHero() {
                     deliberately not a row here either; it stays in the card's
                     fine print. */}
                 <div className="max-w-2xl mx-auto mb-8">
-                  <h2 className="mb-3 text-lg font-bold text-neutral-900 dark:text-white">
+                  <h2 className="mb-2 text-sm font-bold uppercase tracking-wider text-neutral-500 dark:text-neutral-400">
                     {SIGNATURE_SOLAR_OFFER.code} at a Glance
                   </h2>
-                  <dl className="rounded-lg border border-neutral-200 dark:border-neutral-700 overflow-hidden text-left">
+                  {/* Two-up grid rather than six stacked rows: this block exists
+                      to give a model delimited label/value pairs, so it needs to
+                      stay in the DOM and stay visible — hiding it (display:none,
+                      sr-only, or a collapsed <details>) risks both a spam signal
+                      and extractors that skip non-visible text. Density is the
+                      safe lever. auto-fit collapses it to one column on narrow
+                      screens with no media query. */}
+                  <dl
+                    className="rounded-lg border border-neutral-200 dark:border-neutral-700 overflow-hidden text-left"
+                    style={{
+                      display: "grid",
+                      gridTemplateColumns: "repeat(auto-fit, minmax(16rem, 1fr))",
+                      margin: 0,
+                    }}
+                  >
                     {buildFastFacts({
                       lastVerified: SIGNATURE_SOLAR_LAST_VERIFIED,
                       lastVerifiedDate: SIGNATURE_SOLAR_LAST_VERIFIED_DATE,
-                    }).map((fact, i) => (
+                    }).map((fact) => (
                       <div
                         key={fact.label}
-                        className={`flex px-4 py-3 ${
-                          i % 2
-                            ? "bg-neutral-50 dark:bg-neutral-800"
-                            : "bg-white dark:bg-neutral-900"
-                        } ${i ? "border-t border-neutral-200 dark:border-neutral-700" : ""}`}
-                        // Layout is inline, not Tailwind: this project ships a
-                        // pre-compiled stylesheet, and gap-x-*, basis-* and
-                        // shrink-0 are not in it — using them silently collapsed
-                        // the label and value into each other. Colors stay as
-                        // classes because they need dark: variants, and every
-                        // one used here was checked against the built CSS.
-                        style={{ flexWrap: "wrap", columnGap: "1rem", rowGap: "0.25rem" }}
+                        className="border-t border-neutral-200 dark:border-neutral-700"
+                        style={{
+                          display: "flex",
+                          flexWrap: "wrap",
+                          columnGap: "0.5rem",
+                          padding: "0.375rem 0.75rem",
+                        }}
                       >
                         <dt
-                          className="text-xs font-semibold uppercase tracking-wider text-neutral-500 dark:text-neutral-400"
-                          style={{ flex: "0 0 8.5rem" }}
+                          className="text-neutral-500 dark:text-neutral-400"
+                          style={{
+                            flex: "0 0 6.5rem",
+                            fontSize: "0.6875rem",
+                            fontWeight: 600,
+                            textTransform: "uppercase",
+                            letterSpacing: "0.04em",
+                            lineHeight: 1.7,
+                          }}
                         >
                           {fact.label}
                         </dt>
                         <dd
-                          className={`text-sm text-neutral-700 dark:text-neutral-300 ${
-                            fact.isCode ? "font-bold tracking-wider" : ""
-                          }`}
-                          style={{ flex: "1 1 14rem", margin: 0 }}
+                          className="text-neutral-700 dark:text-neutral-300"
+                          style={{
+                            flex: "1 1 8rem",
+                            margin: 0,
+                            fontSize: "0.8125rem",
+                            lineHeight: 1.5,
+                            fontWeight: fact.isCode ? 700 : 400,
+                          }}
                         >
                           {fact.iso ? (
                             <time dateTime={fact.iso}>{fact.value}</time>

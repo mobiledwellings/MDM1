@@ -489,15 +489,20 @@ export function SignatureSolarCouponMain() {
 
       {/* ─────────────── AT A GLANCE ───────────────
           A <dl> rather than prose: each fact is delimited, so a model pulling
-          "what is the code / what does it save / when was it checked" gets
-          clean pairs instead of having to parse them out of a sentence. Sits
-          immediately after the hero so it lands early in the document.
+          "what is the code / what does it save / when was it checked" gets clean
+          pairs instead of parsing them out of a sentence.
+
+          Laid out two-up and tight. The block is for machines, not readers, so
+          it should cost as little vertical space as possible — but it has to
+          stay visible: display:none, sr-only and collapsed <details> all risk a
+          spam signal and extractors that skip non-visible text. Density is the
+          safe lever. auto-fit drops it to one column on narrow screens.
           The $500 minimum is deliberately absent — see buildFastFacts(). */}
       <section
         style={{
           ...sectionPad,
-          paddingTop: "2.5rem",
-          paddingBottom: "2.5rem",
+          paddingTop: "1.75rem",
+          paddingBottom: "1.75rem",
           backgroundColor: c.sectionBg,
           borderBottom: `1px solid ${c.border}`,
         }}
@@ -506,11 +511,13 @@ export function SignatureSolarCouponMain() {
           <h2
             style={{
               ...HEADING_RESET,
-              fontSize: "1.125rem",
+              fontSize: "0.8125rem",
               fontWeight: 700,
-              color: c.text,
+              textTransform: "uppercase",
+              letterSpacing: "0.06em",
+              color: c.textMuted,
               marginTop: 0,
-              marginBottom: "1rem",
+              marginBottom: "0.5rem",
             }}
           >
             {COUPON_CODE} at a Glance
@@ -518,6 +525,8 @@ export function SignatureSolarCouponMain() {
           <dl
             style={{
               margin: 0,
+              display: "grid",
+              gridTemplateColumns: "repeat(auto-fit, minmax(16rem, 1fr))",
               border: `1px solid ${c.border}`,
               borderRadius: "0.5rem",
               overflow: "hidden",
@@ -526,46 +535,41 @@ export function SignatureSolarCouponMain() {
             {buildFastFacts({
               lastVerified: LAST_VERIFIED,
               lastVerifiedDate: LAST_VERIFIED_DATE,
-            }).map((fact, i) => (
+            }).map((fact) => (
               <div
                 key={fact.label}
                 style={{
                   display: "flex",
                   flexWrap: "wrap",
-                  gap: "0.25rem 1rem",
-                  padding: "0.75rem 1rem",
-                  backgroundColor: i % 2 ? c.altBg : c.sectionBg,
-                  borderTop: i === 0 ? "none" : `1px solid ${c.border}`,
+                  columnGap: "0.5rem",
+                  padding: "0.375rem 0.75rem",
+                  borderTop: `1px solid ${c.border}`,
                 }}
               >
                 <dt
                   style={{
-                    flex: "0 0 8.5rem",
-                    fontSize: "0.8125rem",
+                    flex: "0 0 6.5rem",
+                    fontSize: "0.6875rem",
                     fontWeight: 600,
                     color: c.textMuted,
                     textTransform: "uppercase",
                     letterSpacing: "0.04em",
+                    lineHeight: 1.7,
                   }}
                 >
                   {fact.label}
                 </dt>
                 <dd
                   style={{
-                    flex: "1 1 14rem",
+                    flex: "1 1 8rem",
                     margin: 0,
-                    fontSize: "0.9375rem",
-                    lineHeight: 1.6,
+                    fontSize: "0.8125rem",
+                    lineHeight: 1.5,
                     color: c.textBody,
                     fontWeight: fact.isCode ? 700 : 400,
-                    letterSpacing: fact.isCode ? "0.05em" : "normal",
                   }}
                 >
-                  {fact.iso ? (
-                    <time dateTime={fact.iso}>{fact.value}</time>
-                  ) : (
-                    fact.value
-                  )}
+                  {fact.iso ? <time dateTime={fact.iso}>{fact.value}</time> : fact.value}
                 </dd>
               </div>
             ))}
