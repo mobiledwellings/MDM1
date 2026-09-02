@@ -275,7 +275,7 @@ export function DealsCouponHero() {
                     deliberately not a row here either; it stays in the card's
                     fine print. */}
                 <div className="max-w-2xl mx-auto mb-8">
-                  <h2 className="mb-2 text-sm font-bold uppercase tracking-wider text-neutral-500 dark:text-neutral-400">
+                  <h2 className="mb-2 text-center text-sm font-bold uppercase tracking-wider text-neutral-500 dark:text-neutral-400">
                     {SIGNATURE_SOLAR_OFFER.code} at a Glance
                   </h2>
                   {/* Two-up grid rather than six stacked rows: this block exists
@@ -312,7 +312,7 @@ export function DealsCouponHero() {
                           style={{
                             flex: "0 0 6.5rem",
                             fontSize: "0.6875rem",
-                            fontWeight: 600,
+                            fontWeight: 700,
                             textTransform: "uppercase",
                             letterSpacing: "0.04em",
                             lineHeight: 1.7,

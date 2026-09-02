@@ -513,6 +513,7 @@ export function SignatureSolarCouponMain() {
               ...HEADING_RESET,
               fontSize: "0.8125rem",
               fontWeight: 700,
+              textAlign: "center",
               textTransform: "uppercase",
               letterSpacing: "0.06em",
               color: c.textMuted,
@@ -550,7 +551,7 @@ export function SignatureSolarCouponMain() {
                   style={{
                     flex: "0 0 6.5rem",
                     fontSize: "0.6875rem",
-                    fontWeight: 600,
+                    fontWeight: 700,
                     color: c.textMuted,
                     textTransform: "uppercase",
                     letterSpacing: "0.04em",
