@@ -15,98 +15,70 @@ export interface YouTubeVideo {
   viewCount?: string;
 }
 
-// Mock video data for when API quota is exceeded
+// Fallback shown when the YouTube API key is missing or its daily quota is
+// exceeded. These are real Mobile Dwellings uploads, not placeholders — the
+// previous version of this list was Unsplash stock photography and invented
+// titles, and its first entry linked to videoId "dQw4w9WgXcQ", which is a
+// rickroll. Any visitor hitting the homepage after a quota trip saw six fake
+// videos and a prank link.
+//
+// Refresh occasionally from the channel feed, which needs no API key:
+//   https://www.youtube.com/feeds/videos.xml?channel_id=UC1XsdvycCtX5ZgKrzoZkPvQ
 const MOCK_VIDEOS: YouTubeVideo[] = [
   {
-    id: 'dQw4w9WgXcQ',
-    videoId: 'dQw4w9WgXcQ',
-    title: 'Couple Builds Stunning Off-Grid Skoolie with Solar Power',
-    description: 'Follow along as we tour this incredible school bus conversion featuring full solar setup, composting toilet, and beautiful wood finishes. This couple spent 18 months building their dream home on wheels.',
-    thumbnail: 'https://images.unsplash.com/photo-1464219789935-c2d9d9aba644?w=1280&h=720&fit=crop',
-    publishedAt: '2024-11-15T10:00:00Z',
-    duration: '18:45',
-    viewCount: '245K'
+    id: "O28edJvMHQI",
+    videoId: "O28edJvMHQI",
+    title: "Could you live in a bus in Tasmania?",
+    description: "Ben built a home inside of a retired school bus on the edge of a cliff in Tasmania as a retreat from society and he's opened it up to anyone who wants to spend some time experiencing his little slice ",
+    thumbnail: "https://i.ytimg.com/vi/O28edJvMHQI/maxresdefault.jpg",
+    publishedAt: "2026-08-25T04:20:50+00:00",
+    viewCount: "9K",
   },
   {
-    id: 'mock-video-2',
-    videoId: 'mock-video-2',
-    title: 'Overland Rig Tour: Toyota Land Cruiser Expedition Build',
-    description: 'An in-depth look at a custom built Toyota Land Cruiser set up for long-term overlanding. Rooftop tent, fridge setup, water storage, and everything needed for months off-grid.',
-    thumbnail: 'https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?w=1280&h=720&fit=crop',
-    publishedAt: '2024-11-10T14:30:00Z',
-    duration: '22:15',
-    viewCount: '189K'
+    id: "iJWxQXCMxkU",
+    videoId: "iJWxQXCMxkU",
+    title: "They Built a Bus to Travel from Alaska to Argentina",
+    description: "⚡ Signature Solar Coupon Code (August 2026): MD50OFF",
+    thumbnail: "https://i.ytimg.com/vi/iJWxQXCMxkU/maxresdefault.jpg",
+    publishedAt: "2026-08-20T19:00:27+00:00",
+    viewCount: "26K",
   },
   {
-    id: 'mock-video-3',
-    videoId: 'mock-video-3',
-    title: 'Living Full-Time in a Vintage Airstream: 1 Year Update',
-    description: 'One year ago we moved into our restored 1976 Airstream. Here\'s what we\'ve learned about full-time RV living, our biggest challenges, and why we wouldn\'t change a thing.',
-    thumbnail: 'https://images.unsplash.com/photo-1523987355523-c7b5b0dd90a7?w=1280&h=720&fit=crop',
-    publishedAt: '2024-11-05T09:15:00Z',
-    duration: '15:32',
-    viewCount: '312K'
+    id: "fVRBa0Rgx9I",
+    videoId: "fVRBa0Rgx9I",
+    title: "He Built an Off-Grid Sanctuary in Tasmania with a Bus, Cave and Hot Tub",
+    description: "⚡ Signature Solar Coupon Code (August 2026): MD50OFF",
+    thumbnail: "https://i.ytimg.com/vi/fVRBa0Rgx9I/maxresdefault.jpg",
+    publishedAt: "2026-07-31T14:54:10+00:00",
+    viewCount: "262K",
   },
   {
-    id: 'mock-video-4',
-    videoId: 'mock-video-4',
-    title: 'From Empty Van to Cozy Home: Sprinter Conversion Build',
-    description: 'Complete build series of converting a Mercedes Sprinter van into a fully functional tiny home. See the entire process from insulation to installing a wet bath.',
-    thumbnail: 'https://images.unsplash.com/photo-1527786356703-4b100091cd2c?w=1280&h=720&fit=crop',
-    publishedAt: '2024-10-28T11:00:00Z',
-    duration: '25:18',
-    viewCount: '427K'
+    id: "i49aOnV1SXU",
+    videoId: "i49aOnV1SXU",
+    title: "They Couldn't Afford a Home in Cali. Bought a Yacht Instead",
+    description: "⚡ Signature Solar Coupon Code (August 2026): MD50OFF",
+    thumbnail: "https://i.ytimg.com/vi/i49aOnV1SXU/maxresdefault.jpg",
+    publishedAt: "2026-07-07T19:06:54+00:00",
+    viewCount: "27K",
   },
   {
-    id: 'mock-video-5',
-    videoId: 'mock-video-5',
-    title: 'Boondocking in the Desert: Off-Grid Living Tips',
-    description: 'Join us as we spend two weeks completely off-grid in the Arizona desert. Learn our tips for water conservation, solar power management, and finding the best free camping spots.',
-    thumbnail: 'https://images.unsplash.com/photo-1473448912268-2022ce9509d8?w=1280&h=720&fit=crop',
-    publishedAt: '2024-10-20T16:45:00Z',
-    duration: '19:07',
-    viewCount: '156K'
+    id: "YpPn_DpFxU4",
+    videoId: "YpPn_DpFxU4",
+    title: "Their adventure rig has a secret. Can you find it?",
+    description: "When Andrea and Jeorg retired in Germany they bought this incredible 2005 MAN expedition truck with a pop-top second story bedroom and a 4 wheeler hanging off the back! They shipped it to North Americ",
+    thumbnail: "https://i.ytimg.com/vi/YpPn_DpFxU4/maxresdefault.jpg",
+    publishedAt: "2026-07-01T03:18:44+00:00",
+    viewCount: "723",
   },
   {
-    id: 'mock-video-6',
-    videoId: 'mock-video-6',
-    title: 'School Bus Conversion Tour: Family of Four Goes Tiny',
-    description: 'A young family of four traded their suburban home for a converted school bus. See how they designed efficient storage, sleeping spaces for kids, and homeschool area.',
-    thumbnail: 'https://images.unsplash.com/photo-1527786356703-4b100091cd2c?w=1280&h=720&fit=crop',
-    publishedAt: '2024-10-12T13:20:00Z',
-    duration: '21:43',
-    viewCount: '298K'
+    id: "mOv5pGxmVxE",
+    videoId: "mOv5pGxmVxE",
+    title: "They Built a Home in a School Bus and Have Some Advice For You",
+    description: "Aaron and Sarah and their three kids set out to build a highly capable 4 season worthy school bus conversion and have now lived in their rig, traveling full time for several years.",
+    thumbnail: "https://i.ytimg.com/vi/mOv5pGxmVxE/maxresdefault.jpg",
+    publishedAt: "2026-06-22T00:29:33+00:00",
+    viewCount: "2K",
   },
-  {
-    id: 'mock-video-7',
-    videoId: 'mock-video-7',
-    title: 'Tiny House on Wheels: Modern Minimalist Design',
-    description: 'This custom tiny house features a clean modern aesthetic with clever space-saving solutions. Full kitchen, bathroom with shower, and a sleeping loft with standing room.',
-    thumbnail: 'https://images.unsplash.com/photo-1523987355523-c7b5b0dd90a7?w=1280&h=720&fit=crop',
-    publishedAt: '2024-10-05T10:30:00Z',
-    duration: '17:25',
-    viewCount: '381K'
-  },
-  {
-    id: 'mock-video-8',
-    videoId: 'mock-video-8',
-    title: 'Converted Ambulance to Adventure Rig',
-    description: 'See this unique conversion of a retired ambulance into the ultimate adventure vehicle. Custom bed platform, full kitchen, and 4x4 capabilities for serious off-roading.',
-    thumbnail: 'https://images.unsplash.com/photo-1464219789935-c2d9d9aba644?w=1280&h=720&fit=crop',
-    publishedAt: '2024-09-28T15:00:00Z',
-    duration: '20:11',
-    viewCount: '203K'
-  },
-  {
-    id: 'mock-video-9',
-    videoId: 'mock-video-9',
-    title: 'Van Life Reality Check: The Good, Bad, and Ugly',
-    description: 'An honest conversation about the realities of van life. We cover the challenges nobody talks about, from finding places to shower to dealing with vehicle breakdowns.',
-    thumbnail: 'https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?w=1280&h=720&fit=crop',
-    publishedAt: '2024-09-20T12:15:00Z',
-    duration: '16:52',
-    viewCount: '512K'
-  }
 ];
 
 // Decode HTML entities from YouTube text
@@ -119,7 +91,7 @@ function decodeHTMLEntities(text: string): string {
 export async function fetchLatestVideos(maxResults: number = 3): Promise<YouTubeVideo[]> {
   try {
     // Fetch latest uploads from the channel
-    const searchUrl = `https://www.googleapis.com/youtube/v3/search?key=${YOUTUBE_API_KEY}&channelId=${CHANNEL_ID}&part=snippet&order=viewCount&type=video&maxResults=${maxResults}`;
+    const searchUrl = `https://www.googleapis.com/youtube/v3/search?key=${YOUTUBE_API_KEY}&channelId=${CHANNEL_ID}&part=snippet&order=date&type=video&maxResults=${maxResults}`;
     
     const searchResponse = await fetch(searchUrl);
     
