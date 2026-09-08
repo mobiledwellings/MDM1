@@ -22,6 +22,8 @@ import {
   FAQ_ITEMS as FAQ_CONTENT,
   verifiedMonthLabel,
   buildFastFacts,
+  PURCHASE,
+  SALE_CALENDAR,
 } from "../data/signature-solar-content.mjs";
 
 // The dates live in src/data/coupon-verification.ts so this page and the coupon
@@ -83,7 +85,7 @@ type FaqItem = {
 const FAQ_ANSWER_NODES: Record<string, React.ReactNode> = {
   "How does the MD50OFF code work?": (
     <>
-      Add at least $500 of gear to your cart at{" "}
+      Enter {COUPON_CODE} in the discount code field at checkout on{" "}
       <a
         href={AFFILIATE_URL}
         target="_blank"
@@ -92,9 +94,10 @@ const FAQ_ANSWER_NODES: Record<string, React.ReactNode> = {
       >
         signaturesolar.com
       </a>
-      , then enter {COUPON_CODE} in the discount code field at checkout. You'll save $50 and the
-      discount applies sitewide, including batteries, inverters, solar panels, and complete
-      off-grid kits, and it also stacks with other discounts like free shipping.
+      . You'll save $50 and the discount applies sitewide, including batteries, inverters,
+      solar panels, and complete off-grid kits, and it also stacks with other discounts like
+      free shipping. Signature Solar's $50 codes, {COUPON_CODE} included, apply to orders of
+      $500 or more.
     </>
   ),
 };
@@ -464,21 +467,6 @@ export function SignatureSolarCouponMain() {
               label/value pairs, so display:none, sr-only or a collapsed
               <details> would trade away the reason it's here.
               The $500 minimum is deliberately absent — see buildFastFacts(). */}
-          <h2
-            style={{
-              ...HEADING_RESET,
-              fontSize: "0.6875rem",
-              fontWeight: 700,
-              textAlign: "center",
-              textTransform: "uppercase",
-              letterSpacing: "0.06em",
-              color: HERO.subtle,
-              marginTop: 0,
-              marginBottom: "0.5rem",
-            }}
-          >
-            {COUPON_CODE} at a Glance
-          </h2>
           <dl
             style={{
               margin: 0,
@@ -601,6 +589,198 @@ export function SignatureSolarCouponMain() {
             real support for your products and hold them accountable if anything goes wrong.
             They're practically a one-stop shop for the off-grid components for your School
             Bus Conversion or other Mobile Dwelling.
+          </p>
+        </div>
+      </section>
+
+      {/* ─────────────── WHAT WE PAID ───────────────
+          Promoted out of FAQ answer #6, where the only first-party purchase
+          proof on the page was buried behind an accordion heading. A real
+          receipt is the one claim a coupon aggregator can't fabricate, and a
+          <table> is far more extractable than the sentence it used to be. */}
+      <section
+        style={{
+          ...sectionPad,
+          paddingTop: "2.5rem",
+          paddingBottom: "2.5rem",
+          backgroundColor: c.sectionBg,
+          borderBottom: `1px solid ${c.border}`,
+        }}
+      >
+        <div style={{ maxWidth: "42rem", marginLeft: "auto", marginRight: "auto" }}>
+          <h2
+            style={{
+              ...HEADING_RESET,
+              fontSize: "1.5rem",
+              fontWeight: 700,
+              color: c.text,
+              textAlign: "center",
+              marginTop: 0,
+              marginBottom: "0.75rem",
+            }}
+          >
+            What We Paid at Signature Solar
+          </h2>
+          <p
+            style={{
+              color: c.textMuted,
+              fontSize: "0.9375rem",
+              lineHeight: 1.7,
+              textAlign: "center",
+              marginTop: 0,
+              marginBottom: "1.5rem",
+            }}
+          >
+            We're customers, not just affiliates. On{" "}
+            <time dateTime={PURCHASE.iso} style={{ color: c.textBody }}>
+              {PURCHASE.date}
+            </time>{" "}
+            we ordered three EG4 server rack batteries and installed them in{" "}
+            <span style={{ color: c.textBody }}>{PURCHASE.rig}</span>, our 40-foot skoolie.
+            That bank still runs the build.
+          </p>
+          <table
+            style={{
+              width: "100%",
+              borderCollapse: "collapse",
+              fontSize: "0.875rem",
+              border: `1px solid ${c.border}`,
+            }}
+          >
+            <caption
+              style={{
+                captionSide: "bottom",
+                fontSize: "0.75rem",
+                color: c.textSubtle,
+                textAlign: "left",
+                paddingTop: "0.625rem",
+              }}
+            >
+              Our order at Signature Solar, {PURCHASE.date}. Prices as paid; current pricing
+              will differ.
+            </caption>
+            <thead>
+              <tr style={{ backgroundColor: c.altBg }}>
+                <th style={{ textAlign: "left", padding: "0.5rem 0.75rem", color: c.textMuted, fontWeight: 700, borderBottom: `1px solid ${c.border}` }}>Item</th>
+                <th style={{ textAlign: "right", padding: "0.5rem 0.75rem", color: c.textMuted, fontWeight: 700, borderBottom: `1px solid ${c.border}` }}>Qty</th>
+                <th style={{ textAlign: "right", padding: "0.5rem 0.75rem", color: c.textMuted, fontWeight: 700, borderBottom: `1px solid ${c.border}` }}>Unit</th>
+                <th style={{ textAlign: "right", padding: "0.5rem 0.75rem", color: c.textMuted, fontWeight: 700, borderBottom: `1px solid ${c.border}` }}>Total</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td style={{ padding: "0.5rem 0.75rem", color: c.textBody, borderBottom: `1px solid ${c.border}` }}>{PURCHASE.item}</td>
+                <td style={{ padding: "0.5rem 0.75rem", color: c.textBody, textAlign: "right", borderBottom: `1px solid ${c.border}` }}>{PURCHASE.qty}</td>
+                <td style={{ padding: "0.5rem 0.75rem", color: c.textBody, textAlign: "right", borderBottom: `1px solid ${c.border}` }}>{PURCHASE.unitPrice}</td>
+                <td style={{ padding: "0.5rem 0.75rem", color: c.textBody, textAlign: "right", borderBottom: `1px solid ${c.border}` }}>{PURCHASE.total}</td>
+              </tr>
+              <tr style={{ backgroundColor: c.altBg }}>
+                <td colSpan={3} style={{ padding: "0.5rem 0.75rem", color: c.text, fontWeight: 700 }}>Order total</td>
+                <td style={{ padding: "0.5rem 0.75rem", color: c.text, fontWeight: 700, textAlign: "right" }}>{PURCHASE.total}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      {/* ─────────────── SALE CALENDAR ───────────────
+          Answers "when should I buy", a query this page didn't address at all.
+          It's also the honest answer: during an event, product discounts
+          usually beat a flat $50. Saying so costs nothing, since the code
+          stacks on sale pricing — and it's the difference between a page worth
+          citing and one worth scraping. */}
+      <section
+        style={{
+          ...sectionPad,
+          paddingTop: "2.5rem",
+          paddingBottom: "2.5rem",
+          backgroundColor: c.altBg,
+          borderBottom: `1px solid ${c.border}`,
+        }}
+      >
+        <div style={{ maxWidth: "42rem", marginLeft: "auto", marginRight: "auto" }}>
+          <h2
+            style={{
+              ...HEADING_RESET,
+              fontSize: "1.5rem",
+              fontWeight: 700,
+              color: c.text,
+              textAlign: "center",
+              marginTop: 0,
+              marginBottom: "0.75rem",
+            }}
+          >
+            Signature Solar Sale Calendar: When to Buy
+          </h2>
+          <p
+            style={{
+              color: c.textMuted,
+              fontSize: "0.9375rem",
+              lineHeight: 1.7,
+              textAlign: "center",
+              marginTop: 0,
+              marginBottom: "1.5rem",
+            }}
+          >
+            If your build isn't urgent, timing it around a sale is the biggest lever you have.
+            These are the windows we watch.
+          </p>
+          <table
+            style={{
+              width: "100%",
+              borderCollapse: "collapse",
+              fontSize: "0.875rem",
+              border: `1px solid ${c.border}`,
+              backgroundColor: c.sectionBg,
+            }}
+          >
+            <caption
+              style={{
+                captionSide: "bottom",
+                fontSize: "0.75rem",
+                color: c.textSubtle,
+                textAlign: "left",
+                paddingTop: "0.625rem",
+              }}
+            >
+              Sale windows we've seen Signature Solar run. Dates shift year to year; the
+              pattern holds.
+            </caption>
+            <thead>
+              <tr style={{ backgroundColor: c.altBg }}>
+                <th style={{ textAlign: "left", padding: "0.5rem 0.75rem", color: c.textMuted, fontWeight: 700, borderBottom: `1px solid ${c.border}` }}>When</th>
+                <th style={{ textAlign: "left", padding: "0.5rem 0.75rem", color: c.textMuted, fontWeight: 700, borderBottom: `1px solid ${c.border}` }}>Sale</th>
+                <th style={{ textAlign: "left", padding: "0.5rem 0.75rem", color: c.textMuted, fontWeight: 700, borderBottom: `1px solid ${c.border}` }}>What we watch for</th>
+              </tr>
+            </thead>
+            <tbody>
+              {SALE_CALENDAR.map((row) => (
+                <tr key={row.event}>
+                  <td style={{ padding: "0.5rem 0.75rem", color: c.textBody, whiteSpace: "nowrap", borderBottom: `1px solid ${c.border}`, verticalAlign: "top" }}>
+                    {row.when}
+                  </td>
+                  <td style={{ padding: "0.5rem 0.75rem", color: c.text, fontWeight: row.strong ? 700 : 400, borderBottom: `1px solid ${c.border}`, verticalAlign: "top" }}>
+                    {row.event}
+                  </td>
+                  <td style={{ padding: "0.5rem 0.75rem", color: c.textBody, lineHeight: 1.6, borderBottom: `1px solid ${c.border}` }}>
+                    {row.note}
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+          <p
+            style={{
+              color: c.textMuted,
+              fontSize: "0.875rem",
+              lineHeight: 1.7,
+              marginTop: "1.25rem",
+              marginBottom: 0,
+            }}
+          >
+            During an event, the price cut on the gear itself usually beats a flat $50 — so if
+            you can wait, wait. {COUPON_CODE} stacks on top of sale pricing, so the best case
+            is buying during a sale and entering the code as well.
           </p>
         </div>
       </section>

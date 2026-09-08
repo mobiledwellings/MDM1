@@ -32,6 +32,25 @@ export const FEATURED_VIDEO: {
   uploadDate: string;
 };
 
+export const PURCHASE: {
+  date: string;
+  iso: string;
+  rig: string;
+  item: string;
+  qty: number;
+  unitPrice: string;
+  total: string;
+};
+
+export type SaleWindow = {
+  when: string;
+  event: string;
+  note: string;
+  strong?: boolean;
+};
+
+export const SALE_CALENDAR: SaleWindow[];
+
 export type BuildShot = {
   image: string;
   alt: string;

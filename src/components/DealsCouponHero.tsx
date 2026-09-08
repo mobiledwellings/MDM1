@@ -74,7 +74,8 @@ const SIGNATURE_SOLAR_OFFER: CouponOffer = {
   // "orders over $500" — same offer, two framings, on one site.
   blurb:
     "$50 off sitewide, stacks with sales and free shipping promotions.",
-  finePrint: "Apply at checkout on signaturesolar.com. Works on most products sitewide. $500 order minimum.",
+  finePrint:
+    "Apply at checkout on signaturesolar.com. Works on most products sitewide. Signature Solar's $50 codes require a $500 minimum order.",
   // Shared with the /signature-solar-coupon page so the two dates can't drift.
   // Both are re-stamped by `npm run verify-coupon`.
   verifiedOn: SIGNATURE_SOLAR_LAST_VERIFIED,
@@ -153,6 +154,12 @@ function CouponCard({ offer }: { offer: CouponOffer }) {
         >
           {copied ? "Copied" : "Code"}
         </span>
+        {/* Literal space between the label and the code. Without it the two
+            spans are adjacent in the markup and every text extractor
+            concatenates them — Google was rendering the snippet for /deals as
+            "CodeMD50OFF", which reads as a typo in the one result whose whole
+            job is to display the code correctly. Flex gap gives the visual
+            spacing; this is purely for text extraction. */}{" "}
         <span
           id={offer.elementId}
           className="font-mono font-bold leading-none"
@@ -275,9 +282,6 @@ export function DealsCouponHero() {
                     deliberately not a row here either; it stays in the card's
                     fine print. */}
                 <div className="max-w-2xl mx-auto mb-8">
-                  <h2 className="mb-2 text-center text-sm font-bold uppercase tracking-wider text-neutral-500 dark:text-neutral-400">
-                    {SIGNATURE_SOLAR_OFFER.code} at a Glance
-                  </h2>
                   {/* Two-up grid rather than six stacked rows: this block exists
                       to give a model delimited label/value pairs, so it needs to
                       stay in the DOM and stay visible — hiding it (display:none,

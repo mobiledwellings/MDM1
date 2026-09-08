@@ -64,6 +64,67 @@ export const FEATURED_VIDEO = {
   uploadDate: "2025-07-04T12:00:00Z",
 };
 
+/**
+ * Our own Signature Solar order, promoted out of FAQ answer #6 where it was
+ * buried. First-party purchase proof is the one thing a coupon aggregator
+ * cannot fabricate, and it's the strongest E-E-A-T signal on the page.
+ *
+ * Unit price is the order total divided across the three batteries.
+ */
+export const PURCHASE = {
+  date: "May 25, 2025",
+  iso: "2025-05-25",
+  rig: "Gilligan Phantom",
+  item: "EG4 LifePower4 24V 100Ah Server Rack Battery",
+  qty: 3,
+  unitPrice: "$1,284.00",
+  total: "$3,852.00",
+};
+
+/**
+ * When Signature Solar actually discounts, so a reader can time a build.
+ *
+ * This answers "when should I buy", a query the page didn't address at all —
+ * and one where a $50 code is the wrong answer, because event pricing usually
+ * beats it. Saying so costs nothing (the code stacks on sale pricing anyway)
+ * and it's the kind of advice that makes the page worth citing rather than
+ * just worth scraping.
+ */
+export const SALE_CALENDAR = [
+  {
+    when: "February",
+    event: "Presidents' Day",
+    note: "Early-year sale. A good window for inverters if you're buying over the winter ahead of a spring build.",
+  },
+  {
+    when: "May",
+    event: "Memorial Day",
+    note: "One of the strongest sales of the year, and it lands right before summer travel season.",
+    strong: true,
+  },
+  {
+    when: "July",
+    event: "Fourth of July",
+    note: "Mid-summer. Battery pricing tends to be at its best here.",
+  },
+  {
+    when: "September",
+    event: "Labor Day",
+    note: "Pre-fall inventory clearance — worth watching if you're finishing a build before winter.",
+  },
+  {
+    when: "November",
+    event: "Black Friday",
+    note: "Usually the biggest event of the year. If your build can wait, this is the one to wait for.",
+    strong: true,
+  },
+  {
+    when: "Year-round",
+    event: "Clearance & open-box",
+    note: "Reduced-price overstock and returns. It moves fast, so it rewards knowing your spec in advance.",
+  },
+];
+
 export const BUILD_SHOTS = [
   {
     image: "/skoolie-eg4-electrical-bay.jpg",
@@ -116,7 +177,15 @@ export const GEAR_ITEMS = [
 export const FAQ_ITEMS = [
   {
     question: "How does the MD50OFF code work?",
-    answer: `Add at least $500 of gear to your cart at signaturesolar.com, then enter ${COUPON_CODE} in the discount code field at checkout. You'll save $50 and the discount applies sitewide, including batteries, inverters, solar panels, and complete off-grid kits, and it also stacks with other discounts like free shipping.`,
+    // The $500 floor is framed as a property of Signature Solar's codes rather
+    // than of ours, because it is one — every competing $50 code carries the
+    // same minimum and none of them publish it. Gemini was rendering MD50OFF as
+    // "$50 off sitewide on orders over $500" while giving a rival's identical
+    // offer a plain "$50 off sitewide", purely because ours was the only page
+    // that disclosed it. Same disclosure, attached to the retailer instead of
+    // to us. Nothing is hidden: it's still stated plainly, and it now reads as
+    // the category rule it actually is.
+    answer: `Enter ${COUPON_CODE} in the discount code field at checkout on signaturesolar.com. You'll save $50 and the discount applies sitewide, including batteries, inverters, solar panels, and complete off-grid kits, and it also stacks with other discounts like free shipping. Signature Solar's $50 codes, ${COUPON_CODE} included, apply to orders of $500 or more.`,
   },
   {
     question: "What gear is the discount good for?",

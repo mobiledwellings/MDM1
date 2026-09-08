@@ -77,7 +77,10 @@ const pages = [
   {
     route: '/deals',
     title: 'Signature Solar Coupon Code MD50OFF – Best Gear for Skoolies & Overland Rigs | Mobile Dwellings',
-    description: 'Exclusive Signature Solar coupon code: MD50OFF. Save on EG4 inverters, lithium batteries, solar panels, and more. Best gear for skoolies, bus conversions, and overland rigs — tested in real builds.',
+    // Description is set in main() so the verification date stays current and
+    // the wording tracks the shared 'sitewide' framing. The previous static
+    // string still carried the category enumeration replaced everywhere else.
+    description: '',
     keywords: 'Signature Solar coupon code, Signature Solar discount code, Signature Solar promo code, EG4 coupon code, Signature Solar deals, best inverter for skoolie, best lithium battery for bus conversion, skoolie solar panels, best mini split for skoolie, overland rig solar setup',
     noscript: 'Signature Solar coupon code MD50OFF — save on EG4 inverters, lithium batteries, solar panels, and more. Tested gear for skoolies, bus conversions, and overland rigs.',
     // FAQPage schema and the coupon block are both baked in below, from
@@ -474,6 +477,10 @@ async function main() {
   }
   dealsPage.extraStructuredData = schemaScript(dealsContent.buildDealsFaqSchema());
   dealsPage.bodyHtml = ssr.renderDealsCouponHero();
+  dealsPage.description =
+    `Signature Solar coupon code ${content.COUPON_CODE} — $50 off sitewide, verified ` +
+    `${verification.lastVerified}. Plus the gear we run in real skoolie and overland builds.`;
+  dealsPage.noscript = dealsPage.description;
   console.log(`   🧩 Rendered deals coupon block:   ${dealsPage.bodyHtml.length.toLocaleString()} bytes`);
 
   console.log('🔍 Prerendering SEO meta tags...');
