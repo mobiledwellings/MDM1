@@ -13,20 +13,18 @@ photoCredit: Art We There Yet
 ---
 
 <!-- SOURCE OF TRUTH: this file is the readable copy of the story.
-     The page renders from src/data/stories.ts — edit there, or re-export
-     from the draft editor, and keep the two in sync. -->
+     The page renders from src/data/stories-content.mjs — edit there, or
+     re-export from the draft editor, and keep the two in sync.
+     The hero image is story.hero, rendered by StoryArticle above the
+     note card — it is deliberately NOT a block here. -->
 
 <aside class="article-note">
 
-This article is about Cora and José from the legendary YouTube channel: [Art We There Yet](https://www.youtube.com/@ArtWeThereYet). All photographs courtesy of [Cora and José](https://www.instagram.com/art_we_there_yet/). This article was written by an LLM in the style of the extremely talented and entertaining Bill Bryson. It was edited and modified by Justin from Mobile Dwellings.
+This article is about Cora and José from the legendary YouTube channel: [Art We There Yet](https://www.YouTube.com/@ArtWeThereYet). All photographs courtesy of [Cora and José](https://www.instagram.com/art_we_there_yet/). This article was written by an LLM in the style of the extremely talented and entertaining Bill Bryson. It was edited and modified by Justin from Mobile Dwellings.
 
 </aside>
 
-![A converted school bus painted with an abstract mural of hills and waves, parked in sagebrush below the snow-streaked Sierra Nevada.](/blog/art-we-there-yet/bus-mural-sierra-nevada.jpg)
-
 The distance from Deadhorse, Alaska to Ushuaia, Argentina is roughly 14,000 miles, and Cora and José have been driving it since 2019. They are currently somewhere far north of the middle. At their present rate they expect to arrive in about ten years, which works out to just under four miles a day. This pace would embarrass a tortoise, and this was supposed to be just a one year trip. Though in fairness the tortoise is not stopping to record an album (spoiler alert this bus has an entire recording studio inside).
-
-This was supposed to be a one-year trip.
 
 ---
 

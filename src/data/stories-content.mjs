@@ -27,21 +27,11 @@ export const STORIES = [
     "blocks": [
       {
         "t": "standfirst",
-        "v": "This article is about Cora and José from the legendary YouTube channel: [Art We There Yet](https://www.youtube.com/@ArtWeThereYet). All photographs courtesy of [Cora and José](https://www.instagram.com/art_we_there_yet/). This article was written by an LLM in the style of the extremely talented and entertaining Bill Bryson. It was edited and modified by Justin from Mobile Dwellings."
-      },
-      {
-        "t": "img",
-        "src": "/blog/art-we-there-yet/bus-mural-sierra-nevada.jpg",
-        "alt": "A converted school bus painted with an abstract mural of hills and waves, parked in sagebrush below the snow-streaked Sierra Nevada.",
-        "cap": ""
+        "v": "This article is about Cora and José from the legendary YouTube channel: [Art We There Yet](https://www.YouTube.com/@ArtWeThereYet). All photographs courtesy of [Cora and José](https://www.instagram.com/art_we_there_yet/). This article was written by an LLM in the style of the extremely talented and entertaining Bill Bryson. It was edited and modified by Justin from Mobile Dwellings."
       },
       {
         "t": "p",
         "v": "The distance from Deadhorse, Alaska to Ushuaia, Argentina is roughly 14,000 miles, and Cora and José have been driving it since 2019. They are currently somewhere far north of the middle. At their present rate they expect to arrive in about ten years, which works out to just under four miles a day. This pace would embarrass a tortoise, and this was supposed to be just a one year trip. Though in fairness the tortoise is not stopping to record an album (spoiler alert this bus has an entire recording studio inside)."
-      },
-      {
-        "t": "p",
-        "v": "This was supposed to be a one-year trip."
       },
       {
         "t": "hr"
@@ -456,8 +446,11 @@ export function renderStoryHtml(story) {
     `<h1 class="text-3xl md:text-5xl leading-tight text-neutral-900 dark:text-white">${esc(story.title)}</h1>` +
     `<p class="mt-5 text-xl leading-relaxed text-neutral-600 dark:text-neutral-300">${esc(story.dek)}</p>` +
     `<p class="mt-5 text-sm text-neutral-500 dark:text-neutral-400"><time datetime="${esc(story.date)}">${published}</time> &middot; Photographs by ${esc(story.photoCredit)}</p>` +
+    (story.blocks.find((b) => b.t === "standfirst")
+      ? blockHtml(story.blocks.find((b) => b.t === "standfirst"))
+      : "") +
     `<figure class="my-10 -mx-6 md:mx-0"><img src="${esc(story.hero)}" alt="${esc(story.heroAlt)}" class="w-full h-auto md:rounded-lg bg-neutral-100 dark:bg-neutral-900" /></figure>` +
-    story.blocks.map(blockHtml).join("") +
+    story.blocks.filter((b) => b.t !== "standfirst").map(blockHtml).join("") +
     "</article>"
   );
 }

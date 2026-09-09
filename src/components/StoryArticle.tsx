@@ -166,6 +166,11 @@ function Block({ block, index }: { block: StoryBlock; index: number }) {
 }
 
 export function StoryArticle({ story }: { story: Story }) {
+  // The note card belongs under the title, above the hero — so it is pulled
+  // out of the block flow and rendered in the header instead.
+  const note = story.blocks.find((b) => b.t === "standfirst");
+  const body = story.blocks.filter((b) => b.t !== "standfirst");
+
   const published = new Date(story.date + "T00:00:00").toLocaleDateString("en-US", {
     year: "numeric",
     month: "long",
@@ -201,6 +206,8 @@ export function StoryArticle({ story }: { story: Story }) {
         <time dateTime={story.date}>{published}</time> · Photographs by {story.photoCredit}
       </p>
 
+      {note ? <Block block={note} index={-1} /> : null}
+
       <figure className="my-10 -mx-6 md:mx-0">
         <ImageWithFallback
           src={story.hero}
@@ -209,7 +216,7 @@ export function StoryArticle({ story }: { story: Story }) {
         />
       </figure>
 
-      {story.blocks.map((b, i) => (
+      {body.map((b, i) => (
         <Block key={i} block={b} index={i} />
       ))}
     </article>
