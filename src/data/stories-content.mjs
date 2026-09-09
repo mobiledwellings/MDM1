@@ -343,12 +343,16 @@ export const getStory = (slug) => STORIES.find((s) => s.slug === slug);
 // Mirrors StoryArticle.tsx so crawlers that never run JavaScript receive the
 // article's real text. The client mounts with createRoot().render(), which
 // replaces #root wholesale, so this is not hydration.
+//
+// Class names match src/styles/stories.css — NOT Tailwind utilities. The
+// project ships a frozen, pre-compiled Tailwind build with no plugin in
+// vite.config.ts, so utilities that aren't already in that file do nothing.
 
 const esc = (s) =>
   String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
 
-const LINK_CLASS =
-  "text-neutral-900 dark:text-white underline underline-offset-2 decoration-neutral-400 hover:decoration-neutral-900 dark:decoration-neutral-500 dark:hover:decoration-white transition-colors";
+const HEAD_FONT =
+  "font-family:'Morl','Helvetica Neue','Helvetica','Arial',sans-serif;font-weight:700";
 
 /** **bold**, *italic*, [text](url) — recurses so **[text](url)** still links. */
 export function renderInlineHtml(text) {
@@ -359,13 +363,12 @@ export function renderInlineHtml(text) {
   while ((m = re.exec(text)) !== null) {
     out += esc(text.slice(last, m.index));
     if (m[1]) {
-      out += `<strong class="font-semibold">${renderInlineHtml(m[1])}</strong>`;
+      out += `<strong>${renderInlineHtml(m[1])}</strong>`;
     } else if (m[2]) {
       out += `<em>${renderInlineHtml(m[2])}</em>`;
     } else {
-      const external = !m[4].startsWith("/");
-      const attrs = external ? ' target="_blank" rel="noopener noreferrer"' : "";
-      out += `<a href="${esc(m[4])}" class="${LINK_CLASS}"${attrs}>${esc(m[3])}</a>`;
+      const attrs = m[4].startsWith("/") ? "" : ' target="_blank" rel="noopener noreferrer"';
+      out += `<a href="${esc(m[4])}"${attrs}>${esc(m[3])}</a>`;
     }
     last = m.index + m[0].length;
   }
@@ -375,53 +378,36 @@ export function renderInlineHtml(text) {
 function blockHtml(b) {
   switch (b.t) {
     case "standfirst":
-      return `<aside class="article-note my-8 rounded-lg border border-neutral-200 dark:border-neutral-800 bg-neutral-50 dark:bg-neutral-900 px-5 py-4 text-sm leading-relaxed text-neutral-600 dark:text-neutral-400">${renderInlineHtml(b.v)}</aside>`;
+      return `<aside class="story-note article-note">${renderInlineHtml(b.v)}</aside>`;
     case "h2":
-      return `<h2 class="mt-14 mb-4 text-2xl md:text-3xl text-neutral-900 dark:text-white">${renderInlineHtml(b.v)}</h2>`;
+      return `<h2 style="${HEAD_FONT}">${renderInlineHtml(b.v)}</h2>`;
     case "p":
-      return `<p class="mb-6 text-lg leading-[1.75] text-neutral-800 dark:text-neutral-200">${renderInlineHtml(b.v)}</p>`;
+      return `<p>${renderInlineHtml(b.v)}</p>`;
     case "note":
-      return `<p class="mb-6 text-base italic leading-relaxed text-neutral-500 dark:text-neutral-400">${renderInlineHtml(b.v)}</p>`;
+      return `<p class="story-aside-text">${renderInlineHtml(b.v)}</p>`;
     case "hr":
-      return '<hr class="my-12 border-neutral-200 dark:border-neutral-800" />';
+      return "<hr />";
     case "img":
       return (
-        `<figure class="my-10 -mx-6 md:mx-0"><img src="${esc(b.src)}" alt="${esc(b.alt)}" loading="lazy" class="w-full h-auto md:rounded-lg bg-neutral-100 dark:bg-neutral-900" />` +
-        (b.cap
-          ? `<figcaption class="mt-3 px-6 md:px-0 text-sm text-neutral-500 dark:text-neutral-400">${renderInlineHtml(b.cap)}</figcaption>`
-          : "") +
+        `<figure><img src="${esc(b.src)}" alt="${esc(b.alt)}" loading="lazy" />` +
+        (b.cap ? `<figcaption>${renderInlineHtml(b.cap)}</figcaption>` : "") +
         "</figure>"
       );
     case "quote":
       return (
-        '<aside class="my-10 rounded-r-lg border-l-2 border-neutral-900 dark:border-white bg-neutral-50 dark:bg-neutral-900 px-6 py-5">' +
-        (b.head
-          ? `<h3 class="mb-3 text-sm uppercase tracking-wide text-neutral-900 dark:text-white">${esc(b.head)}</h3>`
-          : "") +
-        b.paras
-          .map(
-            (p) =>
-              `<p class="mb-3 text-base leading-relaxed text-neutral-700 dark:text-neutral-300 last:mb-0">${renderInlineHtml(p)}</p>`
-          )
-          .join("") +
+        '<aside class="story-callout">' +
+        (b.head ? `<h3 style="${HEAD_FONT}">${esc(b.head)}</h3>` : "") +
+        b.paras.map((p) => `<p>${renderInlineHtml(p)}</p>`).join("") +
         "</aside>"
       );
     case "table":
       return (
-        '<div class="my-10 overflow-x-auto"><table class="w-full border-collapse text-base"><tbody>' +
+        '<div class="story-table-wrap"><table class="story-table"><tbody>' +
         b.rows
           .map(
             (row) =>
               "<tr>" +
-              row
-                .map((cell, ci) => {
-                  const align =
-                    ci === row.length - 1 && row.length > 1
-                      ? "text-right tabular-nums whitespace-nowrap pl-4"
-                      : "pr-4";
-                  return `<td class="border-b border-neutral-200 dark:border-neutral-800 py-3 align-top text-neutral-800 dark:text-neutral-200 ${align}">${renderInlineHtml(cell)}</td>`;
-                })
-                .join("") +
+              row.map((cell) => `<td>${renderInlineHtml(cell)}</td>`).join("") +
               "</tr>"
           )
           .join("") +
@@ -439,17 +425,16 @@ export function renderStoryHtml(story) {
     month: "long",
     day: "numeric",
   });
+  const note = story.blocks.find((b) => b.t === "standfirst");
   return (
-    '<article class="max-w-2xl mx-auto px-6 py-12 md:py-20">' +
-    `<a href="/stories" class="inline-block mb-8 text-sm uppercase tracking-wide text-neutral-500 dark:text-neutral-400">&larr; All Stories</a>` +
-    `<p class="mb-4 text-sm uppercase tracking-wide text-neutral-500 dark:text-neutral-400">${esc(story.category)} &middot; ${esc(story.readingTime)} read</p>` +
-    `<h1 class="text-3xl md:text-5xl leading-tight text-neutral-900 dark:text-white">${esc(story.title)}</h1>` +
-    `<p class="mt-5 text-xl leading-relaxed text-neutral-600 dark:text-neutral-300">${esc(story.dek)}</p>` +
-    `<p class="mt-5 text-sm text-neutral-500 dark:text-neutral-400"><time datetime="${esc(story.date)}">${published}</time> &middot; Photographs by ${esc(story.photoCredit)}</p>` +
-    (story.blocks.find((b) => b.t === "standfirst")
-      ? blockHtml(story.blocks.find((b) => b.t === "standfirst"))
-      : "") +
-    `<figure class="my-10 -mx-6 md:mx-0"><img src="${esc(story.hero)}" alt="${esc(story.heroAlt)}" class="w-full h-auto md:rounded-lg bg-neutral-100 dark:bg-neutral-900" /></figure>` +
+    '<article class="story">' +
+    `<a href="/stories" class="story-back" style="${HEAD_FONT}">&larr; All Stories</a>` +
+    `<p class="story-kicker" style="${HEAD_FONT}">${esc(story.category)} &middot; ${esc(story.readingTime)} read</p>` +
+    `<h1 class="story-title" style="${HEAD_FONT}">${esc(story.title)}</h1>` +
+    `<p class="story-dek">${esc(story.dek)}</p>` +
+    `<p class="story-byline"><time datetime="${esc(story.date)}">${published}</time> &middot; Photographs by ${esc(story.photoCredit)}</p>` +
+    (note ? blockHtml(note) : "") +
+    `<figure><img src="${esc(story.hero)}" alt="${esc(story.heroAlt)}" /></figure>` +
     story.blocks.filter((b) => b.t !== "standfirst").map(blockHtml).join("") +
     "</article>"
   );
@@ -458,17 +443,17 @@ export function renderStoryHtml(story) {
 /** Index markup for build/stories.html */
 export function renderStoriesIndexHtml() {
   return (
-    '<section class="max-w-5xl mx-auto px-6 py-12 md:py-20">' +
-    '<header class="max-w-2xl"><h1 class="text-3xl md:text-5xl leading-tight text-neutral-900 dark:text-white">Stories</h1>' +
-    '<p class="mt-5 text-lg leading-relaxed text-neutral-600 dark:text-neutral-300">Long-form tours of the rigs and the people living in them &mdash; what they built, what it cost, and what they&rsquo;d do differently.</p></header>' +
-    '<div class="mt-12 grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-12">' +
+    '<section class="stories">' +
+    `<h1 class="stories-title" style="${HEAD_FONT}">Stories</h1>` +
+    '<p class="stories-intro">Long-form tours of the rigs and the people living in them &mdash; what they built, what it cost, and what they&rsquo;d do differently.</p>' +
+    '<div class="stories-grid">' +
     STORIES.map(
       (s) =>
-        `<a href="/stories/${esc(s.slug)}" class="group block">` +
-        `<div class="aspect-[3/2] overflow-hidden rounded-lg bg-neutral-100 dark:bg-neutral-900"><img src="${esc(s.hero)}" alt="${esc(s.heroAlt)}" class="w-full h-full object-cover" /></div>` +
-        `<p class="mt-4 text-sm uppercase tracking-wide text-neutral-500 dark:text-neutral-400">${esc(s.category)} &middot; ${esc(s.readingTime)} read</p>` +
-        `<h2 class="mt-2 text-xl md:text-2xl leading-snug text-neutral-900 dark:text-white">${esc(s.title)}</h2>` +
-        `<p class="mt-3 text-base leading-relaxed text-neutral-600 dark:text-neutral-300">${esc(s.dek)}</p></a>`
+        `<a href="/stories/${esc(s.slug)}" class="story-card">` +
+        `<div class="story-card-img"><img src="${esc(s.hero)}" alt="${esc(s.heroAlt)}" /></div>` +
+        `<p class="story-card-meta" style="${HEAD_FONT}">${esc(s.category)} &middot; ${esc(s.readingTime)} read</p>` +
+        `<h2 class="story-card-title" style="${HEAD_FONT}">${esc(s.title)}</h2>` +
+        `<p class="story-card-dek">${esc(s.dek)}</p></a>`
     ).join("") +
     "</div></section>"
   );
