@@ -17,7 +17,7 @@ export function StoryPage() {
   const structuredData = buildStorySchema(story);
 
   return (
-    <div className="min-h-screen bg-white dark:bg-neutral-950">
+    <div className="story-page">
       <SEO
         title={story.title}
         description={story.dek}

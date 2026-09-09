@@ -9,6 +9,13 @@
  * Dark mode follows the app's strategy: ThemeContext toggles `.dark` on <html>.
  */
 
+/* Page shell. The background lives here, not on a Tailwind utility: the
+ * frozen build has dark:bg-neutral-900 but NOT dark:bg-neutral-950, so the
+ * wrapper silently stayed white in dark mode and painted light-theme text
+ * on a white ground. */
+.story-page { min-height: 100vh; background: #ffffff; }
+.dark .story-page { background: #171717; }
+
 .story {
   --story-ink: #171717;
   --story-body: #262626;
@@ -26,8 +33,8 @@
   --story-body: #d4d4d4;
   --story-muted: #a3a3a3;
   --story-rule: #262626;
-  --story-surface: #171717;
-  --story-surface-line: #262626;
+  --story-surface: #232323;
+  --story-surface-line: #333333;
 }
 
 @media (min-width: 768px) {
@@ -184,7 +191,7 @@
 .dark .stories {
   --story-ink: #ffffff;
   --story-muted: #a3a3a3;
-  --story-surface: #171717;
+  --story-surface: #232323;
 }
 @media (min-width: 768px) { .stories { padding: 5rem 1.5rem 7rem; } }
 

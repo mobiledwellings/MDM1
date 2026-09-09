@@ -8,7 +8,7 @@ export function StoriesPage() {
   const structuredData = buildStoriesIndexSchema();
 
   return (
-    <div className="min-h-screen bg-white dark:bg-neutral-950">
+    <div className="story-page">
       <SEO
         title="Stories | Skoolie and Van Conversion Tours"
         description="Long-form tours of converted school buses, vans and overland rigs — how they were built, what they cost, and what their owners would do differently."
