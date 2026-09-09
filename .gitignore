@@ -37,3 +37,6 @@ supabase/.temp/
 
 # Build-time SSR bundle used by scripts/prerender-seo.js (artifact, not source)
 .ssr-build/
+
+# Photo originals for stories — the web-sized copies live in public/blog/
+blog photos/

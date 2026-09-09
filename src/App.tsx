@@ -15,6 +15,8 @@ import { DealsPage } from "./pages/DealsPage";
 import { SignatureSolarCouponPage } from "./pages/SignatureSolarCouponPage";
 import { PartnersPage } from "./pages/PartnersPage";
 import { PartnerPage } from "./pages/PartnerPage";
+import { StoriesPage } from "./pages/StoriesPage";
+import { StoryPage } from "./pages/StoryPage";
 import { Toaster } from "sonner";
 
 export default function App() {
@@ -33,6 +35,8 @@ export default function App() {
                   <Route path="/sell-your-rig" element={<SellYourRigPage />} />
                   <Route path="/about" element={<AboutPage />} />
                   <Route path="/skoolie-support" element={<SkoolieSupportPage />} />
+                  <Route path="/stories" element={<StoriesPage />} />
+                  <Route path="/stories/:slug" element={<StoryPage />} />
                   <Route path="/deals" element={<DealsPage />} />
                   <Route path="/partners" element={<PartnersPage />} />
                   <Route path="/partners/:slug" element={<PartnerPage />} />

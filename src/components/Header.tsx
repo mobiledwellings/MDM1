@@ -91,6 +91,17 @@ export function Header() {
                 >
                   Skoolie Support
                 </a>
+                <a
+                  href="/stories"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    navigate('/stories');
+                  }}
+                  className="text-neutral-600 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-white transition-colors"
+                  style={{ fontFamily: "'Morl', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif", fontWeight: 700, textTransform: 'uppercase', fontSize: '1rem', textAlign: 'center' }}
+                >
+                  Stories
+                </a>
                 <a 
                   href="/deals" 
                   onClick={(e) => {
@@ -206,6 +217,19 @@ export function Header() {
                 style={{ fontFamily: "'Neue Haas Grotesk Display Pro', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif", fontWeight: 700, textTransform: 'uppercase' }}
               >
                 Skoolie Support
+              </a>
+              {/* Stories (mobile) */}
+              <a
+                href="/stories"
+                onClick={(e) => {
+                  e.preventDefault();
+                  navigate('/stories');
+                  setMobileMenuOpen(false);
+                }}
+                className="text-neutral-600 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-white transition-colors"
+                style={{ fontFamily: "'Neue Haas Grotesk Display Pro', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif", fontWeight: 700, textTransform: 'uppercase' }}
+              >
+                Stories
               </a>
               <a 
                 href="/deals" 

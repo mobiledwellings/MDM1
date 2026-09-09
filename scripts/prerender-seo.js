@@ -122,6 +122,13 @@ const pages = [
     // entries on the same URL as a critical structured-data issue.
   },
   {
+    route: '/stories',
+    title: 'Stories | Skoolie and Van Conversion Tours | Mobile Dwellings',
+    description: 'Long-form tours of converted school buses, vans and overland rigs — how they were built, what they cost, and what their owners would do differently.',
+    keywords: 'skoolie tour, bus conversion tour, school bus conversion story, van conversion tour, skoolie build cost, mobile dwellings stories',
+    noscript: 'Long-form tours of converted school buses, vans and overland rigs on Mobile Dwellings — the builds, the costs, and the people living in them.',
+  },
+  {
     route: '/partners',
     title: 'Our Partners — Brands We Trust | Mobile Dwellings',
     description: 'The brands Mobile Dwellings partners with for skoolie, van, and overland builds — Signature Solar, onX Offroad, and WattCycle. Each offers an exclusive discount.',
@@ -482,6 +489,34 @@ async function main() {
     `${verification.lastVerified}. Plus the gear we run in real skoolie and overland builds.`;
   dealsPage.noscript = dealsPage.description;
   console.log(`   🧩 Rendered deals coupon block:   ${dealsPage.bodyHtml.length.toLocaleString()} bytes`);
+
+  // One prerendered page per story, generated from the shared content module
+  // rather than hand-listed here — a new story in stories-content.mjs gets its
+  // static HTML automatically, with the article's real copy baked into #root.
+  //
+  // Same reasoning as /deals above: without this, a 1,000-word article would
+  // serve crawlers an empty <div id="root"></div> and nothing else.
+  const stories = await import('../src/data/stories-content.mjs');
+  const storiesIndex = pages.find((p) => p.route === '/stories');
+  if (!storiesIndex) {
+    throw new Error('No /stories entry in pages[] — cannot bake the index.');
+  }
+  storiesIndex.extraStructuredData = schemaScript(stories.buildStoriesIndexSchema());
+  storiesIndex.bodyHtml = stories.renderStoriesIndexHtml();
+
+  for (const story of stories.STORIES) {
+    pages.push({
+      route: `/stories/${story.slug}`,
+      title: `${story.title} | Mobile Dwellings`,
+      description: story.dek,
+      keywords: story.keywords,
+      noscript: story.dek,
+      image: `${SITE_URL}${story.hero}`,
+      extraStructuredData: schemaScript(stories.buildStorySchema(story)),
+      bodyHtml: stories.renderStoryHtml(story),
+    });
+  }
+  console.log(`   🧩 Rendered ${stories.STORIES.length} story page(s) + index`);
 
   console.log('🔍 Prerendering SEO meta tags...');
   prerender();
