@@ -251,7 +251,7 @@ const onxOffroad: Partner = {
     },
   ],
   seo: {
-    title: "onX Offroad Discount Code JUICEBOX — 20% Off",
+    title: "onX Offroad Discount Code JUICEBOX – 20% Off",
     description:
       "Save 20% on onX Offroad with code JUICEBOX. The GPS trail and route-planning app we use for off-road navigation, dispersed camping, and offline maps.",
     keywords:
@@ -349,11 +349,12 @@ const wattCycle: Partner = {
     },
   ],
   seo: {
-    title: "WattCycle Review & Discount — Budget LiFePO4 Batteries for Skoolies",
+    title:
+      "WattCycle Coupon Code DWELLINGS – 8% Off LiFePO4 Batteries",
     description:
-      "WattCycle LiFePO4 lithium batteries are a budget-friendly power option for skoolies, vans, and RVs. High cycle life, built-in BMS, self-heating models. Save with our code.",
+      "Use code DWELLINGS for 8% off WattCycle LiFePO4 batteries at wattcycle.com. Budget 12V, 24V, and 48V packs for skoolie, van, and RV builds — tested and verified by Mobile Dwellings.",
     keywords:
-      "wattcycle, wattcycle review, wattcycle coupon code, wattcycle discount, lifepo4 battery for skoolie, budget lithium battery van, cheap lifepo4 battery, 12v 100ah lifepo4, wattcycle vs eg4, best budget skoolie battery",
+      "wattcycle, wattcycle coupon code, wattcycle discount code, DWELLINGS, wattcycle promo code, wattcycle review, lifepo4 battery for skoolie, budget lithium battery van, cheap lifepo4 battery, 12v 314ah lifepo4, wattcycle 48v server rack, wattcycle vs eg4, best budget skoolie battery",
     ogImage: `${SITE}/wattcycle-12v-314ah-battery.jpg`,
   },
 };

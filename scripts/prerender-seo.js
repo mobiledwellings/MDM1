@@ -465,7 +465,7 @@ async function main() {
   // Render the page's real React component to HTML so the served bytes carry
   // the actual copy — headings, the coupon code, the FAQ answers. Built by
   // `vite build --config vite.ssr.config.ts` immediately before this script.
-  const ssr = await import('../.ssr-build/entry-ssr-signature-solar.mjs');
+  const ssr = await import('../.ssr-build/entry-ssr.mjs');
   couponPage.bodyHtml = ssr.renderSignatureSolarMain();
   console.log(`   🧩 Rendered coupon page content: ${couponPage.bodyHtml.length.toLocaleString()} bytes`);
 
@@ -517,6 +517,31 @@ async function main() {
     });
   }
   console.log(`   🧩 Rendered ${stories.STORIES.length} story page(s) + index`);
+
+  // Partner pages: same fix as the coupon page and /deals above. Each one
+  // carries roughly 1,100 words that only existed after React ran, so the
+  // served HTML was an empty shell — invisible to crawlers that don't execute
+  // JavaScript, which includes most AI crawlers.
+  for (const page of pages.filter((p) => p.route.startsWith('/partners/'))) {
+    const slug = page.route.split('/').pop();
+    const html = ssr.renderPartnerMain(slug);
+    if (!html) {
+      throw new Error(`renderPartnerMain("${slug}") returned nothing — is the slug still in src/data/partners.tsx?`);
+    }
+    page.bodyHtml = html;
+
+    // Title, description and keywords come from src/data/partners.tsx, the same
+    // place the runtime <SEO> component reads them, so the static HTML and the
+    // rendered page can never disagree about what the URL is for.
+    const seo = ssr.partnerSeo(slug);
+    if (seo) {
+      page.title = `${seo.title} | Mobile Dwellings`;
+      page.description = seo.description;
+      page.keywords = seo.keywords;
+      if (seo.ogImage) page.image = seo.ogImage;
+    }
+    console.log(`   🧩 Rendered partner page ${slug}: ${html.length.toLocaleString()} bytes`);
+  }
 
   console.log('🔍 Prerendering SEO meta tags...');
   prerender();

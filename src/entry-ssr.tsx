@@ -1,5 +1,5 @@
 /**
- * Build-time render entry for the Signature Solar coupon page.
+ * Build-time render entries for the prerenderer.
  *
  * scripts/prerender-seo.js imports the bundle built from this file and calls
  * renderSignatureSolarMain() to get the page's content as an HTML string, which
@@ -21,6 +21,8 @@ import { renderToStaticMarkup } from "react-dom/server";
 import { StaticRouter } from "react-router-dom";
 import { SignatureSolarCouponMain } from "./pages/SignatureSolarCouponMain";
 import { DealsCouponHero } from "./components/DealsCouponHero";
+import { PartnerMain } from "./pages/PartnerMain";
+import { getPartner } from "./data/partners";
 
 export function renderSignatureSolarMain(): string {
   return renderToStaticMarkup(<SignatureSolarCouponMain />);
@@ -43,4 +45,41 @@ export function renderDealsCouponHero(): string {
       <DealsCouponHero />
     </StaticRouter>
   );
+}
+
+/**
+ * A partner page's body (hero, intro, products, about, FAQ, closing CTA).
+ *
+ * These routes previously served an empty #root, so the ~1,100 words on each
+ * one were invisible to any crawler that doesn't run JavaScript. Returns an
+ * empty string for an unknown slug, or one that redirects elsewhere, so the
+ * prerender script can simply skip it.
+ *
+ * No StaticRouter needed: PartnerMain links out with plain <a>, not <Link>.
+ */
+export function renderPartnerMain(slug: string): string {
+  const partner = getPartner(slug);
+  if (!partner || partner.externalPath) return "";
+  return renderToStaticMarkup(<PartnerMain partner={partner} />);
+}
+
+/**
+ * A partner's SEO block, straight from src/data/partners.tsx.
+ *
+ * WHY: the prerender script used to carry its own hand-written copy of each
+ * partner's title and description, with a comment asking whoever edited one to
+ * remember to edit the other. They drifted — WattCycle shipped a coupon-code
+ * title in the static HTML and a review title once React ran, which told Google
+ * two different things about the same URL. Reading the real source here means
+ * they cannot disagree again.
+ */
+export function partnerSeo(slug: string) {
+  const partner = getPartner(slug);
+  if (!partner || partner.externalPath) return null;
+  return {
+    title: partner.seo.title,
+    description: partner.seo.description,
+    keywords: partner.seo.keywords,
+    ogImage: partner.seo.ogImage ?? null,
+  };
 }

@@ -1,9 +1,9 @@
 /**
  * SSR build for the prerenderer.
  *
- * Builds src/entry-ssr-signature-solar.tsx into a Node-importable bundle that
- * scripts/prerender-seo.js uses to render the coupon page's content to HTML at
- * build time. Output goes to .ssr-build/ (git-ignored, build artifact only).
+ * Builds src/entry-ssr.tsx into a Node-importable bundle that
+ * scripts/prerender-seo.js uses to render page content to HTML at build time
+ * (the coupon page, the /deals coupon block, and each partner page). Output goes to .ssr-build/ (git-ignored, build artifact only).
  *
  * Emits .mjs so the CJS prerender script can `await import()` it — the root
  * package.json has no "type": "module", so a bare .js would be parsed as CJS
@@ -28,7 +28,7 @@ export default defineConfig({
     },
   },
   build: {
-    ssr: 'src/entry-ssr-signature-solar.tsx',
+    ssr: 'src/entry-ssr.tsx',
     outDir: '.ssr-build',
     emptyOutDir: true,
     target: 'esnext',
