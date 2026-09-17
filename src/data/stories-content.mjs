@@ -14,6 +14,433 @@ export const SITE_URL = "https://mobiledwellings.media";
 
 export const STORIES = [
   {
+    "slug": "flying-circus-bus",
+    "title": "A Family of Six, Four Cats and a Dog, in 320 Square Feet",
+    "dek": "Morgan had never heard the word skoolie when Glaucio suggested buying a school bus. Six years later their family of six lives in it full time. This is the full tour of the Flying Circus Bus.",
+    "hero": "/blog/flying-circus-bus/youtube-thumbnail.jpg",
+    "heroAlt": "Morgan, Glaucio and their four children standing in front of their teal and white converted school bus on a forest road.",
+    "category": "Bus Tours",
+    "date": "2026-09-17",
+    "readingTime": "6 min",
+    "photoCredit": "Mobile Dwellings",
+    "keywords": "school bus conversion family of six, skoolie with kids, bus conversion tour, flying circus bus, bluebird tc2000 skoolie, family skoolie build, homeschool on a bus",
+    "blocks": [
+      {
+        "t": "standfirst",
+        "v": "This article is about Morgan and Glaucio of the Flying Circus Bus ([Instagram](https://www.instagram.com/flyingcircusbus/) · [Facebook](https://www.facebook.com/p/Flying-Circus-Bus-61559187452069/))."
+      },
+      {
+        "alt": "The family standing in front of the Flying Circus Bus, the thumbnail for the video tour.",
+        "compact": true,
+        "id": "JJQ18h5ox_k",
+        "label": "Watch the full tour",
+        "poster": "/blog/flying-circus-bus/youtube-thumbnail.jpg",
+        "t": "video",
+        "title": "They Live in a School Bus Full Time With 4 Kids, 4 Cats, and a Dog · 16 min"
+      },
+      {
+        "t": "p",
+        "v": "Morgan was sitting on the couch in their living room in Montana when Glaucio walked out of the bathroom and said, \"Babe, let's buy a school bus.\""
+      },
+      {
+        "t": "p",
+        "v": "She had never heard the word skoolie. \"Didn't know what they were,\" she says. \"It turned my entire life upside down.\""
+      },
+      {
+        "t": "p",
+        "v": "Six years and a nine-month build later, the two of them live on that bus full time with four kids, four cats and a dog. This is the full tour of the Flying Circus Bus."
+      },
+      {
+        "t": "hr"
+      },
+      {
+        "t": "h2",
+        "v": "Why a bus"
+      },
+      {
+        "t": "p",
+        "v": "They were a family of six with five pets, trying to work out how to travel together. Flying never quite did it. \"You hop on a plane and you go from point A to point B,\" Morgan says. \"You see where you were and you see your destination, but you miss all this incredible stuff in between.\" The slow pace of bus life turned the trip into what she calls a zigzag adventure."
+      },
+      {
+        "alt": "Morgan, Glaucio and their four children sitting together on rugs and chairs under an awning beside their converted school bus.",
+        "cap": "The reason for the whole thing: everyone in one place.",
+        "src": "/blog/flying-circus-bus/family-outside-the-bus.jpg",
+        "t": "img"
+      },
+      {
+        "t": "p",
+        "v": "There was another reason, too. In the house, everyone had spread out and gotten busy, and they were looking for a way to get closer again. Now they are in 320 square feet. \"It forces you to get really clear about who you are,\" Morgan says, \"and it brings a lot of things to the surface.\""
+      },
+      {
+        "t": "p",
+        "v": "The decision to go full time came after their first trip around the US, when they kept catching themselves saying the same thing in one place after another: I would live here. I would live here. Then they went home to Montana and hit their first twenty-below day, looked at each other, and decided to sell everything."
+      },
+      {
+        "t": "hr"
+      },
+      {
+        "t": "h2",
+        "v": "The bus"
+      },
+      {
+        "t": "p",
+        "v": "It's a 1996 Bluebird TC2000 with an 8.3-litre Cummins diesel and an Allison 3060 transmission. Along the passenger side are four exterior storage bays."
+      },
+      {
+        "alt": "Glaucio crouching beside an open exterior storage bay on the side of the bus, with the words Flying Circus Bus painted along the panel.",
+        "cap": "Four bays along the passenger side hold the batteries and gear.",
+        "src": "/blog/flying-circus-bus/exterior-storage-bays.jpg",
+        "t": "img"
+      },
+      {
+        "t": "p",
+        "v": "Inside those bays is the power system: three 24-volt [batteries](https://signaturesolar.com/wiren-server-rack-battery-48v-100ah-u5/?ref=mobiledwellings) at 280Ah each, a [5,000-watt inverter](https://signaturesolar.com/victron-multiplus-ii-48-5000-70-95-120v/?ref=mobiledwellings&search_query=victron%20multiplus&searchuuid=4767e3a5-08d1-4358-b954-50777286ba7f), and a [Victron Cerbo](https://signaturesolar.com/victron-cerbo-gx-mk2/?ref=mobiledwellings&search_query=victron%20cerbo%20gx&searchuuid=7c43996c-058f-43e6-8976-dc3a8c8654be) that talks to the bus's home automation. On the roof are six 440-watt bifacial [solar panels](https://signaturesolar.com/all-products/solar-panels/?ref=mobiledwellings&sort=priceasc), Starlink, and one of the [two mini splits](https://link.amazon/B06hU1svH)."
+      },
+      {
+        "alt": "An overhead drone view of the bus roof, covered with large solar panels, a rooftop deck and air conditioning units.",
+        "cap": "Six 440-watt bifacial panels, seen from above.",
+        "src": "/blog/flying-circus-bus/solar-panels-from-above.jpg",
+        "t": "img"
+      },
+      {
+        "t": "p",
+        "v": "The roof is also a room. There's an observation deck up there for hanging out and for storage: tools, spare parts, the railings themselves. The railings fold up to enclose the space, which makes it somewhere the kids can safely be."
+      },
+      {
+        "t": "hr"
+      },
+      {
+        "t": "h2",
+        "v": "The front of the bus"
+      },
+      {
+        "t": "p",
+        "v": "Just inside the door is what Morgan calls the catch-all space, and it sets the tone for the whole build: vertical storage, everywhere, using whatever was left over."
+      },
+      {
+        "alt": "The front interior of the bus looking toward the driver's seat, with hooks for coats, overhead cabinets and hats on the wall.",
+        "cap": "Backpacks and coats live at the front door.",
+        "src": "/blog/flying-circus-bus/front-entry-and-storage.jpg",
+        "t": "img"
+      },
+      {
+        "t": "p",
+        "v": "The sides of the couch would have been armrests in a house. Here they're the mudroom: each child has a bin that pulls out with their shoes in it. Above, overhead cabinets hold everything the family reaches for day to day. And because four cats live here, there's a litter box built into the cabinetry. Where the cats go to the bathroom is the question, Morgan says, that people ask more than any other, and well there's your answer."
+      },
+      {
+        "alt": "A cat walking along the outside ledge of the yellow school bus.",
+        "cap": "Four cats, one dog, six people, 320 square feet.",
+        "src": "/blog/flying-circus-bus/cat-on-the-bus.jpg",
+        "t": "img"
+      },
+      {
+        "t": "hr"
+      },
+      {
+        "t": "h2",
+        "v": "A living room built for drive days"
+      },
+      {
+        "t": "p",
+        "v": "With six people, they went with a large couch that seats three plus a love seat, and made the cushions thick and comfortable, not just for evenings in but because the family is sitting on them while the bus is moving. Seat belts pull out of the couch for driving."
+      },
+      {
+        "alt": "The living room of the bus with a large couch, a love seat, wood floors and a table, seen down the length of the interior.",
+        "cap": "Seat belts pull out of the couch. The cushions were chosen for long drive days.",
+        "src": "/blog/flying-circus-bus/living-room.jpg",
+        "t": "img"
+      },
+      {
+        "t": "p",
+        "v": "Underneath are drawers for the kids. Behind every cushion is another hidden compartment. And the whole thing converts: lift the cushions, slide the base out, put it together, and the living room becomes a large sofa bed for movie nights and rainy days."
+      },
+      {
+        "t": "hr"
+      },
+      {
+        "t": "h2",
+        "v": "One table, three jobs"
+      },
+      {
+        "t": "p",
+        "v": "Almost everything in the bus does more than one thing, because living small means you don't get to give a room a single purpose. The kitchen table is also the office, and the monitor above it is both a movie screen and a second display when Glaucio is working."
+      },
+      {
+        "alt": "Morgan pulling out one of the custom wooden stools that store homeschool supplies, with cats nearby.",
+        "cap": "Each child has their own stool, and their schoolwork is inside it.",
+        "src": "/blog/flying-circus-bus/homeschool-stools.jpg",
+        "t": "img"
+      },
+      {
+        "t": "p",
+        "v": "The stools were custom built to hold the kids' homeschool things, one each, so nobody has to interrupt anyone else to get at their own work."
+      },
+      {
+        "t": "p",
+        "v": "Morgan played cello professionally, so instruments were always going into this build. There's a guitar and a ukulele, plus a purpose-built slot for the keyboard, which never moves and never falls while they drive. When they want it, the cover comes off, it goes up on the table, and it's ready."
+      },
+      {
+        "alt": "Morgan lifting the wooden cover from the built-in keyboard storage slot beside the dining table.",
+        "cap": "The keyboard has its own place in the cabinetry.",
+        "src": "/blog/flying-circus-bus/keyboard-storage.jpg",
+        "t": "img"
+      },
+      {
+        "t": "hr"
+      },
+      {
+        "t": "h2",
+        "v": "The kitchen"
+      },
+      {
+        "t": "p",
+        "v": "Like most houses, the kitchen is where everyone ends up, and it's the most deliberately planned part of the bus. The fridge is apartment-style and sits higher on purpose, so there's usable storage above and below it. One drawer above the fridge holds the projector, and underneath is the cat food."
+      },
+      {
+        "alt": "A tall pull-out pantry beside the fridge, filled with labelled containers of dry goods.",
+        "cap": "The pull-out pantry holds more than it looks like it should.",
+        "src": "/blog/flying-circus-bus/pull-out-pantry.jpg",
+        "t": "img"
+      },
+      {
+        "t": "p",
+        "v": "The pantry pulls out and holds far more than you'd guess, in uniform pop-top containers. The spices above get the same treatment, labelled on top so it's obvious what's running low. Both are reachable from either side, so one person can be cooking while another grabs something, without anyone having to move."
+      },
+      {
+        "t": "p",
+        "v": "The counters are L-shaped and deeper than standard, because the 100-gallon fresh water tank sits underneath and so they modified the depth to suit it. They're epoxy, and custom poured. They wanted the look of stone but something lighter. Six years on, they still look new."
+      },
+      {
+        "t": "p",
+        "v": "There's no traditional oven. They decided the space was worth more as drawers, and Morgan says she hasn't regretted it once. The drawers are deep: dishes and pots in the middle, a catch-all below, and toe-kick drawers, because for a family of six it's important to use all of the available space in a Skoolie."
+      },
+      {
+        "alt": "Morgan crouching to open a shallow toe-kick drawer beneath the kitchen cabinets, filled with cans.",
+        "cap": "The toe kick is a drawer. This one is all cans.",
+        "src": "/blog/flying-circus-bus/toe-kick-drawer.jpg",
+        "t": "img"
+      },
+      {
+        "t": "p",
+        "v": "They went for drawers over cabinets. \"We've traveled enough to know that when you open up a cabinet after driving everything falls out,\" Morgan says. \"That was not something I wanted to be picking up.\" Drawers stay put. The sink is full size, big enough to wash a large pan without water going up the walls."
+      },
+      {
+        "t": "hr"
+      },
+      {
+        "t": "h2",
+        "v": "Where four kids sleep"
+      },
+      {
+        "t": "p",
+        "v": "Four full-size bunks, two on each side. They were built for the adults the kids will become rather than the children they were. Each one fits a six-foot person, just slightly narrower than a twin, so nothing has to be remodeled as they grow."
+      },
+      {
+        "alt": "A child's bunk with a curtain pulled back, purple LED lighting inside and stuffed animals on the bed.",
+        "cap": "Four bunks, each with a curtain, a light and a drawer.",
+        "src": "/blog/flying-circus-bus/kids-bunks.jpg",
+        "t": "img"
+      },
+      {
+        "t": "p",
+        "v": "Every bunk has a curtain. It adds a little insulation on cold nights and gives each kid privacy and darkness when they want it. Under the beds, each child has a drawer for clothes."
+      },
+      {
+        "alt": "Morgan demonstrating zippered bedding on one of the bunks.",
+        "cap": "Morgan made zippered bedding for every bed. One zip and it's made.",
+        "src": "/blog/flying-circus-bus/zipper-bedding.jpg",
+        "t": "img"
+      },
+      {
+        "t": "p",
+        "v": "The bedding is Morgan's own solution, and it's the detail worth stealing: every bed has zippers, with the sheet on the inside. One zip and the bed is made."
+      },
+      {
+        "t": "p",
+        "v": "The wall between the kids' room and their own became storage too. The cavity is now a medicine cabinet. Because the engine is in the rear, the space around it was turned into more drawers, for laundry and daily things."
+      },
+      {
+        "t": "hr"
+      },
+      {
+        "t": "h2",
+        "v": "Nine months of building"
+      },
+      {
+        "t": "p",
+        "v": "The build took nine months. \"Every single moment that I was awake, weekends, holidays, it was working on the bus, all in,\" Glaucio says. He describes it as a puzzle that teaches you about yourself, especially doing it as a couple, with kids, and says the real reward was finding out they could do more than they thought they could."
+      },
+      {
+        "t": "p",
+        "v": "Morgan's summary is shorter. \"I think it's a lot like pregnancy. You forget how bad it actually was, because we're so far into it now.\""
+      },
+      {
+        "t": "hr"
+      },
+      {
+        "t": "h2",
+        "v": "The bathroom"
+      },
+      {
+        "t": "p",
+        "v": "The bathroom door does two jobs. Closed one way, it's the bathroom door. Closed the other, it separates the front half of the bus from the bunks, so the kids can be in bed while everyone else carries on with the evening."
+      },
+      {
+        "alt": "A compact bathroom with a composting toilet, hexagonal tile and wood trim.",
+        "cap": "The composting toilet is a DIY build.",
+        "src": "/blog/flying-circus-bus/composting-toilet.jpg",
+        "t": "img"
+      },
+      {
+        "t": "p",
+        "v": "The hot water is tankless, and with six people on board they don't run out. It's held up for six years. The toilet is composting and they built it themselves. The sink is small, smaller than Morgan would like, because the wall above it had to hold everything else."
+      },
+      {
+        "alt": "A shower stall lined with small hexagonal tile and a wood threshold.",
+        "cap": "Small tiles, chosen to survive the road.",
+        "src": "/blog/flying-circus-bus/tiled-shower.jpg",
+        "t": "img"
+      },
+      {
+        "t": "p",
+        "v": "The shower is real tile, and the tiles are small on purpose: the hope was that smaller pieces would survive years of road vibration without cracking. So far, including the drive down to Baja, they have."
+      },
+      {
+        "t": "hr"
+      },
+      {
+        "t": "h2",
+        "v": "Their room"
+      },
+      {
+        "t": "p",
+        "v": "The back bedroom closes off with doors, for privacy and for sound. They're not thick, but with both doors shut you can be at the back of the bus while music plays up front and not hear it."
+      },
+      {
+        "alt": "The rear bedroom with a full-size bed made up with grey and tan bedding, and custom cabinetry with open shelving above.",
+        "cap": "A full-size bed at the back provides a cozy bed for Morgan and Glaucio.",
+        "src": "/blog/flying-circus-bus/rear-bedroom.jpg",
+        "t": "img"
+      },
+      {
+        "t": "p",
+        "v": "Both of them work remotely, so a table pops up and pulls out to become a desk, then stows away again, and doubles as the step up into the bed. The bed is full size with the same zippered bedding, there's custom cabinetry for daily things, and the second [mini split](https://link.amazon/B01MhrK3N) is back here to keep this end warm or cool independently."
+      },
+      {
+        "t": "hr"
+      },
+      {
+        "t": "h2",
+        "v": "What they'd tell you"
+      },
+      {
+        "t": "p",
+        "v": "Glaucio's advice is about systems. Start with air conditioning, and don't assume you'll chase fair weather. Put it in. And put your money and effort into the things you won't want to upgrade later."
+      },
+      {
+        "t": "p",
+        "v": "Morgan's is about storage. Get really clear on what you need to have with you, and build the space for it before you move in. \"If things don't have a place, your bus is going to be cluttered.\""
+      },
+      {
+        "t": "p",
+        "v": "If you're working through those decisions on a build of your own, that's the kind of thing we dig into at [Skoolie Support](/skoolie-support), and if you're still looking for the bus itself, there are [rigs for sale](/rigs-for-sale) here too."
+      },
+      {
+        "alt": "Morgan and Glaucio sitting together on the couch inside the bus, talking to the camera.",
+        "cap": "Six years in, with no plans to stop.",
+        "src": "/blog/flying-circus-bus/morgan-and-glaucio.jpg",
+        "t": "img"
+      },
+      {
+        "t": "p",
+        "v": "As for how long they'll keep doing it, the question they get asked more than any other, they want to keep going even after the kids have grown, adapting the lifestyle as they need to. \"There's no end in sight,\" Morgan says. \"Let's just say that.\""
+      },
+      {
+        "t": "hr"
+      },
+      {
+        "t": "h2",
+        "v": "The bus, at a glance"
+      },
+      {
+        "rows": [
+          [
+            "**Chassis**",
+            "1996 Bluebird TC2000"
+          ],
+          [
+            "**Drivetrain**",
+            "8.3L Cummins diesel, Allison 3060"
+          ],
+          [
+            "**Size**",
+            "320 sq ft"
+          ],
+          [
+            "**Build**",
+            "Nine months, DIY"
+          ],
+          [
+            "**Batteries**",
+            "Three 24V, 280Ah each"
+          ],
+          [
+            "**Inverter**",
+            "5,000W, with a Victron Cerbo GX"
+          ],
+          [
+            "**Solar**",
+            "Six 440W bifacial panels"
+          ],
+          [
+            "**Climate**",
+            "Two mini splits, front and rear"
+          ],
+          [
+            "**Water**",
+            "100 gallons fresh, tankless hot water"
+          ],
+          [
+            "**Bathroom**",
+            "DIY composting toilet, tiled shower"
+          ],
+          [
+            "**Sleeping**",
+            "Four full-size bunks, plus a full bed"
+          ],
+          [
+            "**Connectivity**",
+            "Starlink"
+          ]
+        ],
+        "t": "table"
+      },
+      {
+        "head": "A note on the power system",
+        "paras": [
+          "Our curated list of the gear worth looking at, plus the current code, is at **[mobiledwellings.media/deals](https://mobiledwellings.media/deals)**. The code is currently **MD50OFF** for $50 off.",
+          "Some links in this article are affiliate links. If you buy through them, Mobile Dwellings may earn a commission at no extra cost to you."
+        ],
+        "t": "quote"
+      },
+      {
+        "t": "hr"
+      },
+      {
+        "alt": "The family standing in front of the Flying Circus Bus, the thumbnail for the video tour.",
+        "id": "JJQ18h5ox_k",
+        "label": "Watch the full tour · 16 min",
+        "poster": "/blog/flying-circus-bus/youtube-thumbnail.jpg",
+        "t": "video",
+        "title": "They Live in a School Bus Full Time With 4 Kids, 4 Cats, and a Dog"
+      },
+      {
+        "t": "note",
+        "v": "Follow the Flying Circus Bus on [Instagram](https://www.instagram.com/flyingcircusbus/) and [Facebook](https://www.facebook.com/p/Flying-Circus-Bus-61559187452069/). Watch the full video tour on the Mobile Dwellings YouTube channel."
+      }
+    ]
+  },
+  {
     "slug": "seven-years-in-a-school-bus",
     "title": "Seven Years in a School Bus: Inside the Rig Driving From Alaska to Argentina",
     "dek": "Cora and José bought a school bus for a one-year trip. Seven years later they're still in it, still heading south, with a recording studio in the back.",
@@ -392,6 +819,22 @@ function blockHtml(b) {
         `<figure><img src="${esc(b.src)}" alt="${esc(b.alt)}" loading="lazy" />` +
         (b.cap ? `<figcaption>${renderInlineHtml(b.cap)}</figcaption>` : "") +
         "</figure>"
+      );
+    case "video":
+      if (b.compact) {
+        return (
+          `<a class="story-video story-video-compact" href="https://www.youtube.com/watch?v=${esc(b.id)}" target="_blank" rel="noopener noreferrer">` +
+          `<span class="story-video-play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>` +
+          `<span class="story-video-meta"><span class="story-video-label">${esc(b.label)}</span>` +
+          `<span class="story-video-title">${esc(b.title)}</span></span></a>`
+        );
+      }
+      return (
+        `<a class="story-video" href="https://www.youtube.com/watch?v=${esc(b.id)}" target="_blank" rel="noopener noreferrer">` +
+        `<div class="story-video-frame"><img src="${esc(b.poster)}" alt="${esc(b.alt)}" loading="lazy" />` +
+        `<span class="story-video-play" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span></div>` +
+        `<div class="story-video-meta"><span class="story-video-label">${esc(b.label)}</span>` +
+        `<span class="story-video-title">${esc(b.title)}</span></div></a>`
       );
     case "quote":
       return (

@@ -14,6 +14,7 @@ export type StoryBlock =
   | { t: "note"; v: string }
   | { t: "hr" }
   | { t: "img"; src: string; alt: string; cap?: string }
+  | { t: "video"; id: string; poster: string; alt: string; label: string; title: string; compact?: boolean }
   | { t: "quote"; head?: string; paras: string[] }
   | { t: "table"; rows: string[][] };
 

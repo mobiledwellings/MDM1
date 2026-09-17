@@ -257,3 +257,66 @@
 @media (prefers-reduced-motion: reduce) {
   .story-card-img img { transition: none; }
 }
+
+/* --- video card ---------------------------------------------------------
+ * A link card, not an iframe: no third-party script or cookie loads with the
+ * article, and the click goes to YouTube where the view counts for the channel.
+ */
+.story-video { display: block; margin: 2.5rem 0; text-decoration: none; }
+.story-video-frame {
+  position: relative;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  background: var(--story-surface);
+  aspect-ratio: 16 / 9;
+}
+.story-video-frame img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.story-video-frame::after {
+  content: "";
+  position: absolute; inset: 0;
+  background: rgba(0, 0, 0, 0.18);
+  transition: background 0.2s;
+}
+.story-video:hover .story-video-frame::after { background: rgba(0, 0, 0, 0.32); }
+.story-video-play {
+  position: absolute; left: 50%; top: 50%;
+  transform: translate(-50%, -50%);
+  width: 78px; height: 56px;
+  border-radius: 14px;
+  background: #ff0000;
+  display: flex; align-items: center; justify-content: center;
+  z-index: 1;
+  transition: transform 0.2s;
+}
+.story-video:hover .story-video-play { transform: translate(-50%, -50%) scale(1.06); }
+.story-video-play svg { width: 26px; height: 26px; fill: #fff; margin-left: 3px; }
+.story-video-meta { display: flex; align-items: baseline; gap: 0.6rem; margin-top: 0.75rem; flex-wrap: wrap; }
+.story-video-label {
+  font-size: 0.8125rem; letter-spacing: 0.08em; text-transform: uppercase;
+  color: var(--story-muted);
+}
+.story-video-title { color: var(--story-ink); font-size: 1.0625rem; line-height: 1.4; }
+.story-video:hover .story-video-title { text-decoration: underline; text-underline-offset: 3px; }
+
+@media (prefers-reduced-motion: reduce) {
+  .story-video-frame::after, .story-video-play { transition: none; }
+}
+
+/* Compact variant: used where a poster would repeat the image above it. */
+.story-video-compact {
+  display: flex; align-items: center; gap: 0.9rem;
+  padding: 0.9rem 1.1rem;
+  border: 1px solid var(--story-surface-line);
+  border-radius: 0.5rem;
+  background: var(--story-surface);
+}
+.story-video-compact:hover { border-color: var(--story-muted); }
+.story-video-compact .story-video-play {
+  position: static; transform: none;
+  width: 42px; height: 30px; border-radius: 8px; flex: 0 0 auto;
+}
+.story-video-compact:hover .story-video-play { transform: scale(1.06); }
+.story-video-compact .story-video-play svg { width: 16px; height: 16px; }
+.story-video-compact .story-video-meta { margin: 0; display: block; }
+.story-video-compact .story-video-label { display: block; margin-bottom: 0.15rem; }
+.story-video-compact .story-video-title { font-size: 0.95rem; }

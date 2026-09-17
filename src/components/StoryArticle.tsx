@@ -73,6 +73,45 @@ function Block({ block, index }: { block: StoryBlock; index: number }) {
         </figure>
       );
 
+    case "video":
+      if (block.compact) {
+        return (
+          <a
+            className="story-video story-video-compact"
+            href={`https://www.youtube.com/watch?v=${block.id}`}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <span className="story-video-play" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z" /></svg>
+            </span>
+            <span className="story-video-meta">
+              <span className="story-video-label">{block.label}</span>
+              <span className="story-video-title">{block.title}</span>
+            </span>
+          </a>
+        );
+      }
+      return (
+        <a
+          className="story-video"
+          href={`https://www.youtube.com/watch?v=${block.id}`}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <div className="story-video-frame">
+            <ImageWithFallback src={block.poster} alt={block.alt} loading="lazy" />
+            <span className="story-video-play" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z" /></svg>
+            </span>
+          </div>
+          <div className="story-video-meta">
+            <span className="story-video-label">{block.label}</span>
+            <span className="story-video-title">{block.title}</span>
+          </div>
+        </a>
+      );
+
     case "quote":
       return (
         <aside className="story-callout">

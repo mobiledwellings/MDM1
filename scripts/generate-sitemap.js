@@ -35,7 +35,6 @@ const staticPages = [
   { path: "/skoolie-support", sources: ["src/pages/SkoolieSupportPage.tsx"], changefreq: "monthly", priority: "0.8" },
   { path: "/about", sources: ["src/pages/AboutPage.tsx"], changefreq: "monthly", priority: "0.7" },
   { path: "/stories", sources: ["src/pages/StoriesPage.tsx", "src/components/Stories.tsx", "src/data/stories-content.mjs"], changefreq: "weekly", priority: "0.8" },
-  { path: "/stories/seven-years-in-a-school-bus", sources: ["src/pages/StoryPage.tsx", "src/components/StoryArticle.tsx", "src/data/stories-content.mjs"], changefreq: "monthly", priority: "0.8" },
   { path: "/deals", sources: ["src/pages/DealsPage.tsx", "src/components/DealsCouponHero.tsx", "src/data/deals-content.mjs", "src/data/coupon-verification.ts"], changefreq: "weekly", priority: "0.6" },
   { path: "/signature-solar-coupon", sources: ["src/pages/SignatureSolarCouponPage.tsx", "src/pages/SignatureSolarCouponMain.tsx", "src/data/signature-solar-content.mjs", "src/data/coupon-verification.ts"], changefreq: "monthly", priority: "0.9" },
   { path: "/partners", sources: ["src/pages/PartnersPage.tsx", "src/data/partners.tsx"], changefreq: "monthly", priority: "0.7" },
@@ -130,6 +129,18 @@ function buildSitemap(rigs) {
 }
 
 async function main() {
+  // One URL per story, read from the same module the pages and the prerender
+  // script use — so publishing a story cannot leave the sitemap behind.
+  const stories = await import("../src/data/stories-content.mjs");
+  for (const story of stories.STORIES) {
+    staticPages.push({
+      path: `/stories/${story.slug}`,
+      sources: ["src/pages/StoryPage.tsx", "src/components/StoryArticle.tsx", "src/data/stories-content.mjs"],
+      changefreq: "monthly",
+      priority: "0.8",
+    });
+  }
+
   console.log("🗺️  Generating sitemap...");
 
   const rigs = await fetchRigs();
