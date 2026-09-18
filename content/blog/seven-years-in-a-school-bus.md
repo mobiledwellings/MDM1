@@ -7,7 +7,6 @@ category: Bus Tours
 readingTime: "5 min"
 publishedAt: 2026-09-09
 author: Mobile Dwellings
-sponsor: Signature Solar
 heroImage: /blog/art-we-there-yet/bus-mural-sierra-nevada.jpg
 photoCredit: Art We There Yet
 ---
@@ -95,9 +94,11 @@ Fortunately they are still friends.
 
 > ### A note on the power system
 >
-> Mobile Dwellings is supported by **Signature Solar**, the Texas-based supplier which is our go to for solar panels, lithium batteries, mini splits, and Victron gear.
+> **Signature Solar** is our go-to for solar panels, lithium batteries, mini splits and Victron gear.
 >
-> Our curated list of the gear worth looking at, plus the current code, is at **[mobiledwellings.media/signature-solar-coupon](https://mobiledwellings.media/signature-solar-coupon)** currently **MD50OFF** for $50 off.
+> Our curated list of the gear worth looking at, plus the current code, is at **[mobiledwellings.media/signature-solar-coupon](https://mobiledwellings.media/signature-solar-coupon)**, currently **MD50OFF** for $50 off.
+>
+> We earn a commission on sales through our links, at no extra cost to you.
 
 ---
 

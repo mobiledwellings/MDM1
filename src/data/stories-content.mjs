@@ -595,8 +595,9 @@ export const STORIES = [
       {
         "head": "A note on the power system",
         "paras": [
-          "Mobile Dwellings is supported by **Signature Solar**, the Texas-based supplier which is our go to for solar panels, lithium batteries, mini splits, and Victron gear.",
-          "Our curated list of the gear worth looking at, plus the current code, is at **[mobiledwellings.media/signature-solar-coupon](https://mobiledwellings.media/signature-solar-coupon)** currently **MD50OFF** for $50 off."
+          "**Signature Solar** is our go-to for solar panels, lithium batteries, mini splits and Victron gear.",
+          "Our curated list of the gear worth looking at, plus the current code, is at **[mobiledwellings.media/signature-solar-coupon](https://mobiledwellings.media/signature-solar-coupon)**, currently **MD50OFF** for $50 off.",
+          "We earn a commission on sales through our links, at no extra cost to you."
         ],
         "t": "quote"
       },
