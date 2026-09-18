@@ -27,7 +27,7 @@ export const STORIES = [
     "blocks": [
       {
         "t": "standfirst",
-        "v": "This article is about Morgan and Glaucio of the Flying Circus Bus ([Instagram](https://www.instagram.com/flyingcircusbus/) · [Facebook](https://www.facebook.com/p/Flying-Circus-Bus-61559187452069/)). It was written from the Mobile Dwellings video tour, which was filmed by Felicia of Zia the Bus and edited by Medha. The article was drafted by an LLM from that tour and edited by Justin from Mobile Dwellings. Every photograph here is a still from the video."
+        "v": "This article is about Morgan and Glaucio of the Flying Circus Bus ([Instagram](https://www.instagram.com/flyingcircusbus/) · [Facebook](https://www.facebook.com/p/Flying-Circus-Bus-61559187452069/))."
       },
       {
         "alt": "The family standing in front of the Flying Circus Bus, the thumbnail for the video tour.",
