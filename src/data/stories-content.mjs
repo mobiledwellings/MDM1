@@ -418,7 +418,7 @@ export const STORIES = [
       {
         "head": "A note on the power system",
         "paras": [
-          "Our curated list of the gear worth looking at, plus the current code, is at **[mobiledwellings.media/deals](https://mobiledwellings.media/deals)**. The code is currently **MD50OFF** for $50 off.",
+          "Our [curated list of the gear worth looking at](/deals) carries the current code, **MD50OFF**, for $50 off.",
           "Some links in this article are affiliate links. If you buy through them, Mobile Dwellings may earn a commission at no extra cost to you."
         ],
         "t": "quote"
@@ -596,7 +596,7 @@ export const STORIES = [
         "head": "A note on the power system",
         "paras": [
           "**Signature Solar** is our go-to for solar panels, lithium batteries, mini splits and Victron gear.",
-          "Our curated list of the gear worth looking at, plus the current code, is at **[mobiledwellings.media/signature-solar-coupon](https://mobiledwellings.media/signature-solar-coupon)**, currently **MD50OFF** for $50 off.",
+          "Our [curated list of the gear worth looking at](/signature-solar-coupon) carries the current code, **MD50OFF**, for $50 off.",
           "We earn a commission on sales through our links, at no extra cost to you."
         ],
         "t": "quote"

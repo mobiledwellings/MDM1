@@ -96,7 +96,7 @@ Fortunately they are still friends.
 >
 > **Signature Solar** is our go-to for solar panels, lithium batteries, mini splits and Victron gear.
 >
-> Our curated list of the gear worth looking at, plus the current code, is at **[mobiledwellings.media/signature-solar-coupon](https://mobiledwellings.media/signature-solar-coupon)**, currently **MD50OFF** for $50 off.
+> Our [curated list of the gear worth looking at](/signature-solar-coupon) carries the current code, **MD50OFF**, for $50 off.
 >
 > We earn a commission on sales through our links, at no extra cost to you.
 
