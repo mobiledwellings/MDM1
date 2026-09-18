@@ -12,10 +12,10 @@ photoCredit: Art We There Yet
 ---
 
 <!-- SOURCE OF TRUTH: this file is the readable copy of the story.
-     The page renders from src/data/stories-content.mjs — edit there, or
+     The page renders from src/data/stories-content.mjs, edit there, or
      re-export from the draft editor, and keep the two in sync.
      The hero image is story.hero, rendered by StoryArticle above the
-     note card — it is deliberately NOT a block here. -->
+     note card, it is deliberately NOT a block here. -->
 
 <aside class="article-note">
 
@@ -23,7 +23,7 @@ This article is about Cora and José from the legendary YouTube channel: [Art We
 
 </aside>
 
-The distance from Deadhorse, Alaska to Ushuaia, Argentina is roughly 14,000 miles, and Cora and José have been driving it since 2019. They are currently somewhere far north of the middle. At their present rate they expect to arrive in about ten years, which works out to just under four miles a day. This pace would embarrass a tortoise, and this was supposed to be just a one year trip. Though in fairness the tortoise is not stopping to record an album (spoiler alert this bus has an entire recording studio inside).
+The distance from Deadhorse, Alaska to Ushuaia, Argentina is roughly 19,000 miles, and Cora and José have been driving it since 2019. They are currently somewhere far north of the middle. At their present rate they expect to arrive in about ten years, which works out to roughly three miles a day across the whole trip. This pace would embarrass a tortoise, and this was supposed to be just a one year trip. Though in fairness the tortoise is not stopping to record an album (spoiler alert this bus has an entire recording studio inside).
 
 ---
 
@@ -141,8 +141,8 @@ Neither figure includes [mechanical work](/skoolie-support) such as Engine and d
 
 | **Chassis** | 2001 dog-nose school bus, tows a Jeep |
 |---|---|
-| **Solar** | 10 × 100W panels — 1 kW |
-| **Fresh water** | Two 40-gallon tanks — 10 to 14 days for two |
+| **Solar** | 10 × 100W panels, 1 kW |
+| **Fresh water** | Two 40-gallon tanks, 10 to 14 days for two |
 | **Propane** | ~9 gallons |
 | **Heat / hot water** | Diesel heater, on-demand hot water |
 | **Bathroom** | Composting toilet, 24" × 24" shower |
@@ -158,7 +158,7 @@ José, who had previously backpacked seventeen countries carrying a saxophone, a
 
 His advice to his younger self is almost entirely about temperament: be patient, be kinder to the people helping you, accept that you will do some things twice. He would also vent the range hood outside instead of recirculating it. Seven years of cooking will teach you that.
 
-![The bus coming down a two-lane highway toward the camera, a turquoise bay and a moored sailboat behind it in Baja California.](/blog/art-we-there-yet/baja-highway-heading-south.jpg)
+![The bus parked on a gravel shore beside a wide lake at sunset, mountains low on the far side.](/blog/art-we-there-yet/baja-highway-heading-south.jpg)
 
 Ushuaia is still 7,000 miles away, but there is no particular hurry.
 

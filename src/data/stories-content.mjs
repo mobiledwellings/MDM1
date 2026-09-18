@@ -27,7 +27,7 @@ export const STORIES = [
     "blocks": [
       {
         "t": "standfirst",
-        "v": "This article is about Morgan and Glaucio of the Flying Circus Bus ([Instagram](https://www.instagram.com/flyingcircusbus/) · [Facebook](https://www.facebook.com/p/Flying-Circus-Bus-61559187452069/))."
+        "v": "This article is about Morgan and Glaucio of the Flying Circus Bus ([Instagram](https://www.instagram.com/flyingcircusbus/) · [Facebook](https://www.facebook.com/p/Flying-Circus-Bus-61559187452069/)). It was written from the Mobile Dwellings video tour, which was filmed by Felicia of Zia the Bus and edited by Medha. The article was drafted by an LLM from that tour and edited by Justin from Mobile Dwellings. Every photograph here is a still from the video."
       },
       {
         "alt": "The family standing in front of the Flying Circus Bus, the thumbnail for the video tour.",
@@ -458,7 +458,7 @@ export const STORIES = [
       },
       {
         "t": "p",
-        "v": "The distance from Deadhorse, Alaska to Ushuaia, Argentina is roughly 14,000 miles, and Cora and José have been driving it since 2019. They are currently somewhere far north of the middle. At their present rate they expect to arrive in about ten years, which works out to just under four miles a day. This pace would embarrass a tortoise, and this was supposed to be just a one year trip. Though in fairness the tortoise is not stopping to record an album (spoiler alert this bus has an entire recording studio inside)."
+        "v": "The distance from Deadhorse, Alaska to Ushuaia, Argentina is roughly 19,000 miles, and Cora and José have been driving it since 2019. They are currently somewhere far north of the middle. At their present rate they expect to arrive in about ten years, which works out to roughly three miles a day across the whole trip. This pace would embarrass a tortoise, and this was supposed to be just a one year trip. Though in fairness the tortoise is not stopping to record an album (spoiler alert this bus has an entire recording studio inside)."
       },
       {
         "t": "hr"
@@ -697,11 +697,11 @@ export const STORIES = [
           ],
           [
             "**Solar**",
-            "10 × 100W panels — 1 kW"
+            "10 × 100W panels, 1 kW"
           ],
           [
             "**Fresh water**",
-            "Two 40-gallon tanks — 10 to 14 days for two"
+            "Two 40-gallon tanks, 10 to 14 days for two"
           ],
           [
             "**Propane**",
@@ -744,8 +744,8 @@ export const STORIES = [
       {
         "t": "img",
         "src": "/blog/art-we-there-yet/baja-highway-heading-south.jpg",
-        "alt": "The bus coming down a two-lane highway toward the camera, a turquoise bay and a moored sailboat behind it in Baja California.",
-        "cap": ""
+        "alt": "The bus parked on a gravel shore beside a wide lake at sunset, mountains low on the far side.",
+        "cap": "Still pointed south."
       },
       {
         "t": "p",
