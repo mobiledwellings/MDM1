@@ -17,12 +17,12 @@ export const STORIES = [
     "slug": "flying-circus-bus",
     "title": "A Family of Six, Four Cats and a Dog, in 320 Square Feet",
     "dek": "Morgan had never heard the word skoolie when Glaucio suggested buying a school bus. Six years later their family of six lives in it full time. This is the full tour of the Flying Circus Bus.",
-    "hero": "/blog/flying-circus-bus/youtube-thumbnail.jpg",
+    "hero": "/blog/flying-circus-bus/family-in-front-of-the-bus.jpg",
     "heroAlt": "Morgan, Glaucio and their four children standing in front of their teal and white converted school bus on a forest road.",
     "category": "Bus Tours",
     "date": "2026-09-17",
     "readingTime": "6 min",
-    "photoCredit": "Mobile Dwellings",
+    "photoCredit": "the Flying Circus Bus and Mobile Dwellings",
     "keywords": "school bus conversion family of six, skoolie with kids, bus conversion tour, flying circus bus, bluebird tc2000 skoolie, family skoolie build, homeschool on a bus",
     "blocks": [
       {
@@ -51,6 +51,12 @@ export const STORIES = [
         "v": "Six years and a nine-month build later, the two of them live on that bus full time with four kids, four cats and a dog. This is the full tour of the Flying Circus Bus."
       },
       {
+        "t": "img",
+        "src": "/blog/flying-circus-bus/day-one-yellow-bus.jpg",
+        "alt": "The family and their dog standing in front of the bus in April 2020, when it was still a plain yellow school bus.",
+        "cap": "April 2020, before the build began."
+      },
+      {
         "t": "hr"
       },
       {
@@ -76,6 +82,12 @@ export const STORIES = [
         "v": "The decision to go full time came after their first trip around the US, when they kept catching themselves saying the same thing in one place after another: I would live here. I would live here. Then they went home to Montana and hit their first twenty-below day, looked at each other, and decided to sell everything."
       },
       {
+        "t": "img",
+        "src": "/blog/flying-circus-bus/on-the-road.jpg",
+        "alt": "The view from the driver's seat as the bus drives through red rock desert.",
+        "cap": "February 2021, on the road."
+      },
+      {
         "t": "hr"
       },
       {
@@ -85,6 +97,12 @@ export const STORIES = [
       {
         "t": "p",
         "v": "It's a 1996 Bluebird TC2000 with an 8.3-litre Cummins diesel and an Allison 3060 transmission. Along the passenger side are four exterior storage bays."
+      },
+      {
+        "t": "img",
+        "src": "/blog/flying-circus-bus/stripped-to-the-shell.jpg",
+        "alt": "The bus interior stripped back to bare walls and floor in April 2020, window panes stacked along the aisle.",
+        "cap": "April 2020: stripped to the shell."
       },
       {
         "alt": "Glaucio crouching beside an open exterior storage bay on the side of the bus, with the words Flying Circus Bus painted along the panel.",
@@ -111,34 +129,21 @@ export const STORIES = [
       },
       {
         "t": "h2",
-        "v": "The front of the bus"
+        "v": "A living room built for drive days"
       },
       {
         "t": "p",
         "v": "Just inside the door is what Morgan calls the catch-all space, and it sets the tone for the whole build: vertical storage, everywhere, using whatever was left over."
       },
       {
-        "alt": "The front interior of the bus looking toward the driver's seat, with hooks for coats, overhead cabinets and hats on the wall.",
-        "cap": "Backpacks and coats live at the front door.",
-        "src": "/blog/flying-circus-bus/front-entry-and-storage.jpg",
-        "t": "img"
-      },
-      {
         "t": "p",
         "v": "The sides of the couch would have been armrests in a house. Here they're the mudroom: each child has a bin that pulls out with their shoes in it. Above, overhead cabinets hold everything the family reaches for day to day. And because four cats live here, there's a litter box built into the cabinetry. Where the cats go to the bathroom is the question, Morgan says, that people ask more than any other, and well there's your answer."
       },
       {
-        "alt": "A cat walking along the outside ledge of the yellow school bus.",
+        "alt": "A cat walking along the window line of the yellow school bus during the build, with someone working inside.",
         "cap": "Four cats, one dog, six people, 320 square feet.",
-        "src": "/blog/flying-circus-bus/cat-on-the-bus.jpg",
+        "src": "/blog/flying-circus-bus/cat-on-the-yellow-bus.jpg",
         "t": "img"
-      },
-      {
-        "t": "hr"
-      },
-      {
-        "t": "h2",
-        "v": "A living room built for drive days"
       },
       {
         "t": "p",
@@ -153,6 +158,12 @@ export const STORIES = [
       {
         "t": "p",
         "v": "Underneath are drawers for the kids. Behind every cushion is another hidden compartment. And the whole thing converts: lift the cushions, slide the base out, put it together, and the living room becomes a large sofa bed for movie nights and rainy days."
+      },
+      {
+        "t": "img",
+        "src": "/blog/flying-circus-bus/couch-frame.jpg",
+        "alt": "An unfinished wooden couch frame built along the side of the bus, with a green cushion resting on it.",
+        "cap": "August 2020: the couch frame, before the cushions."
       },
       {
         "t": "hr"
@@ -180,9 +191,9 @@ export const STORIES = [
         "v": "Morgan played cello professionally, so instruments were always going into this build. There's a guitar and a ukulele, plus a purpose-built slot for the keyboard, which never moves and never falls while they drive. When they want it, the cover comes off, it goes up on the table, and it's ready."
       },
       {
-        "alt": "Morgan lifting the wooden cover from the built-in keyboard storage slot beside the dining table.",
-        "cap": "The keyboard has its own place in the cabinetry.",
-        "src": "/blog/flying-circus-bus/keyboard-storage.jpg",
+        "alt": "A guitar and a ukulele hanging on the wall above the couch, with a cat asleep on a cushion below.",
+        "cap": "The guitar and ukulele live on the wall.",
+        "src": "/blog/flying-circus-bus/instruments-on-the-wall.jpg",
         "t": "img"
       },
       {
@@ -211,6 +222,12 @@ export const STORIES = [
         "v": "The counters are L-shaped and deeper than standard, because the 100-gallon fresh water tank sits underneath and so they modified the depth to suit it. They're epoxy, and custom poured. They wanted the look of stone but something lighter. Six years on, they still look new."
       },
       {
+        "t": "img",
+        "src": "/blog/flying-circus-bus/epoxy-counters-going-in.jpg",
+        "alt": "A marble-look epoxy countertop freshly poured in the half-built kitchen, edged with blue tape.",
+        "cap": "September 2020: the epoxy counters going in."
+      },
+      {
         "t": "p",
         "v": "There's no traditional oven. They decided the space was worth more as drawers, and Morgan says she hasn't regretted it once. The drawers are deep: dishes and pots in the middle, a catch-all below, and toe-kick drawers, because for a family of six it's important to use all of the available space in a Skoolie."
       },
@@ -236,9 +253,9 @@ export const STORIES = [
         "v": "Four full-size bunks, two on each side. They were built for the adults the kids will become rather than the children they were. Each one fits a six-foot person, just slightly narrower than a twin, so nothing has to be remodeled as they grow."
       },
       {
-        "alt": "A child's bunk with a curtain pulled back, purple LED lighting inside and stuffed animals on the bed.",
-        "cap": "Four bunks, each with a curtain, a light and a drawer.",
-        "src": "/blog/flying-circus-bus/kids-bunks.jpg",
+        "alt": "Looking down the narrow bunk room, with full-size bunks on both sides, top and bottom, each with a curtain.",
+        "cap": "Two bunks on each side, top and bottom.",
+        "src": "/blog/flying-circus-bus/bunk-hallway.jpg",
         "t": "img"
       },
       {
@@ -260,6 +277,12 @@ export const STORIES = [
         "v": "The wall between the kids' room and their own became storage too. The cavity is now a medicine cabinet. Because the engine is in the rear, the space around it was turned into more drawers, for laundry and daily things."
       },
       {
+        "t": "img",
+        "src": "/blog/flying-circus-bus/kids-bunks-going-in.jpg",
+        "alt": "A child climbing the half-built wooden bunk frames inside the bus, with shiplap walls and a roof hatch above.",
+        "cap": "January 2021: the bunk frames going in."
+      },
+      {
         "t": "hr"
       },
       {
@@ -267,8 +290,20 @@ export const STORIES = [
         "v": "Nine months of building"
       },
       {
+        "t": "img",
+        "src": "/blog/flying-circus-bus/first-days-of-the-build.jpg",
+        "alt": "A selfie of a father and two of the kids inside the half-stripped bus in April 2020.",
+        "cap": "April 2020, the first days of the build."
+      },
+      {
         "t": "p",
         "v": "The build took nine months. \"Every single moment that I was awake, weekends, holidays, it was working on the bus, all in,\" Glaucio says. He describes it as a puzzle that teaches you about yourself, especially doing it as a couple, with kids, and says the real reward was finding out they could do more than they thought they could."
+      },
+      {
+        "t": "img",
+        "src": "/blog/flying-circus-bus/building-countertops.jpg",
+        "alt": "A man in a red shirt cutting a panel on a workbench inside the half-built bus, plywood walls behind him.",
+        "cap": "September 2020, five months in."
       },
       {
         "t": "p",
