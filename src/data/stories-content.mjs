@@ -96,7 +96,7 @@ export const STORIES = [
       },
       {
         "t": "p",
-        "v": "It's a 1996 Bluebird TC2000 with an 8.3-litre Cummins diesel and an Allison 3060 transmission. Along the passenger side are four exterior storage bays. Interested in rigs like this for sale? Check out our Marketplace [here](/rigs-for-sale)."
+        "v": "It's a 1996 Bluebird TC2000 with an 8.3-litre Cummins diesel and an Allison 3060 transmission. Along the passenger side are four exterior storage bays. Interested in rigs like this for sale? Check out our [Marketplace](/rigs-for-sale)."
       },
       {
         "t": "img",
@@ -106,7 +106,7 @@ export const STORIES = [
       },
       {
         "alt": "Glaucio crouching beside an open exterior storage bay on the side of the bus, with the words Flying Circus Bus painted along the panel.",
-        "cap": "Four bays along the passenger side hold the systems and the spares.",
+        "cap": "Four bays along the passenger side hold the batteries and gear.",
         "src": "/blog/flying-circus-bus/exterior-storage-bays.jpg",
         "t": "img"
       },
@@ -209,7 +209,7 @@ export const STORIES = [
       },
       {
         "alt": "A tall pull-out pantry beside the fridge, filled with labelled containers of dry goods.",
-        "cap": "The pull-out pantry.",
+        "cap": "The pull-out pantry holds more than it looks like it should.",
         "src": "/blog/flying-circus-bus/pull-out-pantry.jpg",
         "t": "img"
       },
@@ -332,7 +332,7 @@ export const STORIES = [
       },
       {
         "alt": "A shower stall lined with small hexagonal tile and a wood threshold.",
-        "cap": "Small tiles, chosen to survive the driving.",
+        "cap": "Small tiles, chosen to survive the road.",
         "src": "/blog/flying-circus-bus/tiled-shower.jpg",
         "t": "img"
       },
@@ -353,7 +353,7 @@ export const STORIES = [
       },
       {
         "alt": "The rear bedroom with a full-size bed made up with grey and tan bedding, and custom cabinetry with open shelving above.",
-        "cap": "A full-size bed at the back for Morgan and Glaucio",
+        "cap": "A full-size bed at the back provides a cozy bed for Morgan and Glaucio.",
         "src": "/blog/flying-circus-bus/rear-bedroom.jpg",
         "t": "img"
       },
