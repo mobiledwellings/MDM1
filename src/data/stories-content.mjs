@@ -209,7 +209,7 @@ export const STORIES = [
       },
       {
         "alt": "A tall pull-out pantry beside the fridge, filled with labelled containers of dry goods.",
-        "cap": "The pull-out pantry holds more than it looks like it should.",
+        "cap": "The pull-out pantry",
         "src": "/blog/flying-circus-bus/pull-out-pantry.jpg",
         "t": "img"
       },
@@ -353,7 +353,7 @@ export const STORIES = [
       },
       {
         "alt": "The rear bedroom with a full-size bed made up with grey and tan bedding, and custom cabinetry with open shelving above.",
-        "cap": "A full-size bed at the back provides a cozy bed for Morgan and Glaucio.",
+        "cap": "A full-size bed at the back provides a cozy night's sleep for Morgan and Glaucio",
         "src": "/blog/flying-circus-bus/rear-bedroom.jpg",
         "t": "img"
       },
