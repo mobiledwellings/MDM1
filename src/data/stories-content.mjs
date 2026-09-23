@@ -48,7 +48,7 @@ export const STORIES = [
       },
       {
         "t": "p",
-        "v": "Six years and a nine-month build later, the two of them live on that bus full time with four kids, four cats and a dog. This is the full tour of the Flying Circus Bus."
+        "v": "Six years and a nine-month build later, the two of them live on that bus full time with four kids, four cats and a dog."
       },
       {
         "t": "img",
@@ -79,7 +79,7 @@ export const STORIES = [
       },
       {
         "t": "p",
-        "v": "The decision to go full time came after their first trip around the US, when they kept catching themselves saying the same thing in one place after another: I would live here. I would live here. Then they went home to Montana and hit their first twenty-below day, looked at each other, and decided to sell everything."
+        "v": "The decision to go full time came after their first trip around the US, when they kept catching themselves saying the same thing in one place after another: \"I would live here. I would live here.\" Then they went home to Montana and hit their first twenty-below day, looked at each other, and decided to sell everything."
       },
       {
         "t": "img",
@@ -96,7 +96,7 @@ export const STORIES = [
       },
       {
         "t": "p",
-        "v": "It's a 1996 Bluebird TC2000 with an 8.3-litre Cummins diesel and an Allison 3060 transmission. Along the passenger side are four exterior storage bays."
+        "v": "It's a 1996 Bluebird TC2000 with an 8.3-litre Cummins diesel and an Allison 3060 transmission. Along the passenger side are four exterior storage bays. Interested in rigs like this for sale? Check out our Marketplace [here](/rigs-for-sale)."
       },
       {
         "t": "img",
@@ -106,44 +106,44 @@ export const STORIES = [
       },
       {
         "alt": "Glaucio crouching beside an open exterior storage bay on the side of the bus, with the words Flying Circus Bus painted along the panel.",
-        "cap": "Four bays along the passenger side hold the batteries and gear.",
+        "cap": "Four bays along the passenger side hold the systems and the spares.",
         "src": "/blog/flying-circus-bus/exterior-storage-bays.jpg",
         "t": "img"
       },
       {
         "t": "p",
-        "v": "Inside those bays is the power system: three 24-volt [batteries](https://signaturesolar.com/wiren-server-rack-battery-48v-100ah-u5/?ref=mobiledwellings) at 280Ah each, a [5,000-watt inverter](https://signaturesolar.com/victron-multiplus-ii-48-5000-70-95-120v/?ref=mobiledwellings&search_query=victron%20multiplus&searchuuid=4767e3a5-08d1-4358-b954-50777286ba7f), and a [Victron Cerbo](https://signaturesolar.com/victron-cerbo-gx-mk2/?ref=mobiledwellings&search_query=victron%20cerbo%20gx&searchuuid=7c43996c-058f-43e6-8976-dc3a8c8654be) that talks to the bus's home automation. On the roof are six 440-watt bifacial [solar panels](https://signaturesolar.com/all-products/solar-panels/?ref=mobiledwellings&sort=priceasc), Starlink, and one of the [two mini splits](https://link.amazon/B06hU1svH)."
+        "v": "Inside those bays is the power system: three 24-volt [batteries](https://signaturesolar.com/wiren-server-rack-battery-48v-100ah-u5/?ref=mobiledwellings) at 280Ah each, a [5,000-watt inverter](https://signaturesolar.com/victron-multiplus-ii-48-5000-70-95-120v/?ref=mobiledwellings&search_query=victron%20multiplus&searchuuid=4767e3a5-08d1-4358-b954-50777286ba7f), and a Victron Cerbo that talks to the bus's home automation. On the roof are six 440-watt bifacial [solar panels](https://signaturesolar.com/all-products/solar-panels/?ref=mobiledwellings&sort=priceasc), Starlink, and one of the two mini splits."
       },
       {
         "alt": "An overhead drone view of the bus roof, covered with large solar panels, a rooftop deck and air conditioning units.",
-        "cap": "Six 440-watt bifacial panels, seen from above.",
+        "cap": "The solar bank and rooftop deck, seen from above.",
         "src": "/blog/flying-circus-bus/solar-panels-from-above.jpg",
         "t": "img"
       },
       {
         "t": "p",
-        "v": "The roof is also a room. There's an observation deck up there for hanging out and for storage: tools, spare parts, the railings themselves. The railings fold up to enclose the space, which makes it somewhere the kids can safely be."
+        "v": "The roof is also a room. There's an observation deck up there for hanging out and for storage. The railings fold up to enclose the space, which makes it somewhere the kids can safely be too."
       },
       {
         "t": "hr"
       },
       {
         "t": "h2",
-        "v": "A living room built for drive days"
+        "v": "The front of the bus"
       },
       {
         "t": "p",
-        "v": "Just inside the door is what Morgan calls the catch-all space, and it sets the tone for the whole build: vertical storage, everywhere, using whatever was left over."
-      },
-      {
-        "t": "p",
-        "v": "The sides of the couch would have been armrests in a house. Here they're the mudroom: each child has a bin that pulls out with their shoes in it. Above, overhead cabinets hold everything the family reaches for day to day. And because four cats live here, there's a litter box built into the cabinetry. Where the cats go to the bathroom is the question, Morgan says, that people ask more than any other, and well there's your answer."
+        "v": "Just inside the door is what Morgan calls the catch-all space. The sides of the couch would have been armrests in a normal build. Here they're the mudroom: each child has a bin that pulls out. Above, overhead cabinets hold everything the family reaches for day to day. And because four cats live here, there's a litter box built into the cabinetry. Where the cats go is the question, Morgan says, that people ask more than any other. Of course, this is also where Glaucio drives the family to their next destination."
       },
       {
         "alt": "A cat walking along the window line of the yellow school bus during the build, with someone working inside.",
         "cap": "Four cats, one dog, six people, 320 square feet.",
         "src": "/blog/flying-circus-bus/cat-on-the-yellow-bus.jpg",
         "t": "img"
+      },
+      {
+        "t": "h2",
+        "v": "A living room built for drive days"
       },
       {
         "t": "p",
@@ -170,7 +170,7 @@ export const STORIES = [
       },
       {
         "t": "h2",
-        "v": "One table, three jobs"
+        "v": "One dining table serves three functions"
       },
       {
         "t": "p",
@@ -188,7 +188,7 @@ export const STORIES = [
       },
       {
         "t": "p",
-        "v": "Morgan played cello professionally, so instruments were always going into this build. There's a guitar and a ukulele, plus a purpose-built slot for the keyboard, which never moves and never falls while they drive. When they want it, the cover comes off, it goes up on the table, and it's ready."
+        "v": "Morgan played cello professionally, so instruments were always going into this build. There's a guitar and a ukulele, plus a purpose-built slot for the keyboard, underneath. When they want it, the cover comes off, it goes up on the table, and it's ready."
       },
       {
         "alt": "A guitar and a ukulele hanging on the wall above the couch, with a cat asleep on a cushion below.",
@@ -205,21 +205,21 @@ export const STORIES = [
       },
       {
         "t": "p",
-        "v": "Like most houses, the kitchen is where everyone ends up, and it's the most deliberately planned part of the bus. The fridge is apartment-style and sits higher on purpose, so there's usable storage above and below it. One drawer above the fridge holds the projector, and underneath is the cat food."
+        "v": "Like most houses, the kitchen is where everyone ends up, and it's the most deliberately planned part of the bus. The fridge is apartment-style and sits high on purpose, so there's usable storage above and below. One drawer up top holds the projector, wired to connect from below. Another, down low, holds the cat food."
       },
       {
         "alt": "A tall pull-out pantry beside the fridge, filled with labelled containers of dry goods.",
-        "cap": "The pull-out pantry holds more than it looks like it should.",
+        "cap": "The pull-out pantry.",
         "src": "/blog/flying-circus-bus/pull-out-pantry.jpg",
         "t": "img"
       },
       {
         "t": "p",
-        "v": "The pantry pulls out and holds far more than you'd guess, in uniform pop-top containers. The spices above get the same treatment, labelled on top so it's obvious what's running low. Both are reachable from either side, so one person can be cooking while another grabs something, without anyone having to move."
+        "v": "The pantry pulls out and holds far more than you'd guess, in uniform pop-top containers. The spices above get the same treatment, labelled on top so it's obvious what's running low. Both are reachable from either side, so one person can be cooking while another grabs something."
       },
       {
         "t": "p",
-        "v": "The counters are L-shaped and deeper than standard, because the 100-gallon fresh water tank sits underneath and so they modified the depth to suit it. They're epoxy, and custom poured. They wanted the look of stone but something lighter. Six years on, they still look new."
+        "v": "The counters are L-shaped and deeper than standard, because the 100-gallon fresh water tank sits underneath and set the depth. They're epoxy, custom poured. They wanted the look of stone but something lighter. Six years on, they still look new."
       },
       {
         "t": "img",
@@ -229,7 +229,7 @@ export const STORIES = [
       },
       {
         "t": "p",
-        "v": "There's no traditional oven. They decided the space was worth more as drawers, and Morgan says she hasn't regretted it once. The drawers are deep: dishes and pots in the middle, a catch-all below, and toe-kick drawers, because for a family of six it's important to use all of the available space in a Skoolie."
+        "v": "There's no traditional oven. They decided the space was worth more as drawers, and Morgan says she hasn't regretted it once. The drawers are deep: dishes and pots in the middle, a catch-all below, and toe-kick drawers under the cabinets."
       },
       {
         "alt": "Morgan crouching to open a shallow toe-kick drawer beneath the kitchen cabinets, filled with cans.",
@@ -239,7 +239,7 @@ export const STORIES = [
       },
       {
         "t": "p",
-        "v": "They went for drawers over cabinets. \"We've traveled enough to know that when you open up a cabinet after driving everything falls out,\" Morgan says. \"That was not something I wanted to be picking up.\" Drawers stay put. The sink is full size, big enough to wash a large pan without water going up the walls."
+        "v": "\"We've traveled enough to know that when you open up a cabinet after driving everything falls out,\" Morgan says. \"That was not something I wanted to be picking up.\" So they went with drawers which stay put."
       },
       {
         "t": "hr"
@@ -270,7 +270,7 @@ export const STORIES = [
       },
       {
         "t": "p",
-        "v": "The bedding is Morgan's own solution, and it's the detail worth stealing: every bed has zippers, with the sheet on the inside. One zip and the bed is made."
+        "v": "The bedding is Morgan's own solution: every bed has zippers, with the sheet on the inside. One zip and the bed is made."
       },
       {
         "t": "p",
@@ -328,11 +328,11 @@ export const STORIES = [
       },
       {
         "t": "p",
-        "v": "The hot water is tankless, and with six people on board they don't run out. It's held up for six years. The toilet is composting and they built it themselves. The sink is small, smaller than Morgan would like, because the wall above it had to hold everything else."
+        "v": "The hot water is tankless, and with six people on board they don't run out. It's held up for six years. The toilet is composting and they built it themselves. The sink is small, smaller than Morgan would like, but it fits without taking up too much space."
       },
       {
         "alt": "A shower stall lined with small hexagonal tile and a wood threshold.",
-        "cap": "Small tiles, chosen to survive the road.",
+        "cap": "Small tiles, chosen to survive the driving.",
         "src": "/blog/flying-circus-bus/tiled-shower.jpg",
         "t": "img"
       },
@@ -345,7 +345,7 @@ export const STORIES = [
       },
       {
         "t": "h2",
-        "v": "Their room"
+        "v": "The parent's room"
       },
       {
         "t": "p",
@@ -353,13 +353,13 @@ export const STORIES = [
       },
       {
         "alt": "The rear bedroom with a full-size bed made up with grey and tan bedding, and custom cabinetry with open shelving above.",
-        "cap": "A full-size bed at the back provides a cozy bed for Morgan and Glaucio.",
+        "cap": "A full-size bed at the back for Morgan and Glaucio",
         "src": "/blog/flying-circus-bus/rear-bedroom.jpg",
         "t": "img"
       },
       {
         "t": "p",
-        "v": "Both of them work remotely, so a table pops up and pulls out to become a desk, then stows away again, and doubles as the step up into the bed. The bed is full size with the same zippered bedding, there's custom cabinetry for daily things, and the second [mini split](https://link.amazon/B01MhrK3N) is back here to keep this end warm or cool independently."
+        "v": "Both of them work remotely, so a table pops up and pulls out to become a desk, then stows away again, and doubles as the step up into the bed. The bed is full size with the same zippered bedding, there's custom cabinetry above the bed for storage, and the second [mini split](https://link.amazon/B01MhrK3N) is back here to keep this end warm or cool independently."
       },
       {
         "t": "hr"
@@ -378,7 +378,7 @@ export const STORIES = [
       },
       {
         "t": "p",
-        "v": "If you're working through those decisions on a build of your own, that's the kind of thing we dig into at [Skoolie Support](/skoolie-support), and if you're still looking for the bus itself, there are [rigs for sale](/rigs-for-sale) here too."
+        "v": "If you're working through these decisions on a build of your own, that's the kind of thing we dig into at [Skoolie Support](/skoolie-support), and if you're still looking for the bus itself, there are [rigs for sale](/rigs-for-sale) on our website too."
       },
       {
         "alt": "Morgan and Glaucio sitting together on the couch inside the bus, talking to the camera.",
