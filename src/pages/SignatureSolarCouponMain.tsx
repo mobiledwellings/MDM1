@@ -549,7 +549,7 @@ export function SignatureSolarCouponMain() {
               marginBottom: "1.5rem",
             }}
           >
-            Why We Recommend Signature Solar for Skoolie Builds
+            Why We Recommend Signature Solar
           </h2>
           <p
             style={{
@@ -805,7 +805,7 @@ export function SignatureSolarCouponMain() {
               marginBottom: "1rem",
             }}
           >
-            Best Signature Solar Gear for Skoolie &amp; Van Builds
+            Best Signature Solar Gear
           </h2>
           <p
             style={{
@@ -1058,12 +1058,11 @@ export function SignatureSolarCouponMain() {
               marginBottom: 0,
             }}
           >
-            Signature Solar partnered with{" "}
+            Code {COUPON_CODE} is issued to{" "}
             <a href="/about" style={{ color: c.textBody, textDecoration: "underline" }}>
               Mobile Dwellings
             </a>{" "}
-            because of our work both building and filming off-grid solar builds for skoolies
-            and mobile dwellings, and {COUPON_CODE} is our code. I re-test it at
+            through our affiliate partnership with Signature Solar. I re-test it at
             signaturesolar.com every handful of days to make sure it works and update the
             "verified" date at the top of this page. Signature Solar rotates its coupon codes
             about every 60 days and when a new code replaces it, that one goes here. If the
