@@ -83,7 +83,7 @@ type FaqItem = {
 };
 
 const FAQ_ANSWER_NODES: Record<string, React.ReactNode> = {
-  "How does the MD50OFF code work?": (
+  [`How does the ${COUPON_CODE} code work?`]: (
     <>
       Enter {COUPON_CODE} in the discount code field at checkout on{" "}
       <a

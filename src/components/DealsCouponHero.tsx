@@ -5,7 +5,7 @@ import {
   SIGNATURE_SOLAR_LAST_VERIFIED,
   SIGNATURE_SOLAR_LAST_VERIFIED_DATE,
 } from "../data/coupon-verification";
-import { verifiedMonthLabel, buildFastFacts } from "../data/signature-solar-content.mjs";
+import { verifiedMonthLabel, buildFastFacts, COUPON_CODE } from "../data/signature-solar-content.mjs";
 
 /**
  * The coupon block at the top of /deals.
@@ -14,7 +14,7 @@ import { verifiedMonthLabel, buildFastFacts } from "../data/signature-solar-cont
  * and no async data, so Node can render it to a string at build time.
  * scripts/prerender-seo.js does exactly that and bakes the result into
  * build/deals.html, which is how a crawler that never runs JavaScript still
- * reads MD50OFF and DWELLINGS.
+ * reads the Signature Solar code.
  *
  * The rest of DealsPage can't be prerendered — the product catalog comes from
  * DealsContext asynchronously, and the page uses useSearchParams and useAdmin.
@@ -61,7 +61,7 @@ type CouponOffer = {
 const SIGNATURE_SOLAR_OFFER: CouponOffer = {
   brand: "Signature Solar",
   kicker: "Our pick for inverters, batteries and solar panels",
-  code: "MD50OFF",
+  code: COUPON_CODE,
   url: "https://signaturesolar.com/?ref=mobiledwellings",
   ctaLabel: "Shop Signature Solar →",
   // The $500 floor lives in finePrint, not here. This blurb is the most
@@ -243,7 +243,7 @@ export function DealsCouponHero() {
                     revision kept it out of the H1 to avoid two focal points
                     ~120px apart, but conversions here are attributed by code
                     rather than by click — a reader who never visits still earns
-                    the commission if they can read MD50OFF — so exposure in the
+                    the commission if they can read the code — so exposure in the
                     most extractable element on the page outweighs the visual
                     redundancy.
 

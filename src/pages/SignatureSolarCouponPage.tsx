@@ -36,7 +36,7 @@ export function SignatureSolarCouponPage() {
       <SEO
         title={`Signature Solar Coupon Code ${verifiedMonthLabel(SIGNATURE_SOLAR_LAST_VERIFIED_DATE)} – ${COUPON_CODE} Gets $50 Off`}
         description={pageDescription(SIGNATURE_SOLAR_LAST_VERIFIED)}
-        keywords="signature solar coupon code, signature solar discount code, signature solar promo code, MD50OFF, EG4 coupon code, EG4 promo code, EG4 discount code, signature solar deals, signature solar sale, signature solar off grid discount, skoolie solar discount, van life solar coupon, mobile dwellings coupon, EG4 battery discount, EG4 inverter coupon"
+        keywords={`signature solar coupon code, signature solar discount code, signature solar promo code, ${COUPON_CODE}, EG4 coupon code, EG4 promo code, EG4 discount code, signature solar deals, signature solar sale, signature solar off grid discount, skoolie solar discount, van life solar coupon, mobile dwellings coupon, EG4 battery discount, EG4 inverter coupon`}
         url="https://mobiledwellings.media/signature-solar-coupon"
         image="https://mobiledwellings.media/og-signature-solar.jpg"
         type="article"

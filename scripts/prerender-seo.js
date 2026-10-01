@@ -76,13 +76,13 @@ const pages = [
   },
   {
     route: '/deals',
-    title: 'Signature Solar Coupon Code MD50OFF – Best Gear for Skoolies & Overland Rigs | Mobile Dwellings',
+    title: 'Signature Solar Coupon Code {{COUPON_CODE}} – Best Gear for Skoolies & Overland Rigs | Mobile Dwellings',
     // Description is set in main() so the verification date stays current and
     // the wording tracks the shared 'sitewide' framing. The previous static
     // string still carried the category enumeration replaced everywhere else.
     description: '',
     keywords: 'Signature Solar coupon code, Signature Solar discount code, Signature Solar promo code, EG4 coupon code, Signature Solar deals, best inverter for skoolie, best lithium battery for bus conversion, skoolie solar panels, best mini split for skoolie, overland rig solar setup',
-    noscript: 'Signature Solar coupon code MD50OFF — save on EG4 inverters, lithium batteries, solar panels, and more. Tested gear for skoolies, bus conversions, and overland rigs.',
+    noscript: 'Signature Solar coupon code {{COUPON_CODE}} — save on EG4 inverters, lithium batteries, solar panels, and more. Tested gear for skoolies, bus conversions, and overland rigs.',
     // FAQPage schema and the coupon block are both baked in below, from
     // src/data/deals-content.mjs and the SSR bundle. The runtime
     // dangerouslySetInnerHTML injection that used to live in DealsPage.tsx was
@@ -111,10 +111,10 @@ const pages = [
   },
   {
     route: '/signature-solar-coupon',
-    title: 'Signature Solar Coupon Code 2026 – MD50OFF Gets $50 Off | Mobile Dwellings',
-    description: 'The current Signature Solar coupon code is MD50OFF. It takes $50 off at signaturesolar.com and works on its own at checkout. Verified every few days by Justin Smith of Mobile Dwellings, who runs EG4 gear in a 40-foot skoolie.',
-    keywords: 'signature solar coupon code, signature solar coupon code 2026, signature solar discount code, MD50OFF, signature solar promo code, EG4 coupon code, signature solar off grid discount, skoolie solar discount, van life solar coupon, mobile dwellings coupon, EG4 battery discount, signature solar deals',
-    noscript: 'Mobile Dwellings exclusive Signature Solar coupon code MD50OFF — $50 off at signaturesolar.com. Checked every few days. Works on EG4 batteries, inverters, solar panels, and more.',
+    title: 'Signature Solar Coupon Code 2026 – {{COUPON_CODE}} Gets $50 Off | Mobile Dwellings',
+    description: 'The current Signature Solar coupon code is {{COUPON_CODE}}. It takes $50 off at signaturesolar.com and works on its own at checkout. Verified every few days by Justin Smith of Mobile Dwellings, who runs EG4 gear in a 40-foot skoolie.',
+    keywords: 'signature solar coupon code, signature solar coupon code 2026, signature solar discount code, {{COUPON_CODE}}, signature solar promo code, EG4 coupon code, signature solar off grid discount, skoolie solar discount, van life solar coupon, mobile dwellings coupon, EG4 battery discount, signature solar deals',
+    noscript: 'Mobile Dwellings exclusive Signature Solar coupon code {{COUPON_CODE}} — $50 off at signaturesolar.com. Checked every few days. Works on EG4 batteries, inverters, solar panels, and more.',
     // The full schema graph (WebPage, Person, Organization, Offer, FAQPage,
     // VideoObject(s), ImageObject(s)) is injected at runtime by
     // SignatureSolarCouponPage.tsx via react-helmet-async. Don't duplicate
@@ -249,7 +249,7 @@ const pages = [
           "name": "WattCycle discount — code DWELLINGS",
           "description": "8% off sitewide at wattcycle.com. No minimum order.",
           "url": "https://www.wattcycle.com/?ref=mobiledwellings",
-          "availabilityStarts": "2026-09-01",
+          "availabilityStarts": "2026-10-01",
           "seller": { "@type": "Organization", "name": "WattCycle" }
         },
         {
@@ -434,6 +434,17 @@ async function main() {
   // served bytes carried none of it — invisible to every crawler that doesn't
   // execute JavaScript.
   const content = await import('../src/data/signature-solar-content.mjs');
+
+  // Static strings in pages[] carry {{COUPON_CODE}} rather than a literal code,
+  // so a rotation is one edit to COUPON_CODE. When MD50OFF rotated to GET50MD
+  // this file held six hardcoded copies, and the deals <title> wasn't covered
+  // by any of the dynamic overrides below — it would have kept advertising a
+  // dead code in every search result.
+  for (const page of pages) {
+    for (const [k, v] of Object.entries(page)) {
+      if (typeof v === 'string') page[k] = v.split('{{COUPON_CODE}}').join(content.COUPON_CODE);
+    }
+  }
   const schema = content.buildSignatureSolarSchema(readCouponVerification());
   const couponPage = pages.find((p) => p.route === '/signature-solar-coupon');
   if (!couponPage) {

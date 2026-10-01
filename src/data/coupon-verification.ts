@@ -15,7 +15,7 @@
  */
 
 /** Human-readable, e.g. "August 20, 2026". */
-export const SIGNATURE_SOLAR_LAST_VERIFIED = "September 1, 2026";
+export const SIGNATURE_SOLAR_LAST_VERIFIED = "October 1, 2026";
 
 /** ISO 8601, for <time datetime> and schema.org dates. */
-export const SIGNATURE_SOLAR_LAST_VERIFIED_DATE = "2026-09-01";
+export const SIGNATURE_SOLAR_LAST_VERIFIED_DATE = "2026-10-01";

@@ -8,6 +8,7 @@ import { ImageWithFallback } from "../components/figma/ImageWithFallback";
 // The coupon block lives in its own component so the build can render it to
 // static HTML — see the note at the top of that file.
 import { DealsCouponHero } from "../components/DealsCouponHero";
+import { COUPON_CODE } from "../data/signature-solar-content.mjs";
 import { useDeals, Product, ProductCategory } from "../contexts/DealsContext";
 import { useAdmin } from "../contexts/AdminContext";
 import { Input } from "../components/ui/input";
@@ -372,8 +373,8 @@ export function DealsPage() {
   return (
     <>
       <SEO
-        title="Signature Solar Coupon Code MD50OFF – Best Gear for Skoolies & Overland Rigs"
-        description="Exclusive Signature Solar coupon code: MD50OFF. Save on EG4 inverters, lithium batteries, solar panels, and more. Best gear for skoolies, bus conversions, and overland rigs — tested in real builds."
+        title={`Signature Solar Coupon Code ${COUPON_CODE} – Best Gear for Skoolies & Overland Rigs`}
+        description={`Exclusive Signature Solar coupon code: ${COUPON_CODE}. Save on EG4 inverters, lithium batteries, solar panels, and more. Best gear for skoolies, bus conversions, and overland rigs — tested in real builds.`}
         keywords="Signature Solar coupon code, Signature Solar discount code, Signature Solar promo code, EG4 coupon code, Signature Solar deals, best inverter for skoolie, best lithium battery for bus conversion, skoolie solar panels, best mini split for skoolie, overland rig solar setup, bus conversion electrical, skoolie gear, off-grid solar kit, best charge controller for skoolie, overland rig battery, EG4 inverter coupon, Signature Solar skoolie"
         url="https://mobiledwellings.media/deals"
       />

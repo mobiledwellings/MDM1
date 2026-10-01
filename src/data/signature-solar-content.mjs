@@ -25,7 +25,7 @@
  * and are merged onto this data by title/question — see the page component.
  */
 
-export const COUPON_CODE = "MD50OFF";
+export const COUPON_CODE = "GET50MD";
 export const AFFILIATE_URL = "https://signaturesolar.com/?ref=mobiledwellings";
 export const SITE_URL = "https://mobiledwellings.media";
 export const PAGE_URL = `${SITE_URL}/signature-solar-coupon`;
@@ -58,7 +58,7 @@ export const FEATURED_VIDEO = {
   title:
     "Justin from Mobile Dwellings reviews EG4 Server Rack Batteries in the Gilligan Phantom 40-foot skoolie",
   description:
-    "Justin from Mobile Dwellings reviews his favorite lithium batteries and explains why the EG4 Server Rack Batteries (LiFePower4) consistently provided the best long-term value in his off-grid builds. He installed 3 of them in his 40-foot skoolie, Gilligan Phantom — the same gear sold by Signature Solar with code MD50OFF.",
+    `Justin from Mobile Dwellings reviews his favorite lithium batteries and explains why the EG4 Server Rack Batteries (LiFePower4) consistently provided the best long-term value in his off-grid builds. He installed 3 of them in his 40-foot skoolie, Gilligan Phantom — the same gear sold by Signature Solar with code ${COUPON_CODE}.`,
   caption:
     "Watch Justin from Mobile Dwellings review his favorite lithium batteries. The EG4 Server Rack Batteries consistently provided the best long term value and he installed 3 of them in his 40 foot Skoolie, Gilligan Phantom",
   uploadDate: "2025-07-04T12:00:00Z",
@@ -136,7 +136,7 @@ export const BUILD_SHOTS = [
     videoTitle:
       "Brian and Amber's 40-foot skoolie The Beers Bus: EG4 Server Rack Battery bank and Victron components tour",
     videoDescription:
-      "Mobile Dwellings tours The Beers Bus, Brian and Amber's 40-foot skoolie running 4 EG4 Server Rack Batteries (LiFePower4, 25.6V 200Ah, 5,120 Wh each) wired into a full Victron suite — MPPT charge controllers, Cerbo GX, Orion-Tr Smart DC-DC chargers — for a ~20 kWh off-grid build using gear from Signature Solar with code MD50OFF.",
+      `Mobile Dwellings tours The Beers Bus, Brian and Amber's 40-foot skoolie running 4 EG4 Server Rack Batteries (LiFePower4, 25.6V 200Ah, 5,120 Wh each) wired into a full Victron suite — MPPT charge controllers, Cerbo GX, Orion-Tr Smart DC-DC chargers — for a ~20 kWh off-grid build using gear from Signature Solar with code ${COUPON_CODE}.`,
     uploadDate: "2025-10-12T12:00:00Z",
     dealsHref: "/deals?filter=batteries",
     dealsCtaLabel: "Recommended Lithium Batteries in our gear shop →",
@@ -176,7 +176,7 @@ export const GEAR_ITEMS = [
 
 export const FAQ_ITEMS = [
   {
-    question: "How does the MD50OFF code work?",
+    question: `How does the ${COUPON_CODE} code work?`,
     // The $500 floor is framed as a property of Signature Solar's codes rather
     // than of ours, because it is one — every competing $50 code carries the
     // same minimum and none of them publish it. Gemini was rendering MD50OFF as

@@ -13,7 +13,8 @@
  * engines look for.
  *
  * THE ROUTINE (every few days, whenever Justin checks the code)
- *   1. Confirm MD50OFF still works at signaturesolar.com
+ *   1. Confirm the current code (COUPON_CODE in src/data/signature-solar-content.mjs)
+ *      still works at signaturesolar.com
  *   2. Run `npm run verify-coupon`
  *   3. Commit and deploy
  *
