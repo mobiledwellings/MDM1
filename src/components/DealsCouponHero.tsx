@@ -5,7 +5,13 @@ import {
   SIGNATURE_SOLAR_LAST_VERIFIED,
   SIGNATURE_SOLAR_LAST_VERIFIED_DATE,
 } from "../data/coupon-verification";
-import { verifiedMonthLabel, buildFastFacts, COUPON_CODE } from "../data/signature-solar-content.mjs";
+import {
+  verifiedMonthLabel,
+  buildFastFacts,
+  COUPON_CODE,
+  PREVIOUS_CODE,
+  CODE_CHANGED_ON,
+} from "../data/signature-solar-content.mjs";
 
 /**
  * The coupon block at the top of /deals.
@@ -75,7 +81,7 @@ const SIGNATURE_SOLAR_OFFER: CouponOffer = {
   blurb:
     "$50 off sitewide, stacks with sales and free shipping promotions.",
   finePrint:
-    "Apply at checkout on signaturesolar.com. Works on most products sitewide. Signature Solar's $50 codes require a $500 minimum order.",
+    `Apply at checkout on signaturesolar.com. Works on most products sitewide. Signature Solar's $50 codes require a $500 minimum order. Replaced ${PREVIOUS_CODE} on ${CODE_CHANGED_ON}.`,
   // Shared with the /signature-solar-coupon page so the two dates can't drift.
   // Both are re-stamped by `npm run verify-coupon`.
   verifiedOn: SIGNATURE_SOLAR_LAST_VERIFIED,

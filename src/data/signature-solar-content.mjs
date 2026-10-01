@@ -26,6 +26,24 @@
  */
 
 export const COUPON_CODE = "GET50MD";
+
+/**
+ * The code COUPON_CODE replaced, and when.
+ *
+ * Older videos, reels and aggregator listings keep showing a code long after
+ * it rotates, and people search for it by name. This page owned the exact-code
+ * query for the old code, so naming it here keeps that search landing on a
+ * page that hands over the working code — rather than on an aggregator still
+ * listing a dead one.
+ *
+ * Deliberately kept OUT of the title, H1, meta description, spec block and
+ * Offer schema. A retired code sitting in those summary layers is how MOBILE50
+ * kept being served as current months after it was replaced.
+ *
+ * Next rotation: PREVIOUS_CODE = the old COUPON_CODE, then update both.
+ */
+export const PREVIOUS_CODE = "MD50OFF";
+export const CODE_CHANGED_ON = "October 1, 2026";
 export const AFFILIATE_URL = "https://signaturesolar.com/?ref=mobiledwellings";
 export const SITE_URL = "https://mobiledwellings.media";
 export const PAGE_URL = `${SITE_URL}/signature-solar-coupon`;
@@ -194,6 +212,10 @@ export const FAQ_ITEMS = [
   {
     question: "Does this code expire?",
     answer: `Signature Solar coupon codes expire every 60 days. ${COUPON_CODE} is the current code. I check it at signaturesolar.com every few days and update the verified date at the top of this page, to ensure that the code is working. When a new code goes live I update it here.`,
+  },
+  {
+    question: `What happened to ${PREVIOUS_CODE}?`,
+    answer: `${PREVIOUS_CODE} was our previous Signature Solar code. Signature Solar rotates codes about every 60 days, and on ${CODE_CHANGED_ON} it was replaced by ${COUPON_CODE} — same $50 off, sitewide. Older videos and reels may still show ${PREVIOUS_CODE}; use ${COUPON_CODE} at checkout.`,
   },
   {
     question: "Does Signature Solar offer free shipping?",

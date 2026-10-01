@@ -9,6 +9,8 @@
  */
 
 export const COUPON_CODE: string;
+export const PREVIOUS_CODE: string;
+export const CODE_CHANGED_ON: string;
 export const AFFILIATE_URL: string;
 export const SITE_URL: string;
 export const PAGE_URL: string;
