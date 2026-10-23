@@ -97,7 +97,7 @@ export const STORIES = [
       {
         "t": "img",
         "src": "/blog/chuck-cassady-oblio/luggage-bay.jpg",
-        "alt": "Chuck opening one of the exterior luggage bays on the side of the bus.",
+        "alt": "Chuck at the open rear bay of the bus, the original school bus yellow still showing inside.",
         "cap": "Three bays, because you can never have enough storage."
       },
       {
