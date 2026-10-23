@@ -189,7 +189,7 @@ export const STORIES = [
       {
         "t": "img",
         "src": "/blog/chuck-cassady-oblio/kitchen-wallpaper.jpg",
-        "alt": "Chuck standing in the kitchen beside wallpaper with large psychedelic flowers.",
+        "alt": "Looking down the galley, the floral wallpaper filling the wall beside the step up to the bedroom.",
         "cap": "The wallpaper set the palette for the whole bus."
       },
       {
