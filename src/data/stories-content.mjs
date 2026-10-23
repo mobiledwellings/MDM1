@@ -19,12 +19,12 @@ export const STORIES = [
     "slug": "chuck-cassady-oblio",
     "title": "After a Decade Building Other People's Buses, Chuck Cassady Built His Own",
     "dek": "Oblio is 27 feet long, took four years, and cost about $60,000 in materials. A tour of the bus a grandmaster built for himself.",
-    "hero": "/blog/chuck-cassady-oblio/oblio-exterior.jpg",
-    "heroAlt": "Chuck Cassady's olive green converted school bus parked in a field, with a raised roof and solar panels.",
+    "hero": "/blog/chuck-cassady-oblio/oblio-roadside.jpg",
+    "heroAlt": "Chuck Cassady's olive green school bus, Oblio, parked on a desert roadside under a bright sky.",
     "category": "Bus Tours",
     "date": "2026-10-23",
     "readingTime": "7 min",
-    "photoCredit": "Mobile Dwellings",
+    "photoCredit": "Chuck Cassady and Mobile Dwellings",
     "keywords": "chuck cassady, skoolie builder, school bus conversion tour, oblio bus, marmoleum skoolie floor, richlite countertop, cedar ceiling skoolie, bus conversion cost",
     "blocks": [
       {
@@ -34,8 +34,8 @@ export const STORIES = [
       {
         "t": "video",
         "id": "QDPDrQR3qiw",
-        "poster": "/blog/chuck-cassady-oblio/oblio-exterior.jpg",
-        "alt": "Chuck Cassady's olive green school bus parked in a field.",
+        "poster": "/blog/chuck-cassady-oblio/oblio-roadside.jpg",
+        "alt": "Chuck Cassady's olive green school bus, Oblio, parked on a desert roadside.",
         "label": "Watch the full tour",
         "title": "When The Grandmaster Skoolie Builder Completes His Own Bus · 19 min",
         "compact": true
@@ -90,6 +90,12 @@ export const STORIES = [
       },
       {
         "t": "img",
+        "src": "/blog/chuck-cassady-oblio/oblio-forest.jpg",
+        "alt": "Oblio parked among tall pine trees, the full length of the raised roof and the roof solar in view.",
+        "cap": "Twenty seven and a half feet, with a twelve inch roof raise."
+      },
+      {
+        "t": "img",
         "src": "/blog/chuck-cassady-oblio/luggage-bay.jpg",
         "alt": "Chuck opening one of the exterior luggage bays on the side of the bus.",
         "cap": "Three bays, because you can never have enough storage."
@@ -108,6 +114,12 @@ export const STORIES = [
       {
         "t": "p",
         "v": "The roof raise runs all the way forward with no sloped transition, which let him put in what he calls a third eye window above the windscreen. It is leaking at the moment. “I've got some really classy tape on it right now,” he says. “Even us professionals still have these growing pains.”"
+      },
+      {
+        "t": "img",
+        "src": "/blog/chuck-cassady-oblio/oblio-sunset.jpg",
+        "alt": "Oblio at dusk, the roof raise running flat to the front with the third eye window above the windscreen.",
+        "cap": "The roof raise runs flat to the front, which is what makes the third eye window possible."
       },
       {
         "t": "img",
@@ -322,8 +334,8 @@ export const STORIES = [
       },
       {
         "t": "img",
-        "src": "/blog/chuck-cassady-oblio/oblio-parked.jpg",
-        "alt": "The olive green bus parked among trees with its door open.",
+        "src": "/blog/chuck-cassady-oblio/oblio-desert.jpg",
+        "alt": "Oblio alone on a wide desert flat under a big sky.",
         "cap": ""
       },
       {
@@ -397,8 +409,8 @@ export const STORIES = [
       {
         "t": "video",
         "id": "QDPDrQR3qiw",
-        "poster": "/blog/chuck-cassady-oblio/oblio-exterior.jpg",
-        "alt": "Chuck Cassady's olive green school bus parked in a field.",
+        "poster": "/blog/chuck-cassady-oblio/oblio-roadside.jpg",
+        "alt": "Chuck Cassady's olive green school bus, Oblio, parked on a desert roadside.",
         "label": "Watch the full tour",
         "title": "When The Grandmaster Skoolie Builder Completes His Own Bus · 19 min"
       },
