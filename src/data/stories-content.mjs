@@ -16,6 +16,399 @@ export const SITE_URL = "https://mobiledwellings.media";
 
 export const STORIES = [
   {
+    "slug": "chuck-cassady-oblio",
+    "title": "After a Decade Building Other People's Buses, Chuck Cassady Built His Own",
+    "dek": "Oblio is 27 feet long, took four years, and cost about $60,000 in materials. A tour of the bus a grandmaster built for himself.",
+    "hero": "/blog/chuck-cassady-oblio/oblio-exterior.jpg",
+    "heroAlt": "Chuck Cassady's olive green converted school bus parked in a field, with a raised roof and solar panels.",
+    "category": "Bus Tours",
+    "date": "2026-10-23",
+    "readingTime": "7 min",
+    "photoCredit": "Mobile Dwellings",
+    "keywords": "chuck cassady, skoolie builder, school bus conversion tour, oblio bus, marmoleum skoolie floor, richlite countertop, cedar ceiling skoolie, bus conversion cost",
+    "blocks": [
+      {
+        "t": "standfirst",
+        "v": "This article is about Chuck Cassady and his bus, Oblio. Check out his Youtube and Instagram here: ([YouTube](https://www.youtube.com/@ChuckCassadyYT) · [Instagram](https://www.instagram.com/chuck.cassady/))."
+      },
+      {
+        "t": "video",
+        "id": "QDPDrQR3qiw",
+        "poster": "/blog/chuck-cassady-oblio/oblio-exterior.jpg",
+        "alt": "Chuck Cassady's olive green school bus parked in a field.",
+        "label": "Watch the full tour",
+        "title": "When The Grandmaster Skoolie Builder Completes His Own Bus · 19 min",
+        "compact": true
+      },
+      {
+        "t": "p",
+        "v": "“My name's Chuck Cassady and this is my school bus, Oblio. I think I chose it because I was poor and ironically it's made me rich.”"
+      },
+      {
+        "t": "p",
+        "v": "Chuck was a philosophy student who wasn't really into paying rent, so he moved into a bus. He knew nothing about building at the time. Twenty years later he has run a conversion company, appeared on multiple TV shows, posted two hundred videos teaching other people how to do this, and helped enough builds that people say they built their bus \"the Chuck Cassady way.\""
+      },
+      {
+        "t": "hr"
+      },
+      {
+        "t": "h2",
+        "v": "It started with a ride to a festival"
+      },
+      {
+        "t": "p",
+        "v": "In 2007 he was looking for a lift to Bonnaroo. He found an ad on Craigslist, met the seller the next day, and was taught to drive a bus in the parking lot. The day after that, sixteen strangers piled in and drove to Tennessee."
+      },
+      {
+        "t": "p",
+        "v": "They came back and decided to do it for every show. The party bus company they started went on to be the biggest in Colorado, and Chuck, a broke college student, moved into one of the buses."
+      },
+      {
+        "t": "img",
+        "src": "/blog/chuck-cassady-oblio/chuck-portrait.jpg",
+        "alt": "Chuck Cassady sitting inside his bus, talking to camera, with warm wood walls behind him.",
+        "cap": ""
+      },
+      {
+        "t": "p",
+        "v": "Seven years and three buses later he decided to do one properly. His mother suggested he apply to a tiny house show. “I kind of submitted a cheeky application,” he says, “because I was like, ah, reality TV, whatever.” They picked him, partly because they had no skoolie conversions. The episode did well, people started asking him to build them one too, and that became a career: a conversion company he rebranded as Chrome Yellow Corp in 2018 and ran until 2023."
+      },
+      {
+        "t": "hr"
+      },
+      {
+        "t": "h2",
+        "v": "The bus"
+      },
+      {
+        "t": "p",
+        "v": "Oblio is a 1996 International chassis with a Thomas school bus body, and at 27 and a half feet it is short enough to be nimble, and big enough to live in. The engine is no slouch, however. It's an International DT466 usually found in full size buses, from the last year they made it, and the school district fitted a new one in 2018, so it has around thirty thousand miles on it."
+      },
+      {
+        "t": "p",
+        "v": "He has since put in a bigger radiator, swapped the transmission, and replaced every hose, every belt and all the fluids. The build added a twelve inch roof raise, a new paint job, RV windows in place of the school bus ones, as much [solar](/deals) as the roof would take, and three luggage bays."
+      },
+      {
+        "t": "img",
+        "src": "/blog/chuck-cassady-oblio/luggage-bay.jpg",
+        "alt": "Chuck opening one of the exterior luggage bays on the side of the bus.",
+        "cap": "Three bays, because you can never have enough storage."
+      },
+      {
+        "t": "p",
+        "v": "He bought it in May 2021, and not entirely on purpose. Someone had asked his opinion on it, he told them it was a good bus, and they flew to northern New Mexico to look. They got cold feet over the transmission fluid and passed. He asked whether they would mind if he went and bought it himself."
+      },
+      {
+        "t": "hr"
+      },
+      {
+        "t": "h2",
+        "v": "The front is the office"
+      },
+      {
+        "t": "p",
+        "v": "The roof raise runs all the way forward with no sloped transition, which let him put in what he calls a third eye window above the windscreen. It is leaking at the moment. “I've got some really classy tape on it right now,” he says. “Even us professionals still have these growing pains.”"
+      },
+      {
+        "t": "img",
+        "src": "/blog/chuck-cassady-oblio/drivers-seat.jpg",
+        "alt": "The driver's area with a live edge oak dash and a semi truck seat."
+      },
+      {
+        "t": "p",
+        "v": "The dash is a piece of live edge oak. The seat is a semi truck seat he found secondhand, and he rates it the most comfortable he has ever sat in. The wiring is still a bundle waiting to be finished, hopefully soon. Even Chuck struggles to get a bus 100% complete, just like the rest of us."
+      },
+      {
+        "t": "hr"
+      },
+      {
+        "t": "h2",
+        "v": "Nineteen feet of living"
+      },
+      {
+        "t": "p",
+        "v": "Behind the driver's seat there are nineteen feet to the back wall. A whole house has to fit inside."
+      },
+      {
+        "t": "img",
+        "src": "/blog/chuck-cassady-oblio/dinette-and-guitar.jpg",
+        "alt": "The dinette with a guitar standing beside it and a patterned curtain behind.",
+        "cap": ""
+      },
+      {
+        "t": "p",
+        "v": "A guitar becomes a very large object in a bus. His answer was to raise the floor of the dinette enough to hide a drawer on locking slides underneath, big enough for two guitars. “It was basically like finding free space in a bus,” he says, “which is kind of a miracle to be honest.”"
+      },
+      {
+        "t": "img",
+        "src": "/blog/chuck-cassady-oblio/couch-storage.jpg",
+        "alt": "Chuck lifting the seat of the couch to show the storage underneath.",
+        "cap": "Drawers below, a lift up seat, and a deep pull out behind the cushions."
+      },
+      {
+        "t": "p",
+        "v": "The couch has a twelve inch overhang, which is a trick rather than an accident: it helps the floor feel wider than it is. Underneath are drawers, the seat lifts up, and behind the cushions is storage too."
+      },
+      {
+        "t": "p",
+        "v": "A shelf runs the full length of the bus on both sides, with a curve along its front edge. That was made by his friend Brad ([of Crown n Around fame](https://www.youtube.com/watch?v=wjnIZkR3PHQ&t=34s)), who is an exceptional carpenter. Rounded edges instead of hard corners are a theme throughout."
+      },
+      {
+        "t": "hr"
+      },
+      {
+        "t": "h2",
+        "v": "The kitchen"
+      },
+      {
+        "t": "p",
+        "v": "Two things use most of the water on the road: showers and dishes. His answer to the second is a pair of foot pedals under the sink, one hot and one cold, so it's easy to conserve water when washing dishes."
+      },
+      {
+        "t": "img",
+        "src": "/blog/chuck-cassady-oblio/kitchen-counter.jpg",
+        "alt": "The kitchen counter and sink with warm wood cabinetry.",
+        "cap": "Counters are Richlite, made from compressed recycled paper."
+      },
+      {
+        "t": "p",
+        "v": "Drinking water runs through a reverse osmosis filter plumbed into the faucet, with a charcoal filter alongside it, which means the tank water is drinkable. The counters are [Richlite](https://www.richlite.com/), a material made from compressed recycled paper that does not care about water or heat. The predominant wood is walnut."
+      },
+      {
+        "t": "img",
+        "src": "/blog/chuck-cassady-oblio/kitchen-wallpaper.jpg",
+        "alt": "Chuck standing in the kitchen beside wallpaper with large psychedelic flowers.",
+        "cap": "The wallpaper set the palette for the whole bus."
+      },
+      {
+        "t": "p",
+        "v": "Almost everything runs on DC: the fridge, the lighting, the diesel heater, even the electric water heater. That lets him switch the inverter off entirely unless he is using the induction cooktop, the mini split or the combination microwave and oven. On a sunny day the solar sits at 100 percent and he leaves everything running."
+      },
+      {
+        "t": "p",
+        "v": "The tile backsplash is grouted with epoxy, which lets it run right up against the wood without caulk. And the wallpaper, big psychedelic flowers, is the decision the rest of the palette follows."
+      },
+      {
+        "t": "hr"
+      },
+      {
+        "t": "h2",
+        "v": "Two materials worth stealing"
+      },
+      {
+        "t": "img",
+        "src": "/blog/chuck-cassady-oblio/hallway-flooring.jpg",
+        "alt": "The hallway of the bus with a patterned rug over seamless flooring.",
+        "cap": "Marmoleum: one roll, no seams, waterproof."
+      },
+      {
+        "t": "p",
+        "v": "The floor is marmoleum, the original formulation of linoleum, made from crushed limestone and linseed oil. No VOCs, antistatic, antimicrobial, and it arrives as one big roll, so there are no seams anywhere. He laid it first and built on top of it, which means no baseboards and nothing to trim out later. He has done nothing to it since."
+      },
+      {
+        "t": "img",
+        "src": "/blog/chuck-cassady-oblio/cedar-ceiling.jpg",
+        "alt": "The curved cedar ceiling of the bus, running the length of the interior.",
+        "cap": "Cedar closet liner, under a quarter inch thick, bent to the curve."
+      },
+      {
+        "t": "p",
+        "v": "The ceiling gets noticed immediately, and people assume it was difficult and expensive. It is cedar closet liner, tongue and groove, less than a quarter of an inch thick. Being that thin is the whole point: it bends to the curve of the roof, and it is cheap."
+      },
+      {
+        "t": "hr"
+      },
+      {
+        "t": "h2",
+        "v": "A real bathroom"
+      },
+      {
+        "t": "p",
+        "v": "On a 27 foot bus a separate bathroom is a choice that costs you elsewhere. But for Chuck it was worth it, with its own sink and a shower Chuck can stand in comfortably."
+      },
+      {
+        "t": "img",
+        "src": "/blog/chuck-cassady-oblio/bathroom-mirror.jpg",
+        "alt": "A round mirror backlit on the bathroom wall above a small sink, with tile behind.",
+        "cap": "The mirror is spaced off the wall and backlit, so it floats."
+      },
+      {
+        "t": "p",
+        "v": "The cabinetry is Baltic birch with a quarter sawn oak veneer, chosen for a grain that runs in straight lines and makes the room read longer. An offcut of the kitchen counter became the shower threshold."
+      },
+      {
+        "t": "img",
+        "src": "/blog/chuck-cassady-oblio/shower-tile.jpg",
+        "alt": "The tiled shower with a niche cut into the wall for bottles.",
+        "cap": ""
+      },
+      {
+        "t": "p",
+        "v": "The toilet is composting, so there is a handheld bidet on the wall for rinsing the bowl, and he drilled the sink to take a built in soap dispenser rather than have a bottle sliding around. “I love the bathroom,” he says. “It doesn't feel like any compromises were made in here.”"
+      },
+      {
+        "t": "hr"
+      },
+      {
+        "t": "h2",
+        "v": "The bedroom, and the batteries under the clothes"
+      },
+      {
+        "t": "img",
+        "src": "/blog/chuck-cassady-oblio/bed.jpg",
+        "alt": "A queen bed made up at the back of the bus under a curved wood ceiling.",
+        "cap": ""
+      },
+      {
+        "t": "p",
+        "v": "A queen bed sits across the back. Beneath it, the front half of the garage holds the systems: a 125 gallon fresh water tank, the water heater and the solar equipment, with a pair of drawers about thirty inches deep squeezed in beside them."
+      },
+      {
+        "t": "img",
+        "src": "/blog/chuck-cassady-oblio/bedroom-shelf.jpg",
+        "alt": "Shelving wrapping around the bedroom wall beside the bed.",
+        "cap": "Brad's shelf again, wrapping into the bedroom."
+      },
+      {
+        "t": "p",
+        "v": "The hanging closet has four server rack [batteries](/deals) in the bottom of it. The mini split, usually an ugly box, wears a cover held on with magnets so it can still be serviced. Brad's shelf comes back here too, wrapping around the bed to make somewhere for the things that end up on a nightstand."
+      },
+      {
+        "t": "hr"
+      },
+      {
+        "t": "h2",
+        "v": "What it cost"
+      },
+      {
+        "t": "table",
+        "rows": [
+          [
+            "**The bus**",
+            "$5,500"
+          ],
+          [
+            "**Materials**",
+            "~$60,000"
+          ],
+          [
+            "**Time**",
+            "800 to 1,000 hours"
+          ],
+          [
+            "**Build**",
+            "Four years, on and off"
+          ]
+        ]
+      },
+      {
+        "t": "p",
+        "v": "The four years were not spent working continuously. The hard part was finding time while running a conversion shop, and waiting for the right material rather than settling. “I guess it was maybe my own compulsions that got in the way of the build more than anything else,” he says."
+      },
+      {
+        "t": "hr"
+      },
+      {
+        "t": "h2",
+        "v": "“The bus provides”"
+      },
+      {
+        "t": "p",
+        "v": "Ten years of building buses for other people was fulfilling, he says, but it pulled him away from the part he likes most, which is travelling. Asked what he would tell his younger self, he does not talk about joinery."
+      },
+      {
+        "t": "p",
+        "v": "“Don't worry so much about the money. You're never going to have enough of it, so why sweat it? Take time to enjoy the things that you love.”"
+      },
+      {
+        "t": "img",
+        "src": "/blog/chuck-cassady-oblio/oblio-parked.jpg",
+        "alt": "The olive green bus parked among trees with its door open.",
+        "cap": ""
+      },
+      {
+        "t": "p",
+        "v": "After two decades of it he has arrived somewhere slightly surprising for a man who builds buses for a living: the bus was never the point. “The bus is always a vehicle, literally and figuratively, for creating and fostering some other type of experience. It's the life that's happening in the bus and the people I've met, which is what it's really all about.”"
+      },
+      {
+        "t": "hr"
+      },
+      {
+        "t": "h2",
+        "v": "Oblio, at a glance"
+      },
+      {
+        "t": "table",
+        "rows": [
+          [
+            "**Chassis**",
+            "1996 International, Thomas body"
+          ],
+          [
+            "**Length**",
+            "27.5 ft, with a 40 ft bus engine"
+          ],
+          [
+            "**Roof**",
+            "12 inch raise, RV windows"
+          ],
+          [
+            "**Water**",
+            "125 gallon fresh, reverse osmosis and charcoal filters"
+          ],
+          [
+            "**Power**",
+            "Four server rack batteries, roof full of solar"
+          ],
+          [
+            "**Systems**",
+            "Mostly DC: fridge, lighting, diesel heater, water heater"
+          ],
+          [
+            "**Counters**",
+            "Richlite, from compressed recycled paper"
+          ],
+          [
+            "**Floor**",
+            "Marmoleum, seamless"
+          ],
+          [
+            "**Ceiling**",
+            "Cedar closet liner, bent to the curve"
+          ],
+          [
+            "**Bathroom**",
+            "Separate room, composting toilet, tiled shower"
+          ]
+        ]
+      },
+      {
+        "t": "quote",
+        "head": "A note on the power system",
+        "paras": [
+          "**Signature Solar** is our go-to for solar panels, lithium batteries, mini splits and inverters.",
+          `Our [curated list of the gear worth looking at](/deals) carries the current code, **${COUPON_CODE}**, for $50 off.`,
+          "Some links in this article are affiliate links. If you buy through them, Mobile Dwellings may earn a commission at no extra cost to you."
+        ]
+      },
+      {
+        "t": "hr"
+      },
+      {
+        "t": "video",
+        "id": "QDPDrQR3qiw",
+        "poster": "/blog/chuck-cassady-oblio/oblio-exterior.jpg",
+        "alt": "Chuck Cassady's olive green school bus parked in a field.",
+        "label": "Watch the full tour",
+        "title": "When The Grandmaster Skoolie Builder Completes His Own Bus · 19 min"
+      },
+      {
+        "t": "note",
+        "v": "Chuck takes consultations on bus builds through his [Calendly](https://calendly.com/chuckcassady), and posts on [YouTube](https://www.youtube.com/@ChuckCassadyYT) and [Instagram](https://www.instagram.com/chuck.cassady/). If you are planning a build of your own, we also answer questions at [Skoolie Support](/skoolie-support)."
+      }
+    ]
+  },
+  {
     "slug": "flying-circus-bus",
     "title": "A Family of Six, Four Cats and a Dog, in 320 Square Feet",
     "dek": "Morgan had never heard the word skoolie when Glaucio suggested buying a school bus. Six years later their family of six lives in it full time. This is the full tour of the Flying Circus Bus.",
