@@ -1,0 +1,128 @@
+#!/usr/bin/env python3
+"""Write source-slides.html from the carousel data.
+
+One shape per run. The square is the YouTube community post, 1080x1080; the
+portrait is the Instagram carousel, 1080x1350, which is the tallest frame
+Instagram shows in the feed without cropping it.
+
+Only the frame changes. The column stays 1080 wide and the type keeps its sizes,
+so every line breaks exactly where it broke in the square and the post reads the
+same; the extra 270px go to the picture and to the space under the copy.
+
+    ./build-slides.py carousel.json [source-slides.html] [square|ig]
+"""
+import html
+import json
+import sys
+
+SHAPES = {"square": (1080, 1080), "ig": (1080, 1350)}
+
+HEAD = """<!doctype html><html><head><meta charset="utf-8">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;700;800&display=swap">
+<style>
+:root{{--paper:#fff;--yellow:#ffde5a;--f:Outfit,'Helvetica Neue',Arial,sans-serif}}
+*{{box-sizing:border-box;margin:0;padding:0}}
+html,body{{width:{W}px;height:{H}px;overflow:hidden;background:#000}}
+.slide{{position:relative;width:{W}px;height:{H}px;overflow:hidden;color:var(--paper);font-family:var(--f);display:none}}
+.slide.on{{display:block}}
+.ph{{position:absolute;overflow:hidden}}.ph img{{width:100%;height:100%;object-fit:cover;display:block}}
+.veil{{position:absolute;left:0;right:0;bottom:0;height:{veil}px;
+  background:linear-gradient(to bottom,rgba(0,0,0,0) 0%,rgba(0,0,0,.32) 45%,rgba(0,0,0,.74) 100%)}}
+.era{{position:absolute;z-index:3;left:56px;top:{era}px;font-weight:800;font-size:20px;letter-spacing:.14em;
+  color:var(--yellow);background:rgba(0,0,0,.55);padding:7px 13px;border-radius:5px}}
+.copy{{position:absolute;z-index:3;left:56px;right:56px;bottom:{copy}px;
+  text-shadow:0 2px 16px rgba(0,0,0,.8),0 1px 3px rgba(0,0,0,.7)}}
+.h{{font-weight:800;font-size:52px;line-height:1.07;letter-spacing:-.018em;text-wrap:balance}}
+.y{{color:var(--yellow)}}
+.sub{{font-weight:700;font-size:34px;line-height:1.2;margin-top:10px;text-wrap:balance}}
+.meta{{position:absolute;z-index:3;left:56px;right:56px;bottom:{meta}px;display:flex;justify-content:space-between;
+  font-size:20px;color:#ffffffd9;text-shadow:0 1px 6px rgba(0,0,0,.85)}}
+</style></head><body>
+"""
+
+# Same rule the preview uses: while the copy sits where it was laid out the wash
+# is left alone; once it has been moved the wash follows it and flips up top.
+TAIL = """<script>
+var H = {H};
+function fitVeil(slide){{
+  var copy = slide.querySelector('.copy'), veil = slide.querySelector('.veil');
+  var br = copy.getBoundingClientRect();
+  var t = br.top / H * 100, b = br.bottom / H * 100, F = 10, top, height, bg;
+  if (b >= 70){{
+    /* never lighter than the standard wash, only taller when the copy runs long */
+    top = Math.max(0, Math.min({floor}, t - F)); height = 100 - top;
+    bg = 'linear-gradient(to bottom,rgba(0,0,0,0) 0%,rgba(0,0,0,.32) 45%,rgba(0,0,0,.74) 100%)';
+  }} else if (t <= 30){{
+    top = 0; height = Math.min(100, b + F);
+    bg = 'linear-gradient(to bottom,rgba(0,0,0,.74) 0%,rgba(0,0,0,.42) 55%,rgba(0,0,0,0) 100%)';
+  }} else {{
+    top = Math.max(0, t - F); height = Math.min(100, b + F) - top;
+    bg = 'linear-gradient(to bottom,rgba(0,0,0,0) 0%,rgba(0,0,0,.62) 26%,rgba(0,0,0,.62) 74%,rgba(0,0,0,0) 100%)';
+  }}
+  veil.style.top = top.toFixed(2) + '%';
+  veil.style.height = height.toFixed(2) + '%';
+  veil.style.bottom = 'auto';
+  veil.style.background = bg;
+}}
+var n = new URLSearchParams(location.search).get("s") || "1";
+var slide = document.querySelector('.slide[data-n="' + n + '"]');
+slide.classList.add('on');
+document.fonts.ready.then(function(){{ fitVeil(slide); }});
+</script></body></html>
+"""
+
+
+def esc(text):
+    return html.escape(text or "", quote=False)
+
+
+def slide_html(i, s, W, H):
+    moved = s.get("copyAt")
+    out = ['<section class="slide" data-n="%d"%s>' % (i, ' data-moved="1"' if moved else "")]
+    f = s["frames"][0]
+    out.append('<div class="ph" style="left:0;top:0;width:%dpx;height:%dpx">'
+               '<img src="img/%s" style="object-position:%s"></div>' % (W, H, f["src"], f["pos"]))
+    out.append('<div class="veil"></div>')
+
+    if s.get("era") is not None:
+        at = s.get("eraAt")
+        style = (' style="left:%.1fpx;top:%.1fpx;right:auto;bottom:auto"'
+                 % (at["x"] * W / 100.0, at["y"] * H / 100.0)) if at else ""
+        out.append('<span class="era"%s>%s</span>' % (style, esc(s["era"])))
+
+    style = ""
+    if moved:
+        style = ' style="left:%.1fpx;top:%.1fpx;width:%.1fpx;right:auto;bottom:auto"' % (
+            moved["x"] * W / 100.0, moved["y"] * H / 100.0, moved["w"] * W / 100.0)
+    parts = ""
+    if s.get("h"):
+        parts += '<p class="h">%s</p>' % esc(s["h"])
+    if s.get("sub"):
+        parts += '<p class="sub y">%s</p>' % esc(s["sub"])
+    out.append('<div class="copy"%s>%s</div>' % (style, parts))
+
+    if s.get("meta"):
+        out.append('<div class="meta"><span>%s</span><span style="font-weight:700;color:#fff">%s</span></div>'
+                   % (esc(s["meta"]["left"]), esc(s["meta"]["right"])))
+    out.append("</section>")
+    return "\n".join(out)
+
+
+def main():
+    src = sys.argv[1] if len(sys.argv) > 1 else "carousel.json"
+    dst = sys.argv[2] if len(sys.argv) > 2 else "source-slides.html"
+    shape = sys.argv[3] if len(sys.argv) > 3 else "square"
+    W, H = SHAPES[shape]
+    k = H / 1080.0                      # the vertical rhythm, scaled to the frame
+    dims = {"W": W, "H": H,
+            "veil": round(430 * k), "era": round(52 * k),
+            "copy": round(96 * k), "meta": round(40 * k),
+            "floor": "%.2f" % (100 - 430.0 / H * 100)}
+    data = json.load(open(src))
+    body = "\n\n".join(slide_html(i, s, W, H) for i, s in enumerate(data["slides"], 1))
+    open(dst, "w").write(HEAD.format(**dims) + "\n" + body + "\n\n" + TAIL.format(**dims))
+    print("%s: %d slides at %dx%d (%s)" % (dst, len(data["slides"]), W, H, shape))
+
+
+if __name__ == "__main__":
+    main()

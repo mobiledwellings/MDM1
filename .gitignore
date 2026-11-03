@@ -40,3 +40,9 @@ supabase/.temp/
 
 # Photo originals for stories — the web-sized copies live in public/blog/
 blog photos/
+
+# Oblio carousel renders — rebuilt from the slides file by
+# social/youtube/chuck-cassady-oblio/render.py, so only the pipeline is tracked
+social/youtube/chuck-cassady-oblio/[0-9][0-9]-*.png
+social/youtube/chuck-cassady-oblio/ig/[0-9][0-9]-*.png
+social/youtube/chuck-cassady-oblio/ig/img
