@@ -133,7 +133,7 @@ export const SALE_CALENDAR = [
   {
     when: "November",
     event: "Black Friday",
-    note: "Usually the biggest event of the year. If your build can wait, this is the one to wait for.",
+    note: "Usually the biggest event of the year, running from the week before Black Friday through Cyber Monday. If your build can wait, this is the one to wait for.",
     strong: true,
   },
   {
@@ -224,6 +224,10 @@ export const FAQ_ITEMS = [
   {
     question: "Can I use this code with a sale or another discount?",
     answer: `Yes. ${COUPON_CODE} applies at checkout on top of live sale pricing in most cases, so a sale item plus the code stacks. It doesn't combine with another discount code, since Signature Solar's checkout accepts one code per order, but that's okay because all codes give $50 off anyway as far as I know.`,
+  },
+  {
+    question: `Does ${COUPON_CODE} work on Signature Solar's Black Friday sale?`,
+    answer: `Yes. ${COUPON_CODE} stacks on top of Black Friday sale prices for another $50 off. Signature Solar's Black Friday sale usually runs from the week before Black Friday through Cyber Monday. Our Signature Solar Black Friday page has this year's dates and how to stack the code.`,
   },
   {
     question: "Is Signature Solar legit?",

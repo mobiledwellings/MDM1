@@ -64,6 +64,23 @@ export const BLACK_FRIDAY = {
   updated: "2026-11-11",
 };
 
+/**
+ * True from now through Cyber Monday. Gates the dated Black Friday note on the
+ * coupon page, so it drops off on the first build after the sale ends (the
+ * monthly re-verify push rebuilds the site) instead of going stale.
+ */
+export function bfIsUpcoming(todayIso = new Date().toISOString().slice(0, 10)) {
+  return todayIso <= BLACK_FRIDAY.cyberMondayIso;
+}
+
+/** The dated note shown on /signature-solar-coupon while Black Friday is upcoming. */
+export function bfCouponPageNote() {
+  const when = BLACK_FRIDAY.saleAnnounced && BLACK_FRIDAY.saleWindow
+    ? `Signature Solar's sale runs ${BLACK_FRIDAY.saleWindow}.`
+    : `Signature Solar's sale is expected to run ${bfExpectedWindow()}.`;
+  return `${when} ${COUPON_CODE} stacks on top of Black Friday sale prices for another $50 off.`;
+}
+
 export function bfHeadline() {
   return `Signature Solar Black Friday ${BLACK_FRIDAY.year}: Stack ${COUPON_CODE} on Top of Sale Prices`;
 }

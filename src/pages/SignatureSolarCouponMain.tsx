@@ -25,6 +25,12 @@ import {
   PURCHASE,
   SALE_CALENDAR,
 } from "../data/signature-solar-content.mjs";
+import {
+  BF_PATH,
+  BLACK_FRIDAY,
+  bfIsUpcoming,
+  bfCouponPageNote,
+} from "../data/black-friday-content.mjs";
 
 // The dates live in src/data/coupon-verification.ts so this page and the coupon
 // card on /deals can never disagree. Re-stamp both with `npm run verify-coupon`
@@ -98,6 +104,17 @@ const FAQ_ANSWER_NODES: Record<string, React.ReactNode> = {
       solar panels, and complete off-grid kits, and it also stacks with other discounts like
       free shipping. Signature Solar's $50 codes, {COUPON_CODE} included, apply to orders of
       $500 or more.
+    </>
+  ),
+  [`Does ${COUPON_CODE} work on Signature Solar's Black Friday sale?`]: (
+    <>
+      Yes. {COUPON_CODE} stacks on top of Black Friday sale prices for another $50 off.
+      Signature Solar's Black Friday sale usually runs from the week before Black Friday
+      through Cyber Monday. Our{" "}
+      <a href={BF_PATH} style={{ textDecoration: "underline", color: "inherit" }}>
+        Signature Solar Black Friday page
+      </a>{" "}
+      has this year's dates and how to stack the code.
     </>
   ),
 };
@@ -725,6 +742,27 @@ export function SignatureSolarCouponMain() {
             If your build isn't urgent, timing it around a sale is the biggest lever you have.
             These are the windows we watch.
           </p>
+          {/* Dated Black Friday note. Shown through Cyber Monday only; see bfIsUpcoming(). */}
+          {bfIsUpcoming() && (
+            <p
+              style={{
+                color: c.textBody,
+                fontSize: "0.9375rem",
+                lineHeight: 1.7,
+                border: `1px solid ${c.border}`,
+                borderRadius: "0.5rem",
+                padding: "0.875rem 1rem",
+                marginTop: 0,
+                marginBottom: "1.5rem",
+              }}
+            >
+              <strong style={{ color: c.text }}>Black Friday {BLACK_FRIDAY.year}:</strong>{" "}
+              {bfCouponPageNote()}{" "}
+              <a href={BF_PATH} style={{ color: c.text, textDecoration: "underline" }}>
+                How to stack it
+              </a>
+            </p>
+          )}
           <table
             style={{
               width: "100%",
@@ -764,6 +802,14 @@ export function SignatureSolarCouponMain() {
                   </td>
                   <td style={{ padding: "0.5rem 0.75rem", color: c.textBody, lineHeight: 1.6, borderBottom: `1px solid ${c.border}` }}>
                     {row.note}
+                    {row.event === "Black Friday" && (
+                      <>
+                        {" "}
+                        <a href={BF_PATH} style={{ color: c.text, textDecoration: "underline" }}>
+                          Black Friday guide
+                        </a>
+                      </>
+                    )}
                   </td>
                 </tr>
               ))}

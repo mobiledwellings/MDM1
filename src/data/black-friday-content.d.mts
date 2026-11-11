@@ -23,6 +23,8 @@ export const BLACK_FRIDAY: {
   updated: string;
 };
 
+export function bfIsUpcoming(todayIso?: string): boolean;
+export function bfCouponPageNote(): string;
 export function bfHeadline(): string;
 export function bfAnswer(): string;
 export function bfExpectedWindow(): string;
