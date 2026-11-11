@@ -42,6 +42,14 @@ export const BLACK_FRIDAY = {
   blackFriday: "November 27, 2026",
   blackFridayIso: "2026-11-27",
   cyberMonday: "November 30, 2026",
+  cyberMondayIso: "2026-11-30",
+  /**
+   * Our expectation until Signature Solar announces: early deals the Friday a
+   * week before Black Friday, running through Cyber Monday. Shown as
+   * "expected", never as announced. Replaced by `saleWindow` once announced.
+   */
+  expectedStart: "November 20",
+  expectedStartIso: "2026-11-20",
   /** Set true and fill `saleWindow` once Signature Solar announces dates. */
   saleAnnounced: false,
   /** e.g. "November 20 – December 1, 2026" — only from Signature Solar. */
@@ -65,7 +73,19 @@ export function bfHeadline() {
  * is, the one fact competitors get wrong (the code stacks), and the date.
  */
 export function bfAnswer() {
-  return `Signature Solar's Black Friday sale cuts prices on the gear itself, and ${COUPON_CODE} takes another $50 off on top — the code stacks with sale pricing. Black Friday is ${BLACK_FRIDAY.blackFriday}.`;
+  return `Signature Solar's Black Friday sale cuts prices on the gear itself, and ${COUPON_CODE} takes another $50 off on top — the code stacks with sale pricing. ${bfWhen()}`;
+}
+
+/** Expected window in prose: "November 20 through Cyber Monday, November 30, 2026". */
+export function bfExpectedWindow() {
+  return `${BLACK_FRIDAY.expectedStart} through Cyber Monday, ${BLACK_FRIDAY.cyberMonday}`;
+}
+
+/** One sentence on timing — the announced window if we have it, else the expected one. */
+export function bfWhen() {
+  return BLACK_FRIDAY.saleAnnounced && BLACK_FRIDAY.saleWindow
+    ? `The ${BLACK_FRIDAY.year} sale runs ${BLACK_FRIDAY.saleWindow}.`
+    : `Expect early deals the week before Black Friday, running ${bfExpectedWindow()}.`;
 }
 
 /** Under ~155 characters so Google doesn't truncate it. */
@@ -76,7 +96,7 @@ export function bfDescription() {
 export function bfSaleStatus() {
   return BLACK_FRIDAY.saleAnnounced && BLACK_FRIDAY.saleWindow
     ? `Signature Solar's ${BLACK_FRIDAY.year} Black Friday sale runs ${BLACK_FRIDAY.saleWindow}.`
-    : `Signature Solar hasn't announced its ${BLACK_FRIDAY.year} Black Friday sale dates or deals yet. We'll list them here as soon as they're live, and re-test ${COUPON_CODE} on actual sale items when they are.`;
+    : `Signature Solar hasn't announced its ${BLACK_FRIDAY.year} Black Friday dates or deals yet. We expect the sale to start the week before Black Friday and run ${bfExpectedWindow()}. We'll confirm the dates, list the deals here as soon as they're live, and re-test ${COUPON_CODE} on actual sale items.`;
 }
 
 export const BF_STEPS = [
@@ -110,7 +130,9 @@ export function bfFaq({ lastVerified }) {
     },
     {
       question: "When is Signature Solar's Black Friday sale?",
-      answer: `Black Friday is ${BLACK_FRIDAY.blackFriday} and Cyber Monday is ${BLACK_FRIDAY.cyberMonday}. ${bfSaleStatus()}`,
+      answer: BLACK_FRIDAY.saleAnnounced && BLACK_FRIDAY.saleWindow
+        ? bfSaleStatus()
+        : `Signature Solar hasn't announced ${BLACK_FRIDAY.year} dates yet. We expect early deals the week before Black Friday, running ${bfExpectedWindow()}. Black Friday itself is ${BLACK_FRIDAY.blackFriday}.`,
     },
     {
       question: `Is there a minimum order for ${COUPON_CODE}?`,

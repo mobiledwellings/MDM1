@@ -117,7 +117,15 @@ export function BlackFridayMain() {
               margin: "0 0 0.625rem",
             }}
           >
-            Black Friday {BLACK_FRIDAY.year} · <time dateTime={BLACK_FRIDAY.blackFridayIso}>{BLACK_FRIDAY.blackFriday}</time>
+            {BLACK_FRIDAY.saleAnnounced && BLACK_FRIDAY.saleWindow ? (
+              <>Black Friday {BLACK_FRIDAY.year} · {BLACK_FRIDAY.saleWindow}</>
+            ) : (
+              <>
+                Black Friday {BLACK_FRIDAY.year} · Expected{" "}
+                <time dateTime={BLACK_FRIDAY.expectedStartIso}>{BLACK_FRIDAY.expectedStart}</time> –{" "}
+                <time dateTime={BLACK_FRIDAY.cyberMondayIso}>{BLACK_FRIDAY.cyberMonday}</time>
+              </>
+            )}
           </p>
           <h1
             style={{

@@ -13,6 +13,9 @@ export const BLACK_FRIDAY: {
   blackFriday: string;
   blackFridayIso: string;
   cyberMonday: string;
+  cyberMondayIso: string;
+  expectedStart: string;
+  expectedStartIso: string;
   saleAnnounced: boolean;
   saleWindow: string | null;
   deals: BlackFridayDeal[];
@@ -22,6 +25,8 @@ export const BLACK_FRIDAY: {
 
 export function bfHeadline(): string;
 export function bfAnswer(): string;
+export function bfExpectedWindow(): string;
+export function bfWhen(): string;
 export function bfDescription(): string;
 export function bfSaleStatus(): string;
 
