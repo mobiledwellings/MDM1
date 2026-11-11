@@ -110,6 +110,16 @@ const pages = [
     </script>`,
   },
   {
+    // Title, description, noscript, body and schema are all set in main() from
+    // src/data/black-friday-content.mjs, so the year and code stay current.
+    route: '/signature-solar-black-friday',
+    image: 'https://mobiledwellings.media/og-signature-solar.png',
+    title: '',
+    description: '',
+    keywords: 'signature solar black friday, signature solar black friday sale, signature solar cyber monday, EG4 black friday, signature solar coupon code, {{COUPON_CODE}}',
+    noscript: '',
+  },
+  {
     route: '/signature-solar-coupon',
     image: 'https://mobiledwellings.media/og-signature-solar.png',
     title: 'Signature Solar Coupon Code 2026 – {{COUPON_CODE}} Gets $50 Off | Mobile Dwellings',
@@ -480,6 +490,23 @@ async function main() {
   const ssr = await import('../.ssr-build/entry-ssr.mjs');
   couponPage.bodyHtml = ssr.renderSignatureSolarMain();
   console.log(`   🧩 Rendered coupon page content: ${couponPage.bodyHtml.length.toLocaleString()} bytes`);
+
+  // /signature-solar-black-friday — its own page so it can target "signature
+  // solar black friday" without competing with the coupon page.
+  const bf = await import('../src/data/black-friday-content.mjs');
+  const bfPage = pages.find((p) => p.route === bf.BF_PATH);
+  if (!bfPage) {
+    throw new Error('No ' + bf.BF_PATH + ' entry in pages[] — cannot bake it.');
+  }
+  bfPage.title =
+    `Signature Solar Black Friday ${bf.BLACK_FRIDAY.year} – ${bf.COUPON_CODE} Stacks on Sale Prices | Mobile Dwellings`;
+  bfPage.description = bf.bfDescription();
+  bfPage.noscript = bf.bfAnswer();
+  bfPage.extraStructuredData = schemaScript(
+    bf.buildBlackFridaySchema({ lastVerified: verification.lastVerified })
+  );
+  bfPage.bodyHtml = ssr.renderBlackFridayMain();
+  console.log(`   🧩 Rendered Black Friday page:    ${bfPage.bodyHtml.length.toLocaleString()} bytes`);
 
   // /deals is the site's highest-impression page for "signature solar coupon
   // code" (941 impressions, position 7.2) and served nothing but an empty shell

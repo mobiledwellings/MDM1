@@ -274,6 +274,14 @@ export function DealsCouponHero() {
                   {COUPON_OFFERS.map((offer) => (
                     <CouponCard key={offer.code} offer={offer} />
                   ))}
+                  <p className="text-center text-sm mt-4">
+                    <a
+                      href="/signature-solar-black-friday"
+                      className="underline text-neutral-700 dark:text-neutral-300"
+                    >
+                      Black Friday: {COUPON_CODE} stacks on top of sale prices →
+                    </a>
+                  </p>
                 </div>
 
                 {/* At-a-glance spec block, mirroring the one on
