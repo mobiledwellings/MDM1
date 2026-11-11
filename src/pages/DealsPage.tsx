@@ -374,7 +374,7 @@ export function DealsPage() {
     <>
       <SEO
         title={`Signature Solar Coupon Code ${COUPON_CODE} – Best Gear for Skoolies & Overland Rigs`}
-        description={`Exclusive Signature Solar coupon code: ${COUPON_CODE}. Save on EG4 inverters, lithium batteries, solar panels, and more. Best gear for skoolies, bus conversions, and overland rigs — tested in real builds.`}
+        description={`Exclusive Signature Solar coupon code: ${COUPON_CODE}. Save on EG4 inverters, lithium batteries, solar panels, and more. Best gear for skoolies, bus conversions, and overland rigs, tested in real builds.`}
         keywords="Signature Solar coupon code, Signature Solar discount code, Signature Solar promo code, EG4 coupon code, Signature Solar deals, best inverter for skoolie, best lithium battery for bus conversion, skoolie solar panels, best mini split for skoolie, overland rig solar setup, bus conversion electrical, skoolie gear, off-grid solar kit, best charge controller for skoolie, overland rig battery, EG4 inverter coupon, Signature Solar skoolie"
         url="https://mobiledwellings.media/deals"
       />

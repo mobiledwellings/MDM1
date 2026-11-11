@@ -1374,7 +1374,7 @@ export function buildStoriesIndexSchema() {
     "@type": "CollectionPage",
     name: "Stories",
     description:
-      "Long-form tours of converted school buses, vans and overland rigs — the builds, the costs, and the people living in them.",
+      "Long-form tours of converted school buses, vans and overland rigs: the builds, the costs, and the people living in them.",
     url: `${SITE_URL}/stories`,
     hasPart: STORIES.map((s) => ({
       "@type": "Article",

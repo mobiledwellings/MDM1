@@ -242,10 +242,14 @@ export function BlackFridayMain() {
       <section style={{ ...section, backgroundColor: c.altBg }}>
         <div style={wrap}>
           <h2 style={h2}>How to Stack {COUPON_CODE} With Black Friday Pricing</h2>
-          <ol style={{ margin: 0, paddingLeft: "1.25rem" }}>
-            {BF_STEPS.map((s) => (
-              <li key={s.title} style={{ ...p, marginBottom: "0.875rem" }}>
-                <strong style={{ color: c.text }}>{s.title}.</strong> {s.body}
+          {/* Same flush-left heading + paragraph rhythm as the FAQ below. */}
+          <ol style={{ listStyle: "none", margin: 0, padding: 0 }}>
+            {BF_STEPS.map((s, i) => (
+              <li key={s.title} style={{ marginBottom: "1.5rem" }}>
+                <h3 style={{ ...HEADING_RESET, fontSize: "1rem", fontWeight: 700, color: c.text, margin: "0 0 0.375rem" }}>
+                  {i + 1}. {s.title}
+                </h3>
+                <p style={{ ...p, marginBottom: 0 }}>{s.body}</p>
               </li>
             ))}
           </ol>

@@ -345,7 +345,7 @@ export function GearShop() {
             The Mobile Dwellings Gear Shop
           </h2>
           <p className="text-center text-neutral-600 dark:text-neutral-400 max-w-2xl mx-auto mb-4">
-            Inverters, batteries, solar, and more — tested in real skoolie and overland builds.
+            Inverters, batteries, solar, and more, tested in real skoolie and overland builds.
           </p>
           <p className="text-center text-sm text-neutral-500 dark:text-neutral-500 max-w-2xl mx-auto mb-4">
             Affiliate links support the channel at no extra cost to you. Updated regularly with new deals.

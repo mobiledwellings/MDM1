@@ -164,8 +164,8 @@ export function PartnersPage() {
   return (
     <>
       <SEO
-        title="Our Partners — Brands We Trust"
-        description="The brands Mobile Dwellings partners with for skoolie, van, and overland builds — Signature Solar, onX Offroad, and WattCycle. Each offers an exclusive discount."
+        title="Our Partners: Brands We Trust"
+        description="The brands Mobile Dwellings partners with for skoolie, van, and overland builds: Signature Solar, onX Offroad, and WattCycle. Each offers an exclusive discount."
         keywords="mobile dwellings partners, skoolie gear, van life brands, overland gear, signature solar, onx offroad, wattcycle, skoolie discount codes, off grid gear deals"
         url={`${SITE}/partners`}
         type="website"

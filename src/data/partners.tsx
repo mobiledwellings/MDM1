@@ -183,7 +183,7 @@ const onxOffroad: Partner = {
   coupon: {
     code: "JUICEBOX",
     discount: "20%",
-    terms: "20% off any onX Offroad membership — Premium or Elite.",
+    terms: "20% off any onX Offroad membership, Premium or Elite.",
     surveyNote:
       "One favor: when onX's checkout survey asks how you heard about them, please mention Mobile Dwellings so we get the credit.",
     lastVerified: "June 1, 2026",
@@ -237,12 +237,12 @@ const onxOffroad: Partner = {
     {
       question: "Is there an onX Offroad coupon code?",
       answer:
-        "Yes — use code JUICEBOX at checkout for 20% off an onX Offroad membership. When the checkout survey asks how you heard about onX, please reference Mobile Dwellings so we get the credit. We update this page whenever the offer changes.",
+        "Yes. Use code JUICEBOX at checkout for 20% off an onX Offroad membership. When the checkout survey asks how you heard about onX, please reference Mobile Dwellings so we get the credit. We update this page whenever the offer changes.",
     },
     {
       question: "What's the difference between onX Offroad Premium and Elite?",
       answer:
-        "Premium covers trail maps, difficulty ratings, offline maps, route planning, and dispersed camping — everything most boondockers need. Elite adds private property boundaries, landowner info, and partner discounts. Your JUICEBOX code takes 20% off either tier; check onX for current pricing.",
+        "Premium covers trail maps, difficulty ratings, offline maps, route planning, and dispersed camping: everything most boondockers need. Elite adds private property boundaries, landowner info, and partner discounts. Your JUICEBOX code takes 20% off either tier; check onX for current pricing.",
     },
     {
       question: "Is onX Offroad worth it for Bus Conversions and Skoolies?",
@@ -309,7 +309,7 @@ const wattCycle: Partner = {
       ctaLabel: "See the 314Ah Mini →",
     },
     {
-      title: "48V Server Rack — The Budget EG4 Alternative",
+      title: "48V Server Rack: The Budget EG4 Alternative",
       // PRICES ARE LIVE FIGURES — re-check both when you re-verify the coupon.
       // EG4 LifePower4 V2 48V 100Ah at Signature Solar and WattCycle's 48V
       // 100Ah were checked August 2026. WattCycle's was a promo price
@@ -318,7 +318,7 @@ const wattCycle: Partner = {
         "Same 5.12 kWh server rack format as the EG4 LifePower4 batteries for a lot less money. The EG4 V2 runs $1,470.99 at Signature Solar and WattCycle's is $899.99 but the EG4 carries a UL rating and has proven to be durable. This is a budget vs value decision that could make sense for you.",
       image: "/wattcycle-48v-100ah-server-rack.webp",
       imageAlt:
-        "WattCycle 51.2V 100Ah 5120Wh server rack LiFePO4 battery with a 100A BMS, LCD touchscreen, and Bluetooth — a budget alternative to the EG4 LifePower4.",
+        "WattCycle 51.2V 100Ah 5120Wh server rack LiFePO4 battery with a 100A BMS, LCD touchscreen, and Bluetooth, a budget alternative to the EG4 LifePower4.",
       ctaLabel: "See the 48V server rack →",
     },
     {
@@ -352,7 +352,7 @@ const wattCycle: Partner = {
     title:
       "WattCycle Coupon Code DWELLINGS – 8% Off LiFePO4 Batteries",
     description:
-      "Use code DWELLINGS for 8% off WattCycle LiFePO4 batteries at wattcycle.com. Budget 12V, 24V, and 48V packs for skoolie, van, and RV builds — tested and verified by Mobile Dwellings.",
+      "Use code DWELLINGS for 8% off WattCycle LiFePO4 batteries at wattcycle.com. Budget 12V, 24V, and 48V packs for skoolie, van, and RV builds, tested and verified by Mobile Dwellings.",
     keywords:
       "wattcycle, wattcycle coupon code, wattcycle discount code, DWELLINGS, wattcycle promo code, wattcycle review, lifepo4 battery for skoolie, budget lithium battery van, cheap lifepo4 battery, 12v 314ah lifepo4, wattcycle 48v server rack, wattcycle vs eg4, best budget skoolie battery",
     ogImage: `${SITE}/wattcycle-12v-314ah-battery.jpg`,

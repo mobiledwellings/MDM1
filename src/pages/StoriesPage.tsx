@@ -11,7 +11,7 @@ export function StoriesPage() {
     <div className="story-page">
       <SEO
         title="Stories | Skoolie and Van Conversion Tours"
-        description="Long-form tours of converted school buses, vans and overland rigs — how they were built, what they cost, and what their owners would do differently."
+        description="Long-form tours of converted school buses, vans and overland rigs: how they were built, what they cost, and what their owners would do differently."
         keywords="skoolie tour, bus conversion tour, school bus conversion story, van conversion tour, skoolie build cost, mobile dwellings stories"
         url="https://mobiledwellings.media/stories"
       />

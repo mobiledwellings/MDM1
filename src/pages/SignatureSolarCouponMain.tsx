@@ -366,7 +366,7 @@ export function SignatureSolarCouponMain() {
           >
             Signature Solar Coupon Code {verifiedMonthLabel(LAST_VERIFIED_DATE)}:{" "}
             <span style={{ whiteSpace: "nowrap" }}>{COUPON_CODE}</span>{" "}
-            <span style={{ color: HERO.textSecondary }}>— $50 Off</span>
+            <span style={{ color: HERO.textSecondary }}>for $50 Off</span>
           </h1>
 
           {/* Direct-answer sentence, written to be quotable verbatim by an AI
@@ -778,7 +778,7 @@ export function SignatureSolarCouponMain() {
               marginBottom: 0,
             }}
           >
-            During an event, the price cut on the gear itself usually beats a flat $50 — so if
+            During an event, the price cut on the gear itself usually beats a flat $50, so if
             you can wait, wait. {COUPON_CODE} stacks on top of sale pricing, so the best case
             is buying during a sale and entering the code as well.
           </p>
@@ -1219,7 +1219,7 @@ export function SignatureSolarCouponMain() {
           }}
         >
           Mobile Dwellings is a Signature Solar affiliate. Using code {COUPON_CODE} or the links
-          on this page kicks a commission back to us at no extra cost to you — it's how we keep
+          on this page kicks a commission back to us at no extra cost to you. It's how we keep
           filming builds!
         </p>
       </section>

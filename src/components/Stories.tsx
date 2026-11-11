@@ -14,7 +14,7 @@ export function Stories() {
     <section className="stories">
       <h1 className="stories-title" style={HEAD_FONT}>Stories</h1>
       <p className="stories-intro">
-        Long-form tours of the rigs and the people living in them — what they built, what it
+        Long-form tours of the rigs and the people living in them: what they built, what it
         cost, and what they'd do differently.
       </p>
 

@@ -73,7 +73,7 @@ export function bfHeadline() {
  * is, the one fact competitors get wrong (the code stacks), and the date.
  */
 export function bfAnswer() {
-  return `Signature Solar's Black Friday sale cuts prices on the gear itself, and ${COUPON_CODE} takes another $50 off on top — the code stacks with sale pricing. ${bfWhen()}`;
+  return `Signature Solar's Black Friday sale cuts prices on the gear itself, and ${COUPON_CODE} takes another $50 off on top. The code stacks with sale pricing. ${bfWhen()}`;
 }
 
 /** Expected window in prose: "November 20 through Cyber Monday, November 30, 2026". */
@@ -140,7 +140,7 @@ export function bfFaq({ lastVerified }) {
     },
     {
       question: "Is Black Friday the best time to buy from Signature Solar?",
-      answer: `It's usually Signature Solar's biggest sale event of the year. If your build can wait, it's the one to wait for — and ${COUPON_CODE} adds another $50 on top of the sale price.`,
+      answer: `It's usually Signature Solar's biggest sale event of the year. If your build can wait, it's the one to wait for, and ${COUPON_CODE} adds another $50 on top of the sale price.`,
     },
   ];
 }

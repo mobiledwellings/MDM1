@@ -65,7 +65,7 @@ const pages = [
     title: 'Skoolies For Sale | Converted Buses, Vans & Tiny Homes | Mobile Dwellings',
     description: 'Browse skoolies, converted school buses, camper vans, and tiny homes for sale. Find your perfect mobile dwelling from verified sellers. New listings added weekly.',
     keywords: 'skoolies for sale, school bus conversion for sale, converted bus for sale, skoolie marketplace, buy skoolie, camper van for sale, van conversion for sale, tiny home on wheels, mobile home for sale, RV for sale, bus conversion, skoolie bus, finished skoolie for sale',
-    noscript: 'Browse converted school buses, skoolies, camper vans, overland rigs, and tiny homes for sale on Mobile Dwellings — the skoolie marketplace.',
+    noscript: 'Browse converted school buses, skoolies, camper vans, overland rigs, and tiny homes for sale on Mobile Dwellings, the skoolie marketplace.',
   },
   {
     route: '/sell-your-rig',
@@ -82,7 +82,7 @@ const pages = [
     // string still carried the category enumeration replaced everywhere else.
     description: '',
     keywords: 'Signature Solar coupon code, Signature Solar discount code, Signature Solar promo code, EG4 coupon code, Signature Solar deals, best inverter for skoolie, best lithium battery for bus conversion, skoolie solar panels, best mini split for skoolie, overland rig solar setup',
-    noscript: 'Signature Solar coupon code {{COUPON_CODE}} — save on EG4 inverters, lithium batteries, solar panels, and more. Tested gear for skoolies, bus conversions, and overland rigs.',
+    noscript: 'Signature Solar coupon code {{COUPON_CODE}}. Save on EG4 inverters, lithium batteries, solar panels, and more. Tested gear for skoolies, bus conversions, and overland rigs.',
     // FAQPage schema and the coupon block are both baked in below, from
     // src/data/deals-content.mjs and the SSR bundle. The runtime
     // dangerouslySetInnerHTML injection that used to live in DealsPage.tsx was
@@ -94,7 +94,7 @@ const pages = [
     title: 'Skoolie Support | Bus Conversion Help & Build Consulting | Mobile Dwellings',
     description: 'Need help with your skoolie build? Get one-on-one consulting from professional and amateur bus conversion builders. Expert advice on electrical, plumbing, layout planning, and mechanical issues.',
     keywords: 'skoolie help, bus conversion help, skoolie builder, school bus conversion advice, skoolie electrical, skoolie plumbing, skoolie layout, bus conversion consulting, DIY skoolie, skoolie build guide',
-    noscript: 'Skoolie Support — get one-on-one consulting from professional bus conversion builders. Expert advice on electrical, plumbing, layout, and mechanical issues for your skoolie build.',
+    noscript: 'Skoolie Support: get one-on-one consulting from professional bus conversion builders. Expert advice on electrical, plumbing, layout, and mechanical issues for your skoolie build.',
     extraStructuredData: `
     <script type="application/ld+json">
     {
@@ -125,7 +125,7 @@ const pages = [
     title: 'Signature Solar Coupon Code 2026 – {{COUPON_CODE}} Gets $50 Off | Mobile Dwellings',
     description: 'The current Signature Solar coupon code is {{COUPON_CODE}}. It takes $50 off at signaturesolar.com and works on its own at checkout. Verified every few days by Justin Smith of Mobile Dwellings, who runs EG4 gear in a 40-foot skoolie.',
     keywords: 'signature solar coupon code, signature solar coupon code 2026, signature solar discount code, {{COUPON_CODE}}, signature solar promo code, EG4 coupon code, signature solar off grid discount, skoolie solar discount, van life solar coupon, mobile dwellings coupon, EG4 battery discount, signature solar deals',
-    noscript: 'Mobile Dwellings exclusive Signature Solar coupon code {{COUPON_CODE}} — $50 off at signaturesolar.com. Checked every few days. Works on EG4 batteries, inverters, solar panels, and more.',
+    noscript: 'Mobile Dwellings exclusive Signature Solar coupon code {{COUPON_CODE}}: $50 off at signaturesolar.com. Checked every few days. Works on EG4 batteries, inverters, solar panels, and more.',
     // The full schema graph (WebPage, Person, Organization, Offer, FAQPage,
     // VideoObject(s), ImageObject(s)) is injected at runtime by
     // SignatureSolarCouponPage.tsx via react-helmet-async. Don't duplicate
@@ -135,23 +135,23 @@ const pages = [
   {
     route: '/stories',
     title: 'Stories | Skoolie and Van Conversion Tours | Mobile Dwellings',
-    description: 'Long-form tours of converted school buses, vans and overland rigs — how they were built, what they cost, and what their owners would do differently.',
+    description: 'Long-form tours of converted school buses, vans and overland rigs: how they were built, what they cost, and what their owners would do differently.',
     keywords: 'skoolie tour, bus conversion tour, school bus conversion story, van conversion tour, skoolie build cost, mobile dwellings stories',
-    noscript: 'Long-form tours of converted school buses, vans and overland rigs on Mobile Dwellings — the builds, the costs, and the people living in them.',
+    noscript: 'Long-form tours of converted school buses, vans and overland rigs on Mobile Dwellings: the builds, the costs, and the people living in them.',
   },
   {
     route: '/partners',
-    title: 'Our Partners — Brands We Trust | Mobile Dwellings',
-    description: 'The brands Mobile Dwellings partners with for skoolie, van, and overland builds — Signature Solar, onX Offroad, and WattCycle. Each offers an exclusive discount.',
+    title: 'Our Partners: Brands We Trust | Mobile Dwellings',
+    description: 'The brands Mobile Dwellings partners with for skoolie, van, and overland builds: Signature Solar, onX Offroad, and WattCycle. Each offers an exclusive discount.',
     keywords: 'mobile dwellings partners, skoolie gear, van life brands, overland gear, signature solar, onx offroad, wattcycle, skoolie discount codes, off grid gear deals',
-    noscript: 'Mobile Dwellings partners — the brands we trust for skoolie, van, and overland builds, each with an exclusive discount code.',
+    noscript: 'Mobile Dwellings partners: the brands we trust for skoolie, van, and overland builds, each with an exclusive discount code.',
   },
   {
     route: '/partners/onx-offroad',
     title: 'onX Offroad Discount Code JUICEBOX – 20% Off | Mobile Dwellings',
     description: 'Save 20% on onX Offroad with code JUICEBOX. The GPS trail and route-planning app we use for off-road navigation, dispersed camping, and offline maps.',
     keywords: 'onx offroad, onx offroad discount, onx offroad coupon code, offline trail maps, overland gps app, route planning app, boondocking app, public land map, dispersed camping app, van life navigation, onx offroad review',
-    noscript: 'onX Offroad — trail maps, route planning, and offline GPS for overlanding and boondocking, with public land and dispersed-camping layers. A Mobile Dwellings partner with an exclusive discount.',
+    noscript: 'onX Offroad: trail maps, route planning, and offline GPS for overlanding and boondocking, with public land and dispersed-camping layers. A Mobile Dwellings partner with an exclusive discount.',
     image: 'https://mobiledwellings.media/onx-mexican-hat-hero.jpg',
     // Full schema graph baked into the static HTML so non-JS crawlers (incl. AI
     // bots) and Google's first pass see it. The runtime react-helmet injection
@@ -183,8 +183,8 @@ const pages = [
         },
         {
           "@type": "Offer",
-          "name": "onX Offroad discount — code JUICEBOX",
-          "description": "20% off any onX Offroad membership — Premium or Elite.",
+          "name": "onX Offroad discount: code JUICEBOX",
+          "description": "20% off any onX Offroad membership, Premium or Elite.",
           "url": "https://www.onxmaps.com/purchase/offroad/membership?promo=juicebox&utm_source=or_ic_partnerships&utm_medium=ambassador&utm_campaign=mobiledwellings",
           "seller": { "@type": "Organization", "name": "onX Offroad" }
         },
@@ -195,12 +195,12 @@ const pages = [
             {
               "@type": "Question",
               "name": "Is there an onX Offroad coupon code?",
-              "acceptedAnswer": { "@type": "Answer", "text": "Yes — use code JUICEBOX at checkout for 20% off an onX Offroad membership. When the checkout survey asks how you heard about onX, please reference Mobile Dwellings so we get the credit. We update this page whenever the offer changes." }
+              "acceptedAnswer": { "@type": "Answer", "text": "Yes. Use code JUICEBOX at checkout for 20% off an onX Offroad membership. When the checkout survey asks how you heard about onX, please reference Mobile Dwellings so we get the credit. We update this page whenever the offer changes." }
             },
             {
               "@type": "Question",
               "name": "What's the difference between onX Offroad Premium and Elite?",
-              "acceptedAnswer": { "@type": "Answer", "text": "Premium covers trail maps, difficulty ratings, offline maps, route planning, and dispersed camping — everything most boondockers need. Elite adds private property boundaries, landowner info, and partner discounts. Your JUICEBOX code takes 20% off either tier; check onX for current pricing." }
+              "acceptedAnswer": { "@type": "Answer", "text": "Premium covers trail maps, difficulty ratings, offline maps, route planning, and dispersed camping: everything most boondockers need. Elite adds private property boundaries, landowner info, and partner discounts. Your JUICEBOX code takes 20% off either tier; check onX for current pricing." }
             },
             {
               "@type": "Question",
@@ -224,9 +224,9 @@ const pages = [
   {
     route: '/partners/wattcycle',
     title: 'WattCycle Coupon Code DWELLINGS – 8% Off LiFePO4 Batteries | Mobile Dwellings',
-    description: 'Use code DWELLINGS for 8% off WattCycle LiFePO4 batteries at wattcycle.com. Budget 12V, 24V, and 48V packs for skoolie, van, and RV builds — tested and verified by Mobile Dwellings.',
+    description: 'Use code DWELLINGS for 8% off WattCycle LiFePO4 batteries at wattcycle.com. Budget 12V, 24V, and 48V packs for skoolie, van, and RV builds, tested and verified by Mobile Dwellings.',
     keywords: 'wattcycle, wattcycle coupon code, wattcycle discount code, DWELLINGS, wattcycle promo code, wattcycle review, lifepo4 battery for skoolie, budget lithium battery van, cheap lifepo4 battery, 12v 314ah lifepo4, wattcycle 48v server rack, wattcycle vs eg4, best budget skoolie battery',
-    noscript: 'WattCycle coupon code DWELLINGS — 8% off LiFePO4 lithium batteries at wattcycle.com, no minimum order. Budget 12V, 24V, and 48V server rack batteries for skoolie, van, and RV builds.',
+    noscript: 'WattCycle coupon code DWELLINGS: 8% off LiFePO4 lithium batteries at wattcycle.com, no minimum order. Budget 12V, 24V, and 48V server rack batteries for skoolie, van, and RV builds.',
     image: 'https://mobiledwellings.media/wattcycle-12v-314ah-battery.jpg',
     // Full schema graph baked into the static HTML so non-JS crawlers (incl. AI
     // bots) and Google's first pass see it, matching the onX entry above.
@@ -257,7 +257,7 @@ const pages = [
         },
         {
           "@type": "Offer",
-          "name": "WattCycle discount — code DWELLINGS",
+          "name": "WattCycle discount: code DWELLINGS",
           "description": "8% off sitewide at wattcycle.com. No minimum order.",
           "url": "https://www.wattcycle.com/?ref=mobiledwellings",
           "availabilityStarts": "2026-11-01",
@@ -524,7 +524,7 @@ async function main() {
   dealsPage.extraStructuredData = schemaScript(dealsContent.buildDealsFaqSchema());
   dealsPage.bodyHtml = ssr.renderDealsCouponHero();
   dealsPage.description =
-    `Signature Solar coupon code ${content.COUPON_CODE} — $50 off sitewide, verified ` +
+    `Signature Solar coupon code ${content.COUPON_CODE}: $50 off sitewide, verified ` +
     `${verification.lastVerified}. Plus the gear we run in real skoolie and overland builds.`;
   dealsPage.noscript = dealsPage.description;
   console.log(`   🧩 Rendered deals coupon block:   ${dealsPage.bodyHtml.length.toLocaleString()} bytes`);

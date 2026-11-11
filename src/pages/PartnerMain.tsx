@@ -175,7 +175,7 @@ export function PartnerMain({ partner }: { partner: Partner }) {
             <>
               <img
                 src={p.heroImage}
-                alt={p.heroImageAlt ?? `${p.name} — Mobile Dwellings`}
+                alt={p.heroImageAlt ?? `${p.name}, a Mobile Dwellings partner`}
                 style={{
                   position: "absolute",
                   inset: 0,
@@ -317,7 +317,7 @@ export function PartnerMain({ partner }: { partner: Partner }) {
                 }}
               >
                 {hasPlaceholder
-                  ? "⚠︎ Affiliate link / code not yet set — replace the PLACEHOLDER values in src/data/partners.tsx."
+                  ? "⚠︎ Affiliate link / code not yet set. Replace the PLACEHOLDER values in src/data/partners.tsx."
                   : `Verified active on ${p.coupon!.lastVerified} by Justin`}
               </p>
             )}

@@ -76,7 +76,7 @@ export const FEATURED_VIDEO = {
   title:
     "Justin from Mobile Dwellings reviews EG4 Server Rack Batteries in the Gilligan Phantom 40-foot skoolie",
   description:
-    `Justin from Mobile Dwellings reviews his favorite lithium batteries and explains why the EG4 Server Rack Batteries (LiFePower4) consistently provided the best long-term value in his off-grid builds. He installed 3 of them in his 40-foot skoolie, Gilligan Phantom — the same gear sold by Signature Solar with code ${COUPON_CODE}.`,
+    `Justin from Mobile Dwellings reviews his favorite lithium batteries and explains why the EG4 Server Rack Batteries (LiFePower4) consistently provided the best long-term value in his off-grid builds. He installed 3 of them in his 40-foot skoolie, Gilligan Phantom. It's the same gear sold by Signature Solar with code ${COUPON_CODE}.`,
   caption:
     "Watch Justin from Mobile Dwellings review his favorite lithium batteries. The EG4 Server Rack Batteries consistently provided the best long term value and he installed 3 of them in his 40 foot Skoolie, Gilligan Phantom",
   uploadDate: "2025-07-04T12:00:00Z",
@@ -128,7 +128,7 @@ export const SALE_CALENDAR = [
   {
     when: "September",
     event: "Labor Day",
-    note: "Pre-fall inventory clearance — worth watching if you're finishing a build before winter.",
+    note: "Pre-fall inventory clearance, worth watching if you're finishing a build before winter.",
   },
   {
     when: "November",
@@ -146,7 +146,7 @@ export const SALE_CALENDAR = [
 export const BUILD_SHOTS = [
   {
     image: "/skoolie-eg4-electrical-bay.jpg",
-    alt: "The Beers Bus electrical bay — Brian and Amber's 40-foot skoolie — with four EG4 Server Rack Batteries (LiFePower4, 25.6V 200Ah, 5,120 Wh each) stacked along the driver-side wall and a wall of Victron components including SmartSolar MPPT charge controllers on the opposite side.",
+    alt: "The Beers Bus electrical bay (Brian and Amber's 40-foot skoolie) with four EG4 Server Rack Batteries (LiFePower4, 25.6V 200Ah, 5,120 Wh each) stacked along the driver-side wall and a wall of Victron components including SmartSolar MPPT charge controllers on the opposite side.",
     blurb:
       "Brian and Amber from The Beers Bus chose 4 EG4 Server Rack Batteries: 25.6V 200 Ah, 5,120 Wh each for a 20 kWh Lithium battery bank for their 40 foot Skoolie and wired them to a suite of Victron components to keep their rig fully charged in all off-grid conditions.",
     videoId: "M8ZhTeuLABk",
@@ -154,7 +154,7 @@ export const BUILD_SHOTS = [
     videoTitle:
       "Brian and Amber's 40-foot skoolie The Beers Bus: EG4 Server Rack Battery bank and Victron components tour",
     videoDescription:
-      `Mobile Dwellings tours The Beers Bus, Brian and Amber's 40-foot skoolie running 4 EG4 Server Rack Batteries (LiFePower4, 25.6V 200Ah, 5,120 Wh each) wired into a full Victron suite — MPPT charge controllers, Cerbo GX, Orion-Tr Smart DC-DC chargers — for a ~20 kWh off-grid build using gear from Signature Solar with code ${COUPON_CODE}.`,
+      `Mobile Dwellings tours The Beers Bus, Brian and Amber's 40-foot skoolie running 4 EG4 Server Rack Batteries (LiFePower4, 25.6V 200Ah, 5,120 Wh each) wired into a full Victron suite (MPPT charge controllers, Cerbo GX, Orion-Tr Smart DC-DC chargers) for a ~20 kWh off-grid build using gear from Signature Solar with code ${COUPON_CODE}.`,
     uploadDate: "2025-10-12T12:00:00Z",
     dealsHref: "/deals?filter=batteries",
     dealsCtaLabel: "Recommended Lithium Batteries in our gear shop →",
@@ -168,7 +168,7 @@ export const GEAR_ITEMS = [
       "EG4's hybrid inverters have become a great option in larger skoolies and full-time off-grid builds for running multiple mini-splits, induction cooking, electric water heaters, and other high electrical draws all at once in an affordable and reliable package. Helton and Erika chose one for their full size transit bus conversion called Capella Bus. Watch the full tour here or check out the All In One Inverter/Charger options in our gear shop.",
     image: "/eg4-12000xp-installed.jpg",
     imageAlt:
-      "EG4 12000XP All-in-One Hybrid Inverter installed in Helton and Erika's Capella Bus — a full-size transit bus conversion — wired into a skoolie-style electrical bay alongside Victron MPPT charge controllers and EG4 LiFePower4 batteries.",
+      "EG4 12000XP All-in-One Hybrid Inverter installed in Helton and Erika's Capella Bus, a full-size transit bus conversion, wired into a skoolie-style electrical bay alongside Victron MPPT charge controllers and EG4 LiFePower4 batteries.",
   },
   {
     title: "Solar Panels from Signature Solar (10 Pack Pallets)",
@@ -176,7 +176,7 @@ export const GEAR_ITEMS = [
       "If you're filling a bus or trailer roof, buying panels by the pallet is the cheapest per-watt route I've found. Signature Solar sells residential and commercial sized panels in pallets of 10 at industry-low pricing (I've checked in person distributors many times and Signature Solar pallets consistently sell for almost half price, at times as cheap as 23 cents per watt), plus the IronRidge racking, MC4 connectors, and PV wire to wire them up. The Capella Bus features 10 such panels, delivering around 5,500 watts of solar power laid edge-to-edge across a custom rooftop rack, giving them pretty much endless off-grid power for Air Conditioning, induction cooking, electric water heating, refrigeration, a washer and dryer, and a microwave.",
     image: "/solar-panels-skoolie-roof.jpg",
     imageAlt:
-      "Aerial top-down view of Helton and Erika's Capella Bus — a full-size transit bus conversion — with 10 monocrystalline solar panels (~5,500 watts total) arranged edge-to-edge across a custom IronRidge rooftop rack, parked at an off-grid gathering.",
+      "Aerial top-down view of Helton and Erika's Capella Bus, a full-size transit bus conversion, with 10 monocrystalline solar panels (~5,500 watts total) arranged edge-to-edge across a custom IronRidge rooftop rack, parked at an off-grid gathering.",
     dealsHref: "/deals?filter=solar-panels",
     dealsCtaLabel: "See current Solar Panel deals & pricing in our gear shop →",
   },
@@ -186,7 +186,7 @@ export const GEAR_ITEMS = [
       "Brad and Donna from Crown N Around went for the full Victron suite in their full size vintage Crown School Bus Conversion. Victron components include Cerbo GX system monitoring, Orion-Tr Smart isolated DC-DC chargers (for charging the lithium battery bank from the bus alternator while driving), SmartSolar MPPT charge controllers (150|85 VE.Can and the rest of the line), MultiPlus inverter/chargers, and the SmartShunt for system monitoring. Signature Solar stocks the standard Victron lineup at industry standard pricing. So you can buy your batteries, solar panels, solar racks, mini splits, and your Victron components in one efficient order.",
     image: "/victron-skoolie-install.jpg",
     imageAlt:
-      "Brad and Donna's Crown N Around — a full-size vintage Crown School Bus conversion — with the open electrical bay showing the full Victron suite: Orion-Tr Smart 12/24-15 isolated DC-DC chargers, a SmartSolar MPPT 150|85 VE.Can charge controller, and a Cerbo GX monitoring unit, with Brad standing alongside the compartment.",
+      "Brad and Donna's Crown N Around, a full-size vintage Crown School Bus conversion, with the open electrical bay showing the full Victron suite: Orion-Tr Smart 12/24-15 isolated DC-DC chargers, a SmartSolar MPPT 150|85 VE.Can charge controller, and a Cerbo GX monitoring unit, with Brad standing alongside the compartment.",
     dealsHref: "/deals?filter=inverters",
     dealsCtaLabel: "Browse Victron components in our gear shop →",
   },
@@ -215,7 +215,7 @@ export const FAQ_ITEMS = [
   },
   {
     question: `What happened to ${PREVIOUS_CODE}?`,
-    answer: `${PREVIOUS_CODE} was our previous Signature Solar code. Signature Solar rotates codes about every 60 days, and on ${CODE_CHANGED_ON} it was replaced by ${COUPON_CODE} — same $50 off, sitewide. Older videos and reels may still show ${PREVIOUS_CODE}; use ${COUPON_CODE} at checkout.`,
+    answer: `${PREVIOUS_CODE} was our previous Signature Solar code. Signature Solar rotates codes about every 60 days, and on ${CODE_CHANGED_ON} it was replaced by ${COUPON_CODE}. Same $50 off, sitewide. Older videos and reels may still show ${PREVIOUS_CODE}; use ${COUPON_CODE} at checkout.`,
   },
   {
     question: "Does Signature Solar offer free shipping?",
@@ -309,7 +309,7 @@ export function buildSignatureSolarSchema({ lastVerified, lastVerifiedDate }) {
         "@id": PAGE_URL,
         "url": PAGE_URL,
         "mainEntityOfPage": PAGE_URL,
-        "headline": `Signature Solar Coupon Code ${verifiedMonthLabel(lastVerifiedDate)}: ${COUPON_CODE} — $50 Off`,
+        "headline": `Signature Solar Coupon Code ${verifiedMonthLabel(lastVerifiedDate)}: ${COUPON_CODE} for $50 Off`,
         "name": `Signature Solar Coupon Code ${verifiedMonthLabel(lastVerifiedDate)} – ${COUPON_CODE} Gets $50 Off | Mobile Dwellings`,
         "description": pageDescription(lastVerified),
         "image": `${SITE_URL}/og-signature-solar.jpg`,
@@ -345,7 +345,7 @@ export function buildSignatureSolarSchema({ lastVerified, lastVerifiedDate }) {
       {
         "@type": "Offer",
         "name": "Mobile Dwellings Signature Solar Discount Code",
-        "description": `Save $50 at Signature Solar with coupon code ${COUPON_CODE}. Applies sitewide — EG4 inverters, lithium batteries, solar panels, and complete off-grid kits.`,
+        "description": `Save $50 at Signature Solar with coupon code ${COUPON_CODE}. Applies sitewide: EG4 inverters, lithium batteries, solar panels, and complete off-grid kits.`,
         "url": AFFILIATE_URL,
         "category": "Promo Code",
         "price": "0",
