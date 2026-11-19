@@ -306,7 +306,7 @@ export const STORIES = [
       },
       {
         "t": "p",
-        "v": "The electrical system runs on two Lithionics 24-volt batteries of 200 amp hours each, with Victron equipment doing more or less everything else, including two Orion converters, one for the exterior lights and one for the interior. Heat and hot water come from a Timberline hydronic system that runs on diesel or electricity and produces hot water on demand."
+        "v": "The electrical system runs on two [Lithionics 24-volt batteries](https://lithionics.com/product/lithionics-24v-200ah-lithium-ion-battery-module/) of 200 amp hours each, with Victron equipment doing more or less everything else, including two Orion converters, one for the exterior lights and one for the interior. Heat and hot water come from a Timberline hydronic system that runs on diesel or electricity and produces hot water on demand."
       },
       {
         "t": "img",
@@ -397,7 +397,7 @@ export const STORIES = [
           ],
           [
             "**Batteries**",
-            "2 × Lithionics 24 V 200 Ah"
+            "2 × [Lithionics 24 V 200 Ah](https://lithionics.com/product/lithionics-24v-200ah-lithium-ion-battery-module/)"
           ],
           [
             "**Electrical**",
