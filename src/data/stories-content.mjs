@@ -367,7 +367,7 @@ export const STORIES = [
       },
       {
         "t": "p",
-        "v": "They are also refreshingly unsentimental about the economics. “Is bus life free? Absolutely not,” they wrote on Instagram. “Diesel, groceries, repairs, and everything else still adds up. But we're no longer locked into a lease, tied to one city, or paying for a home we're barely in. We traded rent for diesel, and honestly, we'd make that trade again every time.”"
+        "v": "They are also refreshingly unsentimental about the economics. “Is bus life free? Absolutely not,” they wrote on [Instagram](https://www.instagram.com/be_my_nomad/). “Diesel, groceries, repairs, and everything else still adds up. But we're no longer locked into a lease, tied to one city, or paying for a home we're barely in. We traded rent for diesel, and honestly, we'd make that trade again every time.”"
       },
       {
         "t": "hr"
