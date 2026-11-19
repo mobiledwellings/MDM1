@@ -167,7 +167,7 @@ The electrical system runs on two [Lithionics 24-volt batteries](https://lithion
 ![The electrical bay under a bench lid, with blue Victron components, batteries and wiring.](/blog/be-my-nomad/power-system.jpg)
 caption: Lithionics for storage, [Victron](/deals?filter=inverters) blue for nearly everything else.
 
-There is no car towed behind. Instead a Royal Enfield Himalayan 450 rides on a Moto Tote rack at the back, which is how they get to town and also probably how they relive some of their Sketchy East Asian Scooter Adventures.
+There is no car towed behind. Instead a Royal Enfield Himalayan 450 rides on a [Moto Tote](https://mototote.com/) rack at the back, which is how they get to town and also probably how they relive some of their Sketchy East Asian Scooter Adventures.
 
 ![Ryan and Lyss riding their motorcycle down a gravel road beside a cornfield, Lyss with one arm in the air.](/blog/be-my-nomad/royal-enfield.jpg)
 caption: The towed vehicle, such as it is.
@@ -201,7 +201,7 @@ They are also refreshingly unsentimental about the economics. “Is bus life fre
 | **Surfaces** | Micro cement nearly everywhere |
 | **Skylights** | Four: one over the living area, two over the bed, one over the shower |
 | **Bathroom** | Wetbath, petrified wood tile, toilet under the shower bench |
-| **Runabout** | Royal Enfield Himalayan 450 on a Moto Tote rack |
+| **Runabout** | Royal Enfield Himalayan 450 on a [Moto Tote](https://mototote.com/) rack |
 
 ---
 

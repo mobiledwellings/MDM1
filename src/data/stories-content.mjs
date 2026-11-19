@@ -316,7 +316,7 @@ export const STORIES = [
       },
       {
         "t": "p",
-        "v": "There is no car towed behind. Instead a Royal Enfield Himalayan 450 rides on a Moto Tote rack at the back, which is how they get to town and also probably how they relive some of their Sketchy East Asian Scooter Adventures."
+        "v": "There is no car towed behind. Instead a Royal Enfield Himalayan 450 rides on a [Moto Tote](https://mototote.com/) rack at the back, which is how they get to town and also probably how they relive some of their Sketchy East Asian Scooter Adventures."
       },
       {
         "t": "img",
@@ -421,7 +421,7 @@ export const STORIES = [
           ],
           [
             "**Runabout**",
-            "Royal Enfield Himalayan 450 on a Moto Tote rack"
+            "Royal Enfield Himalayan 450 on a [Moto Tote](https://mototote.com/) rack"
           ]
         ]
       },
