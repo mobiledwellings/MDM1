@@ -191,7 +191,7 @@ They are also refreshingly unsentimental about the economics. “Is bus life fre
 
 ## The bus, at a glance
 
-| **Chassis** | 1999 Bluebird TC2000, flat nose, 26 ft |
+| **Chassis** | [1999 Bluebird TC2000](/rigs-for-sale), flat nose, 26 ft |
 | **Drivetrain** | 5.9 Cummins, Allison transmission |
 | **Exterior** | Raptor liner, applied by hand |
 | **Solar** | 1,600 W on a custom roof rack |

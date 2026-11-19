@@ -381,7 +381,7 @@ export const STORIES = [
         "rows": [
           [
             "**Chassis**",
-            "1999 Bluebird TC2000, flat nose, 26 ft"
+            "[1999 Bluebird TC2000](/rigs-for-sale), flat nose, 26 ft"
           ],
           [
             "**Drivetrain**",
