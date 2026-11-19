@@ -26,6 +26,8 @@ export interface Story {
   heroAlt: string;
   category: string;
   date: string;
+  /** Optional: set when a story is revised, so the schema can report real freshness. */
+  dateModified?: string;
   readingTime: string;
   photoCredit: string;
   keywords: string;

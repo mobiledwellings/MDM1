@@ -16,6 +16,459 @@ export const SITE_URL = "https://mobiledwellings.media";
 
 export const STORIES = [
   {
+    "slug": "be-my-nomad",
+    "title": "Have You Ever Dreamed of Building a Skoolie and Adventuring Full Time but Have No Tools, no Skills, and No Idea How to do it?",
+    "dek": "Ryan and Lyss had never built anything either when they paid $16,000 for a 1999 Bluebird. Eighteen months and about $60,000 later it is a gorgeous Tulum inspired DIY home that looks like it was built by a pro.",
+    "hero": "/blog/be-my-nomad/ryan-lyss-st-johns-bridge.jpg",
+    "heroAlt": "Ryan and Lyss standing together in front of their cream school bus conversion beneath the St Johns Bridge in Portland.",
+    "category": "Bus Tours",
+    "date": "2026-11-10",
+    "readingTime": "7 min",
+    "photoCredit": "Ryan and Lyss, and Mobile Dwellings",
+    "keywords": "school bus conversion, skoolie build cost, diy bus conversion, bluebird tc2000 skoolie, micro cement skoolie, first time skoolie build, 26 foot skoolie, lithionics victron skoolie, skoolie wetbath, be my nomad",
+    "blocks": [
+      {
+        "t": "standfirst",
+        "v": "This article is about Ryan and Lyss of [Be My Nomad](https://www.instagram.com/be_my_nomad/). This article was written by Justin in the style of the extremely talented and entertaining Bill Bryson with a head-start from Claude."
+      },
+      {
+        "t": "video",
+        "id": "XGkCEvYqoRs",
+        "poster": "/blog/be-my-nomad/bluebird-exterior.jpg",
+        "alt": "Ryan and Lyss's cream school bus conversion parked on grass beneath tall evergreens.",
+        "label": "Watch the full tour",
+        "title": "Their DIY Bus Conversion Is So Good You'll Think a Pro Did It · 12 min",
+        "compact": true
+      },
+      {
+        "t": "p",
+        "v": "There is a particular look people get when they step inside this bus (especially if they have some building experience of their own). It is the look of someone doing arithmetic. They take in the micro cement, the slatted wooden ceiling interlaced with LED lighting and a skylight of frankly unreasonable size, and you can watch them arrive at the same conclusion: somebody was paid a great deal of money to build this."
+      },
+      {
+        "t": "p",
+        "v": "But nobody was. It was built by Ryan and Lyss, who at the start of the project did not own a single tool between them. Not a drill. Not a saw. They began, in the most literal sense available, from scratch."
+      },
+      {
+        "t": "hr"
+      },
+      {
+        "t": "h2",
+        "v": "It began, as most things do these days, on a dating app"
+      },
+      {
+        "t": "p",
+        "v": "Ryan and Lyss matched in 2021. Six months later they sold everything they owned and went backpacking around Southeast Asia for half a year. Most couples at the six-month mark are still negotiating whose turn it is to pick the restaurant. These two had liquidated their possessions and left the continent."
+      },
+      {
+        "t": "img",
+        "src": "/blog/be-my-nomad/karst-boat-southeast-asia.jpg",
+        "alt": "Ryan and Lyss sitting together on the bow of a wooden boat among steep limestone karst cliffs in Southeast Asia.",
+        "cap": "Six months in, with everything they owned sold. A bold second date."
+      },
+      {
+        "t": "p",
+        "v": "When they came home to Colorado the plan was to resume normal life (good luck with that Ryan and Lyss). Normal life, it turned out, had left them behind. So they did what any reasonable couple with no construction experience would do in 2024, and went shopping for a [school bus](/rigs-for-sale)."
+      },
+      {
+        "t": "hr"
+      },
+      {
+        "t": "h2",
+        "v": "The bus"
+      },
+      {
+        "t": "p",
+        "v": "They ended up with twenty-six feet, a length that is big enough to live in and small enough to drive and park most places. A 1999 Bluebird TC2000 with a flat nose, a 5.9 Cummins and an Allison transmission, and they paid $16,000 for it. A standard school bus sells for around $7,000 but paying up for the right bus for you is usually a smart move and their mechanic agreed when he said after looking it over: “If you guys don't buy this bus, I'm going to buy it.” When your own mechanic starts bidding against you, it's probably time to buy."
+      },
+      {
+        "t": "img",
+        "src": "/blog/be-my-nomad/yellow-bluebird-before.jpg",
+        "alt": "A plain yellow Bluebird school bus parked on a lot under a grey sky, before the conversion.",
+        "cap": "The Bluebird in its original livery, blissfully unaware."
+      },
+      {
+        "t": "p",
+        "v": "Then they took out every seat and stripped it to bare metal, which is the one stage of a bus conversion that everybody enjoys, largely because it is the one stage at which very little can go wrong."
+      },
+      {
+        "t": "img",
+        "src": "/blog/be-my-nomad/gutted-work-light.jpg",
+        "alt": "The inside of the school bus stripped to the bare floor and walls, lit by a work light on a tripod.",
+        "cap": "Demolition: the last day the project was ahead of schedule."
+      },
+      {
+        "t": "hr"
+      },
+      {
+        "t": "h2",
+        "v": "Where do you even start"
+      },
+      {
+        "t": "p",
+        "v": "Lyss is admirably clear about what the hardest part was, and it was not plumbing or wiring or any of the things you might expect. It was, she says, “trying to figure out where to start and how to use tools in general, from not knowing anything to building this.”"
+      },
+      {
+        "t": "p",
+        "v": "They did have one stroke of luck, or possibly cunning. Their neighbor happened to own a van conversion company, so they went to work there as, in their own words, “the office girls.” This did not teach them how to build anything. It taught them what a finished build is supposed to look like, which may be why theirs looks like one. If you are standing at the same starting line, [we answer questions about exactly this at Skoolie Support](/skoolie-support)."
+      },
+      {
+        "t": "img",
+        "src": "/blog/be-my-nomad/lyss-with-drill.jpg",
+        "alt": "Lyss grinning inside the half-built bus, holding a cordless drill up in one hand.",
+        "cap": "Lyss and a drill, now on speaking terms."
+      },
+      {
+        "t": "hr"
+      },
+      {
+        "t": "h2",
+        "v": "Six months, give or take a year"
+      },
+      {
+        "t": "p",
+        "v": "They thought the build would take six months (everybody does). It took eighteen. They both worked full time throughout, paid for it one paycheck at a time, and lived inside the bus on site for a lot of that time."
+      },
+      {
+        "t": "img",
+        "src": "/blog/be-my-nomad/sparks-on-the-roof.jpg",
+        "alt": "Sparks spraying as metal is cut on the roof of the bus inside a workshop at night.",
+        "cap": "Evenings and weekends, for a year and a half."
+      },
+      {
+        "t": "p",
+        "v": "The exterior is Raptor liner, which they applied themselves. This took ninety hours of preparation and twelve hours of painting, but it was worth it."
+      },
+      {
+        "t": "img",
+        "src": "/blog/be-my-nomad/bluebird-exterior.jpg",
+        "alt": "The finished bus, painted cream with a black roof rack, parked on grass beneath tall evergreens.",
+        "cap": "Ninety hours of prep, twelve of paint. It shows."
+      },
+      {
+        "t": "p",
+        "v": "On top is a custom roof rack carrying [1,600 watts of solar](/signature-solar-coupon), with light bars the whole way around. The cube lights on the sides sit where the old school bus warning lamps used to flash, which is a rather dignified retirement for them."
+      },
+      {
+        "t": "img",
+        "src": "/blog/be-my-nomad/roof-rack-solar.jpg",
+        "alt": "A drone view straight down onto the roof of the bus, almost entirely covered in solar panels, with a checkered mat laid out beside it.",
+        "cap": "From above, the roof is mostly solar panel. The checkered mat is not structural."
+      },
+      {
+        "t": "hr"
+      },
+      {
+        "t": "h2",
+        "v": "Tulum meets industrial"
+      },
+      {
+        "t": "p",
+        "v": "This is Lyss's description of the interior, and having seen it you will not improve on it. Nearly every surface is micro cement. The ceiling is slatted wood with lights staggered between the boards, an idea they cheerfully admit to borrowing from a van built by [Scarlet and Seth](https://www.instagram.com/scarletandseth/)."
+      },
+      {
+        "t": "img",
+        "src": "/blog/be-my-nomad/slatted-ceiling.jpg",
+        "alt": "The interior of the bus looking forward, with a slatted timber ceiling, strip lighting and a large skylight over the living area.",
+        "cap": "The ceiling they borrowed, and the skylight they did not hold back on."
+      },
+      {
+        "t": "p",
+        "v": "Then there is the skylight, which is enormous, and which was installed chiefly for the benefit of the plants. I want to be clear about this: it is a bus in which the houseplants were consulted on the architecture."
+      },
+      {
+        "t": "img",
+        "src": "/blog/be-my-nomad/ryan-reading-on-the-couch.jpg",
+        "alt": "Ryan reading a book on the couch beneath the large skylight and slatted ceiling.",
+        "cap": "Ryan, a good book, and the skylight that was built for the plants."
+      },
+      {
+        "t": "img",
+        "src": "/blog/be-my-nomad/living-room.jpg",
+        "alt": "An L-shaped couch with cream cushions and green and terracotta pillows beneath the bus windows.",
+        "cap": "The L-shaped couch, where most of bus life actually happens."
+      },
+      {
+        "t": "hr"
+      },
+      {
+        "t": "h2",
+        "v": "The kitchen has a full oven, naturally"
+      },
+      {
+        "t": "p",
+        "v": "There is a farmhouse sink, a full-size oven and a proper fridge-freezer, none of which is an obvious thing to put in twenty-six feet of vehicle. They put them in anyway."
+      },
+      {
+        "t": "img",
+        "src": "/blog/be-my-nomad/farmhouse-sink.jpg",
+        "alt": "Lyss standing at the kitchen counter beside the white farmhouse sink and the black range.",
+        "cap": "A farmhouse sink, in a bus, as if that were a normal thing to say."
+      },
+      {
+        "t": "img",
+        "src": "/blog/be-my-nomad/oven.jpg",
+        "alt": "A black range with a glass cooktop and a full oven, set into the micro cement kitchen counter.",
+        "cap": "A full oven, for people who clearly intend to roast things."
+      },
+      {
+        "t": "hr"
+      },
+      {
+        "t": "h2",
+        "v": "The thing everyone asks about"
+      },
+      {
+        "t": "p",
+        "v": "The micro cement draws the same three questions from everyone who sees it: how much does it weigh, does it crack, and was it worth it. Lyss answers the last one before you can ask. It was difficult, she says, and it gave them trouble, and she would do it again. “100% worth it, I wouldn't change it for the world.”"
+      },
+      {
+        "t": "img",
+        "src": "/blog/be-my-nomad/micro-cement.jpg",
+        "alt": "The corner of the micro cement kitchen counter, with a wooden drawer front below and the edge of the farmhouse sink.",
+        "cap": "Micro cement in its natural habitat."
+      },
+      {
+        "t": "p",
+        "v": "There is also a moss wall, which is intended one day to become a herb garden grown on moss poles. For now it remains a moss wall. Every bus has at least one feature living in the future tense, and this is theirs."
+      },
+      {
+        "t": "img",
+        "src": "/blog/be-my-nomad/moss-wall.jpg",
+        "alt": "Vertical strips of green moss set between pale micro cement panels on the wall of the bus.",
+        "cap": "The moss wall, awaiting promotion to herb garden."
+      },
+      {
+        "t": "hr"
+      },
+      {
+        "t": "h2",
+        "v": "The oasis"
+      },
+      {
+        "t": "p",
+        "v": "The bathroom is, in Lyss's words, “our little oasis,” and the description holds up. The walls and ceiling are micro cement. The floor is petrified wood tile, chosen because she loves crystals. The toilet lives under the shower bench, and the shower has a skylight of its own."
+      },
+      {
+        "t": "img",
+        "src": "/blog/be-my-nomad/bathroom-oasis.jpg",
+        "alt": "The wetbath, with micro cement walls, a built-in bench, a small window and an air plant on the shelf.",
+        "cap": "The oasis. There is a toilet in this photograph. Good luck."
+      },
+      {
+        "t": "img",
+        "src": "/blog/be-my-nomad/petrified-wood-tile.jpg",
+        "alt": "The floor of the wetbath, tiled in rounded petrified wood, with built-in micro cement shelving beside it.",
+        "cap": "Petrified wood underfoot, for the geologically inclined."
+      },
+      {
+        "t": "p",
+        "v": "Between the bathroom and the bedroom is a half wall with a planter box built into the top, because by this stage of the build the plants were evidently running the project."
+      },
+      {
+        "t": "img",
+        "src": "/blog/be-my-nomad/bed-under-the-skylights.jpg",
+        "alt": "The bed made up in green sheets at the back of the bus, with skylights in the ceiling above it and a window beyond.",
+        "cap": "The bedroom, with the planter box keeping watch from the half wall."
+      },
+      {
+        "t": "hr"
+      },
+      {
+        "t": "h2",
+        "v": "Stars, as requested"
+      },
+      {
+        "t": "p",
+        "v": "The bedroom has two more skylights directly over the bed, which brings the total for the bus to four. Lyss's reasoning is impossible to argue with: “I really wanted to see the stars in bed. I think that's just so magical.”"
+      },
+      {
+        "t": "img",
+        "src": "/blog/be-my-nomad/closet.jpg",
+        "alt": "The bed made up in green sheets at the back of the bus, beside an open hanging closet full of clothes.",
+        "cap": "The bed and the closet. The skylights are directly overhead, doing their job."
+      },
+      {
+        "t": "p",
+        "v": "They share all of this with a husky and a cat named Sage, who has the settled look of an animal that believes the bus was built on its behalf."
+      },
+      {
+        "t": "img",
+        "src": "/blog/be-my-nomad/sage-the-cat.jpg",
+        "alt": "Sage the cat stretched out on a green cushion in a nook inside the bus.",
+        "cap": "Sage, in residence."
+      },
+      {
+        "t": "hr"
+      },
+      {
+        "t": "h2",
+        "v": "Power, heat and a motorcycle"
+      },
+      {
+        "t": "p",
+        "v": "The electrical system runs on two Lithionics 24-volt batteries of 200 amp hours each, with Victron equipment doing more or less everything else, including two Orion converters, one for the exterior lights and one for the interior. Heat and hot water come from a Timberline hydronic system that runs on diesel or electricity and produces hot water on demand."
+      },
+      {
+        "t": "img",
+        "src": "/blog/be-my-nomad/power-system.jpg",
+        "alt": "The electrical bay under a bench lid, with blue Victron components, batteries and wiring.",
+        "cap": "Lithionics for storage, Victron blue for nearly everything else."
+      },
+      {
+        "t": "p",
+        "v": "There is no car towed behind. Instead a Royal Enfield Himalayan 450 rides on a Moto Tote rack at the back, which is how they get to town and also probably how they relive some of their Sketchy East Asian Scooter Adventures."
+      },
+      {
+        "t": "img",
+        "src": "/blog/be-my-nomad/royal-enfield.jpg",
+        "alt": "Ryan and Lyss riding their motorcycle down a gravel road beside a cornfield, Lyss with one arm in the air.",
+        "cap": "The towed vehicle, such as it is."
+      },
+      {
+        "t": "quote",
+        "head": "A note on the power system",
+        "paras": [
+          "**Signature Solar** is our go-to for solar panels, lithium batteries, mini splits and inverters.",
+          `Our [curated list of the gear worth looking at](/deals) carries the current code, **${COUPON_CODE}**, for $50 off.`,
+          "Some links in this article are affiliate links. If you buy through them, Mobile Dwellings may earn a commission at no extra cost to you."
+        ]
+      },
+      {
+        "t": "hr"
+      },
+      {
+        "t": "h2",
+        "v": "What it cost"
+      },
+      {
+        "t": "table",
+        "rows": [
+          [
+            "**The bus**",
+            "$16,000"
+          ],
+          [
+            "**Build**",
+            "~$60,000, including every tool"
+          ],
+          [
+            "**Time**",
+            "Eighteen months"
+          ],
+          [
+            "**Original estimate**",
+            "Six months"
+          ]
+        ]
+      },
+      {
+        "t": "p",
+        "v": "The $60,000 includes the tools, since they started with none. This is worth knowing, because a build budget quoted by someone who already owns a workshop is a different number."
+      },
+      {
+        "t": "p",
+        "v": "They are also refreshingly unsentimental about the economics. “Is bus life free? Absolutely not,” they wrote on Instagram. “Diesel, groceries, repairs, and everything else still adds up. But we're no longer locked into a lease, tied to one city, or paying for a home we're barely in. We traded rent for diesel, and honestly, we'd make that trade again every time.”"
+      },
+      {
+        "t": "hr"
+      },
+      {
+        "t": "h2",
+        "v": "The bus, at a glance"
+      },
+      {
+        "t": "table",
+        "rows": [
+          [
+            "**Chassis**",
+            "1999 Bluebird TC2000, flat nose, 26 ft"
+          ],
+          [
+            "**Drivetrain**",
+            "5.9 Cummins, Allison transmission"
+          ],
+          [
+            "**Exterior**",
+            "Raptor liner, applied by hand"
+          ],
+          [
+            "**Solar**",
+            "1,600 W on a custom roof rack"
+          ],
+          [
+            "**Batteries**",
+            "2 × Lithionics 24 V 200 Ah"
+          ],
+          [
+            "**Electrical**",
+            "Victron, with two Orion converters"
+          ],
+          [
+            "**Heat / hot water**",
+            "Timberline hydronic, diesel or electric, on demand"
+          ],
+          [
+            "**Surfaces**",
+            "Micro cement nearly everywhere"
+          ],
+          [
+            "**Skylights**",
+            "Four: one over the living area, two over the bed, one over the shower"
+          ],
+          [
+            "**Bathroom**",
+            "Wetbath, petrified wood tile, toilet under the shower bench"
+          ],
+          [
+            "**Runabout**",
+            "Royal Enfield Himalayan 450 on a Moto Tote rack"
+          ]
+        ]
+      },
+      {
+        "t": "hr"
+      },
+      {
+        "t": "h2",
+        "v": "What they'd tell you"
+      },
+      {
+        "t": "p",
+        "v": "Asked what she would say to someone standing where they stood two years ago: “Take a breath, because not everything's going to turn out how you want it to,” she says, “but it will be so much better in the long run.”"
+      },
+      {
+        "t": "p",
+        "v": "And then, with the candor that runs through the whole build Ryan says: “Don't be so hard on yourself. I'm a perfectionist and I don't know what I'm doing. Just giving myself grace to keep going.”"
+      },
+      {
+        "t": "p",
+        "v": "It is a remarkable thing to hear from someone standing inside the home she made, and she still seems faintly astonished by it herself. “Every time I look at it when I wake up in the morning, I'm like, ‘Oh, I made this.’”"
+      },
+      {
+        "t": "img",
+        "src": "/blog/be-my-nomad/ryan-lyss-golden-hour.jpg",
+        "alt": "Ryan and Lyss holding each other in front of the finished cream bus at golden hour.",
+        "cap": "The two of them, and the thing they made."
+      },
+      {
+        "t": "p",
+        "v": "They live in it full time now, and the six-month estimate has been quietly retired."
+      },
+      {
+        "t": "video",
+        "id": "XGkCEvYqoRs",
+        "poster": "/blog/be-my-nomad/tulum-industrial.jpg",
+        "alt": "The finished interior of the bus looking toward the back, with the kitchen on one side and the couch on the other.",
+        "label": "Watch the full tour",
+        "title": "Their DIY Bus Conversion Is So Good You'll Think a Pro Did It · 12 min"
+      },
+      {
+        "t": "note",
+        "v": "Follow Ryan and Lyss on [Instagram](https://www.instagram.com/be_my_nomad/). More tours: [a family of six in 320 square feet](/stories/flying-circus-bus), [a decade of other people's buses](/stories/chuck-cassady-oblio), and [seven years and a recording studio](/stories/seven-years-in-a-school-bus). If you are planning a build of your own, we also answer questions at [Skoolie Support](/skoolie-support)."
+      }
+    ]
+  },
+  {
     "slug": "chuck-cassady-oblio",
     "title": "After a Decade Building Other People's Buses, Chuck Cassady Built His Own",
     "dek": "Oblio is 27 feet long, took four years, and cost about $60,000 in materials. A tour of the bus a grandmaster built for himself.",
@@ -416,7 +869,7 @@ export const STORIES = [
       },
       {
         "t": "note",
-        "v": "Chuck takes consultations on bus builds through his [Calendly](https://calendly.com/chuckcassady), and posts on [YouTube](https://www.youtube.com/@ChuckCassadyYT) and [Instagram](https://www.instagram.com/chuck.cassady/). If you are planning a build of your own, we also answer questions at [Skoolie Support](/skoolie-support)."
+        "v": "Chuck takes consultations on bus builds through his [Calendly](https://calendly.com/chuckcassady), and posts on [YouTube](https://www.youtube.com/@ChuckCassadyYT) and [Instagram](https://www.instagram.com/chuck.cassady/). If you are planning a build of your own, we also answer questions at [Skoolie Support](/skoolie-support). More tours: [two first-time builders and a $60,000 Bluebird](/stories/be-my-nomad), [a family of six in 320 square feet](/stories/flying-circus-bus), and [seven years and a recording studio](/stories/seven-years-in-a-school-bus)."
       }
     ]
   },
@@ -879,7 +1332,7 @@ export const STORIES = [
       },
       {
         "t": "note",
-        "v": "Follow the Flying Circus Bus on [Instagram](https://www.instagram.com/flyingcircusbus/) and [Facebook](https://www.facebook.com/p/Flying-Circus-Bus-61559187452069/). Watch the full video tour on the Mobile Dwellings YouTube channel."
+        "v": "Follow the Flying Circus Bus on [Instagram](https://www.instagram.com/flyingcircusbus/) and [Facebook](https://www.facebook.com/p/Flying-Circus-Bus-61559187452069/). Watch the full video tour on the Mobile Dwellings YouTube channel. More tours: [two first-time builders and a $60,000 Bluebird](/stories/be-my-nomad), [a decade of other people's buses](/stories/chuck-cassady-oblio), and [seven years and a recording studio](/stories/seven-years-in-a-school-bus). If you are planning a build of your own, we also answer questions at [Skoolie Support](/skoolie-support)."
       }
     ]
   },
@@ -1199,7 +1652,7 @@ export const STORIES = [
       },
       {
         "t": "note",
-        "v": "Follow Cora and José's drive to Argentina on their YouTube channel, **[Art We There Yet](https://www.youtube.com/@ArtWeThereYet)**. All photographs courtesy of [Art We There Yet](https://www.instagram.com/art_we_there_yet/)."
+        "v": "Follow Cora and José's drive to Argentina on their YouTube channel, **[Art We There Yet](https://www.youtube.com/@ArtWeThereYet)**. All photographs courtesy of [Art We There Yet](https://www.instagram.com/art_we_there_yet/). More tours: [two first-time builders and a $60,000 Bluebird](/stories/be-my-nomad), [a decade of other people's buses](/stories/chuck-cassady-oblio), and [a family of six in 320 square feet](/stories/flying-circus-bus). If you are planning a build of your own, we also answer questions at [Skoolie Support](/skoolie-support)."
       },
       {
         "t": "hr"
@@ -1349,22 +1802,49 @@ export function renderStoriesIndexHtml() {
 /** schema.org Article graph for one story. */
 export function buildStorySchema(story) {
   const url = `${SITE_URL}/stories/${story.slug}`;
-  return {
-    "@context": "https://schema.org",
+  const org = {
+    "@type": "Organization",
+    name: "Mobile Dwellings",
+    logo: { "@type": "ImageObject", url: `${SITE_URL}/logo.png` },
+  };
+
+  const article = {
     "@type": "Article",
     headline: story.title,
     description: story.dek,
     image: `${SITE_URL}${story.hero}`,
     datePublished: story.date,
-    dateModified: story.date,
+    dateModified: story.dateModified || story.date,
     author: { "@type": "Organization", name: "Mobile Dwellings" },
-    publisher: {
-      "@type": "Organization",
-      name: "Mobile Dwellings",
-      logo: { "@type": "ImageObject", url: `${SITE_URL}/logo.png` },
-    },
+    publisher: org,
     mainEntityOfPage: { "@type": "WebPage", "@id": url },
   };
+
+  // Every story is built around a YouTube tour, and a video result is a
+  // different slot in search than an article result. The first video block
+  // carries the canonical tour, so that is the one described here.
+  const vid = story.blocks.find((b) => b.t === "video");
+  const video = vid && {
+    "@type": "VideoObject",
+    name: vid.title.replace(/\s+\u00b7\s+\d+\s*min\s*$/, ""),
+    description: story.dek,
+    thumbnailUrl: `${SITE_URL}${vid.poster}`,
+    uploadDate: story.date,
+    contentUrl: `https://www.youtube.com/watch?v=${vid.id}`,
+    embedUrl: `https://www.youtube.com/embed/${vid.id}`,
+    publisher: org,
+  };
+
+  const crumbs = {
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: SITE_URL },
+      { "@type": "ListItem", position: 2, name: "Stories", item: `${SITE_URL}/stories` },
+      { "@type": "ListItem", position: 3, name: story.title, item: url },
+    ],
+  };
+
+  return { "@context": "https://schema.org", "@graph": [article, crumbs, ...(video ? [video] : [])] };
 }
 
 /** schema.org CollectionPage graph for the index. */
