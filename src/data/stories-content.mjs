@@ -78,7 +78,7 @@ export const STORIES = [
       },
       {
         "t": "p",
-        "v": "They ended up with twenty-six feet, a length that is big enough to live in and small enough to drive and park most places. A 1999 Bluebird TC2000 with a flat nose, a 5.9 Cummins and an Allison transmission, and they paid $16,000 for it. A standard school bus sells for around $7,000 but paying up for the right bus for you is usually a smart move and their mechanic agreed when he said after looking it over: “If you guys don't buy this bus, I'm going to buy it.” When your own mechanic starts bidding against you, it's probably time to buy."
+        "v": "They ended up with twenty-six feet, a length that is big enough to live in and small enough to drive and park most places. A [1999 Bluebird](/rigs-for-sale) TC2000 with a flat nose, a 5.9 Cummins and an Allison transmission, and they paid $16,000 for it. A standard school bus sells for around $7,000 but paying up for the right bus for you is usually a smart move and their mechanic agreed when he said after looking it over: “If you guys don't buy this bus, I'm going to buy it.” When your own mechanic starts bidding against you, it's probably time to buy."
       },
       {
         "t": "img",
