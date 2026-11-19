@@ -306,13 +306,13 @@ export const STORIES = [
       },
       {
         "t": "p",
-        "v": "The electrical system runs on two [Lithionics 24-volt batteries](https://lithionics.com/product/lithionics-24v-200ah-lithium-ion-battery-module/) of 200 amp hours each, with Victron equipment doing more or less everything else, including two Orion converters, one for the exterior lights and one for the interior. Heat and hot water come from a Timberline hydronic system that runs on diesel or electricity and produces hot water on demand."
+        "v": "The electrical system runs on two [Lithionics 24-volt batteries](https://lithionics.com/product/lithionics-24v-200ah-lithium-ion-battery-module/) of 200 amp hours each, with [Victron equipment](/deals?filter=inverters) doing more or less everything else, including two Orion converters, one for the exterior lights and one for the interior. Heat and hot water come from a Timberline hydronic system that runs on diesel or electricity and produces hot water on demand."
       },
       {
         "t": "img",
         "src": "/blog/be-my-nomad/power-system.jpg",
         "alt": "The electrical bay under a bench lid, with blue Victron components, batteries and wiring.",
-        "cap": "Lithionics for storage, Victron blue for nearly everything else."
+        "cap": "Lithionics for storage, [Victron](/deals?filter=inverters) blue for nearly everything else."
       },
       {
         "t": "p",
@@ -401,7 +401,7 @@ export const STORIES = [
           ],
           [
             "**Electrical**",
-            "Victron, with two Orion converters"
+            "[Victron](/deals?filter=inverters), with two Orion converters"
           ],
           [
             "**Heat / hot water**",
@@ -1281,7 +1281,7 @@ export const STORIES = [
           ],
           [
             "**Inverter**",
-            "5,000W, with a Victron Cerbo GX"
+            "5,000W, with a [Victron Cerbo GX](/deals?filter=inverters)"
           ],
           [
             "**Solar**",
@@ -1313,7 +1313,7 @@ export const STORIES = [
       {
         "head": "A note on the power system",
         "paras": [
-          "**Signature Solar** is our go-to for solar panels, lithium batteries, mini splits and Victron gear.",
+          "**Signature Solar** is our go-to for solar panels, lithium batteries, mini splits and [Victron gear](/deals?filter=inverters).",
           `Our [curated list of the gear worth looking at](/signature-solar-coupon) carries the current code, **${COUPON_CODE}**, for $50 off.`,
           "Some links in this article are affiliate links. If you buy through them, Mobile Dwellings may earn a commission at no extra cost to you."
         ],
@@ -1491,7 +1491,7 @@ export const STORIES = [
       {
         "head": "A note on the power system",
         "paras": [
-          "**Signature Solar** is our go-to for solar panels, lithium batteries, mini splits and Victron gear.",
+          "**Signature Solar** is our go-to for solar panels, lithium batteries, mini splits and [Victron gear](/deals?filter=inverters).",
           `Our [curated list of the gear worth looking at](/signature-solar-coupon) carries the current code, **${COUPON_CODE}**, for $50 off.`,
           "We earn a commission on sales through our links, at no extra cost to you."
         ],

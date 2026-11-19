@@ -162,10 +162,10 @@ caption: Sage, in residence.
 
 ## Power, heat and a motorcycle
 
-The electrical system runs on two [Lithionics 24-volt batteries](https://lithionics.com/product/lithionics-24v-200ah-lithium-ion-battery-module/) of 200 amp hours each, with Victron equipment doing more or less everything else, including two Orion converters, one for the exterior lights and one for the interior. Heat and hot water come from a Timberline hydronic system that runs on diesel or electricity and produces hot water on demand.
+The electrical system runs on two [Lithionics 24-volt batteries](https://lithionics.com/product/lithionics-24v-200ah-lithium-ion-battery-module/) of 200 amp hours each, with [Victron equipment](/deals?filter=inverters) doing more or less everything else, including two Orion converters, one for the exterior lights and one for the interior. Heat and hot water come from a Timberline hydronic system that runs on diesel or electricity and produces hot water on demand.
 
 ![The electrical bay under a bench lid, with blue Victron components, batteries and wiring.](/blog/be-my-nomad/power-system.jpg)
-caption: Lithionics for storage, Victron blue for nearly everything else.
+caption: Lithionics for storage, [Victron](/deals?filter=inverters) blue for nearly everything else.
 
 There is no car towed behind. Instead a Royal Enfield Himalayan 450 rides on a Moto Tote rack at the back, which is how they get to town and also probably how they relive some of their Sketchy East Asian Scooter Adventures.
 
@@ -196,7 +196,7 @@ They are also refreshingly unsentimental about the economics. “Is bus life fre
 | **Exterior** | Raptor liner, applied by hand |
 | **Solar** | 1,600 W on a custom roof rack |
 | **Batteries** | 2 × [Lithionics 24 V 200 Ah](https://lithionics.com/product/lithionics-24v-200ah-lithium-ion-battery-module/) |
-| **Electrical** | Victron, with two Orion converters |
+| **Electrical** | [Victron](/deals?filter=inverters), with two Orion converters |
 | **Heat / hot water** | Timberline hydronic, diesel or electric, on demand |
 | **Surfaces** | Micro cement nearly everywhere |
 | **Skylights** | Four: one over the living area, two over the bed, one over the shower |

@@ -94,7 +94,7 @@ Fortunately they are still friends.
 
 > ### A note on the power system
 >
-> **Signature Solar** is our go-to for solar panels, lithium batteries, mini splits and Victron gear.
+> **Signature Solar** is our go-to for solar panels, lithium batteries, mini splits and [Victron gear](/deals?filter=inverters).
 >
 > Our [curated list of the gear worth looking at](/signature-solar-coupon) carries the current code, **GET50MD**, for $50 off.
 >
