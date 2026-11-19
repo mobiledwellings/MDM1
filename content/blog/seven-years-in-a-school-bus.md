@@ -19,7 +19,7 @@ photoCredit: Art We There Yet
 
 <aside class="article-note">
 
-This article is about Cora and José from the legendary YouTube channel: [Art We There Yet](https://www.youtube.com/@ArtWeThereYet). This article was written by an LLM in the style of the extremely talented and entertaining Bill Bryson. It was edited and modified by Justin from Mobile Dwellings.
+This article is about Cora and José from the legendary YouTube channel: [Art We There Yet](https://www.youtube.com/@ArtWeThereYet). This article was written by an LLM in the style of the extremely talented and entertaining [Bill Bryson](https://en.wikipedia.org/wiki/Bill_Bryson). It was edited and modified by Justin from Mobile Dwellings.
 
 </aside>
 
