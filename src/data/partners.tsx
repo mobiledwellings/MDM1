@@ -278,10 +278,10 @@ const wattCycle: Partner = {
     code: "DWELLINGS",
     discount: "8%",
     terms: "8% off sitewide at wattcycle.com",
-    // Re-confirmed working 2026-11-01. The FAQ's "$1,088.98 cart, $87.12 off"
+    // Re-confirmed working 2026-11-19. The FAQ's "$1,088.98 cart, $87.12 off"
     // narrative stays dated Aug 20 — that was a specific test on a specific
     // cart, not something re-run today.
-    lastVerified: "November 1, 2026",
+    lastVerified: "November 19, 2026",
   },
   intro: [
     "WattCycle makes budget-friendly LiFePO4 (lithium iron phosphate) batteries that have become a popular choice for Skoolie and van builds that need battery storage without the premium price tag.",

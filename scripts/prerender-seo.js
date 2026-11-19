@@ -260,7 +260,7 @@ const pages = [
           "name": "WattCycle discount: code DWELLINGS",
           "description": "8% off sitewide at wattcycle.com. No minimum order.",
           "url": "https://www.wattcycle.com/?ref=mobiledwellings",
-          "availabilityStarts": "2026-11-01",
+          "availabilityStarts": "2026-11-19",
           "seller": { "@type": "Organization", "name": "WattCycle" }
         },
         {
