@@ -21,7 +21,7 @@ move it to reorder. Leave the [[...]] lines as they are (move them freely).
 Links are [text](/page), bold is **bold**. No em dashes: the site has none.
 -->
 
-TOP NOTE: This article is about Ryan and Lyss of [Be My Nomad](https://www.instagram.com/be_my_nomad/). This article was written by Justin in the style of the extremely talented and entertaining Bill Bryson with a head-start from Claude. 
+TOP NOTE: This article is about Ryan and Lyss of [Be My Nomad](https://www.instagram.com/be_my_nomad/). This article was written by Justin in the style of the extremely talented and entertaining [Bill Bryson](https://en.wikipedia.org/wiki/Bill_Bryson) with a head-start from Claude. 
 
 [[VIDEO 1]]
 

@@ -29,7 +29,7 @@ export const STORIES = [
     "blocks": [
       {
         "t": "standfirst",
-        "v": "This article is about Ryan and Lyss of [Be My Nomad](https://www.instagram.com/be_my_nomad/). This article was written by Justin in the style of the extremely talented and entertaining Bill Bryson with a head-start from Claude."
+        "v": "This article is about Ryan and Lyss of [Be My Nomad](https://www.instagram.com/be_my_nomad/). This article was written by Justin in the style of the extremely talented and entertaining [Bill Bryson](https://en.wikipedia.org/wiki/Bill_Bryson) with a head-start from Claude."
       },
       {
         "t": "video",
