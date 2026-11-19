@@ -393,7 +393,7 @@ export const STORIES = [
           ],
           [
             "**Solar**",
-            "1,600 W on a custom roof rack"
+            "[1,600 W](https://signaturesolar.com/all-products/solar-panels/?ref=mobiledwellings&sort=priceasc) on a custom roof rack"
           ],
           [
             "**Batteries**",

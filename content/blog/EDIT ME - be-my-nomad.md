@@ -194,7 +194,7 @@ They are also refreshingly unsentimental about the economics. “Is bus life fre
 | **Chassis** | [1999 Bluebird TC2000](/rigs-for-sale), flat nose, 26 ft |
 | **Drivetrain** | 5.9 Cummins, Allison transmission |
 | **Exterior** | Raptor liner, applied by hand |
-| **Solar** | 1,600 W on a custom roof rack |
+| **Solar** | [1,600 W](https://signaturesolar.com/all-products/solar-panels/?ref=mobiledwellings&sort=priceasc) on a custom roof rack |
 | **Batteries** | 2 × [Lithionics 24 V 200 Ah](https://lithionics.com/product/lithionics-24v-200ah-lithium-ion-battery-module/) |
 | **Electrical** | [Victron](/deals?filter=inverters), with two Orion converters |
 | **Heat / hot water** | [Timberline](https://timberlineheat.com/) hydronic, diesel or electric, on demand |
