@@ -146,7 +146,7 @@ export const STORIES = [
       },
       {
         "t": "p",
-        "v": "On top is a custom roof rack carrying [1,600 watts of solar](/signature-solar-coupon), with light bars the whole way around. The cube lights on the sides sit where the old school bus warning lamps used to flash, which is a rather dignified retirement for them."
+        "v": "On top is a custom roof rack carrying [1,600 watts of solar](https://signaturesolar.com/all-products/solar-panels/?ref=mobiledwellings&sort=priceasc), with light bars the whole way around. The cube lights on the sides sit where the old school bus warning lamps used to flash, which is a rather dignified retirement for them."
       },
       {
         "t": "img",

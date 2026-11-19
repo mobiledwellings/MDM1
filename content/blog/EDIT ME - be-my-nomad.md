@@ -79,7 +79,7 @@ The exterior is Raptor liner, which they applied themselves. This took ninety ho
 ![The finished bus, painted cream with a black roof rack, parked on grass beneath tall evergreens.](/blog/be-my-nomad/bluebird-exterior.jpg)
 caption: Ninety hours of prep, twelve of paint. It shows.
 
-On top is a custom roof rack carrying [1,600 watts of solar](/signature-solar-coupon), with light bars the whole way around. The cube lights on the sides sit where the old school bus warning lamps used to flash, which is a rather dignified retirement for them.
+On top is a custom roof rack carrying [1,600 watts of solar](https://signaturesolar.com/all-products/solar-panels/?ref=mobiledwellings&sort=priceasc), with light bars the whole way around. The cube lights on the sides sit where the old school bus warning lamps used to flash, which is a rather dignified retirement for them.
 
 ![A drone view straight down onto the roof of the bus, almost entirely covered in solar panels, with a checkered mat laid out beside it.](/blog/be-my-nomad/roof-rack-solar.jpg)
 caption: From above, the roof is mostly solar panel. The checkered mat is not structural.
