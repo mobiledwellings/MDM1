@@ -120,6 +120,16 @@ const pages = [
     noscript: '',
   },
   {
+    // Title, description, noscript, body and schema are all set in main() from
+    // src/data/wattcycle-black-friday-content.mjs.
+    route: '/wattcycle-black-friday',
+    image: 'https://mobiledwellings.media/wattcycle-12v-314ah-battery.jpg',
+    title: '',
+    description: '',
+    keywords: 'wattcycle black friday, wattcycle black friday sale, wattcycle cyber monday, wattcycle coupon code, wattcycle discount code, DWELLINGS, lifepo4 battery black friday',
+    noscript: '',
+  },
+  {
     route: '/signature-solar-coupon',
     image: 'https://mobiledwellings.media/og-signature-solar.png',
     title: 'Signature Solar Coupon Code 2026 – {{COUPON_CODE}} Gets $50 Off | Mobile Dwellings',
@@ -507,6 +517,20 @@ async function main() {
   );
   bfPage.bodyHtml = ssr.renderBlackFridayMain();
   console.log(`   🧩 Rendered Black Friday page:    ${bfPage.bodyHtml.length.toLocaleString()} bytes`);
+
+  // /wattcycle-black-friday: same pattern, targets "wattcycle black friday".
+  const wcbf = await import('../src/data/wattcycle-black-friday-content.mjs');
+  const wcbfPage = pages.find((p) => p.route === wcbf.WC_BF_PATH);
+  if (!wcbfPage) {
+    throw new Error('No ' + wcbf.WC_BF_PATH + ' entry in pages[], cannot bake it.');
+  }
+  wcbfPage.title =
+    `WattCycle Black Friday ${wcbf.WC_BLACK_FRIDAY.year} – ${wcbf.WC_COUPON_CODE} Stacks 8% Off Sale Prices | Mobile Dwellings`;
+  wcbfPage.description = wcbf.wcBfDescription();
+  wcbfPage.noscript = wcbf.wcBfAnswer();
+  wcbfPage.extraStructuredData = schemaScript(wcbf.buildWattCycleBlackFridaySchema());
+  wcbfPage.bodyHtml = ssr.renderWattCycleBlackFridayMain();
+  console.log(`   🧩 Rendered WattCycle BF page:    ${wcbfPage.bodyHtml.length.toLocaleString()} bytes`);
 
   // /deals is the site's highest-impression page for "signature solar coupon
   // code" (941 impressions, position 7.2) and served nothing but an empty shell

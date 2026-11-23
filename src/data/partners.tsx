@@ -66,6 +66,9 @@ export type PartnerCoupon = {
   /** Optional instruction shown with the coupon (and footer CTA) — e.g. asking
    *  the buyer to credit Mobile Dwellings in the brand's checkout survey. */
   surveyNote?: string;
+  /** Optional seasonal link under the coupon, e.g. a Black Friday page.
+   *  Hidden on builds after `untilIso`, so it can't go stale. */
+  promoLink?: { href: string; label: string; untilIso: string };
 };
 
 export type Partner = {
@@ -281,7 +284,14 @@ const wattCycle: Partner = {
     // Re-confirmed working 2026-11-19. The FAQ's "$1,088.98 cart, $87.12 off"
     // narrative stays dated Aug 20 — that was a specific test on a specific
     // cart, not something re-run today.
-    lastVerified: "November 19, 2026",
+    // Re-tested 2026-11-24 on four Black Friday sale items (see
+    // /wattcycle-black-friday); it stacked 8% on top of sale prices each time.
+    lastVerified: "November 24, 2026",
+    promoLink: {
+      href: "/wattcycle-black-friday",
+      label: "Black Friday: DWELLINGS stacks on top of sale prices →",
+      untilIso: "2026-12-01",
+    },
   },
   intro: [
     "WattCycle makes budget-friendly LiFePO4 (lithium iron phosphate) batteries that have become a popular choice for Skoolie and van builds that need battery storage without the premium price tag.",

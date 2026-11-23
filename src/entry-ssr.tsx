@@ -21,6 +21,7 @@ import { renderToStaticMarkup } from "react-dom/server";
 import { StaticRouter } from "react-router-dom";
 import { SignatureSolarCouponMain } from "./pages/SignatureSolarCouponMain";
 import { BlackFridayMain } from "./pages/BlackFridayMain";
+import { WattCycleBlackFridayMain } from "./pages/WattCycleBlackFridayMain";
 import { DealsCouponHero } from "./components/DealsCouponHero";
 import { PartnerMain } from "./pages/PartnerMain";
 import { getPartner } from "./data/partners";
@@ -32,6 +33,11 @@ export function renderSignatureSolarMain(): string {
 /** /signature-solar-black-friday — self-contained like the coupon page. */
 export function renderBlackFridayMain(): string {
   return renderToStaticMarkup(<BlackFridayMain />);
+}
+
+/** /wattcycle-black-friday, self-contained like the Signature Solar one. */
+export function renderWattCycleBlackFridayMain(): string {
+  return renderToStaticMarkup(<WattCycleBlackFridayMain />);
 }
 
 /**

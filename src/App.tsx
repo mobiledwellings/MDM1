@@ -14,6 +14,7 @@ import { LeadFinderPage } from "./pages/LeadFinderPage";
 import { DealsPage } from "./pages/DealsPage";
 import { SignatureSolarCouponPage } from "./pages/SignatureSolarCouponPage";
 import { BlackFridayPage } from "./pages/BlackFridayPage";
+import { WattCycleBlackFridayPage } from "./pages/WattCycleBlackFridayPage";
 import { PartnersPage } from "./pages/PartnersPage";
 import { PartnerPage } from "./pages/PartnerPage";
 import { StoriesPage } from "./pages/StoriesPage";
@@ -44,6 +45,7 @@ export default function App() {
                   <Route path="/leads" element={<LeadFinderPage />} />
                   <Route path="/signature-solar-coupon" element={<SignatureSolarCouponPage />} />
                   <Route path="/signature-solar-black-friday" element={<BlackFridayPage />} />
+                  <Route path="/wattcycle-black-friday" element={<WattCycleBlackFridayPage />} />
                   <Route path="/signature-solar-coupon-code" element={<SignatureSolarCouponPage />} />
                 </Routes>
               </BrowserRouter>

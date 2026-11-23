@@ -321,6 +321,15 @@ export function PartnerMain({ partner }: { partner: Partner }) {
                   : `Verified active on ${p.coupon!.lastVerified} by Justin`}
               </p>
             )}
+
+            {p.coupon?.promoLink &&
+              new Date().toISOString().slice(0, 10) <= p.coupon.promoLink.untilIso && (
+                <p style={{ fontSize: "0.875rem", marginTop: "0.75rem", marginBottom: 0 }}>
+                  <a href={p.coupon.promoLink.href} style={{ color: HERO.text, textDecoration: "underline" }}>
+                    {p.coupon.promoLink.label}
+                  </a>
+                </p>
+              )}
           </div>
         </section>
 
