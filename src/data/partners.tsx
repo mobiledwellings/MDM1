@@ -153,6 +153,11 @@ const signatureSolar: Partner = {
     // offer read as more restricted. Disclosed in the coupon page FAQ and the
     // /deals fine print. Matches a4901790 and 4c409f4b.
     terms: "$50 off. Works on most products sitewide.",
+    promoLink: {
+      href: "/signature-solar-black-friday",
+      label: `Black Friday: ${COUPON_CODE} stacks on top of sale prices →`,
+      untilIso: "2026-12-01",
+    },
   },
   intro: [
     `Signature Solar supplies the EG4 inverters, lithium batteries, and solar panels we install in skoolies and overland rigs. Use code ${COUPON_CODE} for $50 off.`,

@@ -61,26 +61,39 @@ function PartnerCard({
 }) {
   const [hovered, setHovered] = useState(false);
   const href = partnerHref(partner);
+  // Seasonal link (e.g. Black Friday), hidden on builds after untilIso the
+  // same way PartnerMain hides it. Rendered as a sibling of the card link,
+  // not inside it, since links can't nest.
+  const promo = partner.coupon?.promoLink;
+  const showPromo =
+    !!promo && new Date().toISOString().slice(0, 10) <= promo.untilIso;
   return (
-    <a
-      href={href}
-      onClick={(e) => {
-        e.preventDefault();
-        onOpen(href);
-      }}
+    <div
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
       style={{
         display: "flex",
         flexDirection: "column",
-        textDecoration: "none",
-        color: "inherit",
         backgroundColor: c.cardBg,
         border: `1px solid ${hovered ? partner.accent : c.border}`,
         borderRadius: "0.75rem",
         overflow: "hidden",
         transition: "border-color 0.15s ease, transform 0.15s ease",
         transform: hovered ? "translateY(-3px)" : "none",
+      }}
+    >
+    <a
+      href={href}
+      onClick={(e) => {
+        e.preventDefault();
+        onOpen(href);
+      }}
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        flex: 1,
+        textDecoration: "none",
+        color: "inherit",
       }}
     >
       <div style={{ height: "6px", backgroundColor: partner.accent }} />
@@ -143,6 +156,29 @@ function PartnerCard({
         )}
       </div>
     </a>
+    {showPromo && promo && (
+      <a
+        href={promo.href}
+        onClick={(e) => {
+          e.preventDefault();
+          onOpen(promo.href);
+        }}
+        style={{
+          display: "block",
+          padding: "0.75rem 1rem",
+          borderTop: `1px solid ${c.border}`,
+          fontSize: "0.8125rem",
+          fontWeight: 600,
+          lineHeight: 1.4,
+          textAlign: "center",
+          color: c.text,
+          textDecoration: "underline",
+        }}
+      >
+        {promo.label}
+      </a>
+    )}
+    </div>
   );
 }
 
