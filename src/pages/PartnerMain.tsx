@@ -223,7 +223,11 @@ export function PartnerMain({ partner }: { partner: Partner }) {
                 marginBottom: "0.5rem",
               }}
             >
-              Mobile Dwellings <span style={{ color: p.accent }}>x</span> {p.name}
+              {p.h1 ?? (
+                <>
+                  Mobile Dwellings <span style={{ color: p.accent }}>x</span> {p.name}
+                </>
+              )}
             </h1>
             <p
               style={{
@@ -351,6 +355,94 @@ export function PartnerMain({ partner }: { partner: Partner }) {
             ))}
           </div>
         </section>
+
+        {/* ─────────────── CODES WE TESTED ─────────────── */}
+        {p.codeTests && (
+          <section style={{ ...sectionPad, paddingTop: 0 }}>
+            <div style={{ maxWidth: "44rem", margin: "0 auto" }}>
+              <h2
+                style={{
+                  ...HEADING_RESET,
+                  fontSize: "1.5rem",
+                  fontWeight: 700,
+                  marginBottom: "0.75rem",
+                }}
+              >
+                {p.codeTests.heading}
+              </h2>
+              <p style={{ fontSize: "1rem", lineHeight: 1.6, color: c.textBody, marginBottom: "1rem" }}>
+                {p.codeTests.intro}
+              </p>
+              <div style={{ overflowX: "auto" }}>
+                <table
+                  style={{
+                    width: "100%",
+                    borderCollapse: "collapse",
+                    fontSize: "0.9375rem",
+                    lineHeight: 1.45,
+                  }}
+                >
+                  <thead>
+                    <tr>
+                      {["Code", "Result at checkout"].map((h) => (
+                        <th
+                          key={h}
+                          scope="col"
+                          style={{
+                            textAlign: "left",
+                            padding: "0.5rem 0.75rem",
+                            borderBottom: `2px solid ${c.border}`,
+                            color: c.textMuted,
+                            fontWeight: 600,
+                            whiteSpace: "nowrap",
+                          }}
+                        >
+                          {h}
+                        </th>
+                      ))}
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {p.codeTests.rows.map((r) => (
+                      <tr key={r.code}>
+                        <th
+                          scope="row"
+                          style={{
+                            textAlign: "left",
+                            padding: "0.625rem 0.75rem",
+                            borderBottom: `1px solid ${c.border}`,
+                            fontWeight: 700,
+                            letterSpacing: "0.02em",
+                            color: r.code === p.coupon?.code ? p.accent : c.text,
+                            whiteSpace: "nowrap",
+                          }}
+                        >
+                          {r.code}
+                        </th>
+                        <td
+                          style={{
+                            padding: "0.625rem 0.75rem",
+                            borderBottom: `1px solid ${c.border}`,
+                          }}
+                        >
+                          <div style={{ fontWeight: 600 }}>{r.result}</div>
+                          <div style={{ color: c.textBody, fontSize: "0.875rem", marginTop: "0.125rem" }}>
+                            {r.note}
+                          </div>
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+              {p.codeTests.footnote && (
+                <p style={{ fontSize: "0.9375rem", lineHeight: 1.6, color: c.textMuted, marginTop: "1rem" }}>
+                  {p.codeTests.footnote}
+                </p>
+              )}
+            </div>
+          </section>
+        )}
 
         {/* ─────────────── HERO VIDEO ─────────────── */}
         {p.heroVideo && (

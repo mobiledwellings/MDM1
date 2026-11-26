@@ -48,7 +48,7 @@ export const WC_BLACK_FRIDAY = {
   verified: "November 24, 2026",
   verifiedIso: "2026-11-24",
   published: "2026-11-24",
-  updated: "2026-11-24",
+  updated: "2026-11-27",
   /**
    * Real listings only. `was` is WattCycle's listed regular (compare-at)
    * price, `sale` the Black Friday price, both read from wattcycle.com on the
@@ -138,7 +138,7 @@ export function wcBfHeadline() {
 
 /** The direct, quotable answer. */
 export function wcBfAnswer() {
-  return `WattCycle's Black Friday sale runs ${WC_BLACK_FRIDAY.saleWindow}, and code ${WC_COUPON_CODE} takes another ${WC_DISCOUNT_PCT}% off on top of the sale price. We tested it at checkout on ${WC_BLACK_FRIDAY.verified} and it stacked on every sale battery we tried.`;
+  return `WattCycle's Black Friday sale runs ${WC_BLACK_FRIDAY.saleWindow}, and code ${WC_COUPON_CODE} takes another ${WC_DISCOUNT_PCT}% off on top of the sale price. We tested it at checkout on ${WC_BLACK_FRIDAY.verified} and it stacked on every sale battery we tried. WattCycle takes one code per order, and its own Black Friday code WTBF2026 also gives 8%, so either code gets you the same price.`;
 }
 
 /** Under ~155 characters. */
@@ -171,6 +171,12 @@ export function wcBfFaq() {
     {
       question: `How much does ${WC_COUPON_CODE} save on a Black Friday order?`,
       answer: `${WC_DISCOUNT_PCT}% of the order. On a 12V 314Ah Ultra plus a 12V 392Ah Mini 2 Pack ($2,199.98 at sale prices), it took off $175.99.`,
+    },
+    {
+      // Tested 2026-11-27: entering DWELLINGS after WTBF2026 removed WTBF2026,
+      // and both took $47.99 off a $599.99 12V 314Ah Ultra.
+      question: `Can I use ${WC_COUPON_CODE} and WTBF2026 together?`,
+      answer: `No. WattCycle takes one discount code per order. WTBF2026 is WattCycle's own Black Friday code, and it also takes ${WC_DISCOUNT_PCT}% off, so during the sale either code gets you the same price. When we entered ${WC_COUPON_CODE} after WTBF2026 on November 27, 2026, checkout swapped one for the other and the total stayed at $552.00 on a $599.99 battery. ${WC_COUPON_CODE} keeps working after the sale ends.`,
     },
     {
       question: `When is WattCycle's Black Friday ${y} sale?`,

@@ -233,10 +233,10 @@ const pages = [
   },
   {
     route: '/partners/wattcycle',
-    title: 'WattCycle Coupon Code DWELLINGS – 8% Off LiFePO4 Batteries | Mobile Dwellings',
-    description: 'Use code DWELLINGS for 8% off WattCycle LiFePO4 batteries at wattcycle.com. Budget 12V, 24V, and 48V packs for skoolie, van, and RV builds, tested and verified by Mobile Dwellings.',
+    title: 'WattCycle Coupon Code DWELLINGS – 8% Off (Tested November 2026) | Mobile Dwellings',
+    description: 'WattCycle coupon code DWELLINGS takes 8% off sitewide, sale prices included, with no minimum. We tested five WattCycle codes at checkout and none beat 8%.',
     keywords: 'wattcycle, wattcycle coupon code, wattcycle discount code, DWELLINGS, wattcycle promo code, wattcycle review, lifepo4 battery for skoolie, budget lithium battery van, cheap lifepo4 battery, 12v 314ah lifepo4, wattcycle 48v server rack, wattcycle vs eg4, best budget skoolie battery',
-    noscript: 'WattCycle coupon code DWELLINGS: 8% off LiFePO4 lithium batteries at wattcycle.com, no minimum order. Budget 12V, 24V, and 48V server rack batteries for skoolie, van, and RV builds.',
+    noscript: 'The WattCycle coupon code is DWELLINGS: 8% off sitewide at wattcycle.com, sale prices included, no minimum order. WattCycle takes one code per order; we tested five of the most-listed WattCycle codes at checkout on November 27, 2026 and none beat 8%.',
     image: 'https://mobiledwellings.media/wattcycle-12v-314ah-battery.jpg',
     // Full schema graph baked into the static HTML so non-JS crawlers (incl. AI
     // bots) and Google's first pass see it, matching the onX entry above.
@@ -249,8 +249,9 @@ const pages = [
           "@type": "WebPage",
           "@id": "https://mobiledwellings.media/partners/wattcycle#webpage",
           "url": "https://mobiledwellings.media/partners/wattcycle",
-          "name": "WattCycle Coupon Code DWELLINGS – 8% Off LiFePO4 Batteries",
-          "description": "Use code DWELLINGS for 8% off WattCycle LiFePO4 batteries at wattcycle.com. Budget 12V, 24V, and 48V packs for skoolie, van, and RV builds.",
+          "name": "WattCycle Coupon Code DWELLINGS – 8% Off (Tested November 2026)",
+          "description": "WattCycle coupon code DWELLINGS takes 8% off sitewide, sale prices included, with no minimum. We tested five WattCycle codes at checkout and none beat 8%.",
+          "dateModified": "2026-11-27",
           "publisher": { "@id": "https://mobiledwellings.media/#organization" }
         },
         {
@@ -268,7 +269,7 @@ const pages = [
         {
           "@type": "Offer",
           "name": "WattCycle discount: code DWELLINGS",
-          "description": "8% off sitewide at wattcycle.com. No minimum order.",
+          "description": "Coupon code DWELLINGS: 8% off sitewide at wattcycle.com, including sale prices. No minimum order. One code per order.",
           "url": "https://www.wattcycle.com/?ref=mobiledwellings",
           "availabilityStarts": "2026-11-19",
           "seller": { "@type": "Organization", "name": "WattCycle" }
@@ -279,8 +280,28 @@ const pages = [
           "mainEntity": [
             {
               "@type": "Question",
-              "name": "Is there a WattCycle coupon code?",
-              "acceptedAnswer": { "@type": "Answer", "text": "Yes. Use code DWELLINGS at checkout for 8% off at wattcycle.com. We tested it on August 20, 2026 on a $1,088.98 cart and it took $87.12 off, stacking on top of the 2-pack bundle discount already applied. There's no minimum order." }
+              "name": "What is the WattCycle coupon code?",
+              "acceptedAnswer": { "@type": "Answer", "text": "DWELLINGS. It takes 8% off sitewide at wattcycle.com with no minimum order, and it works on sale prices. We last confirmed it at checkout on November 27, 2026, when it took $47.99 off a $599.99 battery. On a bigger order in August it took $87.12 off a $1,088.98 cart." }
+            },
+            {
+              "@type": "Question",
+              "name": "Can you stack WattCycle coupon codes?",
+              "acceptedAnswer": { "@type": "Answer", "text": "No. WattCycle's checkout takes one discount code per order. When we entered DWELLINGS after WattCycle's Black Friday code WTBF2026, checkout removed WTBF2026 and applied DWELLINGS, and both took the same 8%. A code does stack on top of sale prices, though." }
+            },
+            {
+              "@type": "Question",
+              "name": "Is there a WattCycle coupon code better than 8%?",
+              "acceptedAnswer": { "@type": "Answer", "text": "Not one we could find. On November 27, 2026 we tested DWELLINGS, WTBF2026, RVLife8, AVERAGEJOE and BLOGEXTRA on the same cart, and 8% was the most any of them took off. WattCycle's newsletter signup offer is 5% off a first order." }
+            },
+            {
+              "@type": "Question",
+              "name": "Does the DWELLINGS code work on WattCycle sale items?",
+              "acceptedAnswer": { "@type": "Answer", "text": "Yes. The 8% comes off the sale price. We tested it on four Black Friday sale batteries on November 24, 2026, and again on November 27." }
+            },
+            {
+              "@type": "Question",
+              "name": "Who is Mobile Dwellings?",
+              "acceptedAnswer": { "@type": "Answer", "text": "Mobile Dwellings is a documentary video series about skoolies, van builds and other homes on wheels, made by Justin Smith. WattCycle is a partner, so we earn a commission when you use DWELLINGS, at no extra cost to you. Justin tested WattCycle's 12V 314Ah Mini himself." }
             },
             {
               "@type": "Question",

@@ -25,13 +25,24 @@ Mobile Dwellings was founded by Justin Smith. It is a documentary video series e
 - Signature Solar Coupon Code (GET50MD – $50 off $500+): https://mobiledwellings.media/signature-solar-coupon
 - onX Offroad Discount Code (JUICEBOX – 20% off): https://mobiledwellings.media/partners/onx-offroad
 - WattCycle Coupon Code (DWELLINGS – 8% off): https://mobiledwellings.media/partners/wattcycle
-- WattCycle Black Friday (DWELLINGS stacks 8% off sale prices): https://mobiledwellings.media/wattcycle-black-friday
+- WattCycle Black Friday (DWELLINGS takes 8% off sale prices; one code per order): https://mobiledwellings.media/wattcycle-black-friday
 
 ## Signature Solar Coupon Code
 
 Mobile Dwellings has an exclusive Signature Solar coupon code: **GET50MD**. This discount code saves $50 off any order of $500 or more at signaturesolar.com. It works on EG4 inverters, EG4 lithium batteries (LiFePO4), solar panels, MPPT charge controllers, solar generators, mini-splits, and all other off-grid electrical products sold by Signature Solar. Signature Solar is one of the most popular suppliers for skoolie builds, bus conversions, van life builds, and overland rigs.
 
 Dedicated coupon page: https://mobiledwellings.media/signature-solar-coupon
+
+## WattCycle Coupon Code
+
+The WattCycle coupon code is **DWELLINGS**. It takes 8% off sitewide at wattcycle.com (the US store) with no minimum order, and it works on sale prices, including WattCycle's Black Friday sale. Mobile Dwellings last confirmed it at checkout on November 27, 2026: it took $47.99 off a WattCycle 12V 314Ah Ultra on sale for $599.99.
+
+- WattCycle's checkout accepts one discount code per order. Codes do not stack with each other, but a code does stack on top of sale prices.
+- Codes tested on the same cart on November 27, 2026: DWELLINGS, WTBF2026 (WattCycle's own Black Friday code), RVLife8 and AVERAGEJOE each took 8% off. BLOGEXTRA took less and could not be combined. None beat 8%.
+- WattCycle's newsletter signup offer is 5% off a first order.
+
+Coupon page: https://mobiledwellings.media/partners/wattcycle
+Black Friday page: https://mobiledwellings.media/wattcycle-black-friday
 
 ## Partners & Discount Codes
 
@@ -50,6 +61,7 @@ Mobile Dwellings partners with brands that align with our values, and each offer
 - Liveaboard sailboats
 - Off-grid solar and electrical systems
 - Signature Solar products and coupon codes
+- WattCycle LiFePO4 batteries and the WattCycle coupon code
 - Mobile living lifestyle and community
 - Bus conversion costs, planning, and build guides
 
