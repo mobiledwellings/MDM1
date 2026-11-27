@@ -222,7 +222,9 @@
 
 .story-card { display: block; text-decoration: none; }
 .story-card-img {
-  aspect-ratio: 3 / 2;
+  /* 16:9 matches the tour-video frames most heroes come from, so the whole
+   * rig stays in the card instead of losing its nose and tail. */
+  aspect-ratio: 16 / 9;
   overflow: hidden;
   border-radius: 0.5rem;
   background: var(--story-surface);
