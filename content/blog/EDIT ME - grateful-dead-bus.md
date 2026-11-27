@@ -2,8 +2,8 @@
 slug: grateful-dead-bus
 title: The Most Grateful Dead Bus I've Ever Seen: Inside Levon Short Notice
 dek: Dennis got on the bus at a Grateful Dead show in 1987. Nearly forty years later he and Marty have their own: a 40-foot Thomas painted by a muralist they met at a rest area, with a 1952 clawfoot tub, an interior decked out in Grateful Dead gear and a flagpole for finding the bus after the show.
-hero: /blog/grateful-dead-bus/dennis-and-marty-in-front-of-levon.jpg
-heroAlt: Dennis and Marty standing arm in arm in a festival field, waving, in front of their brightly painted school bus.
+hero: /blog/grateful-dead-bus/levon-mount-hood-hero.jpg
+heroAlt: Dennis and Marty's brightly painted school bus on a roadside pullout, with the snow-covered peak of Mount Hood rising behind it.
 category: Bus Tours
 date: 2026-11-20
 readingTime: 8 min
